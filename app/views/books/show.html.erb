@@ -80,9 +80,10 @@
 	<% end %>
 	<h3>People currently reading this book right now:</h3>
 
-	<img src="https://dl.dropboxusercontent.com/u/11223982/users_bl_example.png" /><br />
-	<a href="#">View more</a>
-	
+	<%= @user.each do |user| %>
+ 			<li><%= link_to user.name, user_path(:id => id)%></li>
+  	<% end %>
+
 	<h3>Discussion</h3>
 	
 </div>

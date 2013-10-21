@@ -18,6 +18,10 @@ class BooksController < ApplicationController
     @olid_book = olid.search(params[:id])
     
     #@book = Book.find_by_olidb(params[:id])
+
+    #users currently reading:
+    @reader = reader.where(:user_id => current_user.id).where(:olidb_book => params[:id])
+    
     
     # If user logged in, get user data and initialize new instance for the option to start reading the book.
     if user_signed_in?
