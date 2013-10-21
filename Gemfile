@@ -10,6 +10,7 @@ gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
 #gem 'protected_attributes'
 gem 'will_paginate'
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
