@@ -10,7 +10,6 @@ gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
 #gem 'protected_attributes'
 gem 'will_paginate'
-gem "activerecord-reputation-system", "~> 2.0.2"
 
 gem 'rails_12factor', group: :production
 
