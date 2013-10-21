@@ -10,6 +10,13 @@
 
                 <div class="nav-collapse">
                     <ul class="nav">
+                       <div id="mod-search">
+                 <%= form_tag("/search", method: "get") do %>
+       
+                 <%= text_field_tag(:q) %>
+                 <%= submit_tag("Find books", class: "btn") %>
+                 <% end %>
+                </div>
 
                     </ul>
                         <ul class="nav pull-right">

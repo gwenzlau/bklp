@@ -46,9 +46,9 @@ class BooksController < ApplicationController
     #@book = Book.new(params[:book])
     
     if @book.save
-      redirect_to root_path
+      redirect_to current_user
     else
-      redirect_to user_path
+      redirect_to root_path
     end
     #@book = Book.new(params[:book])
 
@@ -69,7 +69,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update_attribute(:status, "1")
+      redirect_to current_user
+    else
       redirect_to root_path
+    end
+    if @book.update_attribute(:status, "2")
+      redirect_to current_user
     else
       redirect_to root_path
     end

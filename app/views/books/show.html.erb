@@ -1,14 +1,15 @@
-<h2>Book details</h2>
 
-Looking for OLID: <%= params[:id] %><br />
+<!--Looking for OLID: <%= params[:id] %><br /> !-->
 
 <div class="bl-book-page">
 	<% @olid_book.each do |book| %>
 	<h2><%= book.title %> <span>by <%= book.author_name[0] %></span></h2>
-	Published by <%= book.publisher[0] %>
+
 	
-	<h3>Book details</h3>
-	<ul>
+	
+	<!--<h3>Book details</h3>
+	  <ul>
+		Published by <%= book.publisher[0] %>
 		<li>Year: <%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %></li>
 		<li>ISBN: <%= book.isbn[0] %> or <%= book.isbn[1] %></li>
 		<li>Language: <%= book.language.blank? ? "n/a" : book.language[0] %></li>
@@ -20,13 +21,12 @@ Looking for OLID: <%= params[:id] %><br />
 			<li><a href="http://www.goodreads.com/book/show/<%= book.id_goodreads[0] %>" target="_blank">View on Goodreads</a></li>
 		<% end %>
 		
-	</ul>
+		
+	  </ul> !-->
 	
-	<h3>People reading this book right now</h3>
-	<img src="https://dl.dropboxusercontent.com/u/11223982/users_bl_example.png" /><br />
-	<a href="#">View more</a>
 	
-	<h3>What next?</h3>
+	
+	<h3>Book status:</h3>
 	
 	<%# Is the user signed in?%>
 	<% if user_signed_in? %>
@@ -36,8 +36,8 @@ Looking for OLID: <%= params[:id] %><br />
 			<% if @mybook[0].olida == "1" %>
 		 		<b>Hey</b>, you finished this book on: <%= @mybook[0].updated_at %>
 		 	<% else %>
-				<%= button_to "Abandon this book", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
-				<%= button_to "I have finished reading this book", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
+				<%= button_to "Abandoned", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
+				<%= button_to "Finished it!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Do you recommend it?" %>
 		 	<% end %>
 		
 		<% else %>
@@ -49,7 +49,27 @@ Looking for OLID: <%= params[:id] %><br />
 				<%= f.hidden_field :olida, :value => book.author_key[0] %>
 				<%= f.hidden_field :status, :value => "0" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Start reading this book", :class => "btn" %>
+				<%= f.submit "Currently reading it.", :class => "btn" %>
+				<% end %>
+
+				<%= form_for(@newbook) do |f| %>
+				<%= f.hidden_field :title, :value => book.title %>
+				<%= f.hidden_field :author, :value => book.author_name[0] %>
+				<%= f.hidden_field :olidb, :value => params[:id] %>
+				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :status, :value => "1" %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Already read it.", :class => "btn" %>
+				<% end %>
+
+				<%= form_for(@newbook) do |f| %>
+				<%= f.hidden_field :title, :value => book.title %>
+				<%= f.hidden_field :author, :value => book.author_name[0] %>
+				<%= f.hidden_field :olidb, :value => params[:id] %>
+				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :status, :value => "2" %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Going to read it.", :class => "btn" %>
 				<% end %>
 		
 		<% end %>
@@ -58,7 +78,11 @@ Looking for OLID: <%= params[:id] %><br />
 	<% end %>
 	
 	<% end %>
+	<h3>People currently reading this book right now:</h3>
+
+	<img src="https://dl.dropboxusercontent.com/u/11223982/users_bl_example.png" /><br />
+	<a href="#">View more</a>
 	
-	<h3>Book discussions</h3>
+	<h3>Discussion</h3>
 	
 </div>

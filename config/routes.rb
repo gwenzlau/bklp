@@ -13,6 +13,7 @@ Booksy::Application.routes.draw do
    get 'users/', to: 'users#index'
    get 'search/', to: 'pages#search'
    get 'finshed', to: 'books#finished'
+   get 'future', to: 'books#future'
 
   get "pages/home"
   

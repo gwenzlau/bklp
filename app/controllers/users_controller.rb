@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # Users are reading now and have previously read:
     @book = Book.where(:user_id => params[:id]).where.not(:status => "1")
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
+    @future = Book.where(:user_id => params[:id]).where(:status => "2")
 	end
   
 end

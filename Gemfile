@@ -5,7 +5,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
-gem "paperclip", "~> 2.7"
+gem "paperclip", "~> 3.0"
 gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
 #gem 'protected_attributes'
