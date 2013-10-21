@@ -1,0 +1,22 @@
+<br />
+
+
+
+<div class="bl-book-page">
+	<h2><%= @user.name %></h2>
+	This is what I am reading:
+	
+	<h3>Currently reading</h3>
+ 	<ul>
+ 	 <% @book.each do |book| %>
+		<li><%= link_to book.title, book_path(:id => book.olidb) %> by <%= book.author %></li>
+ 	 <% end %>
+	</ul>
+	
+	<h3>Books I loved</h3>
+	<ul>
+  	<% @past.each do |past| %>
+ 			<li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
+  	<% end %>
+	</ul>
+</div>

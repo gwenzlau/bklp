@@ -1,0 +1,88 @@
+$navbarBackgroundHighlight: white;
+$navbarBackground: white;
+$btnPrimaryBackground: purple;
+
+@import 'bootstrap';
+
+body{
+    padding-top: 50px;
+}
+
+@import 'bootstrap-responsive';
+
+h1, h2, h3{
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  margin-right: -10px;
+}
+.brand {
+  letter-spacing: 2px;
+}
+
+.footer{
+    margin-top: 500px;
+    color: $black;
+    a{
+        color: $gray;
+    }
+}
+a {
+  color: #88F5AF;
+}
+a:hover {
+  color: #30FFD6;
+}
+
+input.search-query {
+padding-right: 90px;
+padding-right: 4px \9;
+padding-left: 90px;
+padding-left: 4px \9;
+margin-bottom: 0;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+
+.author-link{
+  color: #2C66FA
+  
+}
+.title-link {
+  color: #88F5AF;
+}
+
+div.bl-book-page {
+	margin-top: 40px;
+	
+	a {
+		color: #0088cc;
+		&:hover {color: #ccc;};
+	}
+	
+	h2 {
+		font-family: "helvetica neue", arial;
+		font-size: 38px;
+		text-transform: none;
+		letter-spacing: 0px;
+		font-weight: bold;
+		
+		span {
+			color: #999;
+			font-size: 24px;
+			padding-left: 10px;
+			font-weight: normal;
+		}
+	}
+	
+	h3 {
+		font-family: "helvetica neue", arial;
+		font-size: 22px;
+		text-transform: none;
+		letter-spacing: 0px;
+		font-weight: bold;
+		border-top: 1px #eee solid;
+		padding-top: 20px;
+		margin-top: 30px;
+	}
+}
