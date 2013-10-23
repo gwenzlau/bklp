@@ -3,7 +3,7 @@
 
 <div class="bl-book-page">
 	<% @olid_book.each do |book| %>
-	<h2><%= book.title %> <span>by <%= book.author_name[0] %></span></h2>
+	<h2><%= book.title %> <span>by <%= book.author_name[0] %></span> <%= book.covers %> </h2>
 
 	
 	
@@ -78,7 +78,7 @@
 	<% end %>
 	
 	<% end %>
-	<h3>People currently reading this book right now:</h3>
+	<h3>People currently reading this book:</h3>
 
 	
 

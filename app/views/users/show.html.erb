@@ -1,6 +1,7 @@
 <div class="bl-book-page">
 	<div align="right">
- 	 <button><%= link_to "Follow" %></button>
+ 	 <button><%= link_to "Follow", follow_user_path(@user) %></button>
+ 	 <button><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
  	</div>
 	<h2><%= link_to @user.name, current_user %>  is currently reading: </h2> 
 	<h3>

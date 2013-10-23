@@ -8,6 +8,12 @@ Booksy::Application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:show, :index]
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
  
    get 'users/:id', to: 'users#show'
    get 'users/', to: 'users#index'

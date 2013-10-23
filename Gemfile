@@ -10,7 +10,7 @@ gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
 #gem 'protected_attributes'
 gem 'will_paginate'
-
+gem "acts_as_follower"
 gem 'rails_12factor', group: :production
 
 

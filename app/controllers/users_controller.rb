@@ -17,5 +17,36 @@ class UsersController < ApplicationController
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
     @future = Book.where(:user_id => params[:id]).where(:status => "2")
 	end
+
+  def follow
+    @user = User.find(params[:id])
+    if current_user
+     if current_user == @user
+      flash[:error] = "You cannot follow yourself."
+      redirect_to current_user
+     else
+      current_user.follow(@user)
+      redirect_to current_user
+     # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+      flash[:notice] = "You are now following #{@user.name}."
+      end
+  else
+    flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.name}.".html_safe
+    redirect_to root_path
+  end
+end
+
+def unfollow
+  @user = User.find(params[:id])
+
+  if current_user
+    current_user.stop_following(@user)
+    flash[:notice] = "You are no longer following #{@user.name}."
+    redirect_to root_path
+  else
+    flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe
+    redirect_to root_path
+  end
+end
   
 end
