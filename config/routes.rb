@@ -2,6 +2,7 @@ Booksy::Application.routes.draw do
   
   resources :collections
   resources :books
+  resources :activities
 
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
 <h1 align="center"> BookFeed </h1>
+<%= render_activities(@activities) %>
 <h5 align="center"> (stay in the loop) </h5>
 <% else %>
 <div class="hero-unit">

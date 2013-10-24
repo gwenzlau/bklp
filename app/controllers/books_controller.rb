@@ -77,7 +77,7 @@ class BooksController < ApplicationController
       redirect_to root_path
     end
     if @book.update_attribute(:status, "2")
-      redirect_to current_user
+      #redirect_to current_user
     else
       redirect_to root_path
     end

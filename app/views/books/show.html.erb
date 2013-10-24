@@ -38,7 +38,15 @@
 		 		<b>Hey</b>, you finished this book on: <%= @mybook[0].updated_at %>
 		 	<% else %>
 				<%= button_to "Abandoned", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
-				<%= button_to "Finished it!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Do you recommend it?" %>
+				<%= form_for(@newbook) do |f| %>
+				<%= f.hidden_field :title, :value => book.title %>
+				<%= f.hidden_field :author, :value => book.author_name[0] %>
+				<%= f.hidden_field :olidb, :value => params[:id] %>
+				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :status, :value => "1" %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Finished it.", :class => "btn" %>
+				<% end %>
 		 	<% end %>
 		
 		<% else %>
