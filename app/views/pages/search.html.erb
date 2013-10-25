@@ -4,7 +4,7 @@
 
 	<h2>Search result</h2>
 	
-	<% if @result %>
+	<% if @results %>
 		<ul>
 			<% @results.each do |book| %>
 				<li><%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %></li>
