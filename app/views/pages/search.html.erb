@@ -3,12 +3,15 @@
 <div class="bl-book-page">
 
 	<h2>Search result</h2>
-	This is the result after your query: "<%= params[:q] %>"<br /><br />
 	
-	<ul>
-		<% @results.each do |book| %>
-			<li><%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %></li>
-		<% end %>
-	</ul>
+	<% if @result %>
+		<ul>
+			<% @results.each do |book| %>
+				<li><%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %></li>
+			<% end %>
+		</ul>
+	<% else %>
+		Sorry, we could not find any books using: "<%= params[:q] %>"
+	<% end %>
 	
 </div>
