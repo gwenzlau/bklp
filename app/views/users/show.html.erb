@@ -9,10 +9,9 @@
 	<h2><%= link_to @user.name, current_user %>  is currently reading: </h2> 
 	<h3>
  	<ul>
- 	 <% @book.each do |book| %>
-		<li><%= link_to book.title, book_path(:id => book.olidb) %>  by <%= book.author %>
-		</li>
- 	 <% end %>
+ 	 
+	 <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
+	 
 	</ul>
 </h3>
 		<h3>Past Reads:</h3>

@@ -13,7 +13,7 @@
 	  <ul>
 		Published by <%= book.publisher[0] %>
 		<li>Year: <%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %></li>
-		<li>ISBN: <%= book.isbn[0] %> or <%= book.isbn[1] %></li>
+		
 		<li>Language: <%= book.language.blank? ? "n/a" : book.language[0] %></li>
 		<li><%= link_to "Show book on Openlibrary", "#" %></li>
 		
