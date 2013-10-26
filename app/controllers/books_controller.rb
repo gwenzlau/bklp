@@ -65,19 +65,38 @@ class BooksController < ApplicationController
     #  end
   #  end
   end
+  
+  def book_readit
+    @book = Book.new(book_params)
+    #@book = Book.new(params[:book])
+    
+    if @book.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
 
   # PUT /books/1
   # PUT /books/1.json
   def update
     @book = Book.find(params[:id])
+    #@book.create_activity :book_readit
 
     if @book.update_attribute(:status, "1")
       redirect_to current_user
     else
       redirect_to root_path
     end
-    if @book.update_attribute(:status, "2")
-      #redirect_to current_user
+  end
+  
+  def start_future_read
+    @book = Book.find(params[:id])
+    #@book.create_activity :book_readit
+
+    if @book.update_attribute(:status, "0")
+      @book.create_activity :future_read
+      redirect_to current_user
     else
       redirect_to root_path
     end

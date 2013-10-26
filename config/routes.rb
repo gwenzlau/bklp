@@ -1,7 +1,13 @@
 Booksy::Application.routes.draw do
   
   resources :collections
-  resources :books
+  
+  resources :books do
+    member do
+      put :start_future_read
+    end
+  end
+  
   resources :activities
 
 
