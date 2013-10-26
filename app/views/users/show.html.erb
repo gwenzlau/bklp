@@ -1,10 +1,16 @@
 <div class="bl-book-page">
 	<div align="right">
-	<% if current_user.follow(@user)%>
- 	 <button><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
- 	 <% else %>
- 	 <button><%= link_to "Follow", follow_user_path(@user) %></button>
- 	 <% end %>
+		
+		<% if @user.id == current_user.id %>
+			<%# Do nothing since the current user is looking at his own profile %>
+		<% else %>
+			<% if current_user.following?(@user) %>
+				<button><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
+			<% else %>
+				<button><%= link_to "Follow", follow_user_path(@user) %></button>
+			<% end %>
+		<% end %>
+	
  	</div>
 	<h2><%= link_to @user.name, current_user %>  is currently reading: </h2> 
 	<h3>
