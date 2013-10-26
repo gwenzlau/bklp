@@ -27,5 +27,12 @@
   	<% end %>
 	</ul>
 	<h3>Recommended:</h3>
+	
+	<h3>Latest activity:</h3>
+	<% @activities.each do |activity| %>
+	<div class="activit">
+		<%= link_to activity.owner.name, activity.owner if activity.owner %>
+		<%= render_activity activity %>
+	<% end %>
 
 </div>

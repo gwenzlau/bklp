@@ -10,6 +10,10 @@ class UsersController < ApplicationController
    end
    
 	def show
+    if signed_in?
+      @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
+    end
+    
 		@user = User.find(params[:id])
     
     # Users are reading now and have previously read:
