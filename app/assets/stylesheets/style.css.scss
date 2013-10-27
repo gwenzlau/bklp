@@ -27,10 +27,10 @@ h1, h2, h3{
     }
 }
 a {
-  color: #88F5AF;
+  color: #0390FF;
 }
 a:hover {
-  color: #30FFD6;
+  color: #88F5AF;
 }
 
 input.search-query {
@@ -86,4 +86,11 @@ div.bl-book-page {
 		margin-top: 30px;
 	}
 }
-	
+
+.feed {
+	font-size: 20px;
+	letter-spacing: 0px;
+}
+.feed-user {
+	color: #0271FF;
+}

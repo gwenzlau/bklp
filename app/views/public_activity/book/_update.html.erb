@@ -1,1 +1,1 @@
-finished reading the book: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+finished reading: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.

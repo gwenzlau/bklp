@@ -1,14 +1,17 @@
 <% if user_signed_in? %>
 <h1 align="center"> BookFeed </h1>
-
-<h3>My friends activity</h3>
+<h5 align="center"> (stay in the loop) </h5>
+<hr>
+<div class="feed" align="center">
 <% @activities.each do |activity| %>
 <div class="activit">
 	<%= link_to activity.owner.name, activity.owner if activity.owner %>
 	<%= render_activity activity %>
+	<hr>
 <% end %>
+</div>
 
-<h5 align="center"> (stay in the loop) </h5>
+
 <% else %>
 <div class="hero-unit">
 	<div class="header-image-wrapper">
@@ -16,7 +19,7 @@
 			<h1 align="center">Most People Don't read;</h1>
 		</div>
 	</div>
-	<h1 align="center"><%= link_to "Find the one's who do.", new_user_registration_path, class: "button" %></h1>
+	<h1 align="center"><%= link_to "Find the ones who do.", new_user_registration_path, class: "button" %></h1>
 </div>
 
 
