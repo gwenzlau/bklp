@@ -16,17 +16,15 @@ class BooksController < ApplicationController
     
     # Get the metadata from OpenLibrary
     @olid_book = olid.search(params[:id])
-    
-    #@book = Book.find_by_olidb(params[:id])
-
-    #users currently reading:
-    
-    
+  
     # If user logged in, get user data and initialize new instance for the option to start reading the book.
     if user_signed_in?
       @newbook = Book.new
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
     end
+    
+    #Users currently reading this book
+    @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
     
   end
 

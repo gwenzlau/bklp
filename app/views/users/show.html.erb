@@ -12,7 +12,7 @@
 		<% end %>
 	
  	</div>
-	<%= image_tag avatar_url(current_user) %>
+	<%= image_tag avatar_big_url(@user) %>
 	<h2><%= link_to @user.name, current_user %>  is currently reading: </h2> 
 	<h3>
  	<ul>
