@@ -5,7 +5,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
-gem "paperclip"
+gem "paperclip", "~> 3.5.0"
 
 gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
@@ -13,6 +13,7 @@ gem 'openlibrary', '2.1.1'
 gem 'will_paginate'
 gem "acts_as_follower"
 gem 'public_activity'
+gem 'acts_as_commentable'
 gem 'rails_12factor', group: :production
 
 
