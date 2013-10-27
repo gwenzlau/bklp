@@ -87,15 +87,34 @@ div.bl-book-page {
 	}
 }
 
+
+
+.img-circle {
+-webkit-border-radius: 500px;
+-moz-border-radius: 500px;
+border-radius: 500px;	
+height: 144px;
+}
+.book-cover {
+	hieght: 270px;
+}
+.avatar-small{
+	border-radius: 500px;
+}
+
+div.bl-book-page a:hover {
+	color: #45F3A7;
+}
+
 .feed {
 	font-size: 20px;
 	letter-spacing: 0px;
 }
-.feed:hover {
-	font-size: 24px;
-	letter-spacing: 0px;
-}
 
-.feed-user {
-	color: #0271FF;
+.feed-activity a {
+color: #23F197;
+font-weight: bold;
 }
+.feed-activity a:hover {
+	color: #0390FF;
+	}

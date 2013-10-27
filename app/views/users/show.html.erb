@@ -12,15 +12,11 @@
 		<% end %>
 	
  	</div>
-	<%= image_tag avatar_big_url(@user) %>
-	<h2><%= link_to @user.name, current_user %>  is currently reading: </h2> 
-	<h3>
- 	<ul>
- 	 
-	 <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
-	 
-	</ul>
-</h3>
+ 	<div id="avatar" align="center">
+ 		<%= image_tag avatar_big_url(@user), :class=>"img-circle"  %>
+	</div>
+	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></h2> 
+
 		<h3>Past Reads:</h3>
 		<ul>
   	<% @past.each do |past| %>
@@ -35,7 +31,7 @@
 	</ul>
 	<h3>Recommended:</h3>
 	
-	<h3>Latest activity:</h3>
+	<h3>Recent activity:</h3>
 	<% @activities.each do |activity| %>
 	<div class="activit">
 		<%= link_to activity.owner.name, activity.owner if activity.owner %>
