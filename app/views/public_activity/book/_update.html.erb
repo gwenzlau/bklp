@@ -1,1 +1,5 @@
-finished reading: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+<% if activity.trackable %>
+	finished reading: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+<% else%>
+	finished a book that has since been removed.
+<% end %>

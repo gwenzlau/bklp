@@ -5,6 +5,7 @@ Booksy::Application.routes.draw do
   resources :books do
     member do
       put :start_future_read
+      post :future_list
     end
   end
   

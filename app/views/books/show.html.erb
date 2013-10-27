@@ -72,7 +72,7 @@
 				<%= f.submit "Already read it.", :class => "btn" %>
 				<% end %>
 
-				<%= form_for(@newbook) do |f| %>
+				<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
 				<%= f.hidden_field :title, :value => book.title %>
 				<%= f.hidden_field :author, :value => book.author_name[0] %>
 				<%= f.hidden_field :olidb, :value => params[:id] %>

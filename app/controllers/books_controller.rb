@@ -88,12 +88,22 @@ class BooksController < ApplicationController
     end
   end
   
+  def future_list
+    @future = Book.new(book_params)
+    @future.activity key: 'book.future_list'
+
+    if @future.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+  
   def start_future_read
     @book = Book.find(params[:id])
-    #@book.create_activity :book_readit
+    @book.activity key: 'book.future_read'
 
     if @book.update_attribute(:status, "0")
-      @book.create_activity :future_read
       redirect_to current_user
     else
       redirect_to root_path
