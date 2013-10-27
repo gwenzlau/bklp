@@ -13,8 +13,13 @@
 	
  	</div>
  	<div id="avatar" align="center">
- 		<%= image_tag @user.avatar, :class=>"img-circle"  %>
+ 		<% if @user.id == current_user.id %>
+		<a href="<%= edit_user_registration_path %>"><%= image_tag @user.avatar.url, :class=>"img-circle" %></a>
+		<% else %>
+		<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+		<% end %>
  		<%#<%= image_tag avatar_big_url(@user), :class=>"img-circle"  %>
+ 	</a>
 	</div>
 	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></h2> 
 
