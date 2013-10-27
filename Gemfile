@@ -5,10 +5,11 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
-gem "paperclip", "~> 3.0"
+gem "paperclip"
+
 gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
-#gem 'protected_attributes'
+
 gem 'will_paginate'
 gem "acts_as_follower"
 gem 'public_activity'

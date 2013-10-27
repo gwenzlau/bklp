@@ -182,7 +182,7 @@ DEPENDENCIES
   devise
   jquery-rails
   openlibrary (= 2.1.1)
-  paperclip (~> 3.0)
+  paperclip
   pg
   public_activity
   rails
