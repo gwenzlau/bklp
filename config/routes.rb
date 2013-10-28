@@ -1,5 +1,7 @@
 Booksy::Application.routes.draw do
   
+  resources :links
+
   resources :collections
   
   resources :books do
@@ -9,10 +11,10 @@ Booksy::Application.routes.draw do
     end
   end
   
+   devise_for :admins
+   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+ 
   resources :activities
-
-
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
   resources :users, :only => [:show, :index]
@@ -22,7 +24,7 @@ Booksy::Application.routes.draw do
       get :unfollow
     end
   end
- 
+
    get 'users/:id', to: 'users#show'
    get 'users/', to: 'users#index'
    get 'search/', to: 'pages#search'

@@ -14,6 +14,7 @@ gem 'will_paginate'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'acts_as_commentable'
+#gem 'social_stream-linkser'
 gem 'rails_12factor', group: :production
 
 

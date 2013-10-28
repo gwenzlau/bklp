@@ -1,28 +1,28 @@
 <% if user_signed_in? %>
-<h1 align="center"> BookFeed </h1>
-<h5 align="center"> (you are what you read) </h5>
-<hr>
-<div class="feed" align="center">
-<% @activities.each do |activity| %>
-<div class="activit">
-	<%= link_to activity.owner.name, activity.owner if activity.owner %>
-	<span class="feed-activity">
-	<%= render_activity activity %>
-</span>
-	<hr>
-<% end %>
-</div>
+ <h1 align="center"> BookFeed </h1>
+   <h5 align="center"> (you are what you read) </h5>
+   <hr>
+    <div class="feed" align="center">
+       <% @activities.each do |activity| %>
+         <div class="activit">
+	       <%= link_to activity.owner.name, activity.owner if activity.owner %>
+	         <span class="feed-activity">
+	            <%= render_activity activity %>
+			 </span>
+			 <hr>
+		<% end %>
+		</div>
+	</div>
 
 
 <% else %>
-<div class="hero-unit">
+  <div class="hero-unit">
 	<div class="header-image-wrapper">
 		<div class="top-half">
 			<h1 align="center">Most People Don't read;</h1>
 		</div>
 	</div>
-	<h1 align="center"><%= link_to "Find the ones who do.", new_user_registration_path, class: "button" %></h1>
-</div>
+	  <h1 align="center"><%= link_to "Find the ones who do.", new_user_registration_path, class: "button" %></h1>
+  </div>
 
 <% end %>
-					

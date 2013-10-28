@@ -1,0 +1,6 @@
+has  already read
+<% if activity.trackable %>
+	 <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+<% else%>
+	some book that has since been removed.
+<% end %>

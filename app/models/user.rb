@@ -17,5 +17,5 @@ class User < ActiveRecord::Base
   acts_as_follower
   
   has_many :books, dependent: :destroy  
-  
+  has_many :links, dependent: :destroy 
 end

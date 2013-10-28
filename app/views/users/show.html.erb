@@ -19,16 +19,28 @@
 		<%= image_tag @user.avatar.url, :class=>"img-circle" %>
 		<% end %>
  		<%#<%= image_tag avatar_big_url(@user), :class=>"img-circle"  %>
- 	</a>
+ 		
 	</div>
-	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></h2> 
+	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
+	</h2> 
+	<h3>Links:</h3>
+	<strong><%= link_to "(Add a link)", new_link_path %></strong>
+	
+	  <% @link.each do |link| %>
+		<li><%= link_to link.title, link.source  %></li>
+	  <% end %>
 
-		<h3>Past Reads:</h3>
+	<h3>Past Reads:</h3>
 		<ul>
   	<% @past.each do |past| %>
  			<li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
   	<% end %>
+	
+	 <% @link.each do |link| %>
+	  <li><%= link_to link.title, link.source  %></li>
+	 <% end %>
 	</ul>
+
 	<h3>Future Reads:</h3>
 	<ul>
   	<% @future.each do |future| %>
@@ -43,5 +55,7 @@
 		<%= link_to activity.owner.name, activity.owner if activity.owner %>
 		<%= render_activity activity %>
 	<% end %>
+	</div>
 
-</div>
+	</div>
+		

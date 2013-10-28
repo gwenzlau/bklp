@@ -21,6 +21,9 @@ class UsersController < ApplicationController
     #@booka = @book.map(&:title) 
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
     @future = Book.where(:user_id => params[:id]).where(:status => "2")
+
+    #@link = Link.find(params[:id]) 
+    @link = Link.where(:user_id => params[:id]) 
 	end
 
   def follow

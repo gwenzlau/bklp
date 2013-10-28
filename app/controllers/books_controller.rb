@@ -110,6 +110,17 @@ class BooksController < ApplicationController
     end
   end
 
+  def past_list
+    @past = Book.new(book_params)
+    @past.activity key: 'book.past_list'
+
+    if @past.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
