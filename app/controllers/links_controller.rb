@@ -31,17 +31,31 @@ class LinksController < ApplicationController
     @link = Link.new
   end
 
-    def link_readit
-    @link = Link.new(link_params)
+  def link_readit
+   @link = Link.new(link_params)
     
-   	 if @link.save
-       redirect_to current_user
-      else
-       redirect_to root_path
-     end
+   	if @link.save
+     redirect_to current_user
+    else
+    redirect_to root_path
     end
+   end
+
+   def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = Link.find(params[:id])
+
+    if @link.update_attribute(params[:link])
+      redirect_to @link
+    else
+      redirect_to root_path
+    end
+  end
     
-    def link_params
+  def link_params
     params.require(:link).permit(:source, :title, :user_id)
   end
 end
