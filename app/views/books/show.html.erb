@@ -40,7 +40,7 @@
 		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
 		
 		<% if @mybook[0].status == 1 %>
-			<b>Hey</b>, you finished this book on: <%= @mybook[0].updated_at %>
+			You've already finished this book.
 		<% end %>
 		
 		<% if @mybook[0].status == 0 %>
@@ -87,7 +87,10 @@
 		
 		<% end %>
 	<% else %>
-		<%# Show something if the user is not signed in... %>
+		<%= link_to "I'm currently reading this book.", new_user_registration_path, class: "btn" %>
+		<%= link_to "I've already read this book.", new_user_registration_path, class: "btn btn-warning" %>
+		<%= link_to "I'm going to read this book.", new_user_registration_path, class: "btn btn-primary" %>
+
 	<% end %>
 	
 	<% end %>
