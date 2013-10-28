@@ -21,13 +21,18 @@
  		<%#<%= image_tag avatar_big_url(@user), :class=>"img-circle"  %>
  		
 	</div>
+	<%# if current user and if not reading any books - Search form to add #%>
 	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
 	</h2> 
 	<h3>Links:</h3>
 	<strong><%= link_to "(Add a link)", new_link_path %></strong>
 	
 	  <% @link.each do |link| %>
-		<li><%= link_to link.title, link.source  %></li>
+		<li><%= link_to link.title, link.source  %>
+			<% if current_user == @link.user %>
+				<%= link_to 'Edit', edit_lin_path(@link) %>
+				</li>
+				<% end %>
 	  <% end %>
 
 	<h3>Past Reads:</h3>
