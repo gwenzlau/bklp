@@ -7,11 +7,14 @@
 	<% if @results %>
 		<ul>
 			<% @results.each do |book| %>
-				<li><%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %></li>
+					<li>
+					  <%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %>, with <%= link_to book.users_reading.blank? ? "0" : book.users_reading[0], book_path(:id => book.text[0]) %> current readers. 
+					  
+					</li>
 			<% end %>
 		</ul>
 	<% else %>
-		Sorry, we could not find any books using: "<%= params[:q] %>"
+		Sorry, we could not find any books searching: "<%= params[:q] %>"
 	<% end %>
 	
 </div>
