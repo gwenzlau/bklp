@@ -1,0 +1,6 @@
+added the article
+<% if activity.trackable %>
+	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source %>.
+<% else %>
+	a link, which has since been deleted.
+<% end %>
