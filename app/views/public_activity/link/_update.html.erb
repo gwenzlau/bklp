@@ -1,6 +1,8 @@
-updated an article
+updated the article
+<span class="article-feed">
 <% if activity.trackable %>
-	:<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source %>.
+	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source %>.
+</span>
 <% else %>
 	which has since been deleted.
 <% end %>
