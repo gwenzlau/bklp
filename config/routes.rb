@@ -8,6 +8,7 @@ Booksy::Application.routes.draw do
     member do
       put :start_future_read
       post :future_list
+      post :past_list
     end
   end
   
