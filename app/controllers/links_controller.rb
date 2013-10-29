@@ -1,6 +1,10 @@
 class LinksController < ApplicationController
+  before_action :set_link, only: [:show, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+
 	def index
-    @links = Link.all
+    @links = Link.all.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +32,6 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.new
   end
 
   def link_readit
@@ -39,23 +42,36 @@ class LinksController < ApplicationController
     else
     redirect_to root_path
     end
-   end
+  end
 
-   def edit
-    @link = Link.find(params[:id])
+  def edit
   end
 
   def update
-    @link = Link.find(params[:id])
-
-    if @link.update_attribute(params[:link])
-      redirect_to @link
+    if @link.update(link_params)
+      redirect_to @link, notice: 'Link updated!'
     else
-      redirect_to root_path
+      render action: 'edit'
     end
+  end
+
+  def destroy
+    @link.destroy
+    redirect_to root_path
+  end
+
+  private
+
+  def set_link
+    @link = Link.find(params[:id])
+  end
+
+  def correct_user
+    @link = current_user.links.find_by(id: params[:id])
+    redirect_to root_path, notice: "You cannot edit this link" if @link.nil?
   end
     
   def link_params
-    params.require(:link).permit(:source, :title, :user_id)
+    params.require(:link).permit(:source, :title)
   end
 end

@@ -29,11 +29,14 @@
 	
 	  <% @link.each do |link| %>
 		<li><%= link_to link.title, link.source  %>
-			<% if current_user == @link.user %>
-				<%= link_to 'Edit', edit_lin_path(@link) %>
-				</li>
-				<% end %>
+			<% if @user.id == current_user.id %>
+			| <%= link_to 'Show', link_path %>
+				| <%= link_to 'Edit', edit_link_path %> |  
+				 <%= link_to 'Delete', link, method: :delete, data: {confirm: 'Are you sure?'} %>
 	  <% end %>
+	  <% end %>
+	  
+
 
 	<h3>Past Reads:</h3>
 		<ul>

@@ -1,6 +1,11 @@
 added the article
 <% if activity.trackable %>
 	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source %>.
+	<% if current_user == @link_user %>
+				| <%= link_to 'Edit', edit_link_path(@link) %> |  
+				 <%= link_to 'Delete', @link, method: :delete, data: {confirm: 'Are you sure?'} %>
+	 <% end %>
 <% else %>
 	a link, which has since been deleted.
 <% end %>
+
