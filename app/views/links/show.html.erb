@@ -4,11 +4,42 @@
 <%= render 'editdel' %>
 <hr>
 <div align="center">
-		<%= link_to "Read it now.", @link.source, class: "btn " %>
-		<br>
-		<br>
-		<%= link_to "I've read this article.", '#', class: "btn btn-success" %>
-		<%= link_to "I'll read it later.", '#', class: "btn btn-primary" %>
+		
+		
+
+		<% if user_signed_in? %>
+		<%# This will check if the user is reading the book and display options %>
+		<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
+		
+		<% if @mylink[0].status == 1 %>
+			You've already read this article.
+			( <%= link_to "but you can read it again", @link.source %>)
+		<% end %>
+		
+		<% if @mylink[0].status == 2 %>
+			<%= button_to "Read it now.", @link.source, :target => "_blank", {:controller => :links, :action => 'update', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
+		<% end %>
+		<% end %>
+		
+		<% else %>
+		<%= form_for @newlink, :url => {:action => "pastlink_list"} do |f| %>
+				<%= f.hidden_field :title, :value => @link.title %>
+				<%= f.hidden_field :source, :value => @link.source %>
+				<%= f.hidden_field :id, :value => params[:id] %>
+				<%= f.hidden_field :status, :value => "1" %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Already read it.", :class => "btn" %>
+				<% end %>
+
+				<%= form_for @newlink, :url => {:action => "futurelink_list"} do |f| %>
+				<%= f.hidden_field :title, :value => @link.title %>
+				<%= f.hidden_field :source, :value => @link.source %>
+				<%= f.hidden_field :id, :value => params[:id] %>
+				<%= f.hidden_field :status, :value => "2" %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Read it later.", :class => "btn" %>
+				<% end %>	
+				<% end %>
 	</div>
 
 <hr>

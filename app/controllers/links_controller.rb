@@ -32,6 +32,14 @@ class LinksController < ApplicationController
   end
 
   def show
+
+    if user_signed_in?
+      @newlink = Link.new
+      @mylink = Link.where(:user_id => current_user.id).where(:id => params[:id])
+    end
+
+    #other readers
+    @users_read = Link.where(:id => params[:id]).where(:status => "1")
   end
 
   def link_readit
@@ -44,17 +52,41 @@ class LinksController < ApplicationController
     end
   end
 
+  def pastlink_list
+    @pastlink = Link.new(link_params)
+    @pastlink.activity key: 'link.pastlink_list'
+
+    if @pastlink.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
+  def futurelink_list
+    @futurelink = Link.new(link_params)
+    @futurelink.activity key: 'link.futurelink_list'
+
+    if @futurelink.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
   def edit
     @link = Link.find(params[:id])
   end
 
   def update
-    if @link.update(link_params)
-      redirect_to @link, notice: 'Link updated!'
+    @link = Book.find(params[:id])
+    if @link.update_attribute(:status, "1")
+      redirect_to current_user
     else
-      render action: 'edit'
+      redirect_to root_path
     end
   end
+  
 
   def destroy
     @link.destroy
@@ -75,6 +107,6 @@ class LinksController < ApplicationController
   private
     
   def link_params
-    params.require(:link).permit(:source, :title, :user_id)
+    params.require(:link).permit(:source, :title, :user_id, :status)
   end
 end

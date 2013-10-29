@@ -26,12 +26,11 @@
 	</h2> 
 	<h3>Articles:</h3>
 	<%= link_to "(Add a link)", new_link_path %>
-	<ul>  <% @link.each do |link| %>
-		<li><%= link_to link.title, link.source  %>
-			| <%= link_to 'Show', link %>
+	<ul>  <% @pastlink.each do |pastlink| %>
+		<li><%= link_to pastlink.title, pastlink.source  %>
+			| <%= link_to 'Show', pastlink %></li>
 			<% if @user.id == current_user.id %>
-				 <%#= link_to 'Edit', edit_link_path %> |  
-				 <%= link_to 'Delete', link, method: :delete, data: {confirm: 'Are you sure?'} %>
+				 <%#= link_to 'Edit', edit_link_path %> | <%= link_to 'Delete', pastlink, method: :delete, data: {confirm: 'Are you sure?'} %>
 	  <% end %>
 	  <% end %>
 	</ul>
@@ -43,9 +42,9 @@
   	<% @past.each do |past| %>
  			<li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
   	<% end %>
-	
-	 <% @link.each do |link| %>
-	  <li><%= link_to link.title, link.source  %></li>
+  	
+	 <% @pastlink.each do |pastlink| %>
+	  <li><%= link_to pastlink.title, pastlink.source  %></li>
 	 <% end %>
 	</ul>
 
@@ -53,6 +52,9 @@
 	<ul>
   	<% @future.each do |future| %>
  			<li><%= link_to future.title, book_path(:id => future.olidb) %> by <%= future.author %></li>
+  	<% end %>
+  	<% @futurelink.each do |futurelink| %>
+ 			<li><%= link_to futurelink.title, link_path(:id => futurelink.id) %> </li>
   	<% end %>
 	</ul>
 	<h3>Recommended:</h3>

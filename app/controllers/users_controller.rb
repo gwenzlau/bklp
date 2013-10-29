@@ -22,8 +22,9 @@ class UsersController < ApplicationController
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
     @future = Book.where(:user_id => params[:id]).where(:status => "2")
 
-    #@link = Link.find(params[:id]) 
-    @link = Link.where(:user_id => params[:id]) 
+    @link = Link.where(:user_id => params[:id])
+    @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
+    @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 	end
 
   def follow

@@ -1,6 +1,11 @@
 Booksy::Application.routes.draw do
   
-  resources :links
+  resources :links do
+    member do
+      post :futurelink_list
+      post :pastlink_list
+    end
+  end
 
   resources :collections
   
@@ -31,6 +36,7 @@ Booksy::Application.routes.draw do
    get 'search/', to: 'pages#search'
    get 'finshed', to: 'books#finished'
    get 'future', to: 'books#future'
+   get 'futurelink', to: 'links#future'
 
   get "pages/home"
   
