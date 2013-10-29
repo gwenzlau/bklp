@@ -15,13 +15,15 @@
 
     <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
     <%= f.input :password_confirmation, :required => false %>
+
     
   </div>
 
   <div class="form-actions">
     <%= f.input :current_password, :hint => "We need your current password to confirm your changes", :required => true %>
     <%= f.button :submit, "Update" %>
-  </div>
+   </div>
+   <%# redirect_to current_user %>
 <% end %>
 
 <h3>Cancel my account</h3>
