@@ -1,0 +1,6 @@
+<div align="center">
+<% if current_user == @link.user %>
+				 <%= link_to 'Update', edit_link_path(@link) %> |  
+				 <%= link_to 'Delete', @link, method: :delete, data: {confirm: 'Are you sure?'} %>
+				 <% end %>
+				</div>

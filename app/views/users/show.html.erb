@@ -24,17 +24,17 @@
 	<%# if current user and if not reading any books - Search form to add #%>
 	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
 	</h2> 
-	<h3>Links:</h3>
-	<strong><%= link_to "(Add a link)", new_link_path %></strong>
-	
-	  <% @link.each do |link| %>
+	<h3>Articles:</h3>
+	<%= link_to "(Add a link)", new_link_path %>
+	<ul>  <% @link.each do |link| %>
 		<li><%= link_to link.title, link.source  %>
+			| <%= link_to 'Show', link %>
 			<% if @user.id == current_user.id %>
-			| <%= link_to 'Show', link_path %>
-				| <%= link_to 'Edit', edit_link_path %> |  
+				 <%#= link_to 'Edit', edit_link_path %> |  
 				 <%= link_to 'Delete', link, method: :delete, data: {confirm: 'Are you sure?'} %>
 	  <% end %>
 	  <% end %>
+	</ul>
 	  
 
 

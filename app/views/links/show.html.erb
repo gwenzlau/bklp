@@ -1,7 +1,18 @@
 <br>
-<%= link_to @link_title, @link.source  %>
-<% if current_user == @link.user %>
-				| <%= link_to 'Edit', edit_link_path(@link) %> |  
-				 <%= link_to 'Delete', @link, method: :delete, data: {confirm: 'Are you sure?'} %>
-				 <% end %>
-			
+<h3 align="center"><%= link_to @link.title, @link.source %></h3>
+
+<%= render 'editdel' %>
+<hr>
+<div align="center">
+		<%= link_to "Read it now.", @link.source, class: "btn " %>
+		<br>
+		<br>
+		<%= link_to "I've read this article.", '#', class: "btn btn-success" %>
+		<%= link_to "I'll read it later.", '#', class: "btn btn-primary" %>
+	</div>
+
+<hr>
+
+	<h4>People currently reading this book:</h4>
+
+	
