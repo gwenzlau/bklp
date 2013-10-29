@@ -70,8 +70,10 @@ class LinksController < ApplicationController
     @link = current_user.links.find_by(id: params[:id])
     redirect_to root_path, notice: "You cannot edit this link" if @link.nil?
   end
+  
+  private
     
   def link_params
-    params.require(:link).permit(:source, :title)
+    params.require(:link).permit(:source, :title, :user_id)
   end
 end
