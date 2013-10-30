@@ -57,7 +57,7 @@ border-radius: 15px;
 -webkit-border-radius: 500px;
 -moz-border-radius: 500px;
 border-radius: 500px;	
-height: 144px;
+height: 150px;
 }
 .book-cover {
 	hieght: 270px;
@@ -95,4 +95,12 @@ font-weight: bold;
 }
 .feed-sub a:hover{
   color: #ADA88F
+}
+.img-circle-thumb {
+  border-radius: 500px; 
+height: 50px;
+}
+.img-circle-thumb:hover {
+  border-radius: 500px; 
+height: 55px;
 }

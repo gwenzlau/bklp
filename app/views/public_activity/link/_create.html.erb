@@ -5,14 +5,14 @@ added an article
 	</span>
 	<span class="feed-sub">
 	<small><br>
- 	   <%= link_to "Read it", (Link.find_by_id(activity.trackable.id).source), target: "_blank" %> |
-	   <%= link_to "Discuss it", link_path(Link.find_by_id(activity.trackable.id)) %> | 
-	   <%= link_to "Save it", '#' %> |
-	   <%= link_to "Comment", '#' %>
+ 	   <%= link_to "Read", (Link.find_by_id(activity.trackable.id).source), target: "_blank" %> |
+	   <%= link_to "Discuss", link_path(Link.find_by_id(activity.trackable.id)) %> | 
+	   <%= link_to "Save", '#' %> |
+	    <%= link_to "Comment", '#' %>
 	  </small>
 	</span>
 
 <% else %>
-	a link, which has since been deleted.
+	which has since been deleted.
 <% end %>
 

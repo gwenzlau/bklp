@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
 	def index
     @links = Link.all.order("created_at DESC")
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }
@@ -77,6 +77,7 @@ class LinksController < ApplicationController
   def edit
     @link = Link.find(params[:id])
   end
+
 
   def update
     @link = Link.find(params[:id])
