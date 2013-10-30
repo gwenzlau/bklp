@@ -46,8 +46,10 @@
 
 	<h4>People who have read this article:</h4>
 	<% @users_read.each do |read| %>
-		<a href="<%= user_path(read.user_id) %>"><%= (image_tag User.find_by_id(read.user_id).avatar.url(:thumb)) %> </a>username
-		<%#= image_tag @user.avatar.url, :class=>"img-circle" %>
+	<%= link_to (image_tag User.find_by_id(read.user_id).avatar.url(:thumb), :class=>"img-circle-thumb"), user_path(read.user_id) %><br>
+	<small>
+		<%= link_to User.find_by_id(read.user_id).name, user_path(read.user_id) %><br>
+		</small>
 	<% end %>
 
 
