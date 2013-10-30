@@ -1,6 +1,7 @@
 started following 
 <% if activity.trackable %>
-	 <%= link_to User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name, user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id) %>
+	 <%= link_to User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name, user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id) %><%= link_to (image_tag User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).avatar(:thumb)), user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id), :class=>"img-circle" %>
+
 <% else %>
 	a user.
 <% end %>

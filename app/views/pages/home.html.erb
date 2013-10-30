@@ -5,6 +5,8 @@
     <div class="feed" align="center">
        <% @activities.each do |activity| %>
          <div class="activit">
+         	
+	       <%= link_to image_tag activity.owner.avatar(:thumb) if activity.owner %>
 	       <%= link_to activity.owner.name, activity.owner if activity.owner %>
 	         <span class="feed-activity">
 	            <%= render_activity activity %>
