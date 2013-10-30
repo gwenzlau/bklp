@@ -1,3 +1,5 @@
+
+<br>
 <div class="bl-book-page">
 	<div align="right">
 		
@@ -22,11 +24,37 @@
  		
 	</div>
 	<%# if current user and if not reading any books - Search form to add #%>
-	<h2 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
-	</h2> 
-	<h3>Articles:</h3>
-	<%= link_to "(Add a link)", new_link_path %>
-	<ul>  <% @pastlink.each do |pastlink| %>
+	<h3 align="center"><%= link_to @user.name, current_user %>  is currently reading: <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
+	</h3> 
+	<hr>
+	<h4>Past Reads:</h4>
+		<ul>
+  	<% @past.each do |past| %>
+ 			<li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
+  	<% end %>
+  	<span class="article-feed">
+	 <% @pastlink.each do |pastlink| %>
+	  <li><%= link_to pastlink.title, pastlink.source, target: "_blank"  %> | <%= link_to "Discuss", link_path(:id => pastlink.id)%></li>
+	 <% end %>
+	</span>
+	</ul>
+
+	<h4>Future Reads:</h4>
+	<ul>
+  	<% @future.each do |future| %>
+ 			<li><%= link_to future.title, book_path(:id => future.olidb) %> by <%= future.author %></li>
+  	<% end %>
+  	<span class="article-feed">
+  	<% @futurelink.each do |futurelink| %>
+ 			<li><%= link_to futurelink.title, link_path(:id => futurelink.id), target: "_blank" %> </li>
+  	<% end %>
+  </span>
+	</ul>
+	<h4>Recommended Reading:</h4>
+	<ul>
+		<li><h5>Books:</h5></li>
+		<li><h5>Articles:</h5>
+		<ul>  <% @pastlink.each do |pastlink| %>
 		<li><%= link_to pastlink.title, pastlink.source  %>
 			| <%= link_to 'Show', pastlink %></li>
 			<% if @user.id == current_user.id %>
@@ -34,32 +62,10 @@
 	  <% end %>
 	  <% end %>
 	</ul>
-	  
-
-
-	<h3>Past Reads:</h3>
-		<ul>
-  	<% @past.each do |past| %>
- 			<li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
-  	<% end %>
-  	
-	 <% @pastlink.each do |pastlink| %>
-	  <li><%= link_to pastlink.title, pastlink.source  %></li>
-	 <% end %>
-	</ul>
-
-	<h3>Future Reads:</h3>
-	<ul>
-  	<% @future.each do |future| %>
- 			<li><%= link_to future.title, book_path(:id => future.olidb) %> by <%= future.author %></li>
-  	<% end %>
-  	<% @futurelink.each do |futurelink| %>
- 			<li><%= link_to futurelink.title, link_path(:id => futurelink.id) %> </li>
-  	<% end %>
-	</ul>
-	<h3>Recommended:</h3>
+</li>
+</ul>
 	
-	<h3>Recent activity:</h3>
+	<h4>Recent activity:</h4>
 	<% @activities.each do |activity| %>
 	<div class="activit">
 		<%= link_to activity.owner.name, activity.owner if activity.owner %>

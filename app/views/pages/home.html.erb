@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
- <h1 align="center"> BookFeed </h1>
+ <h1 align="center"><%= link_to "BookFeed", root_url %> </h1>
    <h5 align="center"> (you are what you read) </h5>
    <hr>
     <div class="feed" align="center">
@@ -10,6 +10,7 @@
 	            <%= render_activity activity %>
 			 </span>
 			 <hr>
+			</div>
 		<% end %>
 		</div>
 	</div>

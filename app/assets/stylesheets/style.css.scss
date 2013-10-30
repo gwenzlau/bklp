@@ -10,7 +10,7 @@ body{
 
 @import 'bootstrap-responsive';
 
-h1, h2, h3{
+h1, h2 {
   letter-spacing: 10px;
   text-transform: uppercase;
   margin-right: -10px;
@@ -52,42 +52,6 @@ border-radius: 15px;
   color: #88F5AF;
 }
 
-div.bl-book-page {
-	margin-top: 40px;
-	
-	a {
-		color: #0088cc;
-		&:hover {color: #ccc;};
-	}
-	
-	h2 {
-		font-family: "helvetica neue", arial;
-		font-size: 38px;
-		text-transform: none;
-		letter-spacing: 0px;
-		font-weight: bold;
-		
-		span {
-			color: #999;
-			font-size: 24px;
-			padding-left: 10px;
-			font-weight: normal;
-		}
-	}
-	
-	h3 {
-		font-family: "helvetica neue", arial;
-		font-size: 22px;
-		text-transform: none;
-		letter-spacing: 0px;
-		font-weight: bold;
-		border-top: 1px #eee solid;
-		padding-top: 20px;
-		margin-top: 30px;
-	}
-}
-
-
 
 .img-circle {
 -webkit-border-radius: 500px;
@@ -124,4 +88,11 @@ font-weight: bold;
 }
 .article-feed a:hover {
 	color: #F3376C
+}
+.feed-sub a{
+  font-size: 14px;
+  color: #CECECE
+}
+.feed-sub a:hover{
+  color: #ADA88F
 }

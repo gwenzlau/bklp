@@ -1,8 +1,17 @@
 added an article
 <span class="article-feed">
 <% if activity.trackable %>
-	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source %>.
-</span>
+	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source, :target => "_blank" %>.
+	</span>
+	<span class="feed-sub">
+	<small><br>
+ 	   <%= link_to "Read it", (Link.find_by_id(activity.trackable.id).source), target: "_blank" %> |
+	   <%= link_to "Discuss it", link_path(Link.find_by_id(activity.trackable.id)) %> | 
+	   <%= link_to "Save it", '#' %> |
+	   <%= link_to "Comment", '#' %>
+	  </small>
+	</span>
+
 <% else %>
 	a link, which has since been deleted.
 <% end %>

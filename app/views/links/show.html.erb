@@ -1,23 +1,23 @@
 <br>
 <h3 align="center"><%= link_to @link.title, @link.source %></h3>
+<h5 align="center"> originally posted by <%= @link.user_id %></h5>
 
 <%= render 'editdel' %>
 <hr>
 <div align="center">
-		
-		
-
-		<% if user_signed_in? %>
+	
+	
 		<%# This will check if the user is reading the book and display options %>
 		<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
 		
 		<% if @mylink[0].status == 1 %>
 			You've already read this article.
-			( <%= link_to "but you can read it again", @link.source %>)
+			( <%= link_to "But you can read it again", @link.source, target: "_blank" %>)
 		<% end %>
 		
 		<% if @mylink[0].status == 2 %>
-			<%= button_to "Read it now.", @link.source, :target => "_blank", {:controller => :links, :action => 'update', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
+			<%= button_to "Read it now.", {:controller => :links, :action => 'update', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
+			<% link_to @link.source %>
 		<% end %>
 		<% end %>
 		
@@ -39,11 +39,16 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Read it later.", :class => "btn" %>
 				<% end %>	
-				<% end %>
+		
 	</div>
 
 <hr>
 
-	<h4>People currently have read this article:</h4>
+	<h4>People who have read this article:</h4>
+	<% @users_read.each do |read| %>
+		<a href="<%= user_path(read.user_id) %>"><%= (image_tag User.find_by_id(read.user_id).avatar.url(:thumb)) %> </a>username
+		<%#= image_tag @user.avatar.url, :class=>"img-circle" %>
+	<% end %>
+
 
 	

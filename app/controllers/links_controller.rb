@@ -79,7 +79,7 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link = Book.find(params[:id])
+    @link = Link.find(params[:id])
     if @link.update_attribute(:status, "1")
       redirect_to current_user
     else
