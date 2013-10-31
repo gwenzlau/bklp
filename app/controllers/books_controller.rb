@@ -27,6 +27,11 @@ class BooksController < ApplicationController
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
     
   end
+  
+  def author
+    client = Goodreads.new(Goodreads.configuration)
+    @theauthor = client.author(params[:id])
+  end
 
   # GET /books/new
   # GET /books/new.json
