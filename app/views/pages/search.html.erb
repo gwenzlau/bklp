@@ -8,7 +8,7 @@
 		<ul>
 			<% @results.results.work.each do |book| %>
 					<li>
-					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= book.best_book.author.name %>
+					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= book.best_book.author.name %>  with <%= link_to Book.all.where("#{book.best_book.id}").count, book_path("#{book.best_book.id}") %> other readers.
 					</li>
 			<% end %>
 		</ul>
