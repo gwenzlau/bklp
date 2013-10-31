@@ -18,3 +18,11 @@
 	<% end %>
 	
 </div>
+	<% if @search %>
+		<% @results.work.each do |book| %>
+		<ul>
+			<li>
+				<%=  book.title %>
+			</li>
+	<% end %>
+</ul>

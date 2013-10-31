@@ -17,6 +17,12 @@
                  <%= text_field_tag(:q) %>
                  <%= submit_tag("Find a book", class: "btn") %>
                  <% end %>
+
+                 <%= form_tag("/search", method: "get") do %>
+       
+                 <%= text_field_tag(:q) %>
+                 <%= submit_tag("search Goodreads", class: "btn") %>
+                 <% end %>
                 </div>
 
                     </ul>

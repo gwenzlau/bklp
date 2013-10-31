@@ -13,9 +13,12 @@ class BooksController < ApplicationController
   def show
     # Start a new session
     olid = Openlibrary::Client.new
+    client = Goodreads::Client.new(:api_key => 'LjHpAx1qKTPgaKIgIyzw', :api_secret => 'z4DcHYoaqyrYT52HWHdgzpuRPjuf8aM2i4o0K5O8g')
+    client = Goodreads.new(:api_key => 'LjHpAx1qKTPgaKIgIyzw') # short version
     
     # Get the metadata from OpenLibrary
     @olid_book = olid.search(params[:id])
+    @client_search = client.search_books(params[:id])
   
     # If user logged in, get user data and initialize new instance for the option to start reading the book.
     if user_signed_in?
