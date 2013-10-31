@@ -4,9 +4,9 @@
 		<h3><%= @thebook.work.original_title %></h3>
 		<h4>by 
 			<% if @thebook.authors.author[0].blank? %>
-				<%= @thebook.authors.author.name %>
+				<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
 			<% else %>
-				<%= @thebook.authors.author.collect{ |f| f.name}.to_sentence.html_safe %></h4>
+				<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h4>
 			<% end%>
 	</div>
 	
@@ -94,6 +94,9 @@
 	<h4>Discussions</h4>
 	<small>(coming soon...)</small>
 	
+<<<<<<< HEAD
 	<%#= @thebook %>
 	
+=======
+>>>>>>> c6532d887facba1a031a5d353b4eb6849e911ea3
 </div>

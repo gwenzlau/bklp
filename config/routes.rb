@@ -14,6 +14,7 @@ Booksy::Application.routes.draw do
       put :start_future_read
       post :future_list
       post :past_list
+      get :author
     end
   end
   
@@ -37,6 +38,7 @@ Booksy::Application.routes.draw do
    get 'finshed', to: 'books#finished'
    get 'future', to: 'books#future'
    get 'futurelink', to: 'links#future'
+   get 'author', to: 'books#author'
 
   get "pages/home"
   
