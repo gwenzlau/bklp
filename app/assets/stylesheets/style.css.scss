@@ -101,3 +101,12 @@ height: 50px;
   border-radius: 500px; 
 height: 55px;
 }
+
+.read-col {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    column-count: 2;
+    column-gap:10px;
+}
