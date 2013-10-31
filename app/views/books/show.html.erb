@@ -1,37 +1,22 @@
-
-<!--Looking for OLID: <%= params[:id] %><br /> !-->
-
 <div class="bl-book-page">
 	
-	<% @olid_book.each do |book| %>
-		<div align="center">
-		<h3><%= book.title %> <span>by <%= book.author_name[0] %></span></h3> 
+	<div align="center">
+		<h3><%= @thebook.work.original_title %></h3>
+		<h4>by 
+			<% if @thebook.authors.author[0].blank? %>
+				<%= @thebook.authors.author.name %>
+			<% else %>
+				<%= @thebook.authors.author.collect{ |f| f.name}.to_sentence.html_safe %></h4>
+			<% end%>
 	</div>
-		<div class="book-cover" align="center">
-		<%= image_tag("https://covers.openlibrary.org/w/id/#{book.cover_i}-M.jpg")%>
 	
+	<div class="book-cover" align="center">
+		<%= image_tag("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}")%>
 	</div>
 	
+	<h4>Description</h4>
+	<span style="font-size: 10px;"><%= @thebook.description %></span>
 	
-	<!--<h3>Book details</h3>
-	  <ul>
-		Published by <%= book.publisher[0] %>
-		<li>Year: <%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %></li>
-		
-		<li>Language: <%= book.language.blank? ? "n/a" : book.language[0] %></li>
-		<li><%= link_to "Show book on Openlibrary", "#" %></li>
-		
-		<% if book.id_goodreads.blank? %>
-			
-		<% else %>
-			<li><a href="http://www.goodreads.com/book/show/<%= book.id_goodreads[0] %>" target="_blank">View on Goodreads</a></li>
-		<% end %>
-		
-		
-	  </ul> !-->
-	
-	
-	<hr>	
 	<h4>Book status:</h4>
 	
 	<%# Is the user signed in?%>
@@ -39,62 +24,59 @@
 		<%# This will check if the user is reading the book and display options %>
 		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
 		
-		<% if @mybook[0].status == 1 %>
-			You've already finished this book.
-		<% end %>
+			<% if @mybook[0].status == 1 %>
+				You've already finished this book.
+			<% end %>
 		
-		<% if @mybook[0].status == 0 %>
-			<%= button_to "Abandon this book", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
-			<%= button_to "I have finished reading this book", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
-		<% end %>
+			<% if @mybook[0].status == 0 %>
+				<%= button_to "Abandon this book", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
+				<%= button_to "I have finished reading this book", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
+			<% end %>
 		
-		<% if @mybook[0].status == 2 %>
-			<%# abandon future book link %>
-			<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Is this the book you are about to read?" %>
-		<% end %>
+			<% if @mybook[0].status == 2 %>
+				<%# abandon future book link %>
+				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Is this the book you are about to read?" %>
+			<% end %>
 		
 		<% else %>
 		
 			<%= form_for(@newbook) do |f| %>
-				<%= f.hidden_field :title, :value => book.title %>
-				<%= f.hidden_field :author, :value => book.author_name[0] %>
+				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
+				<%= f.hidden_field :author, :value => "" %>
 				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "0" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Currently reading it.", :class => "btn" %>
-				<% end %>
-
-				<%= form_for @newbook, :url => {:action => "past_list"} do |f| %>
-				<%= f.hidden_field :title, :value => book.title %>
-				<%= f.hidden_field :author, :value => book.author_name[0] %>
+			<% end %>
+			
+			<%= form_for @newbook, :url => {:action => "past_list"} do |f| %>
+				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
+				<%= f.hidden_field :author, :value => "" %>
 				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "1" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Already read it.", :class => "btn" %>
-				<% end %>
-
-				<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
-				<%= f.hidden_field :title, :value => book.title %>
-				<%= f.hidden_field :author, :value => book.author_name[0] %>
+			<% end %>
+			
+			<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
+				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
+				<%= f.hidden_field :author, :value => "" %>
 				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => book.author_key[0] %>
+				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Going to read it.", :class => "btn" %>
-				<% end %>
+			<% end %>
 		
 		<% end %>
 	<% else %>
-		<%= link_to "I'm currently reading this book.", new_user_registration_path, class: "btn" %>
-		<%= link_to "I've already read this book.", new_user_registration_path, class: "btn btn-warning" %>
-		<%= link_to "I'm going to read this book.", new_user_registration_path, class: "btn btn-primary" %>
+		
+		<%= link_to "Sign in to track this book.", new_user_registration_path, class: "btn" %>
 
 	<% end %>
 	
-	<% end %>
-	<hr>
 	<h4>People currently reading this book:</h4>
 	
 	<% @users_reading.each do |reading| %>
@@ -103,8 +85,9 @@
 		<%= link_to User.find_by_id(reading.user_id).name, user_path(reading.user_id) %><br>
 		</small>
 	<% end %>
-
-	<hr>
-	<h4>Discussion</h4>
+	
+	<h4>Discussions</h4>
+	
+	<%= @thebook %>
 	
 </div>

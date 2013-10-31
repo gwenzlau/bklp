@@ -9,6 +9,7 @@ gem "paperclip", "~> 3.5.0"
 
 gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
+gem 'goodreads'
 
 gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"

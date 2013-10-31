@@ -1,28 +1,17 @@
 <h2>Search result</h2>
 
 <div class="bl-book-page">
-
-	<h2>Search result</h2>
 	
-	<% if @results %>
+	<% if @results.total_result == '0' %>
+		Sorry, we could not find any books searching: "<%= params[:q] %>"
+	<% else %>
 		<ul>
-			<% @results.each do |book| %>
+			<% @results.results.work.each do |book| %>
 					<li>
-					  <%= link_to book.title, book_path(:id => book.text[0]) %> (<%= book.publish_year.blank? ? "n/a" : book.publish_year[0] %>) by <%= book.author_name[0] %>, with <%= link_to Book.all.where(:olidb => book.text[0]).count, book_path(:id => book.text[0]) %> other readers. 
-					  
+					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= book.best_book.author.name %>
 					</li>
 			<% end %>
 		</ul>
-	<% else %>
-		Sorry, we could not find any books searching: "<%= params[:q] %>"
 	<% end %>
 	
 </div>
-	<% if @search %>
-		<% @results.work.each do |book| %>
-		<ul>
-			<li>
-				<%=  book.title %>
-			</li>
-	<% end %>
-</ul>

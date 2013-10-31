@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
   
   def search
-    client = Openlibrary::Client.new
-    @results = client.search(params[:q])
+    client = Goodreads.new(Goodreads.configuration) # short version    
+    @results = client.search_books(params[:q])
   end
 end
