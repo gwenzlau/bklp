@@ -1,8 +1,12 @@
-<%= image_tag(@theauthor.image_url) %><br />
-<h3><%= @theauthor.name %></h3>
+<div align="center">
+	<span class="img-circle">
+	<%= image_tag((@theauthor.image_url), :class => "auth-pro") %><br />
+	</span>
+<h2><%= @theauthor.name %></h2>
+</div>
 
 <p><%= @theauthor.about %></p>
+<hr>
+<b>Fans of</b>: <%= @theauthor.name %>:
 
-<b>Written:</b>: <%= @theauthor.works_count %> books.
-
-<h4>Books by <%= @theauthor.name %></h4>
+<h4>Works by <%= @theauthor.name %>:</h4>

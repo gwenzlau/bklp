@@ -1,4 +1,4 @@
-<h2>Search result</h2>
+<h2>Search results</h2>
 
 <div class="bl-book-page">
 	
@@ -8,7 +8,8 @@
 		<ul>
 			<% @results.results.work.each do |book| %>
 					<li>
-					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= book.best_book.author.name %>  with <%= link_to Book.all.where("#{book.best_book.id}").count, book_path("#{book.best_book.id}") %> other readers.
+					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= link_to book.best_book.author.name, author_book_path("#{book.best_book.author.id}") %>  with <%= link_to Book.all.where("#{book.best_book.id}").count, book_path("#{book.best_book.id}") %> other readers.
+
 					</li>
 			<% end %>
 		</ul>
