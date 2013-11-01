@@ -1,17 +1,18 @@
 <div class="bl-book-page">
 	
 	<div align="center">
-		<h3><%= @thebook.work.original_title %></h3>
-		<h4>by 
+		<h2><%= @thebook.work.original_title %></h2>
+		<h4>BY</h4>
+		<h3>
 			<% if @thebook.authors.author[0].blank? %>
 				<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
 			<% else %>
-				<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h4>
+				<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
 			<% end%>
 	</div>
 	
-	<div class="book-cover" align="center">
-		<%= image_tag("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}")%>
+	<div class="b-cover" align="center">
+		<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"), :class=>"book-cover")%>
 	</div>
 	
 	<h4>Description</h4>
