@@ -18,15 +18,15 @@ test:
   pool: 5
   timeout: 5000
 
-#production:
- # adapter: sqlite3
-  #database: db/production.sqlite3
-  #pool: 5
-  #timeout: 5000
-
 production:
-adapter: mysql
-database: db176293_bklp
-username: db176293
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
+
+#production:
+#adapter: mysql
+#database: db176293_bklp
+#username: db176293
 #password: testpass
-host: internal-db.s176293.gridserver.com
+#host: internal-db.s176293.gridserver.com
