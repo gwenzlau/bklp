@@ -5,7 +5,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
-gem "paperclip", "~> 3.5.0"
+gem 'paperclip', '~> 3.0'
 
 gem 'rails_admin'
 gem 'openlibrary', '2.1.1'

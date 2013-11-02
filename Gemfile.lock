@@ -198,7 +198,7 @@ DEPENDENCIES
   goodreads
   jquery-rails
   openlibrary (= 2.1.1)
-  paperclip (~> 3.5.0)
+  paperclip (~> 3.0)
   pg
   public_activity
   rails
