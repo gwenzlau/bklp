@@ -8,6 +8,7 @@ Booksy::Application.routes.draw do
   end
 
   resources :collections
+  resources :acomments
   
   resources :books do
     member do
