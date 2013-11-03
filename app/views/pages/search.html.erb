@@ -8,12 +8,7 @@
 		<ul>
 			<% @results.results.work.each do |book| %>
 					<li>
-<<<<<<< HEAD
-					  <%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= link_to book.best_book.author.name, author_book_path("#{book.best_book.author.id}") %>.
-
-=======
-<<<<<<< HEAD<%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= link_to book.best_book.author.name, author_book_path("#{book.best_book.author.id}") %>  with <%= Book.all.where(:olidb => book.best_book.id).count %> other readers.
->>>>>>> a73c38e134600d2277f81eae998e1215cace5758
+						<%= link_to book.best_book.title, book_path("#{book.best_book.id}") %> by <%= link_to book.best_book.author.name, author_book_path("#{book.best_book.author.id}") %>.
 					</li>
 			<% end %>
 		</ul>
