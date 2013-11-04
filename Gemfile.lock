@@ -103,6 +103,12 @@ GEM
       mime-types
     pg (0.17.0)
     polyglot (0.3.3)
+    postmark (1.0.1)
+      json
+      rake
+    postmark-rails (0.5.2)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.0)
     public_activity (1.4.0)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -202,6 +208,7 @@ DEPENDENCIES
   openlibrary (= 2.1.1)
   paperclip (~> 3.0)
   pg
+  postmark-rails (~> 0.5.2)
   public_activity
   rails
   rails_12factor

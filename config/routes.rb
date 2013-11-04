@@ -21,7 +21,8 @@ Booksy::Application.routes.draw do
   
    devise_for :admins
    mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
- 
+
+
   resources :activities
 
   devise_for :users
