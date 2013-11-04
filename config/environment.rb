@@ -14,7 +14,6 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-=begin
 require 'mail'
 
 Mail.defaults do
@@ -27,6 +26,5 @@ Mail.defaults do
     :authentication => :plain,
     :enable_starttls_auto => true
   }
-end=end
-
+end
 
