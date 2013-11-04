@@ -1,5 +1,10 @@
 <% if activity.trackable %>
 	finished reading: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+		 <span class="feed-sub">
+	<small><br>
+	    <a href="#" id="al-<%= activity.id %>">Comment</a>
+	  </small>
+	</span>
 <% else%>
 	finished a book that has since been removed.
 <% end %>
