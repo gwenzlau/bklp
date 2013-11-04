@@ -86,6 +86,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     nested_form (0.3.2)
+    newrelic_rpm (3.6.8.168)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -197,6 +198,7 @@ DEPENDENCIES
   devise
   goodreads
   jquery-rails
+  newrelic_rpm
   openlibrary (= 2.1.1)
   paperclip (~> 3.0)
   pg

@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  def create
+    # Create the user from params
+    @user = User.new(params[:user])
+    if @user.save
+      # Deliver the signup email
+      Notifier.send_signup_email(@user).deliver
+      redirect_to(@user, :notice => 'Welcome!')
+    else
+      render :action => 'index'
+    end
+  end
 
 	def index
     @users = User.all
