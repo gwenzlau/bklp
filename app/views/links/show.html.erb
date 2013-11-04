@@ -1,6 +1,10 @@
 <br>
 <h3 align="center"><%= link_to @link.title, @link.source %></h3>
-<h5 align="center"> originally posted by <%= link_to @link.user_id, user_path(@link.user_id) %></h5>
+<h5 align="center"> originally posted by 
+	<% @users_poster.each do |poster| %>
+	<%= link_to User.find_by_id(poster.user_id).name, user_path(@link.user_id) %>
+	<% end %></h5>
+
 
 <%= render 'editdel' %>
 <hr>
@@ -51,9 +55,9 @@
 	<h4>People who have read this article:</h4>
 	<% @users_read.each do |read| %>
 	<%= link_to (image_tag User.find_by_id(read.user_id).avatar.url(:thumb), :class=>"img-circle-thumb"), user_path(read.user_id) %><br>
-	<small>
+	  <small>
 		<%= link_to User.find_by_id(read.user_id).name, user_path(read.user_id) %><br>
-		</small>
+	  </small>
 	<% end %>
 
 

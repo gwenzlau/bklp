@@ -33,6 +33,8 @@ class LinksController < ApplicationController
 
   def show
 
+    @users_poster = Link.where(:id => params[:id])
+    
     if user_signed_in?
       @newlink = Link.new
       @mylink = Link.where(:user_id => current_user.id).where(:id => params[:id])
