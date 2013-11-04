@@ -1,5 +1,7 @@
 <% if activity.trackable %>
+<span class="pr-feed">
 	finished reading: <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+</span>
 		 <span class="feed-sub">
 	<small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>

@@ -7,20 +7,16 @@ posted an article
 	<small><br>
  	   <%= link_to "Read", (Link.find_by_id(activity.trackable.id).source), target: "_blank" %> |
 	   <%= link_to "Discuss", link_path(Link.find_by_id(activity.trackable.id)) %> | 
-	<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
-	<% if @mylink[0].status == 2 %>
-	<% else %>
-	<%= form_for @newlink, :url => {:action => "links#futurelink_list"} do |f| %>
+		<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
+		<%= form_for @newlink, :url => {:action => "links#futurelink_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @link_title %>
 				<%= f.hidden_field :source, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Save", :class => "btn" %>
 			<% end %>
-		<% end %>
-	<% end %>
-		</a>
-			| <a href="#" id="al-<%= activity.id %>">Comment</a>
+	<% end %> |
+			 <a href="#" id="al-<%= activity.id %>">Comment</a>
 	  </small>
 	</span>
 
