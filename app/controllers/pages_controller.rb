@@ -15,4 +15,6 @@ class PagesController < ApplicationController
     client = Goodreads.new(Goodreads.configuration)   
     @results = client.search_books(params[:q])
   end
+
+
 end

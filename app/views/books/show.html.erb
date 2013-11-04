@@ -15,15 +15,13 @@
 		<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"), :class=>"book-cover")%>
 	</div>
 	
-	<h4>Description</h4>
-	<span style="font-size: 10px;"><%= @thebook.description %></span>
-	
 	<h4>Book status:</h4>
-	
+	<div class="bookstatus" align="center">
+	<ul class="inline">
 	<%# Is the user signed in?%>
 	<% if user_signed_in? %>
 		<%# This will check if the user is reading the book and display options %>
-		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
+		<li><% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
 		
 			<% if @mybook[0].status == 1 %>
 				You've already finished this book.
@@ -33,14 +31,16 @@
 				<%= button_to "Abandon this book", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
 				<%= button_to "I have finished reading this book", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
 			<% end %>
-		
+		</li>
+		<li>
 			<% if @mybook[0].status == 2 %>
 				<%# abandon future book link %>
 				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Is this the book you are about to read?" %>
 			<% end %>
-		
+		</li>
+
 		<% else %>
-		
+		<li>
 			<%= form_for(@newbook) do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -50,7 +50,8 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Currently reading it.", :class => "btn" %>
 			<% end %>
-			
+		</li>
+		<li>	
 			<%= form_for @newbook, :url => {:action => "past_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -60,7 +61,8 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Already read it.", :class => "btn" %>
 			<% end %>
-			
+		</li>
+		<li>
 			<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.work.original_title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -70,13 +72,21 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Going to read it.", :class => "btn" %>
 			<% end %>
-		
+		</li>
 		<% end %>
 	<% else %>
 		
 		<%= link_to "Sign in to track this book.", new_user_registration_path, class: "btn" %>
+	</ul>
 
 	<% end %>
+
+	</div>
+	
+	</div>
+
+	<h4>Description</h4>
+	<span style="font-size: 10px;"><%= @thebook.description %></span>
 	
 	<h4>People currently reading this book:</h4>
 	
@@ -94,10 +104,5 @@
 
 	<h4>Discussions</h4>
 	<small>(coming soon...)</small>
-	
-<<<<<<< HEAD
-	<%#= @thebook %>
-	
-=======
->>>>>>> c6532d887facba1a031a5d353b4eb6849e911ea3
+
 </div>

@@ -5,23 +5,25 @@
 <%= render 'editdel' %>
 <hr>
 <div align="center">
-	
+	<ul class="inline">
 	
 		<%# This will check if the user is reading the book and display options %>
 		<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
-		
+		<li>
 		<% if @mylink[0].status == 1 %>
 			You've already read this article.
 			( <%= link_to "But you can read it again", @link.source, target: "_blank" %>)
 		<% end %>
-		
+		</li>
+		<li>
 		<% if @mylink[0].status == 2 %>
 			<%= button_to "Read it now.", {:controller => :links, :action => 'update', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
 			<% link_to @link.source %>
 		<% end %>
 		<% end %>
-		
+		</li>
 		<% else %>
+			<li>
 		<%= form_for @newlink, :url => {:action => "pastlink_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @link.title %>
 				<%= f.hidden_field :source, :value => @link.source %>
@@ -30,7 +32,8 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Already read it.", :class => "btn" %>
 				<% end %>
-
+			</li>
+			<li>
 				<%= form_for @newlink, :url => {:action => "futurelink_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @link.title %>
 				<%= f.hidden_field :source, :value => @link.source %>
@@ -39,7 +42,8 @@
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.submit "Read it later.", :class => "btn" %>
 				<% end %>	
-		
+			</li>
+		</ul>
 	</div>
 
 <hr>

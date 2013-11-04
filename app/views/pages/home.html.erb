@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
  <h1 align="center"><%= link_to "BookFeed", root_url %> </h1>
-   <h5 align="center"> (you are what you read) </h5>
+   <p align="center"><%= link_to "(you are what you read)", users_path %> </p>
    <hr>
     <div class="feed" align="center">
        <% @activities.each do |activity| %>
@@ -8,12 +8,12 @@
           <%= link_to (image_tag activity.owner.avatar(:thumb), :class=>"img-circle-thumb"), activity.owner if activity.owner %>
 	       <%= link_to activity.owner.name, activity.owner if activity.owner %>
 	         <span class="feed-activity">
-	            <%= render_activity activity %> [<a href="#" id="al-<%= activity.id %>">comment</a>]
+	            <%= render_activity activity %>
 						</span>
-						
-						<ul style="font-size: 12px;">
+						<ul> 
+						<span class="feed-comment">
 							<% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
-							 <li><%= User.find(acomment.user_id).name %> said: <%= acomment.comment %></li>
+							 <li><%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span></li>
 							 <% end %>
 						</ul>
 						
@@ -33,8 +33,7 @@
 							  });
 							});
 						</script>
-						
-			 <hr>
+					
 			</div>
 		<% end %>
 

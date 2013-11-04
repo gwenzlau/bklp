@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
 	def index
-    @users = User.all
+    @users = User.order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb
