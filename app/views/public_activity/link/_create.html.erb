@@ -10,7 +10,7 @@ posted an article
 	<% if Link.where(:user_id => current_user.id).where(:id => params[:id]).exists? %>
 	<% if @mylink[0].status == 2 %>
 	<% else %>
-	<%= button_to @newlink, :url => {:action => "links#futurelink_list"} do |f| %>
+	<%= form_for @newlink, :url => {:action => "links#futurelink_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @link_title %>
 				<%= f.hidden_field :source, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
