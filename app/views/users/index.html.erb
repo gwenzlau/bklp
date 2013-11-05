@@ -1,5 +1,5 @@
 <h2 align="center">Bookthangs</h2>
 <% @users.each do |user| %>
-	<li><%  @users.name %></li>
+	<li><%=  link_to user.name, user %></li>
 
 <% end %>

@@ -36,7 +36,7 @@ Booksy::Application.routes.draw do
   end
 
    get 'users/:id', to: 'users#show'
-   get 'users/', to: 'users#index'
+   get 'users', to: 'users#index'
    get 'search/', to: 'pages#search'
    get 'finshed', to: 'books#finished'
    get 'future', to: 'books#future'
