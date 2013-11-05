@@ -66,7 +66,7 @@
 	<div class="activit">
 		
 		<% if activity.owner == current_user %>
-			<%= link_to activity.owner.name, activity.owner if activity.owner %>
+			<%= link_to "You", activity.owner if activity.owner %>
 		<% else %>
 			<%= link_to activity.owner.name, activity.owner if activity.owner %>
 		<% end %>
