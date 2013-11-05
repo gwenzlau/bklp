@@ -33,14 +33,11 @@ class UsersController < ApplicationController
     #@booka = @book.map(&:title) 
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
     @future = Book.where(:user_id => params[:id]).where(:status => "2")
-<<<<<<< HEAD
 
     @link = Link.where(:user_id => params[:id]).where(:status => "0")
-=======
-    
+
     
     @link = Link.where(:user_id => params[:id])
->>>>>>> e268f1f5647f333bbb0c0b68accc3d91c1d12b8a
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 	end
