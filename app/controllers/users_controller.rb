@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
     @future = Book.where(:user_id => params[:id]).where(:status => "2")
 
-    @link = Link.where(:user_id => params[:id])
+    @link = Link.where(:user_id => params[:id]).where(:status => "0")
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 	end

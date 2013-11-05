@@ -76,6 +76,17 @@ class LinksController < ApplicationController
     end
   end
 
+  def start_future_link
+    @link = Link.find(params[:id])
+    @link.activity key: 'link.future_link'
+
+    if @link.update_attribute(:status, "1")
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
   def edit
     @link = Link.find(params[:id])
   end

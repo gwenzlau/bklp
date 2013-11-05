@@ -41,23 +41,23 @@
           <li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
 			
           <% end %>
-          <span class="article-feed">
+         <!--  <span class="article-feed">
          <% @pastlink.each do |pastlink| %>
           <li><%= link_to pastlink.title, pastlink.source, target: "_blank"  %> | <%= link_to "Discuss", link_path(:id => pastlink.id)%></li>
          <% end %>
-          </span>
+          </span> -->
        </ul>
        <hr>
-     <h4>Future Reads:</h4>
+     <h4>Future Reads:</h4> 
      <ul>
       <% @future.each do |future| %>
         <li><%= link_to future.title, book_path(:id => future.olidb) %> by <%= future.author %></li>
           <% end %>
-          <span class="article-feed">
+        <!--   <span class="article-feed">
           <% @futurelink.each do |futurelink| %>
             <li><%= link_to futurelink.title, link_path(:id => futurelink.id), target: "_blank" %> </li>
           <% end %>
-  		  </span>
+  		  </span> -->
      </ul>
      <hr>
      <div class="rec-act" align="center">

@@ -21,8 +21,9 @@
 		</li>
 		<li>
 		<% if @mylink[0].status == 2 %>
-			<%= button_to "Read it now.", {:controller => :links, :action => 'update', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
+			<%= button_to "Read it now.", {:controller => :links, :action => 'start_future_link', :id => @mylink[0].id}, :method => :put, :class => "btn", :confirm => "Recommend?" %>
 			<% link_to @link.source %>
+
 		<% end %>
 		<% end %>
 		</li>
@@ -59,6 +60,10 @@
 		<%= link_to User.find_by_id(read.user_id).name, user_path(read.user_id) %><br>
 	  </small>
 	<% end %>
+
+	<hr>
+	<h4>Discussion: <small><i>coming soon</i></small></h4>
+
 
 
 	

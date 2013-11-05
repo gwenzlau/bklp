@@ -2,6 +2,7 @@ Booksy::Application.routes.draw do
   
   resources :links do
     member do
+      put :start_future_link
       post :futurelink_list
       post :pastlink_list
     end
