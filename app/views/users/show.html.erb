@@ -64,8 +64,39 @@
 	<h5>Recent activity:</h5>
 	<% @activities.each do |activity| %>
 	<div class="activit">
-		<%= link_to activity.owner.name, activity.owner if activity.owner %>
+		
+		<% if activity.owner == current_user %>
+			<%= link_to "You", activity.owner if activity.owner %>
+		<% else %>
+			<%= link_to activity.owner.name, activity.owner if activity.owner %>
+		<% end %>
+
 		<%= render_activity activity %>
+		
+		<span class="feed-comment">
+			<% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
+			<br>
+			 <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span>
+			 <% end %>
+		 </span>
+		 
+		<div id="ac-<%= activity.id %>" style="display: none;">
+		<%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
+			<%= f.hidden_field :activity_id, :value => activity.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.text_field :comment %>
+			<%= f.submit "Comment", :class => "btn" %>
+		<% end %>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+			  $('#al-<%= activity.id %>').click(function(){
+			     $('#ac-<%= activity.id %>').toggle();
+			  });
+			});
+		</script>
+			 
 	<% end %>
 		</div>
 	</div>
