@@ -15,7 +15,7 @@
                     
                     <%= form_tag("/search", method: "get") do %>
                      <%= text_field_tag(:q) %>
-                     <%= submit_tag("Find a book", class: "btn btn-standard") %>
+                     <%= submit_tag("Find a book", class: "mag-glass", id: "search_btn") %>
                  <% end %>
                 </div>
 
