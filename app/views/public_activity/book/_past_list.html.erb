@@ -1,7 +1,7 @@
 has read
 <span class="pr-feed">
 <% if activity.trackable %>
-	 <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>.
+	 <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>
 	</span>
 	 <span class="feed-sub">
 	<small><br>

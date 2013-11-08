@@ -14,11 +14,13 @@
 		<% end %>
 	
  	</div>
- 	<div id="avatar" align="center">
+ 	<div class="avatar" align="center">
  		<% if @user.id == current_user.id %>
-		<a href="<%= edit_user_registration_path %>"><%= image_tag @user.avatar.url, :class=>"img-circle" %></a>
+		<a href="<%= edit_user_registration_path %>">
+			<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+		</a>
 		<% else %>
-		<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+			<%= image_tag @user.avatar.url, :class=>"img-circle" %>
 		<% end %>
  		<%#<%= image_tag avatar_big_url(@user), :class=>"img-circle"  %>
  		
@@ -31,15 +33,19 @@
 		
 			<ul class="inline">
 				<li><h4>Recommended Reading:</h4></li>
-				<li></li>
+				
+					<%# @recommended.each do |recommended| %> 
+					<li><%#= link_to recommended.title, book_path(:id => recommended.olidb) %></li>
+					<%# end %>
 			</ul>
 			
 	</div>
      <h4>Past Reads:</h4>
        <ul>
           <% @past.each do |past| %>
-          <li><%= link_to past.title, book_path(:id => past.olidb) %> by <%= past.author %></li>
-			
+          <li>
+          	<%= link_to past.title, book_path(:id => past.olidb) %>  <%= past.author %>
+          </li>
           <% end %>
          <!--  <span class="article-feed">
          <% @pastlink.each do |pastlink| %>
@@ -51,7 +57,7 @@
      <h4>Future Reads:</h4> 
      <ul>
       <% @future.each do |future| %>
-        <li><%= link_to future.title, book_path(:id => future.olidb) %> by <%= future.author %></li>
+        <li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
           <% end %>
         <!--   <span class="article-feed">
           <% @futurelink.each do |futurelink| %>
@@ -59,17 +65,18 @@
           <% end %>
   		  </span> -->
      </ul>
-     <hr>
-     <div class="rec-act" align="center">
-	<h5>Recent activity:</h5>
-	<% @activities.each do |activity| %>
-	<div class="activit">
+     	<hr>
+    <div class="rec-act" align="center">
+     
+	  <h5>Recent activity:</h5>
+	   <% @activities.each do |activity| %>
+		<div class="activit">
 		
-		<% if activity.owner == current_user %>
+		  <% if activity.owner == current_user %>
 			<%= link_to activity.owner.name, activity.owner if activity.owner %>
-		<% else %>
+		  <% else %>
 			<%= link_to activity.owner.name, activity.owner if activity.owner %>
-		<% end %>
+		  <% end %>
 
 		<%= render_activity activity %>
 		
@@ -97,9 +104,10 @@
 			});
 		</script>
 			 
-	<% end %>
-		</div>
-	</div>
+		
+		<% end %>
 
 	</div>
+	
+</div>
 		

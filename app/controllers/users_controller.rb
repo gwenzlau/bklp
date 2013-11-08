@@ -40,7 +40,14 @@ class UsersController < ApplicationController
     @link = Link.where(:user_id => params[:id])
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
+
+    #@recommended = Book.where(:user_id => params[:id]).where(Book.recommended)
+    #@recommended = user.recommended(@book)
+    #@users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
+
 	end
+
+
 
   def follow
     @user = User.find(params[:id])
@@ -72,5 +79,6 @@ def unfollow
     redirect_to root_path
   end
 end
-  
+
+
 end

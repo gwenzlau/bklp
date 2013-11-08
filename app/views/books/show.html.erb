@@ -1,5 +1,15 @@
 <div class="bl-book-page">
-	
+	<% if user_signed_in? %>
+		<%# This will check if the user is reading the book and display options %>
+		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
+		<div class="rec" align="right">
+				<%= button_to "Recommend", {:controller => :books, :action => 'recommended_list', :id => @mybook[0].id}, :method => :post, :class => "btn"%>
+		
+	<% end %>
+	<% else %>
+	<% end %>
+				
+ 	</div>
 	<div align="center">
 		<h2><%= @thebook.work.original_title %></h2>
 		<h4>BY</h4>
@@ -26,10 +36,14 @@
 			<% if @mybook[0].status == 1 %>
 				You've already finished this book.
 			<% end %>
-		
+		<ul class="inline">
+			<li>
 			<% if @mybook[0].status == 0 %>
-				<%= button_to "Abandon this book", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>			
-				<%= button_to "I have finished reading this book", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
+				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>		
+			</li>
+			<li>
+				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
+			</li>
 			<% end %>
 		</li>
 		<li>
@@ -97,7 +111,7 @@
 		<small>
 		<%= link_to User.find_by_id(reading.user_id).name, user_path(reading.user_id) %><br>
 		</small>
-	</li>
+		</li>
 	</ul>
 	<% end %>
 

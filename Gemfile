@@ -7,7 +7,6 @@ gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 3.0'
 
-gem 'rails_admin'
 gem 'openlibrary', '2.1.1'
 gem 'goodreads'
 

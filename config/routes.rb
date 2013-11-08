@@ -17,13 +17,10 @@ Booksy::Application.routes.draw do
       post :future_list
       post :past_list
       get :author
+      post :recommended_list
     end
   end
   
-   devise_for :admins
-   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
-
   resources :activities
 
   devise_for :users
@@ -42,6 +39,7 @@ Booksy::Application.routes.draw do
    get 'future', to: 'books#future'
    get 'futurelink', to: 'links#future'
    get 'author', to: 'books#author'
+   get 'recommended', to: 'books#recommended'
 
   get "pages/home"
   

@@ -25,6 +25,8 @@ class BooksController < ApplicationController
     
     #Users currently reading this book
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
+
+    #@recommended = Book.new
     
   end
   
@@ -118,8 +120,20 @@ class BooksController < ApplicationController
   def past_list
     @past = Book.new(book_params)
     @past.activity key: 'book.past_list'
-
+    
     if @past.save
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
+  def recommended_list
+  @recommended = Book.find(params[:id])
+  @recommended.activity key: 'book.recommended_list'
+    #@book = Book.new(params[:book])
+    
+    if @recommended.save
       redirect_to current_user
     else
       redirect_to root_path
@@ -137,6 +151,8 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+ 
   
   private
   

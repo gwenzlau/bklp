@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   #validates_attachment_size :avatar, :less_than => 5.megabytes
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
+
   acts_as_followable
   acts_as_follower
   
