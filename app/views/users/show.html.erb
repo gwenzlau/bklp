@@ -40,8 +40,11 @@
 			</ul>
 			
 	</div>
-     <h4>Past Reads:</h4>
-       <ul>
+	<div class="row-fluid marketing" align="center">
+	<div class="span6">
+     <h4>Past Reads</h4>
+     <hr>
+       <ul class="unstyled">
           <% @past.each do |past| %>
           <li>
           	<%= link_to past.title, book_path(:id => past.olidb) %>  <%= past.author %>
@@ -53,9 +56,11 @@
          <% end %>
           </span> -->
        </ul>
-       <hr>
-     <h4>Future Reads:</h4> 
-     <ul>
+   </div>
+   <div class="span6">
+     <h4>Future Reads</h4> 
+     <hr>
+     <ul class="unstyled">
       <% @future.each do |future| %>
         <li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
           <% end %>
@@ -65,7 +70,11 @@
           <% end %>
   		  </span> -->
      </ul>
-     	<hr>
+ 	</div>
+ </div>
+     	
+     <% if @user.id == current_user.id %>
+     <hr>
     <div class="rec-act" align="center">
      
 	  <h5>Recent activity:</h5>
@@ -108,6 +117,8 @@
 		<% end %>
 
 	</div>
+	<% else %>
+	<% end %>
 	
 </div>
 		

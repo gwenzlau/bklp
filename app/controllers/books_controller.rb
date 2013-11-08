@@ -134,7 +134,7 @@ class BooksController < ApplicationController
     #@book = Book.new(params[:book])
     
     if @recommended.save
-      redirect_to current_user
+      redirect_to root_path
     else
       redirect_to root_path
     end
