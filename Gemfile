@@ -7,7 +7,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 3.0'
 
-gem 'openlibrary', '2.1.1'
+gem 'openlibrary'
 gem 'goodreads'
 
 gem 'will_paginate', '~> 3.0'
@@ -17,7 +17,7 @@ gem 'acts_as_commentable'
 
 gem 'aws-sdk'
 gem 'newrelic_rpm'
-gem 'postmark-rails', '~> 0.5.2'
+gem 'postmark-rails'
 gem 'rails_12factor', group: :production
 
 
