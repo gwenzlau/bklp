@@ -309,14 +309,3 @@ cursor: auto;
     color:    #eeeeee;
 }
             /* end SEARCH */
-
-.dropdown-menu {
-  display: none;
-}
-
-  ul:hover > ul {
-    display: block;
-  }
-  ul {
-  position: absolute; left: 100%; top:0;
-}
