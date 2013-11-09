@@ -43,7 +43,6 @@
 	</h3>
 	<hr>
 	<div class="well">
-		
 			<ul class="inline">
 				<li><h4>Recommended Reading:</h4></li>
 				
@@ -87,7 +86,7 @@
  </div>
      	
      <% if @user.id == current_user.id %>
-     <hr>
+    <hr>
     <div class="rec-act" align="center">
      
 	  <h5>Recent activity:</h5>
@@ -100,22 +99,25 @@
 			<%= link_to activity.owner.name, activity.owner if activity.owner %>
 		  <% end %>
 
-		<%= render_activity activity %>
+		 <%= render_activity activity %>
 		
 		<span class="feed-comment">
 			<% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
-			<br>
-			 <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span>
-			 <% end %>
+				<br>
+			   <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:
+			 <span style="font-size: 12px;"> 
+			   <%= acomment.comment %>
+			 </span>
+		     <% end %>
 		 </span>
 		 
 		<div id="ac-<%= activity.id %>" style="display: none;">
-		<%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
-			<%= f.hidden_field :activity_id, :value => activity.id %>
-			<%= f.hidden_field :user_id, :value => current_user.id %>
-			<%= f.text_field :comment %>
-			<%= f.submit "Comment", :class => "btn" %>
-		<% end %>
+			<%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
+				<%= f.hidden_field :activity_id, :value => activity.id %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.text_field :comment %>
+				<%= f.submit "Comment", :class => "btn" %>
+			<% end %>
 		</div>
 		
 		<script type="text/javascript">
@@ -126,11 +128,12 @@
 			});
 		</script>
 			 
-		
+		</div>
 		<% end %>
 
+	  
 	</div>
-	<% else %>
+	  <% else %>
 	<% end %>
 	
 </div>

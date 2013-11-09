@@ -8,6 +8,7 @@ body{
     padding-top: 50px;
 }
 
+
 @import 'bootstrap-responsive';
 
 h1, h2 {
@@ -32,16 +33,6 @@ a:hover {
   color: #23F197;
 }
 
-input.search-query {
-padding-right: 90px;
-padding-right: 4px \9;
-padding-left: 90px;
-padding-left: 4px \9;
-margin-bottom: 0;
--webkit-border-radius: 15px;
--moz-border-radius: 15px;
-border-radius: 15px;
-}
 
 .author-link{
   color: #2C66FA
@@ -51,46 +42,21 @@ border-radius: 15px;
   color: #88F5AF;
 }
 
-
 .img-circle {
 height: 150px;
 }
 .book-cover {
 	height: 270px;
 }
-.avatar-small{
-	border-radius: 500px;
-}
 
 div.bl-book-page a:hover {
 	color: #45F3A7;
 }
 
-.feed {
-	font-size: 20px;
-	letter-spacing: 0px;
-}
+                                            /* start PROFILE */
 
-.feed-activity a {
-color: #23F197;
-font-weight: bold;
-}
-.feed-activity a:hover {
-	color: #0390FF;
-	}
-
-.article-feed a {
-	color: #B41F49
-}
-.article-feed a:hover {
-	color: #F3376C
-}
-.feed-sub a{
-  font-size: 14px;
-  color: #CECECE
-}
-.feed-sub a:hover{
-  color: #ADA88F
+.avatar-small{
+  border-radius: 500px;
 }
 .img-circle-thumb {
   border-radius: 500px; 
@@ -122,10 +88,38 @@ height: 55px;
     font-size: 43px;
     }
 }
-#mod-search{
-  margin-top: 3px;
-  padding-top: 3px;
+
+                                            /* end PROFILE */
+
+                                            /* Start FEED */
+
+.feed {
+  font-size: 20px;
+  letter-spacing: 0px;
 }
+
+.feed-activity a {
+color: #23F197;
+font-weight: bold;
+}
+.feed-activity a:hover {
+  color: #0390FF;
+  }
+
+.article-feed a {
+  color: #B41F49
+}
+.article-feed a:hover {
+  color: #F3376C
+}
+.feed-sub a{
+  font-size: 14px;
+  color: #CECECE
+}
+.feed-sub a:hover{
+  color: #ADA88F
+}
+
 .follow-feed a{
   color:#0390FF;
 }
@@ -141,13 +135,38 @@ height: 55px;
 .pr-feed a{
   color: #089B5B;
 }
+.feed-rec a{
+  color: #DDBB0A;
+}
+                                            /* end FEED */
+
+                                            /* Start WALKTHRU */
 .featurette-heading-so{
   padding-top: 400px;
 }
+.carousel img {
+top: 0;
+left: 0;
+min-width: 100%;
+}
+
 .alice {
   padding-bottom: 200px;
 }
+#signup {
+  padding: 100px;
+}
 
+
+                                            /* end WALKTHRU */
+
+
+                                            /* Start SEARCH */
+
+#mod-search{
+  margin-top: 3px;
+  padding-top: 3px;
+}
 
 #search-form{
 position: relative;
@@ -288,4 +307,16 @@ cursor: auto;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #eeeeee;
+}
+            /* end SEARCH */
+
+.dropdown-menu {
+  display: none;
+}
+
+  ul:hover > ul {
+    display: block;
+  }
+  ul {
+  position: absolute; left: 100%; top:0;
 }
