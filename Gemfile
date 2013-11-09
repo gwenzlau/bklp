@@ -24,7 +24,7 @@ gem 'rails_12factor', group: :production
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+gem "actionmailer", "~> 4.0.1"
 
 
 # Gems used only for assets and not required
