@@ -17,7 +17,7 @@ gem 'acts_as_commentable'
 
 gem 'aws-sdk'
 gem 'newrelic_rpm'
-gem 'postmark-rails'
+#gem 'postmark-rails', '~> 0.5.2'
 gem 'rails_12factor', group: :production
 
 
