@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
@@ -30,7 +32,7 @@ gem "actionmailer", "~> 4.0.1"
 # Gems used only for assets and not required
 # in production environments by default.
 
-  gem 'sass-rails'
+ # gem 'sass-rails'
   gem 'coffee-rails'
 
 
