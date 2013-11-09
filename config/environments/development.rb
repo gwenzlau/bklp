@@ -21,6 +21,6 @@ Booksy::Application.configure do
     # Expands the lines which load the assets
     config.assets.debug = true
 
-    config.action_mailer.default_url_options = { :host => 'bookloop.co' }
+    #config.action_mailer.default_url_options = { :host => 'wwww.bookloop.co' }
 
 end
