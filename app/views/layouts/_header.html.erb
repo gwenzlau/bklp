@@ -26,11 +26,13 @@
                         <li><%= link_to "My profile", current_user %></li>
                         <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                          
+                      
                       <% else %>
+
                     <li><%= link_to "Login", new_user_session_path %></li>
                       <% end %>
-            </ul>
+                          </ul>
+                  </ul>
                 </div>
         </div>
     </div>
