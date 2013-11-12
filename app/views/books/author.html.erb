@@ -8,14 +8,17 @@
 <p><%= @theauthor.about %></p>
 <hr>
 <b>Fans of</b>: <%= @theauthor.name %>:
-
+<hr>
 <h4>Works by <%= @theauthor.name %>:</h4>
-
-<ul>
+<ul class="unstyled">
 <% @authorbooks.results.work.each do |book| %>
-	<li><%= link_to book.best_book.title, book_path("#{book.best_book.id}") %></li>
+	<li class="span3"><%= link_to book.best_book.title, book_path("#{book.best_book.id}") %>
+		<br>
+	<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{book.best_book.isbn}"), :class=>"book-cover-small")%>
+	</li>
 <% end %>
 </ul>
+</div>
 
 
 <%= @theauthor.books.image_url %>
