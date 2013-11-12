@@ -1,5 +1,7 @@
 Booksy::Application.routes.draw do
   
+  resources :reviews
+
   resources :links do
     member do
       put :start_future_link

@@ -22,6 +22,7 @@ class UsersController < ApplicationController
    
 	def show
     if signed_in?
+      @review = Review.new
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
     end

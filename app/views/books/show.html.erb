@@ -116,7 +116,28 @@
 	<% end %>
 
 	<hr>
+
 	<h4>Discussions</h4>
 	<small>(coming soon...)</small>
+ <hr class="featurette-divider">
+  <div class="featurette">
+  	
+	<h4>Reviews</h4>
+	<div class="span4">
+		
+       			<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
+					<% if @mybook[0].status == 1 %>
+						<%= form_for @review, :url => reviews_path, method: :post do |f| %>
+							<%#= f.hidden_field :activity_id, :value => activity.id %>
+							<%= f.hidden_field :user_id, :value => current_user.id %>
+							<%= f.text_field :body %>
+							<br>
+							<%= f.submit "Review", :class => "btn" %>
+						<% end %>
+					<% end %>
+				<% end %>
+	</div>
+
+  </div>
 
 </div>
