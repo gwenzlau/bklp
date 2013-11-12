@@ -10,4 +10,12 @@
 <b>Fans of</b>: <%= @theauthor.name %>:
 
 <h4>Works by <%= @theauthor.name %>:</h4>
+
+<ul>
+<% @authorbooks.results.work.each do |book| %>
+	<li><%= link_to book.best_book.title, book_path("#{book.best_book.id}") %></li>
+<% end %>
+</ul>
+
+
 <%= @theauthor.books.image_url %>
