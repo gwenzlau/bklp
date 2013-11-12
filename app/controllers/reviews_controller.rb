@@ -17,7 +17,7 @@ def create
   private
   
   def review_params
-    params.require(:review).permit( :body)
+    params.require(:review).permit( :body, :user_id, :book_id)
   end
   
 
