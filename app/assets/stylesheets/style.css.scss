@@ -8,8 +8,8 @@ body{
     padding-top: 50px;
 }
 
-/* @import 'bootstrap-responsive'; */
-
+ @import 'bootstrap-responsive'; 
+ 
 h1, h2 {
   letter-spacing: 10px;
   text-transform: uppercase;
@@ -46,6 +46,10 @@ height: 150px;
 }
 .book-cover {
 	height: 270px;
+}
+
+.book-cover-small {
+  height: 70px;
 }
 
 div.bl-book-page a:hover {
@@ -307,4 +311,5 @@ cursor: auto;
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #eeeeee;
 }
-            /* end SEARCH */
+                                             /* end SEARCH */
+
