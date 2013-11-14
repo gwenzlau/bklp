@@ -1,4 +1,4 @@
-  class PagesController < ApplicationController
+class PagesController < ApplicationController
   
   def home
     # Show the feed of the users you are following. Limits the list to latest 10 feeds
