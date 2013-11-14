@@ -43,6 +43,8 @@ Booksy::Application.routes.draw do
    get 'futurelink', to: 'links#future'
    get 'author', to: 'books#author'
    get 'recommend', to: 'books#recommend'
+   # api route for autocomplete 
+   get 'search/autocomplete', to: 'pages#autocomplete' 
 
   get "pages/home"
   
