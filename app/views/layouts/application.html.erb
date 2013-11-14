@@ -15,6 +15,9 @@
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
         }
       });
+      $(document).on('click', '.tt-suggestion', function(){
+        $('#search-form').submit();
+      });
     });    
   </script>
 </head>
