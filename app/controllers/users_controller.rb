@@ -44,8 +44,7 @@ class UsersController < ApplicationController
 
    #@rec = Book.where(:user_id => params[:id]).where(:rec => "true")
     @recommend = Book.where(:user_id => params[:id]).where(:recommend => "true")
-    #@recommended = Book.where(:user_id => params[:id]).where(Book.recommended)
-    #@recommended = user.recommended(@book)
+  
     #@users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
 
 	end
