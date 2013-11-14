@@ -1,15 +1,16 @@
 <div class="bl-book-page">
-	<% if user_signed_in? %>
 		<%# This will check if the user is reading the book and display options %>
 		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-		<div class="rec" align="right">
-				<%= button_to "Recommend", {:controller => :books, :action => 'recommended_list', :id => @mybook[0].id}, :method => :post, :class => "btn"%>
-		
-	<% end %>
-	<% else %>
-	<% end %>
-				 
- 	</div>
+		  <div class="rec" align="right">
+			    <%# if Book.where(:recommend => "false") %>
+				<button type="button" class="btn btn-large" disabled>Recommended!</button>
+				<%# else %>
+				<%= button_to "Recommend", {:controller => :books, :action => 'recommend_list', :id => @mybook[0].id}, :method => :post, :class => "btn"%>
+				<%# end %>
+		   </div>
+		 <% else %>
+		<% end %>
+			
 	<div align="center">
 		<h2><%= @thebook.work.original_title %></h2>
 		<h4>BY</h4>
@@ -29,7 +30,7 @@
 	<div class="bookstatus" align="center">
 	<ul class="inline">
 	<%# Is the user signed in?%>
-	<% if user_signed_in? %>
+	  <% if user_signed_in? %>
 		<%# This will check if the user is reading the book and display options %>
 		<li><% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
 		
@@ -105,6 +106,7 @@
 	<h4>People currently reading this book:</h4>
 	
 	<% @users_reading.each do |reading| %>
+
 	<ul class="inline">
 		<li>
 		<%= link_to (image_tag User.find_by_id(reading.user_id).avatar.url(:thumb), :class=>"img-circle-thumb"), user_path(reading.user_id) %><br>
@@ -125,17 +127,6 @@
 	<h4>Reviews</h4>
 	<div class="span4">
 		
-       			<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-					<% if @mybook[0].status == 1 %>
-						<%= form_for @review, :url => reviews_path, method: :post do |f| %>
-							<%#= f.hidden_field :activity_id, :value => activity.id %>
-							<%= f.hidden_field :user_id, :value => current_user.id %>
-							<%= f.text_field :body %>
-							<br>
-							<%= f.submit "Review", :class => "btn" %>
-						<% end %>
-					<% end %>
-				<% end %>
 	</div>
 
   </div>

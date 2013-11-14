@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112223359) do
+ActiveRecord::Schema.define(version: 20131113214501) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(version: 20131112223359) do
     t.string   "olida"
     t.string   "olidb"
     t.integer  "status"
+    t.string   "rec"
+    t.string   "boolean"
+    t.string   "default"
+    t.string   "false"
+    t.boolean  "recommend"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"

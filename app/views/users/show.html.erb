@@ -26,29 +26,34 @@
  		
 	</div>
 	<%# if current user and if not reading any books - Search form to add #%>
-
+	<% if %>
 	<h3 align="center"><%= link_to @user.name, current_user %>  is currently reading: 
 			<span class="probook"><%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></span>
-		<% if @user.id == current_user.id %>
+	<% else %>
+		 <% if @user.id == current_user.id %>
 			    <div id="search-form">
 		             <form class="formy" action="/search" method="get">
                      <input class="indx" id="search" type="text" name="q" value>
                      <input class="mag-glass" id="search_btn" type="submit" value="Search">
 		       		</form>
 		        </div>
-		<% else %>
+		  <% else %>
+	      <% end %>
 	    <% end %>
 	
 		
 	</h3>
 	<hr>
+	<h4>Recommended Reading</h4>
 	<div class="well">
 			<ul class="inline">
-				<li><h4>Recommended Reading:</h4></li>
-				
-					<%# @recommended.each do |recommended| %> 
-					<li><%#= link_to recommended.title, book_path(:id => recommended.olidb) %></li>
-					<%# end %>
+				<% @recommend.each do |recommend| %> 
+					<li><%= link_to recommend.title, book_path(:id => recommend.olidb) %>
+						<br>
+					<a href="<%= book_path(:id => rec.olidb) %>">
+					<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@book_isbn}"), :class=>"book-cover-small")%>
+					</a></li>
+					<% end %>
 			</ul>
 			
 	</div>

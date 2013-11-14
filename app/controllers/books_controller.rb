@@ -129,13 +129,11 @@ class BooksController < ApplicationController
     end
   end
 
-  def recommended_list
-  @recommended = Book.find(params[:id])
-  @recommended.activity key: 'book.recommended_list'
-    #@book = Book.new(params[:book])
-    
-    if @recommended.save
-      redirect_to root_path
+  def recommend_list
+  @recommend = Book.find(params[:id])
+  @recommend.activity key: 'book.recommend_list'
+  if @recommend.update_attribute(:recommend, "true")
+      redirect_to current_user
     else
       redirect_to root_path
     end
@@ -158,6 +156,6 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status)
+    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend)
   end
 end
