@@ -1,96 +1,10 @@
 <% if user_signed_in? %>
  <h1 align="center"><%= link_to "BookFeed", root_url %> </h1>
    <h6 align="center"><%= link_to "(DISCOVER OTHER READERS)", users_path %> </h6>
-   <hr>
-    <div class="feed" align="center">
-       <% @activities.each do |activity| %>
-         <div class="activit">
-          <%= link_to (image_tag activity.owner.avatar(:thumb), :class=>"img-circle-thumb"), activity.owner if activity.owner %>
-	       <%= link_to activity.owner.name, activity.owner if activity.owner %>
-	         <span class="feed-activity">
-	            <%= render_activity activity %>
-						</span>
-						<span class="feed-comment">
-							<% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
-							<br>
-							 <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span>
-							 <% end %>
-							
-						<div id="ac-<%= activity.id %>" style="display: none;">
-						<%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
-							<%= f.hidden_field :activity_id, :value => activity.id %>
-							<%= f.hidden_field :user_id, :value => current_user.id %>
-							<%= f.text_field :comment %>
-							<%= f.submit "Comment", :class => "btn" %>
-						<% end %>
-						</div>
-						
-						<script type="text/javascript">
-							$(function(){
-							  $('#al-<%= activity.id %>').click(function(){
-							     $('#ac-<%= activity.id %>').toggle();
-							  });
-							});
-						</script>
-					
-			</div>
-		<% end %>
-
-		</div>
-	</div>
+  <%= render 'pages/feed' %>
 
 
 <% else %>
-<div class="x" align="center">
-<div class="containerrr" align="center" style="max-width: 940px;">
-  <div class="bg">
-	  <h1 align="center">Most People Don't read;</h1>
-	  <h1 align="center"><%= link_to "Find the ones who do.", new_user_registration_path, class: "button" %></h1>
-  </div>
-  <hr class="featurette-divider">
-  <div id="myCarousel" class="carousel slide">
-  	<div class="carousel-inner">
-  		<div class="item active">
-  			<img src="https://s3.amazonaws.com/bklp/b1.png"></img>
-  		</div>
-  	</div>
-    
-   	  <h2 class="alice" align="center">Alice is currently reading:
-   	   <a>Brave New World</a></h2>
-   	
-   
-  </div>
-  	<div class="featurette">
-  		<img class="featurette-image pull-left" src="https://s3.amazonaws.com/bklp/s-l.png"></img>
-  		<img class="featurette-image pull-right" src="https://s3.amazonaws.com/bklp/s-r.png"></img>
-  		<h2 class="featurette-heading-so" align="center">So Are They.</h2>
-  	</div>
-    <div class="featurette">
-  		<div class="item active">
-  		  <img src="https://s3.amazonaws.com/bklp/disc.png">
-  		</div>
-  	  <h2 class="featurette-heading" align="center">Now They Can Discuss.</h2>
-    </div>
-  <hr class="featurette-divider">
-  <br>
-  <div class="featurette">
-  	<img class="featurette-image pull-right" src="https://s3.amazonaws.com/bklp/fitz.png"></img>
-  		<span class="span4" align="right">
-  		  <h2 class="lead" style="padding-top: 100px;"> <span class="muted">'That is the beauty of all literature</span></h2>
-  			<p class="lead"><i>You discover your longings are universal longings, that you're not lonely and isolated from anyone. You belong.</i></p>
-  		</span>
-  		<span class="span4" align="right">
-  			<i>- F. Scott Fitzgerald</i>
-  		</span>
-  		</div>
-  	  </div>
-  	</div>
-  </div>
-      <hr class="featurette-divider">
-  	   <div class="featurette" id="signup">
-  		    <h1 align="center"><%= link_to "Jump In", new_user_registration_path, class: "button" %></h1>
-  	   
-  </div>
-
+<%= render 'pages/walkthru' %>
 <% end %>
 

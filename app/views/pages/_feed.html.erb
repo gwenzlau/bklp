@@ -1,0 +1,37 @@
+ <hr>
+    <div class="feed" align="center">
+       <% @activities.each do |activity| %>
+         <div class="activit">
+          <%= link_to (image_tag activity.owner.avatar(:thumb), :class=>"img-circle-thumb"), activity.owner if activity.owner %>
+	       <%= link_to activity.owner.name, activity.owner if activity.owner %>
+	         <span class="feed-activity">
+	            <%= render_activity activity %>
+						</span>
+						<span class="feed-comment">
+							<% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
+							<br>
+							 <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span>
+							 <% end %>
+							
+						<div id="ac-<%= activity.id %>" style="display: none;">
+						<%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
+							<%= f.hidden_field :activity_id, :value => activity.id %>
+							<%= f.hidden_field :user_id, :value => current_user.id %>
+							<%= f.text_field :comment %>
+							<%= f.submit "Comment", :class => "btn" %>
+						<% end %>
+						</div>
+						
+						<script type="text/javascript">
+							$(function(){
+							  $('#al-<%= activity.id %>').click(function(){
+							     $('#ac-<%= activity.id %>').toggle();
+							  });
+							});
+						</script>
+					
+			</div>
+		<% end %>
+
+		</div>
+	</div>
