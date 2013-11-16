@@ -3,6 +3,13 @@ posted an article
 <% if activity.trackable %>
 	<%= link_to Link.find_by_id(activity.trackable.id).title, Link.find_by_id(activity.trackable.id).source, :target => "_blank" %>
 	</span>
+	<br>
+	<span class="link-quote">
+	"
+	</span>
+	<span class="link-note">
+	<%= Link.find_by_id(activity.trackable.id).note %>
+	</span>
 	<span class="feed-sub">
 	<small><br>
  	   <%= link_to "Read", (Link.find_by_id(activity.trackable.id).source), target: "_blank" %> |

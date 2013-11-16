@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113214501) do
+ActiveRecord::Schema.define(version: 20131116013621) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20131113214501) do
     t.string   "title"
     t.integer  "user_id"
     t.integer  "status"
+    t.string   "note"
   end
 
   create_table "rails_admin_histories", force: true do |t|

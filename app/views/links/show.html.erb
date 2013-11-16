@@ -3,7 +3,9 @@
 <h5 align="center"> originally posted by 
 	<% @users_poster.each do |poster| %>
 	<%= link_to User.find_by_id(poster.user_id).name, user_path(@link.user_id) %>
-	<% end %></h5>
+	<% end %> with the note:
+<i><%= @link.note %> </i>
+</h5>
 
 
 <%= render 'editdel' %>

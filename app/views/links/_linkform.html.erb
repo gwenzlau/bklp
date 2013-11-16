@@ -2,6 +2,7 @@
   <%= f.error_notification %>
   <%= f.input :source %>
   <%= f.input :title %>
+  <%= f.input :note, :placeholder => "say something" %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="form-actions">

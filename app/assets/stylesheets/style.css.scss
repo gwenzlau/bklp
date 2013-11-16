@@ -6,6 +6,7 @@ $btnPrimaryBackground: purple;
 
 body{
     padding-top: 50px;
+    
 }
 
 /* @import 'bootstrap-responsive'; 
@@ -140,6 +141,21 @@ font-weight: bold;
 }
 .feed-rec a{
   color: #DDBB0A;
+}
+
+.link-note {
+  font-size: 13px;
+  color: #505050;
+  font-style: italic;
+  font-family: georgia, georgia, serif;
+font-weight: normal;
+}
+.link-quote {
+  line-height: 32px;
+font-size: 24px;
+margin-bottom: 20px;
+font-family: georgia, georgia, serif;
+font-weight: normal;
 }
                                             /* end FEED */
 
