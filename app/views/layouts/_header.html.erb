@@ -13,7 +13,7 @@
                  <ul class="nav">
                  <div id="mod-search">
                     
-                    <%= form_tag("/search", method: "get", id: "search-form") do %>
+                    <%= form_tag("/search", method: "get", id: "search_form") do %>
                      <%= text_field_tag(:q) %>
                      <%= submit_tag("Find a book", class: "mag-glass", id: "search_btn") %>
                  <% end %>
