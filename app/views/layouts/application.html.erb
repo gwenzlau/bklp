@@ -8,15 +8,29 @@
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <script>
     $(document).ready( function() {
+      var BookloopEngine = {
+          compile: function(template) {
+              return {
+                  render: function(context) {
+                      return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
+                  }
+              };
+          }
+      };
+
       $('#q').typeahead({
         name: 'books',
+        valueKey: 'book',
         cache: true,
         remote: {
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
-        }
+        },
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span>',
+        engine: BookloopEngine
       });
+
       $(document).on('click', '.tt-suggestion', function(){
-        $('#search-form').submit();
+        $('#search_form').submit();
       });
     });    
   </script>

@@ -24,7 +24,7 @@ class PagesController < ApplicationController
     results = client.search_books(params[:q])
     books ||= []
     for book in results['results']['work']
-      books << book['best_book']['title']
+      books << { 'book' => book['best_book']['title'], 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'] }
     end
     respond_to do |format|
       format.json  { render :json => books }

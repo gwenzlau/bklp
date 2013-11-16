@@ -20,6 +20,9 @@
 		color: #fff;
 		background-color: #0097cf;
 	}
+	.tt-suggestion.tt-is-under-cursor a {
+		color: #fff;
+	}
 	.tt-suggestion p {
 		margin-bottom: 0;
 	}
