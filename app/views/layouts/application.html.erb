@@ -17,7 +17,6 @@
               };
           }
       };
-
       $('#q').typeahead({
         name: 'books',
         valueKey: 'book',
@@ -25,12 +24,8 @@
         remote: {
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
         },
-        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span>',
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span><br><div class="btn-group"><button type="button" class="btn btn-small">Read it</button><button type="button" class="btn btn-small">Reading it</button><button type="button" class="btn btn-small">Going to read</button></div>',
         engine: BookloopEngine
-      });
-
-      $(document).on('click', '.tt-suggestion', function(){
-        $('#search_form').submit();
       });
     });    
   </script>
