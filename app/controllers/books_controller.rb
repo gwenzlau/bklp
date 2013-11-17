@@ -99,7 +99,7 @@ class BooksController < ApplicationController
   def future_list
     @future = Book.new(book_params)
     @future.activity key: 'book.future_list'
-
+    
     if @future.save
       redirect_to current_user
     else
@@ -138,6 +138,7 @@ class BooksController < ApplicationController
       redirect_to root_path
     end
   end
+
 
   # DELETE /books/1
   # DELETE /books/1.json
