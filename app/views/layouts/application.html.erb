@@ -8,6 +8,7 @@
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <script>
     <% if user_signed_in? %>
+    
     function updateBookStatus(user_id, book_id, status, title, obj) {
       var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
       var url = '';
@@ -64,10 +65,10 @@
         template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span><br><div class="btn-group"><button book-title="{{book}}" book="{{book_id}}" status="1" type="button" class="btn btn-small">Already read it</button><button book-title="{{book}}" book="{{book_id}}" status="0" type="button" class="btn btn-small">Reading it</button><button type="button" class="btn btn-small" book-title="{{book}}" book="{{book_id}}" status="2">Going to read</button></div>',
         engine: BookloopEngine
       });
-
     });
     
     <% else %>
+
     $(document).ready( function() {
       
       var BookloopEngine = {
@@ -92,8 +93,8 @@
       });
 
     });
-    <% end %> 
 
+    <% end %> 
   </script>
 </head>
 <body>
