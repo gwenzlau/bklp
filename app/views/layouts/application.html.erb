@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <script>
-
+    <% if user_signed_in? %>
     function updateBookStatus(user_id, book_id, status, title, obj) {
       var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
       var url = '';
@@ -40,7 +40,7 @@
       var book_id = $(this).attr('book');
       var user_id = '<%= current_user.id %>';
       updateBookStatus(user_id, book_id, status, title, $(this));
-    }); 
+    });
 
     $(document).ready( function() {
       
@@ -65,7 +65,34 @@
         engine: BookloopEngine
       });
 
-    }); 
+    });
+    
+    <% else %>
+    $(document).ready( function() {
+      
+      var BookloopEngine = {
+          compile: function(template) {
+              return {
+                  render: function(context) {
+                      return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
+                  }
+              };
+          }
+      }; 
+
+      $('#q').typeahead({
+        name: 'books',
+        valueKey: 'book',
+        cache: true,
+        remote: {
+          url: '/search/autocomplete?utf8=✓&q=%QUERY',
+        },
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span>',
+        engine: BookloopEngine
+      });
+
+    });
+    <% end %> 
 
   </script>
 </head>
