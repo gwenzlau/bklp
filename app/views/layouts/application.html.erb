@@ -8,11 +8,30 @@
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <script>
 
-    function updateBookStatus(user_id, book_id, status, title) {
-      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title}
-      $.post('/books', d, function(resp) {
-        alert(resp);
-      });
+    function updateBookStatus(user_id, book_id, status, title, obj) {
+      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
+      var url = '';
+      switch (status) {
+        case '0':
+          url = '/books';
+          break;
+        case '1':
+          url = '/books/'+book_id+'/past_list';
+          break;
+        case '2':
+          url = '/books/'+book_id+'/future_list';
+          break;
+      }
+      $.post(url, d, function(resp) {
+
+      })
+        .done(function() {
+          obj.siblings('button').removeClass('btn-success');
+          obj.addClass('btn-success');
+        })
+        .fail(function() {
+          alert( "error" );
+        });
     }
 
     $(document).on('click', '.tt-suggestion button', function() {
@@ -20,7 +39,7 @@
       var status = $(this).attr('status');
       var book_id = $(this).attr('book');
       var user_id = '<%= current_user.id %>';
-      updateBookStatus(user_id, book_id, status, title);
+      updateBookStatus(user_id, book_id, status, title, $(this));
     }); 
 
     $(document).ready( function() {
