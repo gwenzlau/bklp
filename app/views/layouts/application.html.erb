@@ -6,9 +6,99 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
+  <script>
+    <% if user_signed_in? %>
+    
+    function updateBookStatus(user_id, book_id, status, title, obj) {
+      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
+      var url = '';
+      switch (status) {
+        case '0':
+          url = '/books';
+          break;
+        case '1':
+          url = '/books/'+book_id+'/past_list';
+          break;
+        case '2':
+          url = '/books/'+book_id+'/future_list';
+          break;
+      }
+      $.post(url, d, function(resp) {
+
+      })
+        .done(function() {
+          obj.siblings('button').removeClass('btn-success');
+          obj.addClass('btn-success');
+        })
+        .fail(function() {
+          alert( "error" );
+        });
+    }
+
+    $(document).on('click', '.tt-suggestion button', function() {
+      var title = $(this).attr('book-title');
+      var status = $(this).attr('status');
+      var book_id = $(this).attr('book');
+      var user_id = '<%= current_user.id %>';
+      updateBookStatus(user_id, book_id, status, title, $(this));
+    });
+
+    $(document).ready( function() {
+      
+      var BookloopEngine = {
+          compile: function(template) {
+              return {
+                  render: function(context) {
+                      return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
+                  }
+              };
+          }
+      }; 
+
+      $('#q').typeahead({
+        name: 'books',
+        valueKey: 'book',
+        cache: true,
+        remote: {
+          url: '/search/autocomplete?utf8=✓&q=%QUERY',
+        },
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span><br><div class="btn-group"><button book-title="{{book}}" book="{{book_id}}" status="1" type="button" class="btn btn-small">Already read it</button><button book-title="{{book}}" book="{{book_id}}" status="0" type="button" class="btn btn-small">Reading it</button><button type="button" class="btn btn-small" book-title="{{book}}" book="{{book_id}}" status="2">Going to read</button></div>',
+        engine: BookloopEngine
+      });
+    });
+    
+    <% else %>
+
+    $(document).ready( function() {
+      
+      var BookloopEngine = {
+          compile: function(template) {
+              return {
+                  render: function(context) {
+                      return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
+                  }
+              };
+          }
+      }; 
+
+      $('#q').typeahead({
+        name: 'books',
+        valueKey: 'book',
+        cache: true,
+        remote: {
+          url: '/search/autocomplete?utf8=✓&q=%QUERY',
+        },
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span>',
+        engine: BookloopEngine
+      });
+
+    });
+
+    <% end %> 
+  </script>
 </head>
 <body>
- <%= render 'layouts/header' %>
+<%= render 'layouts/header' %>
 <div class="container">
 	        <div class="container" style="margin-top: 10px;">
             <% flash.each do |name, msg| %>
@@ -18,7 +108,5 @@
     <%= yield %>
 
     <%= render 'layouts/footer' %>
-    
-
 </body>
 </html>

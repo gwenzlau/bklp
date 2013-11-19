@@ -16,5 +16,20 @@ class PagesController < ApplicationController
     @results = client.search_books(params[:q])
   end
 
+  def autocomplete
+    # autocomplete for search field
+    # TODO (ismail):
+    # * need to get this working faster
+    client = Goodreads.new(Goodreads.configuration)
+    results = client.search_books(params[:q])
+    books ||= []
+    for book in results['results']['work']
+      books << { 'book' => book['best_book']['title'], 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'] }
+    end
+    respond_to do |format|
+      format.json  { render :json => books }
+    end
+  end 
+
 
 end
