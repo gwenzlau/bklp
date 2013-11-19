@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
- <h1 align="center"><%= link_to "BookFeed", root_url %> </h1>
-   <h6 align="center"><%= link_to "(DISCOVER OTHER READERS)", users_path %> </h6>
+ <p align="center">
   <%= render 'pages/feed' %>
 
 

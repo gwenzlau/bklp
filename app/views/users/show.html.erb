@@ -40,12 +40,13 @@
 		  <% else %>
 	      <% end %>
 	    <% end %>
-	
 		
 	</h3>
+	<br>
 	<hr>
+
 	<h4>Recommended Reading</h4>
-	<div class="well">
+	<div class="rec-well">
 			<ul class="inline">
 				<% @recommend.each do |recommend| %> 
 					<li><%= link_to recommend.title, book_path(:id => recommend.olidb) %>
@@ -54,6 +55,10 @@
 					<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@book_isbn}"), :class=>"book-cover-small")%>
 					</a></li>
 					<% end %>
+			</ul>
+			<hr>	
+			<small><i>Favorite Authors </i></small>
+			<ul class="inline">
 			</ul>
 			
 	</div>

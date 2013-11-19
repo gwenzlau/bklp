@@ -6,8 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-             <a class="brand" href="/">
-              <img src="https://s3.amazonaws.com/bklp/logo_biga.png"></a>
+             <a class="brand" href="/"><img src="https://s3.amazonaws.com/bklp/logo_biga.png"></a>
 
                 <div class="nav-collapse">
                  <ul class="nav">
@@ -20,13 +19,13 @@
                 </div>
 
                     </ul>
+                    <%= link_to "Add an article", new_link_path %>
                         <ul class="nav pull-right">
                       <% if user_signed_in? %>
-                        <li><%= link_to "(Add a link)", new_link_path %></li>
-                        <li><%= link_to "My profile", current_user %></li>
-                        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                      
+                         <nav onmouseover="">
+                        <%= link_to '', current_user, :title => "Profile" %>
+                        <%= link_to '', edit_user_registration_path, :title => "Settings" %>
+                     </nav>
                       <% else %>
 
                     <li><%= link_to "Login", new_user_session_path %></li>
