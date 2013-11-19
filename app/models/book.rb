@@ -3,5 +3,6 @@ class Book < ActiveRecord::Base
   tracked owner: ->(controller, model) { controller && controller.current_user}
  
   belongs_to :user
+  has_many :reviews
   
 end

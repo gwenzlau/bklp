@@ -19,8 +19,9 @@ Booksy::Application.routes.draw do
       post :future_list
       post :past_list
       get :author
-      #post :rec_list
+      post :rec_list
       post :recommend_list
+      post :order
     end
   end
   

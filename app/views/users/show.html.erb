@@ -47,13 +47,14 @@
 
 	<h4>Recommended Reading</h4>
 	<div class="rec-well">
-			<ul class="inline">
-				<% @recommend.each do |recommend| %> 
-					<li><%= link_to recommend.title, book_path(:id => recommend.olidb) %>
+			<ul class="rec-line">
+				<% @rec.each do |rec| %> 
+					<li><%= link_to rec.title, book_path(:id => rec.olidb) %>
 						<br>
-					<a href="<%= book_path(:id => rec.olidb) %>">
+					<!--<a href="<%= book_path(:id => rec.olidb) %>">
 					<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@book_isbn}"), :class=>"book-cover-small")%>
-					</a></li>
+					</a> !-->
+					</li>
 					<% end %>
 			</ul>
 			<hr>	
@@ -84,7 +85,7 @@
      <hr>
      <ul class="unstyled">
       <% @future.each do |future| %>
-        <li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+        <li><%= future.order %><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
           <% end %>
         <!--   <span class="article-feed">
           <% @futurelink.each do |futurelink| %>

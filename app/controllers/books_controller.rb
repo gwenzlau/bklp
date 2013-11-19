@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     
     #Users currently reading this book
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
-    
+    @review = Review.where(:olidb => params[:id])
   end
   
   def author
@@ -95,10 +95,20 @@ class BooksController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
+  def order
+    @book = Book.find(params[:id])
+    if @book.update_attribute(:order)
+      redirect_to current_user
+    else 
+    end
+
+  end
+
   def future_list
     @future = Book.new(book_params)
     @future.activity key: 'book.future_list'
+    @future.order = Book.order(params[:order])
 
     if @future.save
       redirect_to current_user
@@ -139,6 +149,16 @@ class BooksController < ApplicationController
     end
   end
 
+  def rec_list
+  @rec = Book.find(params[:id])
+  @rec.activity key: 'book.rec_list'
+  if @rec.update_attribute(:rec, "true")
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
@@ -151,11 +171,10 @@ class BooksController < ApplicationController
     end
   end
 
- 
   
   private
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend)
+    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order)
   end
 end
