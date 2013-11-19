@@ -1,8 +1,9 @@
 <span class="title-feed">
  	<%= link_to "FEED", root_url %>
  </span>
+ <span class="feed-off">
  	 <%= link_to "DISCOVER", users_path %> 
- 	</div>
+ </span>
  <hr>
     <div class="feed" align="center">
        <% @activities.each do |activity| %>
