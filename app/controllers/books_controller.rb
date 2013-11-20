@@ -158,6 +158,17 @@ class BooksController < ApplicationController
     end
   end
 
+  def reorder
+    params[:data].each do |key, array|
+      @book = Book.find_by(:olidb => array[:book_id])
+      @book.update_attribute(:order, array[:order])
+    end
+
+    respond_to do |format|
+      format.json { render json: 'OK' }
+    end
+  end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
@@ -169,7 +180,6 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   
   private
   

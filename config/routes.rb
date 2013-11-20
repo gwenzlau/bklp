@@ -46,6 +46,9 @@ Booksy::Application.routes.draw do
    get 'recommend', to: 'books#recommend'
    # api route for autocomplete 
    get 'search/autocomplete', to: 'pages#autocomplete' 
+   # reorder future list
+   post 'books/reorder', to: 'books#reorder'
+
 
   get "pages/home"
   

@@ -86,6 +86,7 @@
      <ul class="unstyled">
       <% @future.each do |future| %>
         <li><%= future.order %><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+        <li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
           <% end %>
         <!--   <span class="article-feed">
           <% @futurelink.each do |futurelink| %>
@@ -94,6 +95,22 @@
   		  </span> -->
      </ul>
  	</div>
+
+ 	<script>
+ 		$('.sortable').sortable({forcePlaceholderSize: true}).bind('sortupdate', function(e, ui) {
+    		var d = [];
+    		$('.sortable li').each( function() {
+    			var book_id = $(this).attr('book-id');
+    			var order = $(this).index() + 1;
+    			d.push({'book_id': book_id, 'order': order});
+    		});
+    		var data = {'data': d}
+    		console.log(d);
+   			$.post('/books/reorder', data, function(resp) {
+   				alert(resp);
+   			});
+		});
+ 	</script>
  </div>
      	
      <% if @user.id == current_user.id %>
