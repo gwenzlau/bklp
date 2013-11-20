@@ -108,7 +108,6 @@ class BooksController < ApplicationController
   def future_list
     @future = Book.new(book_params)
     @future.activity key: 'book.future_list'
-    @future.order = Book.order(params[:order])
     
     if @future.save
       redirect_to current_user
