@@ -10,30 +10,31 @@
 
                 <div class="nav-collapse">
                  <ul class="nav">
-                 <div class="nav-srch" align="center">
-                <form role="search" class="search-form" action="/search" method="get">
+                 <div class="nav-srch">
+                <!--<form role="search" class="search-form" action="/search" method="get">
                 <label>
                     <input type="text" 
                     class="search-field" 
                     id="search_form"
                     placeholder="Find a book..."  
-                    value="" name="q"
+                    value="" name=":q"
                     title="Sök efter:">
                 </label>
                     <input type="submit" class="search-submit" value="Search">
-                </form>
-                   <span class="add-art">
-                     <%= link_to "+", new_link_path %>
-                  </span>
-                </div>
-                 <!--<div id="mod-search">
+                </form>!-->
+                   
+                 <div id="mod-search">
                     
                     <%= form_tag("/search", method: "get", id: "search_form") do %>
                      <%= text_field_tag(:q) %>
                      <%= submit_tag("Find a book", class: "mag-glass", id: "search_btn") %>
                  <% end %>
-                </div>!-->
+                </div>
 
+                <span class="add-art">
+                     <%= link_to "+", new_link_path %>
+                  </span>
+                    </div>
                     </ul>
                     
                         <ul class="nav pull-right">
