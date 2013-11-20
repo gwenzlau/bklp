@@ -11,6 +11,7 @@
                 <div class="nav-collapse">
                  <ul class="nav">
                  <div class="nav-srch">
+
                 <!--<form role="search" class="search-form" action="/search" method="get">
                 <label>
                     <input type="text" 
@@ -22,22 +23,18 @@
                 </label>
                     <input type="submit" class="search-submit" value="Search">
                 </form>!-->
-                   
+                  
                  <div id="mod-search">
-                    
                     <%= form_tag("/search", method: "get", id: "search_form") do %>
                      <%= text_field_tag(:q) %>
                      <%= submit_tag("Find a book", class: "mag-glass", id: "search_btn") %>
-                 <% end %>
-                </div>
-
-                <span class="add-art">
-                     <%= link_to "+", new_link_path %>
-                  </span>
-                    </div>
+                     <% end %>
+                    <%#= link_to "+", new_link_path %>
+                  </div>
+                 </div>
                     </ul>
-                    
-                        <ul class="nav pull-right">
+
+                    <ul class="nav pull-right">
                       <% if user_signed_in? %>
                          <nav onmouseover="">
                         <%= link_to '', current_user, :title => "Profile" %>

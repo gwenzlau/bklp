@@ -89,8 +89,8 @@
      <hr>
      <ul class="unstyled">
       <% @future.each do |future| %>
-        <li><%= future.order %><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
-        <li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+        <li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+        <!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
           <% end %>
         <!--   <span class="article-feed">
           <% @futurelink.each do |futurelink| %>

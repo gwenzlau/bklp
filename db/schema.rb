@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20131118193123) do
 
   create_table "acomments", force: true do |t|
@@ -72,7 +71,6 @@ ActiveRecord::Schema.define(version: 20131118193123) do
     t.string   "default"
     t.string   "false"
     t.boolean  "recommend"
-    t.boolean  "recommend",  default: false
     t.integer  "order"
   end
 
