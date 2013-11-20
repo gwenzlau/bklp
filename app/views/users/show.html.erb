@@ -49,17 +49,15 @@
 			
 				<% @rec.each do |rec| %> 
 				<ul class="inline">
-					<li>
+				  <li>
 					<a href="<%= book_path(:id => rec.olidb) %>">
-					<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@book_isbn}"), :class=>"book-cover-small")%>
+					<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@reccover.isbn}"), :class=>"book-cover-small")%>
 					</a>
 					<br>
 						<%= link_to rec.title, book_path(:id => rec.olidb) %>
-						
-					
-					</li>
-					</ul>
-					<% end %>
+				  </li>
+				</ul>
+				<% end %>
 			
 			<hr>	
 			<small><i>Favorite Authors </i></small>
