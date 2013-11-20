@@ -52,6 +52,7 @@ group :development, :test do
 	gem 'sqlite3'
 end
 
+gem 'dotenv-rails', :groups => [:development, :test]
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
