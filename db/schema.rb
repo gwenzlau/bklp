@@ -78,8 +78,6 @@ ActiveRecord::Schema.define(version: 20131123103507) do
 
   create_table "commentaries", force: true do |t|
     t.text     "message"
-    t.integer  "page"
-    t.integer  "pages_total"
     t.integer  "user_id"
     t.integer  "discussion_id"
     t.datetime "created_at"
@@ -106,6 +104,8 @@ ActiveRecord::Schema.define(version: 20131123103507) do
 
   create_table "discussions", force: true do |t|
     t.text     "quote"
+    t.integer  "page"
+    t.integer  "pages_total"
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
