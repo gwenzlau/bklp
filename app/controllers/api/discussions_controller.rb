@@ -1,20 +1,20 @@
 class API::DiscussionsController < ApplicationController
+  include APIHelper
+
   protect_from_forgery except: :create
 
   before_action :authenticate_user!
 
   def index
     discussions = Discussion.includes(:commentaries).where(book_id: params[:book_id])
-    # discussions.each {|d| d.commentaries.to_a }
 
-    render json: { success: true, discussions: discussions }
+    render json: to_json({ success: true, discussions: discussions.map(&:public_params) })
   end
 
   def show
-    discussion = Discussion.includes(:commentaries).find(params[:id])
-    discussion.commentaries
+    discussion = Discussion.find(params[:id])
 
-    render json: { success: true, discussion: discussion }
+    render json: to_json({ success: true, discussion: discussion.public_params })
   end
 
   def create
@@ -22,9 +22,9 @@ class API::DiscussionsController < ApplicationController
     discussion.book_id = params[:book_id]
 
     if discussion.save
-      render json: { success: true, discussion: discussion }
+      render json: to_json({ success: true, discussion: discussion.public_params })
     else
-      render json: { success: false, errors: discussion.errors, discussion: discussion }
+      render json: to_json({ success: false, errors: discussion.errors, discussion: discussion })
     end
   end
 

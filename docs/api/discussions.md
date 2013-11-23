@@ -11,21 +11,21 @@
     "success": true,
     "discussions": [{
         "id": 1,
+        "book_id": 15847933,
         "quote": "Some random quote",
         "page": 14,
         "pages_total": 147,
-        "book_id": 15847933,
         "created_at": "2013-11-23T11:25:45.700Z",
-        "updated_at": "2013-11-23T11:25:45.700Z"
-    },
-    {
-        "id": 2,
-        "quote": "Some random quote two",
-        "page": 37,
-        "pages_total": 147,
-        "book_id": 15847933,
-        "created_at": "2013-11-23T11:25:45.700Z",
-        "updated_at": "2013-11-23T11:25:45.700Z"
+        "comments": [{
+            "id": 3,
+            "message": "Totally agree dude.",
+            "created_at": "2013-11-23T11:53:59.555Z",
+            "user": {
+                "id": 1,
+                "name": "Pete",
+                "avatar_url": "https://s3.amazonaws.com/bklp/guest.png"
+            }
+        }]
     }]
 }
 ```
@@ -41,12 +41,19 @@
     "success": true,
     "discussion": {
         "id": 1,
+        "book_id": 15847933,
         "quote": "Some random quote",
         "page": 14,
         "pages_total": 147,
-        "book_id": 15847933,
-        "created_at": "2013-11-23T11:25:45.700Z",
-        "updated_at": "2013-11-23T11:25:45.700Z"
+        "comments": [{
+            "id": 3,
+            "message": "Totally agree dude.",
+            "user": {
+                "id": 1,
+                "name": "Pete",
+                "avatar_url": "https://s3.amazonaws.com/bklp/guest.png"
+            }
+        }]
     }
 }
 ```
@@ -98,7 +105,7 @@
         "pages_total": 147,
         "book_id": 15847933,
         "created_at": "2013-11-23T11:25:45.700Z",
-        "updated_at": "2013-11-23T11:25:45.700Z"
+        "comments": []
     }
 }
 ```

@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
   has_many :links, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
+
+  def public_params
+    {
+      id: id,
+      name: name,
+      avatar_url: avatar.url
+    }
+  end
 end

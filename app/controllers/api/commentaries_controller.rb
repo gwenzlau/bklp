@@ -1,4 +1,6 @@
 class API::CommentariesController < ApplicationController
+  include APIHelper
+
   protect_from_forgery except: [:create, :update, :destroy]
 
   before_action :authenticate_user!
@@ -9,25 +11,25 @@ class API::CommentariesController < ApplicationController
     @commentary.discussion_id = params[:discussion_id]
 
     if @commentary.save
-      render json: { success: true, commentary: @commentary }
+      render json: to_json({ success: true, commentary: @commentary })
     else
-      render json: { success: false, errors: @commentary.errors, commentary: @commentary }
+      render json: to_json({ success: false, errors: @commentary.errors, commentary: @commentary })
     end
   end
 
   def update
     if @commentary.update_attributes(commentary_params)
-      render json: { success: true, commentary: @commentary }
+      render json: to_json({ success: true, commentary: @commentary })
     else
-      render json: { success: false, errors: @commentary.errors, commentary: @commentary }
+      render json: to_json({ success: false, errors: @commentary.errors, commentary: @commentary })
     end
   end
 
   def destroy
     if @commentary.destroy
-      render json: { success: true, commentary: @commentary }
+      render json: to_json({ success: true, commentary: @commentary })
     else
-      render json: { success: false, errors: "You don't have permission to delete this." }
+      render json: to_json({ success: false, errors: "You don't have permission to delete this." })
     end
   end
 
