@@ -1,5 +1,5 @@
 class API::DiscussionsController < ApplicationController
-  protect_from_forgery except: [:create, :update, :destroy]
+  protect_from_forgery except: :create
 
   before_action :authenticate_user!
 
