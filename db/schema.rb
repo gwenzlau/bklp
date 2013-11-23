@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118193123) do
+ActiveRecord::Schema.define(version: 20131123103507) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -70,11 +70,24 @@ ActiveRecord::Schema.define(version: 20131118193123) do
     t.string   "boolean"
     t.string   "default"
     t.string   "false"
-    t.boolean  "recommend"
+    t.boolean  "recommend",  default: false
     t.integer  "order"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"
+
+  create_table "commentaries", force: true do |t|
+    t.text     "message"
+    t.integer  "page"
+    t.integer  "pages_total"
+    t.integer  "user_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commentaries", ["discussion_id"], name: "index_commentaries_on_discussion_id"
+  add_index "commentaries", ["user_id"], name: "index_commentaries_on_user_id"
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -90,6 +103,15 @@ ActiveRecord::Schema.define(version: 20131118193123) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "discussions", force: true do |t|
+    t.text     "quote"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "discussions", ["book_id"], name: "index_discussions_on_book_id"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -130,10 +152,9 @@ ActiveRecord::Schema.define(version: 20131118193123) do
   create_table "reviews", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "quote"
     t.string   "body"
-    t.integer  "userid"
-    t.integer  "bookid"
+    t.integer  "user_id"
+    t.integer  "book_id"
   end
 
   create_table "users", force: true do |t|
@@ -158,19 +179,5 @@ ActiveRecord::Schema.define(version: 20131118193123) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "votes", force: true do |t|
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.integer  "voter_id"
-    t.string   "voter_type"
-    t.boolean  "vote_flag"
-    t.string   "vote_scope"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end
