@@ -1,4 +1,4 @@
-class Discussions < ActiveRecord::Base
+class Discussion < ActiveRecord::Base
   belongs_to :book
   has_many :commentaries
 

@@ -5,9 +5,9 @@ class API::DiscussionsController < ApplicationController
   before_action :set_discussion, only: [:update, :destroy]
 
   def index
-    book = Book.find_by!(olidb: params[:book_id])
+    discussions = Discussion.where(book_id: params[:book_id])
 
-    render json: { success: true, discussions: book.discussions }
+    render json: { success: true, discussions: discussions }
   end
 
   def create
