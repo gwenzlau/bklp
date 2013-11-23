@@ -2,29 +2,26 @@ class API::DiscussionsController < ApplicationController
   protect_from_forgery except: [:create, :update, :destroy]
 
   before_action :authenticate_user!
-  before_action :set_discussion, only: [:update, :destroy]
 
   def index
-    discussions = Discussion.where(book_id: params[:book_id])
+    discussions = Discussion.where(book_id: params[:book_id]).includes(:commentaries)
 
-    render json: { success: true, discussions: discussions }
+    render json: { success: true, discussions: discussions.to_a }
   end
 
   def create
-  end
+    discussion = Discussion.new(discussion_params)
+    discussion.book_id = params[:book_id]
 
-  def update
-  end
-
-  def destroy
+    if discussion.save
+      render json: { success: true, discussion: discussion }
+    else
+      render json: { success: false, errors: discussion.errors, discussion: discussion }
+    end
   end
 
 private
-  def set_discussion
-    @disucssion = Discussion.find(params[:id])
-  end
-
   def discussion_params
-    params.require(:disucssion).permit(:quote)
+    params.require(:discussion).permit(:quote, :page, :pages_total)
   end
 end
