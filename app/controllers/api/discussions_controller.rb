@@ -4,9 +4,17 @@ class API::DiscussionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    discussions = Discussion.where(book_id: params[:book_id]).includes(:commentaries)
+    discussions = Discussion.includes(:commentaries).where(book_id: params[:book_id])
+    # discussions.each {|d| d.commentaries.to_a }
 
-    render json: { success: true, discussions: discussions.to_a }
+    render json: { success: true, discussions: discussions }
+  end
+
+  def show
+    discussion = Discussion.includes(:commentaries).find(params[:id])
+    discussion.commentaries
+
+    render json: { success: true, discussion: discussion }
   end
 
   def create

@@ -30,6 +30,27 @@
 }
 ```
 
+## Get a single discussion for a book
+
+#### GET `/api/book/:goodreads_id/discussions/:id`
+
+### Successful response
+
+```json
+{
+    "success": true,
+    "discussion": {
+        "id": 1,
+        "quote": "Some random quote",
+        "page": 14,
+        "pages_total": 147,
+        "book_id": 15847933,
+        "created_at": "2013-11-23T11:25:45.700Z",
+        "updated_at": "2013-11-23T11:25:45.700Z"
+    }
+}
+```
+
 ## Create a discussion
 
 #### POST `/api/book/:goodreads_id/discussions`

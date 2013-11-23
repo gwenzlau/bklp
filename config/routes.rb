@@ -57,7 +57,9 @@ Booksy::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     scope "/book/:book_id", as: "book" do
-      resources :discussions, only: [:index, :create, :update, :destroy]
+      resources :discussions, only: [:index, :show, :create] do
+        resources :commentaries, only: [:create, :update, :destroy]
+      end
     end
   end
 
