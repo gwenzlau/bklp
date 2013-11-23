@@ -48,16 +48,23 @@ gem 'jquery-rails'
 group :production do
 	gem 'pg'
 end
+
 group :development, :test do
-	gem 'sqlite3'
+  gem 'sqlite3'
+  gem 'rspec-rails', '~> 2.0'
+  gem 'shoulda-matchers', '~> 2.4'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem "faker", "~> 1.2.0"
 end
 
 gem 'dotenv-rails', :groups => [:development, :test]
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'multi_json'
 
 # Use unicorn as the app server
 gem 'unicorn'

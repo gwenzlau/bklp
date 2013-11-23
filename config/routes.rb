@@ -1,5 +1,7 @@
 Booksy::Application.routes.draw do
-  
+
+  root 'pages#home'
+
   resources :reviews
 
   resources :links do
@@ -12,7 +14,7 @@ Booksy::Application.routes.draw do
 
   resources :collections
   resources :acomments
-  
+
   resources :books do
     member do
       put :start_future_read
@@ -24,7 +26,7 @@ Booksy::Application.routes.draw do
       post :order
     end
   end
-  
+
   resources :activities
 
   devise_for :users
@@ -44,17 +46,23 @@ Booksy::Application.routes.draw do
    get 'futurelink', to: 'links#future'
    get 'author', to: 'books#author'
    get 'recommend', to: 'books#recommend'
-   # api route for autocomplete 
-   get 'search/autocomplete', to: 'pages#autocomplete' 
+   # api route for autocomplete
+   get 'search/autocomplete', to: 'pages#autocomplete'
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
 
 
   get "pages/home"
-  
 
-  root :to => 'pages#home'
-  
+
+  namespace :api, defaults: {format: :json} do
+    scope "/book/:book_id", as: "book" do
+      resources :discussions, only: [:index, :show, :create] do
+        resources :commentaries, only: [:create, :update, :destroy]
+      end
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
