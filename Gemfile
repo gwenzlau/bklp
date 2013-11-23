@@ -56,8 +56,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'multi_json'
 
 # Use unicorn as the app server
 gem 'unicorn'

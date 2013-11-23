@@ -181,6 +181,7 @@ DEPENDENCIES
   foreman
   goodreads
   jquery-rails
+  multi_json
   newrelic_rpm
   openlibrary
   paperclip (~> 3.0)
