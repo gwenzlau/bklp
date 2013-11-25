@@ -11,7 +11,17 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require angular
+//= require angular-resource
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+//= require typeahead
+//= require_self
+//= require_tree ./app/directives/
+//= require_tree ./app/services/
+//= require_tree ./app/controllers/
 
+window.App = angular.module('Bookloop', ['ngResource']);
+
+// Dumb object for placing rails data inside
+App.opts = {};

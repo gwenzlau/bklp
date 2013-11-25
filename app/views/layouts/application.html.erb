@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Bookloop">
 <head>
   <title>Bookloop</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -8,7 +8,7 @@
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
   <script>
     <% if user_signed_in? %>
-    
+
     function updateBookStatus(user_id, book_id, status, title, obj) {
       var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
       var url = '';
@@ -44,7 +44,7 @@
     });
 
     $(document).ready( function() {
-      
+
       var BookloopEngine = {
           compile: function(template) {
               return {
@@ -53,7 +53,7 @@
                   }
               };
           }
-      }; 
+      };
 
       $('#q').typeahead({
         name: 'books',
@@ -66,11 +66,11 @@
         engine: BookloopEngine
       });
     });
-    
+
     <% else %>
 
     $(document).ready( function() {
-      
+
       var BookloopEngine = {
           compile: function(template) {
               return {
@@ -79,7 +79,7 @@
                   }
               };
           }
-      }; 
+      };
 
       $('#q').typeahead({
         name: 'books',
@@ -94,7 +94,7 @@
 
     });
 
-    <% end %> 
+    <% end %>
   </script>
 </head>
 <body>
