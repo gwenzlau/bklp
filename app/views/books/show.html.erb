@@ -10,7 +10,7 @@
 		   </div>
 		 <% else %>
 		<% end %>
-			
+
 	<div align="center">
 		<h2><%= @thebook.title %></h2>
 		<h4>BY</h4>
@@ -21,19 +21,19 @@
 				<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
 			<% end%>
 	</div>
-	
+
 	<div class="b-cover" align="center">
 		<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"), :class=>"book-cover")%>
-	</div> 
-	
+	</div>
+
 	<h4>Book status:</h4>
 	<%= render 'books/bookstatus' %>
 
 	<h4>Description</h4>
 	<span style="font-size: 10px;"><%= @thebook.description %></span>
-	
+
 	<h4>People currently reading this book:</h4>
-	
+
 	<% @users_reading.each do |reading| %>
 
 	<ul class="inline">
@@ -49,10 +49,14 @@
 	<hr>
 
 	<h4>Discussions</h4>
-	<small>(coming soon...)</small>
+	<script>
+		App.opts.book_id = "<%= @thebook.id %>";
+	</script>
+	<%= render 'discussions/list' %>
+
  <hr class="featurette-divider">
   <div class="featurette">
-  	
+
 	<h4>Reviews</h4>
 	<div class="span4">
 
@@ -72,7 +76,7 @@
 					<br>
 						 <%= link_to User.find(review.user_id).name, user_path(review.user_id) %>:<span style="font-size: 12px;"> <%= review.body %></span>
 							 <% end %>
-		
+
 	</div>
 
   </div>

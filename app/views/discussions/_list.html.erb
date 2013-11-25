@@ -1,0 +1,19 @@
+<div ng-controller="DiscussionsCtrl" class="ui-discussions">
+    <ul>
+        <li ng-repeat="discussion in discussions">
+            <h3>{{discussion.quote}}</h3>
+            <ul>
+                <li ng-repeat="comment in discussion.comments">
+                    <a href="/users/{{comment.user.id}}" class="posted-by">
+                        <span class="avatar"><img ng-src="{{comment.user.avatar_url}}" alt="{{comment.user.name}}"></span>
+                        <span class="username">{{comment.user.name}}</span>
+                    </a>
+
+                    <div class="comment-body">
+                        {{comment.message}}
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
