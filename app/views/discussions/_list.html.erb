@@ -1,4 +1,16 @@
 <div ng-controller="DiscussionsCtrl" class="ui-discussions">
+    <button>Start a discussion</button>
+
+    <div class="new-discussion">
+        <input placeholder="Quote" ng-model="discussion.quote">
+
+        Page <input ng-model="discussion.page"> of <input ng-model="discussion.pages_total">.
+
+        Quote: "{{discussion.quote}}"
+
+        <button ng-click="newDiscussion(discussion)">Add</button>
+    </div>
+
     <ul>
         <li ng-repeat="discussion in discussions">
             <h3>{{discussion.quote}}</h3>
@@ -14,6 +26,11 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="ui-comment-form">
+                <textarea ng-model="comment"></textarea>
+                <button ng-click="submit_comment()">Add comment</button>
+            </div>
         </li>
     </ul>
 </div>
