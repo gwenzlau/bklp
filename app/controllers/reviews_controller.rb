@@ -28,6 +28,8 @@ def create
   def gonew
     client = Goodreads.new(Goodreads.configuration)
     @book = client.book(params[:id])
+    
+    @review = Review.new
   end
 
   def destroy
