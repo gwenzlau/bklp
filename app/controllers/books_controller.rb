@@ -90,7 +90,7 @@ class BooksController < ApplicationController
     #@book.create_activity :book_readit
 
     if @book.update_attribute(:status, "1")
-      redirect_to current_user
+      redirect_to finished_path(:id => @book.olidb)
     else
       redirect_to root_path
     end

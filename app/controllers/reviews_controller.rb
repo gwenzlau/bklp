@@ -3,6 +3,10 @@ class ReviewsController < ApplicationController
 def index	
 end
 
+def show
+  
+end
+
 def create
     @review = Review.new(review_params)
     if @review.save
@@ -19,6 +23,11 @@ def create
       format.html # new.html.erb
       format.json { render json: @review }
     end
+  end
+  
+  def gonew
+    client = Goodreads.new(Goodreads.configuration)
+    @book = client.book(params[:id])
   end
 
   def destroy
