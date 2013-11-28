@@ -3,7 +3,7 @@
 <h3>Please add a review of this book:</h3>
 
 <%= form_for(@review) do |f| %>
-	<%= f.text_area :review, :value => "", :size => "80x6" %>
+	<%= f.text_area :body, :value => "", :size => "80x6" %>
 	<%= f.hidden_field :book_id, :value => params[:id] %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.submit "Add a review", :class => "btn" %>
