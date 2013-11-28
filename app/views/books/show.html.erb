@@ -54,24 +54,11 @@
   <div class="featurette">
   	
 	<h4>Reviews</h4>
-	<div class="span4">
-
-		<% Review.all do |review| %>
-		<% if @mybook[0].status == 1 %>
-		<%= simple_form_for(@review, html: { class: "form-horizontal"}) do |f| %>
-  			<%= f.error_notification %>
-  			<%= f.input :body, :placeholder => "what do you think?" %>
-			<%= f.hidden_field :user_id, :value => current_user.id %>
-
-  			<div class="form-actions">
-   			 <%= f.button :submit, class: "btn btn-primary" %>
-  			</div>
- 			 <% end %>
- 			 <% else %>
- 			 <% end %>
-					<br>
-						 <%= link_to User.find(review.user_id).name, user_path(review.user_id) %>:<span style="font-size: 12px;"> <%= review.body %></span>
-							 <% end %>
+	
+		
+		<% @review.each do |review| %>
+			<div class="span4"><b><%= User.find(review.user_id).name %> said:</b> <%= review.body %></div>
+		<% end %>
 		
 	</div>
 
