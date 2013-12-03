@@ -27,4 +27,14 @@
             }
         }
     }
+
+    input.ng-dirty.ng-invalid,
+    textarea.ng-dirty.ng-invalid {
+        border: 1px solid red;
+    }
+
+    input.ng-valid,
+    textarea.ng-valid {
+        border: 1px solid green;
+    }
 }

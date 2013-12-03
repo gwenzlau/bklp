@@ -6,6 +6,7 @@
         </li>
     </ul>
 
+    <%# Only shown when a visible discussion is present %>
     <div class="active-discussion" ng-show="visibleDiscussion">
         <span class="user-info">{{visibleDiscussion.user.name}}</span>
         <span class="time-info">{{visibleDiscussion.created_at}}</span>
@@ -26,19 +27,27 @@
             </li>
         </ul>
 
-        <div class="ui-comment-form">
-            <textarea placeholder="Write a comment..." ng-model="newCommentText"></textarea>
-            <button ng-click="postComment($event, visibleDiscussion)">Post reply</button>
-        </div>
+        <form name="comment_form" class="ui-comment-form" ng-submit="postComment($event, visibleDiscussion)" novalidate>
+            <textarea name="message" placeholder="Write a comment..." ng-minlength="5" ng-model="newCommentText" ng-focus required></textarea>
+            <span class="form-error" ng-show="comment_form.message.$dirty && comment_form.message.$invalid && !comment_form.message.$focused">You must provide a comment (at least 5 characters)</span>
+
+            <input type="submit" ng-disabled="comment_form.$invalid" value="Post reply">
+        </form>
     </div>
 
-    <div class="new-discussion" ng-show="newDiscussionForm">
-        <input placeholder="So there’s this quote" ng-model="discussion.quote" class="input-large">
+    <%# Only shown when newDiscussionForm is truthy %>
+    <form name="discussion_form" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
+        <input placeholder="So there’s this quote" name="quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required>
+        <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>
 
-        <p>Which is on page <input ng-model="discussion.page" class="input-xs"> out of <input ng-model="discussion.pages_total" class="input-xs"> pages.</p>
+        <p>Which is on page <input type="number" name="page" ng-model="discussion.page" ng-focus class="input-xs" required> out of <input type="number" name="pages_total" ng-model="discussion.pages_total" ng-focus class="input-xs" required> pages.</p>
 
-        <textarea placeholder="And the reason I brought it up is..." ng-model="discussion.message"></textarea>
+        <span class="form-error" ng-show="discussion_form.page.$dirty && discussion_form.page.$invalid && !discussion_form.page.$focused">Page must be a valid number</span>
+        <span class="form-error" ng-show="discussion_form.pages_total.$dirty && discussion_form.pages_total.$invalid && !discussion_form.pages_total.$focused">Total pages must be a valid number</span>
 
-        <button ng-click="newDiscussion(discussion)">Add</button>
-    </div>
+        <textarea name="message" placeholder="And the reason I brought it up is..." ng-focus ng-model="discussion.message" required></textarea>
+        <span class="form-error" ng-show="discussion_form.message.$dirty && discussion_form.message.$invalid && !discussion_form.message.$focused">You must provide a reason</span>
+
+        <input type="submit" ng-disabled="discussion_form.$invalid" value="Add discussion">
+    </form>
 </div>
