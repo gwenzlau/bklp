@@ -13,10 +13,14 @@ class Discussion < ActiveRecord::Base
       message:        message,
       page:           page,
       pages_total:    pages_total,
-      percentage:     ((page / pages_total) * 100).round(2),
+      percentage:     percentage,
       created_at:     created_at,
       user:           user.public_params,
       comments:       commentaries.to_a.map(&:public_params)
     }
+  end
+
+  def percentage
+    ((page.to_f / pages_total.to_f) * 100).round(2)
   end
 end
