@@ -1,0 +1,30 @@
+.ui-discussions {
+    .discussions-bar {
+        width: 100%;
+        height: 10px;
+        background-color: #9b9b9b;
+        position: relative;
+        list-style: none;
+        margin: 0 0 40px;
+        padding: 0;
+        border-radius: 5px;
+        cursor: pointer;
+
+        li {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: -20px;
+            height: 40px;
+            width: 40px;
+            cursor: pointer;
+            border-radius: 20px;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 20px;
+            }
+        }
+    }
+}

@@ -1,36 +1,44 @@
 <div ng-controller="DiscussionsCtrl" class="ui-discussions">
-    <button>Start a discussion</button>
 
-    <div class="new-discussion">
-        <input placeholder="Quote" ng-model="discussion.quote">
+    <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
+        <li ng-repeat="discussion in discussions" style="left: {{discussion.percentage}}%;">
+        <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
+        </li>
+    </ul>
 
-        Page <input ng-model="discussion.page"> of <input ng-model="discussion.pages_total">.
+    <div class="active-discussion" ng-show="visibleDiscussion">
+        <span class="user-info">{{visibleDiscussion.user.name}}</span>
+        <span class="time-info">{{visibleDiscussion.created_at}}</span>
 
-        Quote: "{{discussion.quote}}"
+        <h3>{{visibleDiscussion.quote}}</h3>
+        <h4>{{visibleDiscussion.message}}</h4>
+
+        <ul>
+            <li ng-repeat="comment in visibleDiscussion.comments">
+                <a href="/users/{{comment.user.id}}" class="posted-by">
+                    <span class="avatar"><img ng-src="{{comment.user.avatar_url}}" alt="{{comment.user.name}}"></span>
+                    <span class="username">{{comment.user.name}}</span>
+                </a>
+
+                <div class="comment-body">
+                    {{comment.message}}
+                </div>
+            </li>
+        </ul>
+
+        <div class="ui-comment-form">
+            <textarea placeholder="Write a comment..." ng-model="comment"></textarea>
+            <button ng-click="submit_comment()">Post reply</button>
+        </div>
+    </div>
+
+    <div class="new-discussion" ng-show="newDiscussionForm">
+        <input placeholder="So there’s this quote" ng-model="discussion.quote" class="input-large">
+
+        <p>Which is on page <input ng-model="discussion.page" class="input-xs"> out of <input ng-model="discussion.pages_total" class="input-xs"> pages.</p>
+
+        <textarea placeholder="And the reason I brought it up is..." ng-model="discussion.message"></textarea>
 
         <button ng-click="newDiscussion(discussion)">Add</button>
     </div>
-
-    <ul>
-        <li ng-repeat="discussion in discussions">
-            <h3>{{discussion.quote}}</h3>
-            <ul>
-                <li ng-repeat="comment in discussion.comments">
-                    <a href="/users/{{comment.user.id}}" class="posted-by">
-                        <span class="avatar"><img ng-src="{{comment.user.avatar_url}}" alt="{{comment.user.name}}"></span>
-                        <span class="username">{{comment.user.name}}</span>
-                    </a>
-
-                    <div class="comment-body">
-                        {{comment.message}}
-                    </div>
-                </li>
-            </ul>
-
-            <div class="ui-comment-form">
-                <textarea ng-model="comment"></textarea>
-                <button ng-click="submit_comment()">Add comment</button>
-            </div>
-        </li>
-    </ul>
 </div>
