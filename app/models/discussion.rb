@@ -1,7 +1,7 @@
 class Discussion < ActiveRecord::Base
   belongs_to :book
   belongs_to :user
-  has_many :commentaries
+  has_many :commentaries, dependent: :destroy
 
   validates_presence_of :quote, :page, :pages_total, :user, :message
 
