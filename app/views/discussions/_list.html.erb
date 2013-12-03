@@ -27,8 +27,8 @@
         </ul>
 
         <div class="ui-comment-form">
-            <textarea placeholder="Write a comment..." ng-model="comment"></textarea>
-            <button ng-click="submit_comment()">Post reply</button>
+            <textarea placeholder="Write a comment..." ng-model="newCommentText"></textarea>
+            <button ng-click="postComment($event, visibleDiscussion)">Post reply</button>
         </div>
     </div>
 
