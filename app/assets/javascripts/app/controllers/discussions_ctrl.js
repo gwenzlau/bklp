@@ -1,14 +1,22 @@
+/*
+ *  Discussions Controller
+ *
+ *  Handles creating, viewing and posting comments on discussions.
+ */
 App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($scope, $http, Discussion) {
     var book_id = App.opts.book_id;
 
-    function resetForm() {
-
-    }
-
+    // Lookup all discussions from the API
     $scope.discussions = Discussion.query({ book_id: book_id });
+
+    // Create a new discussion for the discussion form
     $scope.discussion = new Discussion({ book_id: book_id });
+
+    // Keep these empty for now so that neither the
+    // show discussion view or form show up
     $scope.visibleDiscussion = null;
     $scope.newDiscussionForm = null;
+
 
     $scope.newDiscussion = function($event, discussion) {
         if ($event) $event.preventDefault();

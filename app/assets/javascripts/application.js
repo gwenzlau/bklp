@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require typeahead
+//= require underscore
 //= require_self
 //= require_tree ./app/directives/
 //= require_tree ./app/services/
