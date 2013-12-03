@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123103507) do
+ActiveRecord::Schema.define(version: 20131203201311) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -109,9 +109,12 @@ ActiveRecord::Schema.define(version: 20131123103507) do
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "message"
   end
 
   add_index "discussions", ["book_id"], name: "index_discussions_on_book_id"
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false

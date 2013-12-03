@@ -18,7 +18,7 @@ class API::DiscussionsController < ApplicationController
   end
 
   def create
-    discussion = Discussion.new(discussion_params)
+    discussion = current_user.discussions.new(discussion_params)
     discussion.book_id = params[:book_id]
 
     if discussion.save
@@ -30,6 +30,6 @@ class API::DiscussionsController < ApplicationController
 
 private
   def discussion_params
-    params.require(:discussion).permit(:quote, :page, :pages_total)
+    params.require(:discussion).permit(:quote, :page, :pages_total, :message)
   end
 end
