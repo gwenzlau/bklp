@@ -3,7 +3,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :user
   has_many :commentaries
 
-  validates_presence_of :quote, :page, :pages_total
+  validates_presence_of :quote, :page, :pages_total, :user, :message
 
   def public_params
     {
