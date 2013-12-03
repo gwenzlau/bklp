@@ -50,6 +50,7 @@ Booksy::Application.routes.draw do
    get 'search/autocomplete', to: 'pages#autocomplete'
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
+   get 'finished', to: 'reviews#gonew'
 
 
   get "pages/home"

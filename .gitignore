@@ -1,5 +1,6 @@
 # Ignore bundler config
 /.bundle
+/config/initializers/secret_token.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -15,3 +16,5 @@ doc/
 .idea
 .env
 .env
+
+config/initializers/secret_token.rb

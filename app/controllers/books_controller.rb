@@ -21,12 +21,11 @@ class BooksController < ApplicationController
     if user_signed_in?
       @newbook = Book.new
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
-      
     end
     
     #Users currently reading this book
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
-    @review = Review.where(:olidb => params[:id])
+    @review = Review.where(:book_id => params[:id])
   end
   
   def author
@@ -90,7 +89,7 @@ class BooksController < ApplicationController
     #@book.create_activity :book_readit
 
     if @book.update_attribute(:status, "1")
-      redirect_to current_user
+      redirect_to finished_path(:id => @book.olidb)
     else
       redirect_to root_path
     end
