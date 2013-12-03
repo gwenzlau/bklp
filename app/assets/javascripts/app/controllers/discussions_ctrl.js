@@ -34,7 +34,12 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
         // Show the discussion
         $scope.showDiscussion(discussion);
 
+        // Reset the form
         $scope.discussion_form.$setPristine(true);
+        $scope.discussion_form.quote = "";
+        $scope.discussion_form.page = "";
+        $scope.discussion_form.pages_total = "";
+        $scope.discussion_form.message = "";
     };
 
 
@@ -76,10 +81,12 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
 
         $http.post(new_comment_url, JSON.stringify({ commentary: { message: $scope.newCommentText } })).
             success(function(data, status, headers, config) {
+                // Reload discussions
                 $scope.discussions = Discussion.query({ book_id: book_id });
                 $scope.visibleDiscussion = Discussion.get({ book_id: book_id, id: discussion.id });
-                $scope.newCommentText = "";
 
+                // Reset the form
+                $scope.newCommentText = "";
                 $scope.comment_form.$setPristine(true);
             }).
             error(function(data, status, headers, config) {

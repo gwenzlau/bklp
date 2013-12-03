@@ -1,4 +1,4 @@
-<div ng-controller="DiscussionsCtrl" class="ui-discussions">
+<div ng-controller="DiscussionsCtrl" class="book-discussions">
 
     <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
         <li ng-repeat="discussion in discussions" style="left: {{discussion.percentage}}%;">
@@ -36,18 +36,27 @@
     </div>
 
     <%# Only shown when newDiscussionForm is truthy %>
-    <form name="discussion_form" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
-        <input placeholder="So there’s this quote" name="quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required>
-        <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>
+    <form name="discussion_form" id="discussion-container" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
+        <div id="discussion-form">
+            <textarea placeholder="&quot;So there is this quote...&quot;" name="quote" id="discussion-form-quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required></textarea>
+            <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>
 
-        <p>Which is on page <input type="number" name="page" ng-model="discussion.page" ng-focus class="input-xs" required> out of <input type="number" name="pages_total" ng-model="discussion.pages_total" ng-focus class="input-xs" required> pages.</p>
+            <span>Which is on page</span>
+            <input type="number" name="page" id="page-number" ng-model="discussion.page" ng-focus class="input-xs" required>
+            <span>out of</span>
+            <input type="number" name="pages_total" id="total-pages" ng-model="discussion.pages_total" ng-focus class="input-xs" required>
+            <span>total pages.</span>
 
-        <span class="form-error" ng-show="discussion_form.page.$dirty && discussion_form.page.$invalid && !discussion_form.page.$focused">Page must be a valid number</span>
-        <span class="form-error" ng-show="discussion_form.pages_total.$dirty && discussion_form.pages_total.$invalid && !discussion_form.pages_total.$focused">Total pages must be a valid number</span>
+            <span class="form-error" ng-show="discussion_form.page.$dirty && discussion_form.page.$invalid && !discussion_form.page.$focused">Page must be a valid number</span>
+            <span class="form-error" ng-show="discussion_form.pages_total.$dirty && discussion_form.pages_total.$invalid && !discussion_form.pages_total.$focused">Total pages must be a valid number</span>
 
-        <textarea name="message" placeholder="And the reason I brought it up is..." ng-focus ng-model="discussion.message" required></textarea>
-        <span class="form-error" ng-show="discussion_form.message.$dirty && discussion_form.message.$invalid && !discussion_form.message.$focused">You must provide a reason</span>
+            <textarea name="message" id="discussion-form-comment" placeholder="And the reason I brought it up is..." ng-focus ng-model="discussion.message" required></textarea>
+            <span class="form-error" ng-show="discussion_form.message.$dirty && discussion_form.message.$invalid && !discussion_form.message.$focused">You must provide a reason</span>
+        </div><!-- /#discussion-form -->
 
-        <input type="submit" ng-disabled="discussion_form.$invalid" value="Add discussion">
+        <div id="discussion-action">
+            <input type="submit" ng-disabled="discussion_form.$invalid" value="Post" class="btn btn-default btn-sm pull-right">
+            <div class="clearfix"></div>
+        </div><!-- /#discussion-action -->
     </form>
 </div>
