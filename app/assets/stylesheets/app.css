@@ -5,7 +5,7 @@
 	border-bottom: 2px solid #F5F5F5;
 }
 .navbar form input {
-	background: #f5f5f5 url(../img/magnifier.png) 3px 4px no-repeat;
+	background: #f5f5f5 url(../images/magnifier.png) 3px 4px no-repeat;
 	border: 0;
 	box-shadow: none;
 	padding-left: 30px;
@@ -69,25 +69,25 @@
 	background-color: #F5F5F5;
 }
 #sidebar .menu li a#discover {
-	background-image: url(../img/discover.png);
+	background-image: url(../images/discover.png);
 }
 #sidebar .menu li a#group {
-	background-image: url(../img/groups.png);
+	background-image: url(../images/groups.png);
 }
 #sidebar .menu li a#messages {
-	background-image: url(../img/messages.png);
+	background-image: url(../images/messages.png);
 }
 #sidebar .menu li a#current {
-	background-image: url(../img/current.png);
+	background-image: url(../images/current.png);
 }
 #sidebar .menu li a#future {
-	background-image: url(../img/future.png);
+	background-image: url(../images/future.png);
 }
 #sidebar .menu li a#past {
-	background-image: url(../img/past.png);
+	background-image: url(../images/past.png);
 }
 #sidebar .menu li a#settings {
-	background-image: url(../img/settings.png);
+	background-image: url(../images/settings.png);
 }
 
 /* home feed
@@ -111,6 +111,9 @@ ul#recent-activity li img {
 	border-radius: 40px;
 	height: 70px;
 	width: 70px;
+}
+ul#recent-activity li strong a {
+	color: #4095f1;
 }
 ul#recent-activity li a {
 	color: #4095f1;
@@ -263,7 +266,7 @@ ul#recent-activity li ul li a {
 	width: 19px;
 	top: 20px;
 	right: 20px;
-	background: url(../img/close.png) no-repeat;
+	background: url(../images/close.png) no-repeat;
 	background-size: 90%;
 	cursor: pointer;
 }
