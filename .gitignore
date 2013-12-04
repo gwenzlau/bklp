@@ -15,6 +15,3 @@ doc/
 .DS_Store
 .idea
 .env
-.env
-
-config/initializers/secret_token.rb
