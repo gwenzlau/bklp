@@ -1,0 +1,477 @@
+/* Site-wide Styles
+------------------------*/
+.navbar {
+	background: #FFF;
+	border-bottom: 2px solid #F5F5F5;
+}
+.navbar form input {
+	background: #f5f5f5 url(../img/magnifier.png) 3px 4px no-repeat;
+	border: 0;
+	box-shadow: none;
+	padding-left: 30px;
+	-webkit-transition: all .2s;
+}
+.navbar form input:focus {
+	box-shadow: none;
+	width: 400px;
+}
+.navbar .container {
+	padding: 8px 0;
+}
+.navbar > .container .navbar-brand {
+	padding: 7px 20px 7px 7px;
+	border-right: 1px solid #F5F5F5;
+	margin-right: 7px;
+}
+.navbar > .container #profile-img {
+	padding: 5px 20px 5px 7px;
+	border-right: 1px solid #F5F5F5;
+}
+.navbar > .container #profile-img img {
+	border-radius: 30px;
+	height: 40px;
+}
+.navbar > .container #profile-name {
+	padding: 15px 10px;
+	color: #999;
+}
+.navbar > .container #signout {
+	margin-top: -3px;
+}
+#main {
+	margin-top: 50px;
+}
+.show {
+	display: block;
+}
+
+/* Sidebar
+------------------------*/
+#sidebar label {
+	color: #C8C8C8;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+#sidebar .menu li a {
+	font-size: 13px;
+	font-weight: 500;
+	color: #777;
+	padding-left: 30px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+#sidebar .nav-pills > li.active > a {
+	background-color: #F5F5F5;
+}
+#sidebar .menu li a#discover {
+	background-image: url(../img/discover.png);
+}
+#sidebar .menu li a#group {
+	background-image: url(../img/groups.png);
+}
+#sidebar .menu li a#messages {
+	background-image: url(../img/messages.png);
+}
+#sidebar .menu li a#current {
+	background-image: url(../img/current.png);
+}
+#sidebar .menu li a#future {
+	background-image: url(../img/future.png);
+}
+#sidebar .menu li a#past {
+	background-image: url(../img/past.png);
+}
+#sidebar .menu li a#settings {
+	background-image: url(../img/settings.png);
+}
+
+/* home feed
+------------------------*/
+#activity-feed label, #following label, #currently-reading label, #book-reviews label {
+	color: #C8C8C8;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+ul#recent-activity {
+	list-style: none;
+	padding-left: 0;
+}
+ul#recent-activity li {
+	margin: 20px 0;
+	/*border-bottom: 1px solid #F5F5F5;
+	padding-bottom: 20px;*/
+}
+ul#recent-activity li img {
+	border-radius: 40px;
+}
+ul#recent-activity li p {
+	margin-left: 20px;
+	padding: 22px 0 0px 0;
+	color: #333;
+	margin-bottom: 0;
+}
+ul#recent-activity li .activity-comment {
+	border-left: 5px solid #EEE;
+	padding: 5px 0 5px 10px;
+	margin-left: 20px;
+	margin-top: 10px;
+	display: block;
+	color: #888;
+}
+ul#recent-activity li p .activity-book {
+	color: #4095f1;
+}
+ul#recent-activity li ul {
+	list-style: none;
+	padding-left: 18px;
+	margin-top: 10px;
+}
+ul#recent-activity li ul li {
+	display: inline;
+	font-size: 12px;
+	margin-right: 0px;
+	border: none;
+}
+ul#recent-activity li ul li a {
+	color: #4095f1;
+}
+
+/* discover window
+------------------------*/
+#discover-window {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	top: 0;
+	display: none;
+	z-index: 99999999;
+}
+#discover-quote {
+	width: 60%;
+	margin: 120px auto 0 auto;
+}
+#discover-quote p {
+	font-size: 40px;
+	color: #FFF;
+	font-weight: 500;
+}
+#discover-quote #divider {
+	margin: 40px auto 0 auto;
+	width: 80px;
+	height: 2px;
+	border-top: 1px solid #999;
+}
+#discover-quote p.book-title {
+	color: #999;
+	font-size: 14px;
+	text-align: right;
+	font-family: Georgia;
+	font-style: italic;
+	font-weight: normal;
+	margin-top: 40px;	
+}
+#discover-comment {
+	width: 60%;
+	margin: 80px auto 50px auto;
+}
+#discover-comment img {
+	border-radius: 40px;
+}
+#discover-comment span {
+	color: #999;
+	font-family: Georgia;
+	font-size: 14px;
+}
+#discover-comment span strong {
+	color: #CCC;
+	font-family: "Helvetica Neue";
+	margin-left: 15px;
+	margin-right: 10px;
+	font-weight: 500;
+}
+#discover-action {
+	text-align: center;
+	margin-top: 40px;
+}
+#discover-action #next-quote {
+	padding: 7px 10px;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #F5F5F5;
+	margin: 150px auto 0 auto;
+	border: 1px solid #F5F5F5;
+	width: 140px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+#discover-action #next-quote:hover {
+	color: #777;
+	border: 1px solid #777;
+}
+.close-discover {
+	position: absolute;
+	height: 20px;
+	width: 19px;
+	top: 20px;
+	right: 20px;
+	background: url(../img/close.png) no-repeat;
+	background-size: 90%;
+	cursor: pointer;
+}
+.close-discover:hover {
+	opacity: 0.5;
+}
+
+/* book
+------------------------*/
+#book-info h2 {
+	display: inline;
+}
+#book-info p {
+	color: #474742;
+}
+#book-author {
+	font-size: 12px; 
+	color: #999 !important;
+	font-family: Georgia;
+	font-style: italic;
+	margin-top: 5px;
+}
+#ingress {
+	font-family: Georgia;
+	font-size: 28px;
+	font-style: italic;
+	margin-bottom: 20px;
+}
+#book-actions button {
+	color: #777;
+}
+#currently-reading, #book-reviews {
+	margin-top: 40px;
+}
+#currently-reading ul {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 15px;
+}
+#currently-reading ul li {
+	display: inline-table;
+	text-align: center;
+	width: auto;
+	margin-right: 20px;
+}
+#currently-reading ul li  a {
+	color: #4095f1;
+}
+#currently-reading ul li img {
+	border-radius: 60px;
+	display: block;
+	margin-bottom: 5px
+}
+#book-reviews ul {
+	list-style: none;
+	padding-left: 0;
+}
+#book-reviews ul li {
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #F5F5F5;
+}
+#book-reviews ul li p {
+	margin-bottom: 0;
+}
+#book-reviews ul li a {
+	color: #4095f1;
+	font-weight: 500;
+}
+#book-nav {
+	margin: 20px 0 40px 0;
+}
+#book-nav ul {
+	list-style: none;
+	padding-left: 0;
+	border-bottom: 3px solid #DDD;
+	padding-bottom: 2px;
+}
+#book-nav ul li {
+	display: inline;
+	margin-right: 20px;
+}
+#book-nav ul li a {
+	text-decoration: none;
+	color: #C8C8C8;
+	font-size: 14px;
+}
+#book-nav ul li a.active, #book-nav ul li a:hover {
+	color: #4095f1;
+	border-bottom: 3px solid #4095f1;
+	padding-bottom: 4px;
+}
+#timeline-container {
+	height: 80px;
+	position: relative;
+	margin-top: -20px;
+}
+#timeline-container #timeline {
+	height: 10px;
+	background: #ddd;
+	top: 50%;
+	width: 100%;
+	position: absolute;
+	cursor: pointer;
+}
+#timeline-container img {
+	border-radius: 40px;
+	position: absolute;
+	top: 30%;
+	cursor: pointer;
+}
+#discussion-container {
+	display: none;
+	border: 1px solid #DDD;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	margin-top: 30px;
+}
+#discussion-container:after, #discussion-container:before {
+	bottom: 54.7%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: 9999;
+}
+.show-discussion {
+	left: 0;
+}
+.show-discussion:after, .show-discussion:before {
+	left: inherit;
+}
+#discussion-container:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #FFF;
+	border-width: 10px;
+	margin-left: -10px;
+}
+#discussion-container:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #DDD;
+	border-width: 12px;
+	margin-left: -12px;
+}
+#discussion-container #discussion-action {
+	background: #F9F9F9;
+	padding: 10px 20px;
+	border-top: 1px solid #ddd;
+}
+#discussion-container #discussion-action button {
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#discussion-form {
+	padding: 10px 20px;
+}
+#discussion-form #posted-by {
+	font-size: 12px;
+	margin-top: 10px;
+}
+#discussion-form textarea#discussion-form-quote {
+	font-family: "minion pro", Georgia;
+	font-style: italic;
+	font-size: 30px;
+	background: none;
+	box-shadow: none;
+	border: 0;
+	outline: none;
+	font-weight: 200;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 15px;
+	margin-top: 20px;
+}
+#discussion-form textarea#discussion-form-comment {
+	font-size: 22px;
+	background: none;
+	font-weight: 200;
+	box-shadow: none;
+	border: 0;
+	outline: none;
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+#discussion-form #page-number, #discussion-form #total-pages {
+	background: none;
+	outline: none;
+	box-shadow: none;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	width: 50px;
+	text-align: center;
+	color: #4095f1;
+}
+#discussion-form span {
+	color: #999;
+}
+#book-suggestions a {
+	color: #4095f1;
+	margin-top: 10px;
+	font-weight: 500;
+	display: block;
+}
+#book-reviews .row {
+	margin-bottom: 40px;
+}
+#book-reviews img {
+	border-radius: 60px;
+}
+#book-reviews .review-content {
+	padding: 20px 20px;
+	border: 1px solid #C8C8C8;
+	border-radius: 3px;
+	width: 80%;
+	float: right;
+}
+#book-reviews .review-content p {
+	color: #777;
+}
+#book-reviews .review-content:after, #book-reviews .review-content:before {
+	right: 77.8%;
+	top: 24%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: 9999;
+}
+#book-reviews .review-content:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #FFF;
+	border-width: 5px;
+	margin-top: -5px;
+}
+#book-reviews .review-content:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-right-color: #AAA;
+	border-width: 6px;
+	margin-top: -6px;
+}
+
+/* modals
+------------------------*/
+.modal {
+	border-radius: 0;
+}
+.modal .modal-content {
+	border-radius: inherit;
+}
