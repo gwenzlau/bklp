@@ -289,6 +289,9 @@ ul#recent-activity li ul li a {
 	font-style: italic;
 	margin-top: 5px;
 }
+#book-author a {
+	color: #4095f1;
+}
 #ingress {
 	font-family: Georgia;
 	font-size: 28px;
@@ -318,7 +321,9 @@ ul#recent-activity li ul li a {
 #currently-reading ul li img {
 	border-radius: 60px;
 	display: block;
-	margin-bottom: 5px
+	margin-bottom: 5px;
+	height: 70px;
+	width: 70px;
 }
 #book-reviews ul {
 	list-style: none;
