@@ -9,11 +9,15 @@
 	border: 0;
 	box-shadow: none;
 	padding-left: 30px;
+	border-radius: 3px;
+	height: 35px;
 	-webkit-transition: all .2s;
 }
 .navbar form input:focus {
 	box-shadow: none;
-	width: 400px;
+	width: 400px !important;
+	background-color: #F5F5F5 !important;
+	outline: none;
 }
 .navbar .container {
 	padding: 8px 0;
