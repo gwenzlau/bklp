@@ -26,20 +26,19 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
     $scope.newDiscussion = function($event, discussion) {
         if ($event) $event.preventDefault();
 
-        discussion.$save();
+        discussion.$save(function(discussion_obj) {
+            $scope.discussions.push(discussion_obj);
 
-        // Reload the discussions view
-        $scope.discussions = Discussion.query({ book_id: book_id });
+            // Show the discussion
+            $scope.showDiscussion(discussion_obj);
 
-        // Show the discussion
-        $scope.showDiscussion(discussion);
-
-        // Reset the form
-        $scope.discussion_form.$setPristine(true);
-        $scope.discussion_form.quote = "";
-        $scope.discussion_form.page = "";
-        $scope.discussion_form.pages_total = "";
-        $scope.discussion_form.message = "";
+            // Reset the form
+            $scope.discussion_form.$setPristine(true);
+            $scope.discussion_form.quote = "";
+            $scope.discussion_form.page = "";
+            $scope.discussion_form.pages_total = "";
+            $scope.discussion_form.message = "";
+        });
     };
 
 
@@ -81,9 +80,8 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
 
         $http.post(new_comment_url, JSON.stringify({ commentary: { message: $scope.newCommentText } })).
             success(function(data, status, headers, config) {
-                // Reload discussions
-                $scope.discussions = Discussion.query({ book_id: book_id });
-                $scope.visibleDiscussion = Discussion.get({ book_id: book_id, id: discussion.id });
+                // Add comment into the discussion
+                discussion.comments.push(data.commentary);
 
                 // Reset the form
                 $scope.newCommentText = "";

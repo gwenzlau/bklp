@@ -18,6 +18,18 @@
             width: 40px;
             cursor: pointer;
             border-radius: 20px;
+            margin-left: -20px;
+
+            &.active {
+                width: 70px;
+                height: 70px;
+                top: -35px;
+                margin-left: -35px;
+                z-index: 10;
+                img {
+                    border-radius: 35px;
+                }
+            }
 
             img {
                 max-width: 100%;
