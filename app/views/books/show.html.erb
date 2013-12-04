@@ -30,7 +30,7 @@
 	<%= render 'books/bookstatus' %>
 
 	<h4>Description</h4>
-	<span style="font-size: 10px;"><%= @thebook.description %></span>
+	<span style="font-size: 10px;"><%= raw(@thebook.description) %></span>
 	
 	<h4>People currently reading this book:</h4>
 	
