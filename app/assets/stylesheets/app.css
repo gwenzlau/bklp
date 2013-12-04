@@ -69,25 +69,25 @@
 	background-color: #F5F5F5;
 }
 #sidebar .menu li a#discover {
-	background-image: url(../images/discover.png);
+	background-image:url(https://s3.amazonaws.com/bklp/discover.png);
 }
 #sidebar .menu li a#group {
-	background-image: url(../images/groups.png);
+	background-image:url(https://s3.amazonaws.com/bklp/groups.png);
 }
 #sidebar .menu li a#messages {
-	background-image: url(../images/messages.png);
+	background-image: url(https://s3.amazonaws.com/bklp/messages.png);
 }
 #sidebar .menu li a#current {
-	background-image: url(../images/current.png);
+	background-image: url(https://s3.amazonaws.com/bklp/current.png);
 }
 #sidebar .menu li a#future {
-	background-image: url(../images/future.png);
+	background-image: url(https://s3.amazonaws.com/bklp/future.png);
 }
 #sidebar .menu li a#past {
-	background-image: url(../images/past.png);
+	background-image: url(https://s3.amazonaws.com/bklp/past.png);
 }
 #sidebar .menu li a#settings {
-	background-image: url(../images/settings.png);
+	background-image: url(https://s3.amazonaws.com/bklp/settings.png);
 }
 
 /* home feed
