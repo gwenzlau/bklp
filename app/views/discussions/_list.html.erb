@@ -2,7 +2,10 @@
 
     <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
         <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">
-        <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
+            <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
+        </li>
+        <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
+            <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
         </li>
     </ul>
 

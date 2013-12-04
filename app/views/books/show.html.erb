@@ -51,6 +51,11 @@
 	<h4>Discussions</h4>
 	<script>
 		App.opts.book_id = "<%= @thebook.id %>";
+		App.opts.user = {
+			"name": "<%= current_user.name %>",
+			"avatar_url": "<%= current_user.avatar.url %>",
+			"id": <%= current_user.id %>
+		};
 	</script>
 	<%= render 'discussions/list' %>
 

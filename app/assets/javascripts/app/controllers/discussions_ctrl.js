@@ -12,10 +12,13 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
     // Create a new discussion for the discussion form
     $scope.discussion = new Discussion({ book_id: book_id });
 
+    $scope.user = App.opts.user;
+
     // Keep these empty for now so that neither the
     // show discussion view or form show up
     $scope.visibleDiscussion = null;
     $scope.newDiscussionForm = null;
+    $scope.tempImage = null;
 
 
     /*
@@ -35,6 +38,7 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
             // Reset the form
             $scope.discussion_form.$setPristine(true);
             $scope.discussion = new Discussion({ book_id: book_id });
+            $scope.tempImage = null;
         });
     };
 
@@ -58,7 +62,19 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
      *  Shows a form to create a new discussion
      */
     $scope.showDiscussionForm = function($event) {
-        if ($event) $event.stopPropagation();
+        var parent_offset, rel_x;
+
+        if ($event) {
+            $event.stopPropagation();
+            parent_offset = $($event.currentTarget).offset();
+            rel_x = $event.pageX - parent_offset.left;
+
+            $scope.tempImage = {
+                percentage: rel_x
+            };
+
+            $("#discussion-container").css({ left: rel_x + 15 + 'px' });
+        }
 
         $scope.visibleDiscussion = null;
         $scope.newDiscussionForm = true;
