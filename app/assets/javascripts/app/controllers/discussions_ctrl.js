@@ -34,10 +34,7 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
 
             // Reset the form
             $scope.discussion_form.$setPristine(true);
-            $scope.discussion_form.quote = "";
-            $scope.discussion_form.page = "";
-            $scope.discussion_form.pages_total = "";
-            $scope.discussion_form.message = "";
+            $scope.discussion = new Discussion({ book_id: book_id });
         });
     };
 
