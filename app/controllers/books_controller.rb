@@ -21,21 +21,30 @@ class BooksController < ApplicationController
     if user_signed_in?
       @newbook = Book.new
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
+      @user = current_user
     end
     
     #Users currently reading this book
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
     @review = Review.where(:book_id => params[:id])
+<<<<<<< HEAD
     
     #This will pick up 5 random books by users who have read the current book beeing viewd
     also = Book.select(:user_id).uniq.where(:olidb => params[:id])
     @also_read = Book.where(user_id: also).where(:status => "1").limit(5).order("RANDOM()")
+=======
+  
+    #This will pick up 5 random books by users who have read the current book beeing viewd
+    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
+    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
+>>>>>>> new_ui
   end
   
   def author
     client = Goodreads.new(Goodreads.configuration)
     @theauthor = client.author(params[:id])
     @authorbooks = client.search_books(@theauthor.name)
+    @user = current_user
   end
 
 

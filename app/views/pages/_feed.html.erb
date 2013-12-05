@@ -1,44 +1,50 @@
-<span class="title-feed">
- 	<%= link_to "FEED", root_url %>
- </span>
- <span class="feed-off">
- 	 <%= link_to "DISCOVER", users_path %> 
- </span>
- <br>
- <br>
-    <div class="feed" align="center">
-       <% @activities.each do |activity| %>
-         <div class="activit">
-          <%= link_to (image_tag activity.owner.avatar(:thumb), :class=>"img-circle-thumb"), activity.owner if activity.owner %>
-               <%= link_to activity.owner.name, activity.owner if activity.owner %>
-                 <span class="feed-activity">
-                    <%= render_activity activity %>
-                                                </span>
-                                                <span class="feed-comment">
-                                                        <% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
-                                                        <br>
-                                                         <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %>:<span style="font-size: 12px;"> <%= acomment.comment %></span>
-                                                         <% end %>
-                                                        
-                                                <div id="ac-<%= activity.id %>" style="display: none;">
-                                                <%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
-                                                        <%= f.hidden_field :activity_id, :value => activity.id %>
-                                                        <%= f.hidden_field :user_id, :value => current_user.id %>
-                                                        <%= f.text_field :comment %>
-                                                        <%= f.submit "Comment", :class => "btn" %>
-                                                <% end %>
-                                                </div>
-                                                
-                                                <script type="text/javascript">
-                                                        $(function(){
-                                                          $('#al-<%= activity.id %>').click(function(){
-                                                             $('#ac-<%= activity.id %>').toggle();
-                                                          });
-                                                        });
-                                                </script>
-                                        
-                        </div>
-                <% end %>
-
+<!-- activity feed -->
+<div class="col-md-8 col-md-offset-1" id="activity-feed">
+    <label>Recent Activity</label>
+    <ul id="recent-activity">
+        <% @activities.each do |activity| %>
+        <li>
+            <div class="row">
+                <div class="col-md-1">
+                    <%= link_to (image_tag activity.owner.avatar(:thumb)), activity.owner if activity.owner %>
                 </div>
-        </div>
+                <div class="col-md-9">
+                    <p><strong><%= link_to activity.owner.name, activity.owner if activity.owner %></strong>  <%= render_activity activity, :class =>"activity-comment" %></p>
+                    <div class="activity-actions">
+                        <ul class="activity-comments">
+                            <% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <%= image_tag User.find(acomment.user_id).avatar.url%>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %><span style="font-size: 12px;"> <%= acomment.comment %></span>
+                                    </div>
+                                </div>
+                                <div id="ac-<%= activity.id %>" style="display: none;">
+                                    <%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
+                                        <%= f.hidden_field :activity_id, :value => activity.id %>
+                                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                                        <%= f.text_field :comment, :class => "form-control comment-field" %>
+                                        <%= f.submit "Comment", :class => "btn btn-default" %>
+                                    <% end %>
+                                    <script type="text/javascript">
+                                        $(function(){
+                                            $('#al-<%= activity.id %>').click(function(){
+                                                $('#ac-<%= activity.id %>').toggle();
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+        <% end %>
+    </ul>
+</div>

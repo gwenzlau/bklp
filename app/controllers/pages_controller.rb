@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     if signed_in?
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").limit(20)
+      @user = current_user
     end
   end
 

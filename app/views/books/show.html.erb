@@ -1,26 +1,132 @@
-<div class="bl-book-page">
-		<%# This will check if the user is reading the book and display options %>
-		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-		  <div class="rec" align="right">
-			    <%# if Book.where(:recommend => "false") %>
-				<button type="button" class="btn btn-large" disabled>Recommended!</button>
-				<%# else %>
-				<%= button_to "Recommend", {:controller => :books, :action => 'rec_list', :id => @mybook[0].id}, :method => :post, :class => "btn"%>
-				<%# end %>
-		   </div>
-		 <% else %>
-		<% end %>
-			
-	<div align="center">
-		<h2><%= @thebook.title %></h2>
-		<h4>BY</h4>
-		<h3>
-			<% if @thebook.authors.author[0].blank? %>
-				<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
-			<% else %>
-				<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
-			<% end%>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<!-- book info -->
+				<div class="col-md-9 col-md-offset-1" id="book-info">
+					<h2><%= @thebook.title %></h2>
+					<%# This will check if the user is reading the book and display options %>
+					<%= render 'books/bookstatus' %>
+					
+					<p id="book-author">by:
+						<% if @thebook.authors.author[0].blank? %>
+							<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
+						<% else %>
+							<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
+						<% end%>
+					</p>
+					<div id="book-nav">
+						<ul>
+							<li><a href="#_" class="active" for="book-desc">Description</a></li>
+							<li><a href="#_" for ="book-discussions">Discussions</a></li>
+							<li><a href="#_" for="book-reviews">Reviews</a></li>
+							<li><a href="#_" for="book-suggestions">Suggestions</a></li>
+						</ul>
+					</div>
+					<div id="book-desc">
+						<div class="row">
+							<div class="col-md-2">
+								<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
+							</div>
+							<div class="col-md-8 col-md-offset-2">
+								<p>
+									<%= raw(@thebook.description) %>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="currently-reading">
+						<label>People currently reading this book</label>
+						<ul>
+							<% @users_reading.each do |reading| %>
+							<li>
+								<%= link_to (image_tag User.find_by_id(reading.user_id).avatar.url(:thumb)), user_path(reading.user_id) %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+					<div id="book-reviews">
+						<div class="row">
+							<% @review.each do |review| %>
+							<div class="col-md-6">
+								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
+								<div class="review-content">
+									<p>
+										<strong><%= User.find(review.user_id).name %> said:</strong><br>
+										<%= review.body %>
+									</p>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div id="book-suggestions">
+						<div class="row">
+							<% @also_read.each do |also| %>
+							 <div class="col-md-3">
+								<%=link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb)%>
+								<%= link_to also.title, book_path(:id => also.olidb) %>
+							 </div>
+							<% end %>
+						</div>
+					</div>
+					<div id="book-discussions">
+						<div id="timeline-container">
+							<div id="timeline"></div>
+							<div id="past-discussions">
+								<img src="http://placehold.it/40x40" style="left: 20%">
+							</div>
+						</div>
+						<div id="discussion-container" class="show-discussion">
+							<div id="discussion-form">
+								<textarea id="discussion-form-quote" placeholder="&quot;So there is this quote...&quot;"></textarea>
+								<span>Which is on page</span>
+								<input type="text" id="page-number">
+								<span>out of</span>
+								<input type="text" id="total-pages">
+								<span>total pages.</span>
+								<textarea id="discussion-form-comment" placeholder="And the reason I brought this up is..."></textarea> 
+							</div>
+							<div id="discussion-action">
+								<button class="btn btn-default btn-sm pull-right">Post</button>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<script>
+						// Discussion animations
+						function calculateArrowPos(relX, offset) {
+							var arrowPos = relX + offset + 35 + 'px';
+							$('.show-discussion').css('left', arrowPos);
+						}
+						$('#timeline').click( function(e) {
+							$('.new-discussion').fadeOut('fast');
+							var parentOffset = $(this).parent().offset(); 
+						   	var relX = e.pageX - parentOffset.left - 35;
+						   	var profile_img = '<%= image_tag @user.avatar.url, :class => "new-discussion" %>'; 
+						   	$(this).append(profile_img);
+						   	$('.new-discussion').css({
+						   		'position': 'absolute',
+						   		'top': '-30px',
+						   		'left': relX
+						   	});
+						   	$('#discussion-container').fadeIn('fast');
+						   	calculateArrowPos(relX, 15);
+						});
+						$('#past-discussions img').click( function(e) {
+							var pos = $(this).position();
+						   	var relX = pos.left;
+						   	$('#discussion-container').fadeIn('fast');
+						   	calculateArrowPos(relX, 0);
+						   	// Do a get request for all the content here
+						});
+					</script>
+				</div>
+			</div>
+		</div>
 	</div>
+<<<<<<< HEAD
 	
 	<div class="b-cover" align="center">
 		<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZZ.jpg"))%>
@@ -67,8 +173,42 @@
 			<div class="span4"><b><%= User.find(review.user_id).name %> said:</b> <%= review.body %></div>
 		<% end %>
 		
+=======
+</div>
+<!-- finished modal -->
+<div class="modal fade" id="finished-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="modal-actions">
+					<div class="btn-group btn-group-sm">
+						<button type="button" class="btn btn-default">Recommend</button>
+						<button type="button" class="btn btn-default">No, Thanks</button>
+					</div>
+				</div>
+				<div class="modal-comment">
+					<textarea placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+				</div>
+				<div class="modal-recommendations">
+					<p class="lead">Looking for something to read next?</p>
+					<p>(Others read these books after reading <%= @thebook.title %>)</p>
+					<div class="row" id="book-covers">
+						<div class="col-md-4">
+							<img src="http://placehold.it/130x180">
+						</div>
+						<div class="col-md-4">
+							<img src="http://placehold.it/130x180">
+						</div>
+						<div class="col-md-4">
+							<img src="http://placehold.it/130x180">
+						</div>
+					</div>
+				</div>
+				<div class="modal-btncontainer">
+					<button class="btn btn-bookloop">No thanks, I have a previous engagement.</button>
+				</div>
+			</div>
+		</div>
+>>>>>>> new_ui
 	</div>
-
-  </div>
-
 </div>
