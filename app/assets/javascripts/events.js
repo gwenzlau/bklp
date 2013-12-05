@@ -1,5 +1,6 @@
-// Switch between book menues
 $(document).ready( function() {
+
+	// Switch between book menues
 	function switchBookTabs(selector) {
 		switch(selector) {
 			case 'book-desc':
@@ -27,4 +28,5 @@ $(document).ready( function() {
 		$('#book-nav ul li a').removeClass('active');
 		$(this).addClass('active');
 	});
+
 });

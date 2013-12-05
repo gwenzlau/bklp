@@ -395,6 +395,10 @@ ul#recent-activity li ul li a {
 	top: 30%;
 	cursor: pointer;
 }
+#timeline-container .new-discussion {
+	width: 70px;
+	height: 70px;
+}
 #discussion-container {
 	display: none;
 	border: 1px solid #DDD;
@@ -539,6 +543,9 @@ ul#recent-activity li ul li a {
 	border-right-color: #AAA;
 	border-width: 6px;
 	margin-top: -6px;
+}
+#book-discussions {
+	display: none;
 }
 
 /* modals
