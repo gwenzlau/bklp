@@ -48,6 +48,13 @@
 
 	<hr>
 
+	<h4>People who have read this book have also read:</h4>
+	<ul>
+	<% @also_read.each do |also| %>
+		<li><%= also.title %></li>
+	<% end %>
+	</ul>
+	
 	<h4>Discussions</h4>
 	<small>(coming soon...)</small>
  <hr class="featurette-divider">
