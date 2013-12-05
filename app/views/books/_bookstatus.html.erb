@@ -1,32 +1,29 @@
-<div class="bookstatus" align="center">
-	<ul class="inline">
+
+
 	<%# Is the user signed in?%>
 	  <% if user_signed_in? %>
 		<%# This will check if the user is reading the book and display options %>
-		<li><% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-		
+		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
+		  <div class="btn-group btn-group-sm pull-right" id="book-actions">
 			<% if @mybook[0].status == 1 %>
 				You've already finished this book.
 			<% end %>
-		<ul class="inline">
-			<li>
+			
 			<% if @mybook[0].status == 0 %>
-				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn", :confirm => "Are you sure?" %>		
-			</li>
-			<li>
-				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Are you sure?" %>
-			</li>
-			<% end %>
-		</li>
-		<li>
+				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn btn-default", :confirm => "Are you sure?" %>		
+			
+				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default" %>
+			  <% end %>
+			</div>
+			<div class="btn-group btn-group-sm pull-right" id="book-actions">
 			<% if @mybook[0].status == 2 %>
 				<%# abandon future book link %>
-				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn", :confirm => "Is this the book you are about to read?" %>
+				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default" %>
 			<% end %>
-		</li>
+			</div>
 
 		<% else %>
-		<li>
+		<div class="btn-group btn-group-sm pull-right" id="book-actions">
 			<%= form_for(@newbook) do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -34,10 +31,9 @@
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "0" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Currently reading it.", :class => "btn" %>
+				<%= f.submit "Currently reading it.", :class => "btn btn-default" %>
 			<% end %>
-		</li>
-		<li>	
+		
 			<%= form_for @newbook, :url => {:action => "past_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -45,10 +41,9 @@
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "1" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Already read it.", :class => "btn" %>
+				<%= f.submit "Already read it.", :class => "btn btn-default" %>
 			<% end %>
-		</li>
-		<li>
+		
 			<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
 				<%= f.hidden_field :title, :value => @thebook.title %>
 				<%= f.hidden_field :author, :value => "" %>
@@ -56,17 +51,14 @@
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Going to read it.", :class => "btn" %>
+				<%= f.submit "Going to read it.", :class => "btn btn-default"%>
 			<% end %>
-		</li>
+			</div>
 		<% end %>
+	
 	<% else %>
 		
-		<%= link_to "Sign in to stay in the loop", new_user_registration_path, class: "btn" %>
-	</ul>
+		<%= link_to "Sign in to stay in the loop", new_user_registration_path, class: "btn btn-default" %>
+	
 
 	<% end %>
-
-	</div>
-	
-	</div>

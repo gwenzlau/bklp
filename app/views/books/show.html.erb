@@ -7,18 +7,8 @@
 				<div class="col-md-9 col-md-offset-1" id="book-info">
 					<h2><%= @thebook.title %></h2>
 					<%# This will check if the user is reading the book and display options %>
-					<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-					<div class="btn-group btn-group-sm pull-right" id="book-actions">
-						<button type="button" data-toggle="modal" data-target="#finished-modal" class="btn btn-default">Finsished!</button>
-						<button type="button" class="btn btn-default">Abandon it</button>
-					</div>
-					<% else %>
-					<div class="btn-group btn-group-sm pull-right" id="book-actions">
-						<button type="button" class="btn btn-default">Reading it</button>
-						<button type="button" class="btn btn-default">Already read it</button>
-						<button type="button" class="btn btn-default">Going to read</button>
-					</div>
-					<% end %>
+					<%= render 'books/bookstatus' %>
+					
 					<p id="book-author">by:
 						<% if @thebook.authors.author[0].blank? %>
 							<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
