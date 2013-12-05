@@ -37,7 +37,7 @@
 					<div id="book-info">
 						<div class="row">
 							<div class="col-md-2">
-								<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"))%>
+								<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
 							</div>
 							<div class="col-md-8 col-md-offset-2">
 								<p>

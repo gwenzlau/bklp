@@ -282,6 +282,9 @@ ul#recent-activity li ul li a {
 #book-info p {
 	color: #474742;
 }
+#book-info .book-cover {
+	width: 220px;
+}
 #book-author {
 	font-size: 12px; 
 	color: #999 !important;
