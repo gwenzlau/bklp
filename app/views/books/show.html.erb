@@ -73,22 +73,12 @@
 					</div>
 					<div id="book-suggestions">
 						<div class="row">
-							<div class="col-md-3">
+							<% @also_read.each do |also| %>
+							 <div class="col-md-3">
 								<img src="http://placehold.it/195x275">
-								<a href="#_">Title</a>
-							</div>
-							<div class="col-md-3">
-								<img src="http://placehold.it/195x275">
-								<a href="#_">Title</a>
-							</div>
-							<div class="col-md-3">
-								<img src="http://placehold.it/195x275">
-								<a href="#_">Title</a>
-							</div>
-							<div class="col-md-3">
-								<img src="http://placehold.it/195x275">
-								<a href="#_">Title</a>
-							</div>
+								<%= link_to also.title, book_path(:id => also.olidb) %>
+							 </div>
+							<% end %>
 						</div>
 					</div>
 				</div>
