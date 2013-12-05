@@ -1,6 +1,5 @@
 # Ignore bundler config
 /.bundle
-/config/initializers/secret_token.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
