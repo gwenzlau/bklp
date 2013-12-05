@@ -331,6 +331,13 @@ ul#recent-activity li ul li a {
 	height: 70px;
 	width: 70px;
 }
+#book-reviews {
+	display: none;
+}
+#book-reviews img {
+	width: 70px;
+	height: 70px;
+}
 #book-reviews ul {
 	list-style: none;
 	padding-left: 0;
@@ -481,13 +488,16 @@ ul#recent-activity li ul li a {
 #discussion-form span {
 	color: #999;
 }
+#book-suggestions {
+	display: none;
+}
 #book-suggestions a {
 	color: #4095f1;
 	margin-top: 10px;
 	font-weight: 500;
 	display: block;
 }
-#book-reviews .row {
+#book-reviews .row .col-md-6 {
 	margin-bottom: 40px;
 }
 #book-reviews img {

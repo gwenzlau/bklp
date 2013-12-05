@@ -28,13 +28,13 @@
 					</p>
 					<div id="book-nav">
 						<ul>
-							<li><a href="#_" class="active">Description</a></li>
+							<li><a href="#_" class="active" for="book-desc">Description</a></li>
 							<li><a href="#_">Discussions</a></li>
-							<li><a href="#_">Reviews</a></li>
-							<li><a href="#_">Suggestions</a></li>
+							<li><a href="#_" for="book-reviews">Reviews</a></li>
+							<li><a href="#_" for="book-suggestions">Suggestions</a></li>
 						</ul>
 					</div>
-					<div id="book-info">
+					<div id="book-desc">
 						<div class="row">
 							<div class="col-md-2">
 								<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
@@ -55,6 +55,41 @@
 							</li>
 							<% end %>
 						</ul>
+					</div>
+					<div id="book-reviews">
+						<div class="row">
+							<% @review.each do |review| %>
+							<div class="col-md-6">
+								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
+								<div class="review-content">
+									<p>
+										<strong><%= User.find(review.user_id).name %> said:</strong><br>
+										<%= review.body %>
+									</p>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div id="book-suggestions">
+						<div class="row">
+							<div class="col-md-3">
+								<img src="http://placehold.it/195x275">
+								<a href="#_">Title</a>
+							</div>
+							<div class="col-md-3">
+								<img src="http://placehold.it/195x275">
+								<a href="#_">Title</a>
+							</div>
+							<div class="col-md-3">
+								<img src="http://placehold.it/195x275">
+								<a href="#_">Title</a>
+							</div>
+							<div class="col-md-3">
+								<img src="http://placehold.it/195x275">
+								<a href="#_">Title</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
