@@ -292,11 +292,14 @@ ul#recent-activity li ul li a {
 #book-author a {
 	color: #4095f1;
 }
-#ingress {
+#book-info blockquote {
 	font-family: Georgia;
 	font-size: 28px;
 	font-style: italic;
 	margin-bottom: 20px;
+	border-left: 0;
+	padding: 0;
+	color: #474742;
 }
 #book-actions button {
 	color: #777;

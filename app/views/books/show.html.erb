@@ -40,11 +40,8 @@
 								<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"))%>
 							</div>
 							<div class="col-md-8 col-md-offset-2">
-								<p id="ingress">
-									<%= @thebook.description %>
-								</p>
 								<p>
-									Tomboy Scout Finch comes of age in a small Alabama town during a crisis in 1935. She admires her father Atticus, how he deals with issues of racism, injustice, intolerance and bigotry, his courage and his love.
+									<%= raw(@thebook.description) %>
 								</p>
 							</div>
 						</div>
