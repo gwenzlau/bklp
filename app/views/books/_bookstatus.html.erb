@@ -6,19 +6,20 @@
 		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
 		  <div class="btn-group btn-group-sm pull-right" id="book-actions">
 			<% if @mybook[0].status == 1 %>
-				You've already finished this book.
+				<button type="button" class="btn btn-default" disabled>You've already finished this book.</button>
+
 			<% end %>
 			
 			<% if @mybook[0].status == 0 %>
-				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn btn-default", :confirm => "Are you sure?" %>		
+				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @mybook[0].id}, :method => :delete, :class => "btn btn-default", :type => "button", :confirm => "Are you sure?" %>		
 			
-				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default" %>
+				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default", :type => "button" %>
 			  <% end %>
 			</div>
 			<div class="btn-group btn-group-sm pull-right" id="book-actions">
 			<% if @mybook[0].status == 2 %>
 				<%# abandon future book link %>
-				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default" %>
+				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default", :type => 'button' %>
 			<% end %>
 			</div>
 
@@ -41,7 +42,7 @@
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "1" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Already read it.", :class => "btn btn-default" %>
+				<%= f.button "Already read it.", :class => "btn btn-default" %>
 			<% end %>
 		
 			<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
@@ -51,7 +52,7 @@
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Going to read it.", :class => "btn btn-default"%>
+				<%= f.button "Going to read it.", :class => "btn btn-default"%>
 			<% end %>
 			</div>
 		<% end %>
