@@ -37,6 +37,7 @@ class BooksController < ApplicationController
     client = Goodreads.new(Goodreads.configuration)
     @theauthor = client.author(params[:id])
     @authorbooks = client.search_books(@theauthor.name)
+    @user = current_user
   end
 
 
