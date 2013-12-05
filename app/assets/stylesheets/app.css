@@ -497,6 +497,10 @@ ul#recent-activity li ul li a {
 	font-weight: 500;
 	display: block;
 }
+#book-suggestions img {
+	border-radius: 3px;
+	width: 195px;
+}
 #book-reviews .row .col-md-6 {
 	margin-bottom: 40px;
 }
