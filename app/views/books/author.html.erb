@@ -5,7 +5,7 @@
 </div>
 <p align="center"><%= @theauthor.born_at %> - <%= @theauthor.died_at %></p>
 
-<p><%= @theauthor.about %></p>
+<p><%= raw(@theauthor.about) %></p>
 <hr>
 <i>Fans of <%= @theauthor.name %>:</i>
 	

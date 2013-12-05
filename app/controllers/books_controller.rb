@@ -26,6 +26,10 @@ class BooksController < ApplicationController
     #Users currently reading this book
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
     @review = Review.where(:book_id => params[:id])
+    
+    #This will pick up 5 random books by users who have read the current book beeing viewd
+    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
+    @also_read = Book.where(user_id: also).where(:status => "1").limit(5).order("RANDOM()")
   end
   
   def author

@@ -23,14 +23,16 @@
 	</div>
 
 	<div class="b-cover" align="center">
-		<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@thebook.isbn}"), :class=>"book-cover")%>
+		<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZZ.jpg"))%>
 	</div>
+
 
 	<h4>Book status:</h4>
 	<%= render 'books/bookstatus' %>
 
 	<h4>Description</h4>
-	<span style="font-size: 10px;"><%= @thebook.description %></span>
+
+	<span style="font-size: 10px;"><%= raw(@thebook.description) %></span>
 
 	<h4>People currently reading this book:</h4>
 
@@ -47,6 +49,13 @@
 	<% end %>
 
 	<hr>
+
+	<h4>People who have read this book have also read:</h4>
+	<ul>
+	<% @also_read.each do |also| %>
+		<li><%= also.title %></li>
+	<% end %>
+	</ul>
 
 	<h4>Discussions</h4>
 	<script>
