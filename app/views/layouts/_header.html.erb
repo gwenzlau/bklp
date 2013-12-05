@@ -21,9 +21,10 @@
             
             <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
-                <li id="profile-name"><%= @user.name %></li>
-                <li id="profile-img"><%= image_tag @user.avatar.url %></li>
-                <li id="signout"><a href="/signout"><img src="https://s3.amazonaws.com/bklp/signout.png"></a></li>
+                <li id="profile-name"><%= link_to @user.name, current_user %></li>
+                <li id="profile-img"><%= link_to (image_tag @user.avatar.url), current_user %></li>
+                <li id="signout"><%= link_to (image_tag ("https://s3.amazonaws.com/bklp/signout.png")), destroy_user_session_path, method: :delete %></li>
+
                 <% else %>
                 <li><%= link_to "Login", new_user_session_path %></li>
                 <% end %>
