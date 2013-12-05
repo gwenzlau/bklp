@@ -532,3 +532,90 @@ ul#recent-activity li ul li a {
 .modal .modal-content {
 	border-radius: inherit;
 }
+.modal .modal-body {
+	padding: 0;
+}
+.modal .modal-actions {
+	text-align: center;
+	border-bottom: 1px solid #DDD;
+	padding: 50px 0;
+}
+.modal-actions:after, .modal-actions:before {
+	top: 18.9%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.modal-actions:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #FFF;
+	border-width: 8px;
+	margin-left: -8px;
+}
+.modal-actions:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #BBB;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.modal .modal-comment {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+}
+.modal .modal-comment textarea {
+	border-radius: 0;
+	font-family: Georgia;
+	font-size: 12px;
+	font-style: italic;
+	height: 100px;
+}
+.modal-comment:after, .modal-comment:before {
+	top: 42.4%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.modal-comment:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #FFF;
+	border-width: 8px;
+	margin-left: -8px;
+}
+.modal-comment:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #BBB;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.modal .modal-recommendations {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+}
+.modal .modal-recommendations p {
+	font-size: 12px;
+}
+.modal .modal-recommendations p.lead {
+	font-size: 16px;
+	margin-bottom: 0;
+}
+.modal .modal-btncontainer {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+}
+.modal .modal-btncontainer button {
+	background: #4095f1;
+	color: #FFF;
+}
+.modal .modal-recommendations #book-covers {
+	margin-top: 20px;
+}
