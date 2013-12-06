@@ -29,9 +29,10 @@ class BooksController < ApplicationController
     @review = Review.where(:book_id => params[:id])
 
     
+    
     #This will pick up 5 random books by users who have read the current book beeing viewd
     also = Book.select(:user_id).uniq.where(:olidb => params[:id])
-    @also_read = Book.where(user_id: also).where(:status => "1").limit(5).order("RANDOM()")
+    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
 
   end
   
@@ -191,6 +192,6 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order)
+    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order, :isbn)
   end
 end
