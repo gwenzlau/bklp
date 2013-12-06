@@ -94,7 +94,7 @@ class BooksController < ApplicationController
   # PUT /books/1
   # PUT /books/1.json
   def update
-    @book = Book.friendly.find(params[:id])
+    @book = Book.find(params[:id])
     #@book.create_activity :book_readit
 
     if @book.update_attribute(:status, "1")
@@ -105,7 +105,7 @@ class BooksController < ApplicationController
   end
 
   def order
-    @book = Book.friendly.find(params[:id])
+    @book = Book.find(params[:id])
     if @book.update_attribute(:order)
       redirect_to current_user
     else 
@@ -192,6 +192,6 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order, :isbn)
+    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order, :isbn, :slug)
   end
 end

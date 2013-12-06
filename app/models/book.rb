@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
   has_many :reviews
   has_many :discussions
 
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+  #extend FriendlyId
+  #friendly_id :title, use: :slugged
 
 end
