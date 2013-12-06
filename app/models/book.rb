@@ -9,8 +9,4 @@ class Book < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-def to_param
-    "#{id}-#{title.parameterize}"
-end
-
 end
