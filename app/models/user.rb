@@ -15,9 +15,6 @@ class User < ActiveRecord::Base
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
 
-  extend FriendlyId
-  friendly_id :name, use: :slugged
-
   acts_as_followable
   acts_as_follower
 
