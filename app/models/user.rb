@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   def public_params
     {
       id: id,
