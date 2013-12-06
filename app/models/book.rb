@@ -6,6 +6,9 @@ class Book < ActiveRecord::Base
   has_many :reviews
   has_many :discussions
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
 def to_param
     "#{id}-#{title.parameterize}"
 end

@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   #validates_attachment_presence :avatar
   #validates_attachment_size :avatar, :less_than => 5.megabytes
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
-
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   acts_as_followable
   acts_as_follower
@@ -23,9 +24,6 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
 
-  def to_param
-    "#{id}-#{name.parameterize}"
-  end
 
   def public_params
     {

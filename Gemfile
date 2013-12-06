@@ -15,6 +15,7 @@ gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'acts_as_commentable'
+gem 'friendly_id', '~> 5.0.0' 
 
 gem 'aws-sdk'
 gem 'newrelic_rpm'

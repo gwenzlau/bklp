@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
     end
     
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
     
     # Users are reading now and have previously read:
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
 
   def follow
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     if current_user
      if current_user == @user
       flash[:error] = "You cannot follow yourself."
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 end
 
 def unfollow
-  @user = User.find(params[:id])
+  @user = User.friendly.find(params[:id])
 
   if current_user
     current_user.stop_following(@user)
