@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
       avatar_url: avatar.url
     }
   end
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
