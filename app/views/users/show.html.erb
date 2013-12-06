@@ -27,7 +27,7 @@
 	</div>
 	<%# if current user and if not reading any books - Search form to add #%>
 	
-	<h3 align="center"><%= link_to @user.name, current_user %>  is currently reading: 
+	<h3 align="center"><%= link_to @user.name, user_path %>  is currently reading: 
 			<span class="probook"><%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %>
 			</span>
 		  <% if @user.id == current_user.id %>
