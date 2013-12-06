@@ -65,7 +65,12 @@
 						<div class="row">
 							<% @also_read.each do |also| %>
 							 <div class="col-md-3">
-								<%=link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb)%>
+								 <% if also.isbn.blank? %>
+								
+								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
+								<% else %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
+								<% end %>
 								<%= link_to also.title, book_path(:id => also.olidb) %>
 							 </div>
 							<% end %>

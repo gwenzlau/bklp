@@ -504,6 +504,7 @@ ul#recent-activity li ul li a {
 #book-suggestions img {
 	border-radius: 3px;
 	width: 195px;
+	height: 295px;
 }
 #book-reviews .row .col-md-6 {
 	margin-bottom: 40px;
