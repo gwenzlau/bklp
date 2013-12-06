@@ -29,26 +29,26 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
     
     # Users are reading now and have previously read:
-    @book = Book.where(:user_id => params[:id]).where(:status => "0")
+    @book = Book.where(:user_id => @user.id).where(:status => "0")
     #@booka = @book.map(&:title) 
-    @past = Book.where(:user_id => params[:id]).where(:status => "1")
+    @past = Book.where(:user_id => @user.id).where(:status => "1")
 
-    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+    @future = Book.order(params[:order]).where(:user_id => @user.id).where(:status => "2")
 
-    @link = Link.where(:user_id => params[:id]).where(:status => "0")
+    @link = Link.where(:user_id => @user.id).where(:status => "0")
 
     
-    @link = Link.where(:user_id => params[:id])
-    @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
-    @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
+    @link = Link.where(:user_id => @user.id)
+    @pastlink = Link.where(:user_id => @user.id).where(:status => "1")
+    @futurelink = Link.where(:user_id => @user.id).where(:status => "2")
 
-    @rec = Book.where(:user_id => params[:id]).where(:rec => "true")
-    @recommend = Book.where(:user_id => params[:id]).where(:recommend => "true")
+    @rec = Book.where(:user_id => @user.id).where(:rec => "true")
+    @recommend = Book.where(:user_id => @user.id).where(:recommend => "true")
 
     client = Goodreads.new(Goodreads.configuration)
     @reccover = client.search_books(@rec_id)
 
-    @order = Book.where(:user_id => params[:id])
+    @order = Book.where(:user_id => @user.id)
     
 	end
 
