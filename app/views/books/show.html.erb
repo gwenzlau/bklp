@@ -48,7 +48,7 @@
 					</div>
 					<div id="book-reviews">
 						<div class="row">
-							<% @review.each do |review| %>
+							<% if @review.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
 								<div class="review-content">
@@ -58,16 +58,24 @@
 									</p>
 								</div>
 							</div>
+							<% end.empty? %>
+							<div class="col-md-6">
+							  Be the first to review it. In 20 words or less.
+							</div>
 							<% end %>
 						</div>
 					</div>
 					<div id="book-suggestions">
 						<div class="row">
-							<% @also_read.each do |also| %>
+							<% if @also_read.each do |also| %>
 							 <div class="col-md-3">
 								<%=link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb)%>
 								<%= link_to also.title, book_path(:id => also.olidb) %>
 							 </div>
+							<% end.empty? %>
+							<div class="col-md-6">
+							Check out the Discover page for more suggestions.
+							</div>
 							<% end %>
 						</div>
 					</div>
@@ -126,89 +134,5 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-	
-	<div class="b-cover" align="center">
-		<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZZ.jpg"))%>
-	</div> 
-	
-	<h4>Book status:</h4>
-	<%= render 'books/bookstatus' %>
-
-	<h4>Description</h4>
-	<span style="font-size: 10px;"><%= raw(@thebook.description) %></span>
-	
-	<h4>People currently reading this book:</h4>
-	
-	<% @users_reading.each do |reading| %>
-
-	<ul class="inline">
-		<li>
-		<%= link_to (image_tag User.find_by_id(reading.user_id).avatar.url(:thumb), :class=>"img-circle-thumb"), user_path(reading.user_id) %><br>
-		<small>
-		<%= link_to User.find_by_id(reading.user_id).name, user_path(reading.user_id) %><br>
-		</small>
-		</li>
-	</ul>
-	<% end %>
-
-	<hr>
-
-	<h4>People who have read this book have also read:</h4>
-	<ul>
-	<% @also_read.each do |also| %>
-		<li><%= also.title %></li>
-	<% end %>
-	</ul>
-	
-	<h4>Discussions</h4>
-	<small>(coming soon...)</small>
- <hr class="featurette-divider">
-  <div class="featurette">
-  	
-	<h4>Reviews</h4>
-	
-		
-		<% @review.each do |review| %>
-			<div class="span4"><b><%= User.find(review.user_id).name %> said:</b> <%= review.body %></div>
-		<% end %>
-		
-=======
-</div>
-<!-- finished modal -->
-<div class="modal fade" id="finished-modal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="modal-actions">
-					<div class="btn-group btn-group-sm">
-						<button type="button" class="btn btn-default">Recommend</button>
-						<button type="button" class="btn btn-default">No, Thanks</button>
-					</div>
-				</div>
-				<div class="modal-comment">
-					<textarea placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
-				</div>
-				<div class="modal-recommendations">
-					<p class="lead">Looking for something to read next?</p>
-					<p>(Others read these books after reading <%= @thebook.title %>)</p>
-					<div class="row" id="book-covers">
-						<div class="col-md-4">
-							<img src="http://placehold.it/130x180">
-						</div>
-						<div class="col-md-4">
-							<img src="http://placehold.it/130x180">
-						</div>
-						<div class="col-md-4">
-							<img src="http://placehold.it/130x180">
-						</div>
-					</div>
-				</div>
-				<div class="modal-btncontainer">
-					<button class="btn btn-bookloop">No thanks, I have a previous engagement.</button>
-				</div>
-			</div>
-		</div>
->>>>>>> new_ui
 	</div>
 </div>
