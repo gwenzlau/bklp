@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
     end
     
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
     
     # Users are reading now and have previously read:
     @book = Book.where(:user_id => @user.id).where(:status => "0")
