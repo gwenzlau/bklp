@@ -1,4 +1,4 @@
-<div ng-controller="DiscussionsCtrl" class="book-discussions">
+<div ng-controller="DiscussionsCtrl" id="book-discussions">
 
     <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
         <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">

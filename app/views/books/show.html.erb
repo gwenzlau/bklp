@@ -84,7 +84,6 @@
 							<% end %>
 						</div>
 					</div>
-					<div id="book-discussions">
 						<!-- <div id="timeline-container">
 							<div id="timeline"></div>
 							<div id="past-discussions">
@@ -107,21 +106,19 @@
 							</div>
 						</div> -->
 
-						<script>
-							App.opts.book_id = "<%= @thebook.id %>";
-							App.opts.user = {
-								"name": "<%= current_user.name %>",
-								"avatar_url": "<%= current_user.avatar.url %>",
-								"id": <%= current_user.id %>
-							};
-						</script>
+					<script>
+						App.opts.book_id = "<%= @thebook.id %>";
+						App.opts.user = {
+							"name": "<%= current_user.name %>",
+							"avatar_url": "<%= current_user.avatar.url %>",
+							"id": <%= current_user.id %>
+						};
+					</script>
 
-						<%= render 'discussions/list' %>
-					</div>
+					<%= render 'discussions/list' %>
 
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </div>
