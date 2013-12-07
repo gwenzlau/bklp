@@ -1,8 +1,14 @@
 <% if user_signed_in? %>
- <p align="center">
-  <%= render 'pages/feed' %>
-
-
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<%= render 'pages/feed' %>
+			</div>
+		</div>
+	</div>
+</div>
 <% else %>
 <%= render 'pages/walkthru' %>
 <% end %>

@@ -18,7 +18,7 @@
 	<li class="span2"><%= link_to book.best_book.title, book_path("#{book.best_book.id}") %>
 		<br>
 
-	<%= (image_tag ("http://content-3.powells.com/cgi-bin/imageDB.cgi?isbn=#{@authorbooks.isbn}"), :class=>"book-cover-small")%>
+	<%= (image_tag ("#{book.best_book.small_image_url}"), :class=>"book-cover-small")%>
 	</li>
 <% end %>
 </ul>

@@ -32,8 +32,9 @@ class UsersController < ApplicationController
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
     #@booka = @book.map(&:title) 
     @past = Book.where(:user_id => params[:id]).where(:status => "1")
-    @future = Book.where(:user_id => params[:id]).where(:status => "2")
-    
+
+    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+
     @link = Link.where(:user_id => params[:id]).where(:status => "0")
 
     

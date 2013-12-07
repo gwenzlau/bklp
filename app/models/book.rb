@@ -6,4 +6,7 @@ class Book < ActiveRecord::Base
   has_many :reviews
   has_many :discussions
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end

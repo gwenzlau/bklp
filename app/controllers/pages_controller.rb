@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     if signed_in?
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").limit(20)
+      @user = current_user
     end
   end
 
@@ -24,7 +25,7 @@ class PagesController < ApplicationController
     results = client.search_books(params[:q])
     books ||= []
     for book in results['results']['work']
-      books << { 'book' => book['best_book']['title'], 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'] }
+      books << { 'book' => book['best_book']['title'], 'shortbook' => book['best_book']['title'].parameterize, 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'] }
     end
     respond_to do |format|
       format.json  { render :json => books }

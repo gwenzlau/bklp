@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :discussions, dependent: :destroy
 
 
+
   def public_params
     {
       id: id,
@@ -32,4 +33,9 @@ class User < ActiveRecord::Base
       avatar_url: avatar.url
     }
   end
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
 end
