@@ -119,31 +119,31 @@
 					</div>
 					<script>
 						// Discussion animations
-						function calculateArrowPos(relX, offset) {
-							var arrowPos = relX + offset + 35 + 'px';
-							$('.show-discussion').css('left', arrowPos);
-						}
-						$('#timeline').click( function(e) {
-							$('.new-discussion').fadeOut('fast');
-							var parentOffset = $(this).parent().offset();
-						   	var relX = e.pageX - parentOffset.left - 35;
-						   	var profile_img = '<%= image_tag @user.avatar.url, :class => "new-discussion" %>';
-						   	$(this).append(profile_img);
-						   	$('.new-discussion').css({
-						   		'position': 'absolute',
-						   		'top': '-30px',
-						   		'left': relX
-						   	});
-						   	$('#discussion-container').fadeIn('fast');
-						   	calculateArrowPos(relX, 15);
-						});
-						$('#past-discussions img').click( function(e) {
-							var pos = $(this).position();
-						   	var relX = pos.left;
-						   	$('#discussion-container').fadeIn('fast');
-						   	calculateArrowPos(relX, 0);
-						   	// Do a get request for all the content here
-						});
+						// function calculateArrowPos(relX, offset) {
+						// 	var arrowPos = relX + offset + 35 + 'px';
+						// 	$('.show-discussion').css('left', arrowPos);
+						// }
+						// $('#timeline').click( function(e) {
+						// 	$('.new-discussion').fadeOut('fast');
+						// 	var parentOffset = $(this).parent().offset();
+						//    	var relX = e.pageX - parentOffset.left - 35;
+						//    	var profile_img = '<%= image_tag @user.avatar.url, :class => "new-discussion" %>';
+						//    	$(this).append(profile_img);
+						//    	$('.new-discussion').css({
+						//    		'position': 'absolute',
+						//    		'top': '-30px',
+						//    		'left': relX
+						//    	});
+						//    	$('#discussion-container').fadeIn('fast');
+						//    	calculateArrowPos(relX, 15);
+						// });
+						// $('#past-discussions img').click( function(e) {
+						// 	var pos = $(this).position();
+						//    	var relX = pos.left;
+						//    	$('#discussion-container').fadeIn('fast');
+						//    	calculateArrowPos(relX, 0);
+						//    	// Do a get request for all the content here
+						// });
 					</script>
 				</div>
 			</div>
