@@ -48,6 +48,9 @@
 .show {
 	display: block;
 }
+form.new_book {
+	display: inline;
+}
 
 /* Sidebar
 ------------------------*/
@@ -303,6 +306,9 @@ ul#recent-activity li ul li a {
 	border-left: 0;
 	padding: 0;
 	color: #474742;
+}
+#book-actions {
+	display: inline;
 }
 #book-actions button {
 	color: #777;
