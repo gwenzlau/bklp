@@ -1,3 +1,5 @@
+<div id="main">
+	<div class="container">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -8,10 +10,12 @@
     <%= f.input :name, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
   </div>
-
+<br>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>

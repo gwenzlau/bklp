@@ -1,3 +1,7 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <div align="right"><%= button_to 'Logout', destroy_user_session_path, method: :delete, :class => "btn" %></div>
 
@@ -7,6 +11,7 @@
   <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
 		<%= f.input :name, :required => true %>
+    <label>Profile Picture</labe>
 		<%= f.file_field :avatar %>
 	
 
@@ -14,7 +19,7 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+    <%= f.input :password, :autocomplete => "off", :hint => "(leave it blank if you don't want to change it)", :required => false %>
     <%= f.input :password_confirmation, :required => false %>
 
     
@@ -33,3 +38,7 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>
+</div>
+</div>
