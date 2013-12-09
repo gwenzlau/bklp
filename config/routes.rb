@@ -1,7 +1,11 @@
 Booksy::Application.routes.draw do
 
+ 
   root 'pages#home'
 
+ devise_for :admins
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   resources :reviews
 
   resources :links do
@@ -63,6 +67,7 @@ Booksy::Application.routes.draw do
       end
     end
   end
+
 
 
   # The priority is based upon order of creation:
