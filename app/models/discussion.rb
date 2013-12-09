@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper # For time_ago_in_words
+
   belongs_to :book
   belongs_to :user
   has_many :commentaries, dependent: :destroy
@@ -15,6 +17,7 @@ class Discussion < ActiveRecord::Base
       pages_total:    pages_total,
       percentage:     percentage,
       created_at:     created_at,
+      created_at_ago:     "#{time_ago_in_words(created_at)} ago",
       user:           user.public_params,
       comments:       commentaries.to_a.map(&:public_params)
     }

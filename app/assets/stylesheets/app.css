@@ -141,7 +141,7 @@ ul#recent-activity li .activity-comments {
 ul#recent-activity li .activity-comments .new_acomment {
 	background: #F5F5F5;
 	padding: 5px 10px;
-	margin-top: 20px;	
+	margin-top: 20px;
 }
 ul#recent-activity li .activity-comments .new_acomment input.comment-field {
 	border-radius: 0;
@@ -223,7 +223,7 @@ ul#recent-activity li ul li a {
 	font-family: Georgia;
 	font-style: italic;
 	font-weight: normal;
-	margin-top: 40px;	
+	margin-top: 40px;
 }
 #discover-comment {
 	width: 60%;
@@ -289,7 +289,7 @@ ul#recent-activity li ul li a {
 	width: 220px;
 }
 #book-author {
-	font-size: 12px; 
+	font-size: 12px;
 	color: #999 !important;
 	font-family: Georgia;
 	font-style: italic;
@@ -406,7 +406,6 @@ ul#recent-activity li ul li a {
 	height: 70px;
 }
 #discussion-container {
-	display: none;
 	border: 1px solid #DDD;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
@@ -550,9 +549,6 @@ ul#recent-activity li ul li a {
 	border-right-color: #AAA;
 	border-width: 6px;
 	margin-top: -6px;
-}
-#book-discussions {
-	display: none;
 }
 
 /* modals

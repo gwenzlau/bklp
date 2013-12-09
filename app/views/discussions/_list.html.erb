@@ -11,20 +11,20 @@
 
     <%# Only shown when a visible discussion is present %>
     <div class="active-discussion" ng-show="visibleDiscussion">
+        <span class="time-info">{{visibleDiscussion.created_at_ago}}</span>
         <span class="user-info">{{visibleDiscussion.user.name}}</span>
-        <span class="time-info">{{visibleDiscussion.created_at}}</span>
 
         <h3>{{visibleDiscussion.quote}}</h3>
         <h4>{{visibleDiscussion.message}}</h4>
 
-        <ul>
+        <ul ng-show="visibleDiscussion.comments">
             <li ng-repeat="comment in visibleDiscussion.comments">
                 <a href="/users/{{comment.user.id}}" class="posted-by">
                     <span class="avatar"><img ng-src="{{comment.user.avatar_url}}" alt="{{comment.user.name}}"></span>
-                    <span class="username">{{comment.user.name}}</span>
                 </a>
 
                 <div class="comment-body">
+                    <h5 class="username"><a href="/users/{{comment.user.id}}">{{comment.user.name}}</a></h5>
                     {{comment.message}}
                 </div>
             </li>

@@ -1,4 +1,4 @@
-.book-discussions {
+#book-discussions {
     .discussions-bar {
         width: 100%;
         height: 10px;
@@ -47,5 +47,95 @@
     input.ng-valid,
     textarea.ng-valid {
         border: 1px solid green;
+    }
+}
+
+.active-discussion {
+    border: 1px solid #DDD;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-top: 30px;
+    .user-info {
+        display: block;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+    .time-info {
+        display: block;
+        padding-top: 10px;
+        float: right;
+        padding-right: 20px;
+    }
+    h3 {
+        font-family: "minion pro", Georgia;
+        font-style: italic;
+        font-size: 30px;
+        font-weight: 200;
+        margin-bottom: 15px;
+        margin-top: 20px;
+        padding: 10px 20px;
+    }
+    h4 {
+        background: #4095f1;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0;
+    }
+    ul {
+        padding: 20px;
+        list-style: none;
+        li {
+            padding: 10px 0;
+            border-bottom: solid 1px #f5f5f5;
+            min-height: 68px;
+            .posted-by {
+                float: left;
+                display: block;
+                width: 48px;
+                height: 48px;
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 24px;
+                }
+            }
+            .comment-body {
+                margin-left: 75px;
+                h5 {
+                    a { color: #4095f1; }
+                    margin: 5px 0;
+                }
+            }
+            &:last-child {
+                padding: 10px 0 0;
+                border: none;
+            }
+        }
+    }
+    .ui-comment-form {
+        background: #F9F9F9;
+        padding: 10px 20px;
+        border-top: 1px solid #ddd;
+        text-align: right;
+        textarea {
+            width: 100%;
+            min-height: 60px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #c4c4c4;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+            display: inline;
+            background: #4095f1;
+            color: #fff;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     }
 }
