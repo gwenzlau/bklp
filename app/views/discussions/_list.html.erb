@@ -7,6 +7,7 @@
         <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
             <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
         </li>
+        <li ng-cloak ng-show="!discussions.length && !tempImage" class="start-a-discussion"><span>Start Discussion</span></li>
     </ul>
 
     <%# Only shown when a visible discussion is present %>

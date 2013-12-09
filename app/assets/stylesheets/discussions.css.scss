@@ -9,6 +9,22 @@
         padding: 0;
         cursor: pointer;
 
+        li.start-a-discussion {
+            top: -12px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            display: block;
+            span {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 6px 15px;
+                border-radius: 4px;
+                background: #378aef;
+                color: #fff;
+            }
+        }
+
         li {
             margin: 0;
             padding: 0;
