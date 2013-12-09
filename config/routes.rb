@@ -3,9 +3,7 @@ Booksy::Application.routes.draw do
  
   root 'pages#home'
 
- devise_for :admins
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  
+ 
   resources :reviews
 
   resources :links do
