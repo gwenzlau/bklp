@@ -430,7 +430,7 @@ form.new_acomment input.comment-field {
 	margin-top: 30px;
 }
 #discussion-container:after, #discussion-container:before {
-	bottom: 54.7%;
+	bottom: 59.5%;
 	border: solid transparent;
 	content: " ";
 	height: 0;
@@ -567,6 +567,9 @@ form.new_acomment input.comment-field {
 	border-right-color: #AAA;
 	border-width: 6px;
 	margin-top: -6px;
+}
+#book-discussions {
+	display: none;
 }
 
 /* modals

@@ -73,7 +73,8 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
                 percentage: rel_x
             };
 
-            $("#discussion-container").css({ left: rel_x + 15 + 'px' });
+            $(".show-discussion").css({ left: rel_x + 15 + 'px' });
+
         }
 
         $scope.visibleDiscussion = null;

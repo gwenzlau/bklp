@@ -40,7 +40,7 @@
     </div>
 
     <%# Only shown when newDiscussionForm is truthy %>
-    <form name="discussion_form" id="discussion-container" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
+    <form name="discussion_form" id="discussion-container" class="new-discussion show-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
         <div id="discussion-form">
             <textarea placeholder="&quot;So there is this quote...&quot;" name="quote" id="discussion-form-quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required></textarea>
             <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>
