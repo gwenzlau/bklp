@@ -1,7 +1,9 @@
 Booksy::Application.routes.draw do
 
+ 
   root 'pages#home'
 
+ 
   resources :reviews
 
   resources :links do
@@ -63,6 +65,7 @@ Booksy::Application.routes.draw do
       end
     end
   end
+
 
 
   # The priority is based upon order of creation:
