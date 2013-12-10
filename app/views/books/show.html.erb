@@ -114,6 +114,20 @@
 						   	$('#discussion-container').fadeIn('fast');
 						   	calculateArrowPos(relX, 15);
 						});
+						$('#timeline').mousemove(function(e) {
+						   	var relX = e.pageX - 445;
+						   	console.log(relX);
+						   	var add_discussion = '<div class="add-discussion"></div>';
+						   	$(this).append(add_discussion);
+						   	$('.add-discussion').css({
+						   		'position': 'absolute',
+						   		'top': '-10px',
+						   		'left': relX
+						   	});
+						   	$('#timeline').mouseout( function() {
+						   		$('.add-discussion').fadeOut('fast');
+						   	});
+						});
 						$('#past-discussions img').click( function(e) {
 							var pos = $(this).position();
 						   	var relX = pos.left;
