@@ -18,7 +18,7 @@
         <h3>{{visibleDiscussion.quote}}</h3>
         <h4>{{visibleDiscussion.message}}</h4>
 
-        <ul ng-show="visibleDiscussion.comments">
+        <ul>
             <li ng-repeat="comment in visibleDiscussion.comments">
                 <a href="/users/{{comment.user.id}}" class="posted-by">
                     <span class="avatar"><img ng-src="{{comment.user.avatar_url}}" alt="{{comment.user.name}}"></span>
