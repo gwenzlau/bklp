@@ -26,24 +26,23 @@
                             <% end %>
                         </ul>
                     </div>
-                </div>
-								
-                <div id="ac-<%= activity.id %>" style="display: none;">
-                    <%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
-                        <%= f.hidden_field :activity_id, :value => activity.id %>
-                        <%= f.hidden_field :user_id, :value => current_user.id %>
-                        <%= f.text_field :comment, :class => "form-control comment-field" %>
-                        <%= f.submit "Comment", :class => "btn btn-default" %>
-                    <% end %>
-                    <script type="text/javascript">
-                        $(function(){
-                            $('#al-<%= activity.id %>').click(function(){
-                                $('#ac-<%= activity.id %>').toggle();
+                    <div id="ac-<%= activity.id %>" style="display: none;">
+                        <%= form_for @acomment, :url => acomments_path, method: :post do |f| %>
+                            <%= f.hidden_field :activity_id, :value => activity.id %>
+                            <%= f.hidden_field :user_id, :value => current_user.id %>
+                            <%= f.text_field :comment, :class => "form-control comment-field" %>
+                            <%= f.submit "Comment", :class => "btn btn-default pull-right clearfix btn-bookloop" %>
+                            <div class="clearfix"></div>
+                        <% end %>
+                        <script type="text/javascript">
+                            $(function(){
+                                $('#al-<%= activity.id %>').click(function(){
+                                    $('#ac-<%= activity.id %>').toggle();
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+                    </div>
                 </div>
-
             </div>
         </li>
         <% end %>

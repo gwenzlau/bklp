@@ -1,5 +1,15 @@
 /* Site-wide Styles
 ------------------------*/
+.clearfix {
+	clear: both;
+}
+.btn-bookloop {
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	padding-left: 10px;
+	padding-right: 10px;
+}
 .navbar {
 	background: #FFF;
 	border-bottom: 2px solid #F5F5F5;
@@ -188,6 +198,14 @@ ul#recent-activity li ul li {
 }
 ul#recent-activity li ul li a {
 	color: #4095f1;
+}
+form.new_acomment {
+	padding: 10px 20px;
+	background: #F5F5F5;
+}
+form.new_acomment input.comment-field {
+	width: 80%;
+	display: inline;
 }
 
 /* discover window
