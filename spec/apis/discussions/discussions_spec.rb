@@ -11,8 +11,8 @@ describe "API Discussions", type: :api do
     end
 
     # Login a sample user
-    user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    user = FactoryGirl.create(:user, password: "biglongpasswordsoitis")
+    login_as(user, scope: :user)
   end
 
 
@@ -20,12 +20,12 @@ describe "API Discussions", type: :api do
     let(:json) { get_json("/api/book/1928/discussions") }
 
     it "returns success" do
-      expect(json[:success]).to be_true
+      expect(json).to_not be_nil
       expect(last_response.status).to eq(200)
     end
 
     it "has discussions" do
-      expect(json[:discussions]).to have(5).items
+      expect(json).to have(5).items
     end
   end
 
@@ -34,12 +34,12 @@ describe "API Discussions", type: :api do
     let(:json) { get_json("/api/book/1928/discussions/#{@discussions.first.id}") }
 
     it "returns success" do
-      expect(json[:success]).to be_true
+      expect(json).to_not be_nil
       expect(last_response.status).to eq(200)
     end
 
     it "has a quote" do
-      expect(json[:discussion][:quote]).to eq(@discussions.first.public_params[:quote])
+      expect(json[:quote]).to eq(@discussions.first.public_params[:quote])
     end
   end
 
@@ -48,7 +48,7 @@ describe "API Discussions", type: :api do
     let(:json) { create_comment }
 
     it "returns success" do
-      expect(json[:success]).to be_true
+      expect(json).to_not be_nil
       expect(last_response.status).to eq(200)
     end
 
@@ -69,8 +69,8 @@ describe "API Discussions", type: :api do
     let(:json) { parse_json(last_response.body) }
 
     it "returns success" do
+      expect(json).to_not be_nil
       expect(last_response.status).to eq(200)
-      expect(json[:success]).to be_true
     end
 
     it "updates the comment" do
@@ -88,7 +88,7 @@ describe "API Discussions", type: :api do
     let(:json) { parse_json(last_response.body) }
 
     it "returns success" do
-      expect(json[:success]).to be_true
+      expect(json).to_not be_nil
       expect(last_response.status).to eq(200)
     end
   end

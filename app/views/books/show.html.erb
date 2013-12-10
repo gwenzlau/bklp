@@ -8,7 +8,7 @@
 					<h2><%= @thebook.title %></h2>
 					<%# This will check if the user is reading the book and display options %>
 					<%= render 'books/bookstatus' %>
-					
+
 					<p id="book-author">by:
 						<% if @thebook.authors.author[0].blank? %>
 							<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
@@ -71,7 +71,7 @@
 							<% if @also_read.each do |also| %>
 							 <div class="col-md-3">
 								 <% if also.isbn.blank? %>
-								
+
 								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
 								<% else %>
 								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
@@ -85,8 +85,7 @@
 							<% end %>
 						</div>
 					</div>
-					<div id="book-discussions">
-						<div id="timeline-container">
+						<!-- <div id="timeline-container">
 							<div id="timeline"></div>
 							<div id="past-discussions">
 								<img src="http://placehold.it/40x40" style="left: 20%">
@@ -100,45 +99,27 @@
 								<span>out of</span>
 								<input type="text" id="total-pages">
 								<span>total pages.</span>
-								<textarea id="discussion-form-comment" placeholder="And the reason I brought this up is..."></textarea> 
+								<textarea id="discussion-form-comment" placeholder="And the reason I brought this up is..."></textarea>
 							</div>
 							<div id="discussion-action">
 								<button class="btn btn-default btn-sm pull-right">Post</button>
 								<div class="clearfix"></div>
 							</div>
-						</div>
-					</div>
+						</div> -->
+
 					<script>
-						// Discussion animations
-						function calculateArrowPos(relX, offset) {
-							var arrowPos = relX + offset + 35 + 'px';
-							$('.show-discussion').css('left', arrowPos);
-						}
-						$('#timeline').click( function(e) {
-							$('.new-discussion').fadeOut('fast');
-							var parentOffset = $(this).parent().offset(); 
-						   	var relX = e.pageX - parentOffset.left - 35;
-						   	var profile_img = '<%= image_tag @user.avatar.url, :class => "new-discussion" %>'; 
-						   	$(this).append(profile_img);
-						   	$('.new-discussion').css({
-						   		'position': 'absolute',
-						   		'top': '-30px',
-						   		'left': relX
-						   	});
-						   	$('#discussion-container').fadeIn('fast');
-						   	calculateArrowPos(relX, 15);
-						});
-						$('#past-discussions img').click( function(e) {
-							var pos = $(this).position();
-						   	var relX = pos.left;
-						   	$('#discussion-container').fadeIn('fast');
-						   	calculateArrowPos(relX, 0);
-						   	// Do a get request for all the content here
-						});
+						App.opts.book_id = "<%= @thebook.id %>";
+						App.opts.user = {
+							"name": "<%= current_user.name %>",
+							"avatar_url": "<%= current_user.avatar.url %>",
+							"id": <%= current_user.id %>
+						};
 					</script>
+
+					<%= render 'discussions/list' %>
+
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </div>

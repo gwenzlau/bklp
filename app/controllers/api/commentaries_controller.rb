@@ -11,7 +11,7 @@ class API::CommentariesController < ApplicationController
     @commentary.discussion_id = params[:discussion_id]
 
     if @commentary.save
-      render json: to_json({ success: true, commentary: @commentary })
+      render json: to_json({ success: true, commentary: @commentary.public_params })
     else
       render json: to_json({ success: false, errors: @commentary.errors, commentary: @commentary })
     end
@@ -19,7 +19,7 @@ class API::CommentariesController < ApplicationController
 
   def update
     if @commentary.update_attributes(commentary_params)
-      render json: to_json({ success: true, commentary: @commentary })
+      render json: to_json({ success: true, commentary: @commentary.public_params })
     else
       render json: to_json({ success: false, errors: @commentary.errors, commentary: @commentary })
     end
@@ -27,7 +27,7 @@ class API::CommentariesController < ApplicationController
 
   def destroy
     if @commentary.destroy
-      render json: to_json({ success: true, commentary: @commentary })
+      render json: to_json({ success: true, commentary: @commentary.public_params })
     else
       render json: to_json({ success: false, errors: "You don't have permission to delete this." })
     end
