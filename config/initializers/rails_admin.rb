@@ -15,7 +15,7 @@ RailsAdmin.config do |config|
   config.current_user_method { current_admin } # auto-generated
 
 
-  I18n.default_locale = :de
+  # I18n.default_locale = :de
   # If you want to track changes on your models:
   # config.audit_with :history, 'Admin'
 
@@ -66,12 +66,12 @@ RailsAdmin.config do |config|
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :activity_id, :integer 
-  #     configure :user_id, :integer 
-  #     configure :comment, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :activity_id, :integer
+  #     configure :user_id, :integer
+  #     configure :comment, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -111,21 +111,21 @@ RailsAdmin.config do |config|
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :name, :string 
+  #     configure :id, :integer
+  #     configure :email, :string
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :string         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :string
+  #     configure :last_sign_in_ip, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
 
   #   # Cross-section configuration:
 
@@ -161,30 +161,30 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
-  #     configure :activities, :has_many_association         # Hidden 
-  #     configure :reviews, :has_many_association 
-  #     configure :discussions, :has_many_association 
+  #     configure :user, :belongs_to_association
+  #     configure :activities, :has_many_association         # Hidden
+  #     configure :reviews, :has_many_association
+  #     configure :discussions, :has_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :title, :string 
-  #     configure :author, :string 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :olida, :string 
-  #     configure :olidb, :string 
-  #     configure :status, :integer 
-  #     configure :rec, :string 
-  #     configure :boolean, :string 
-  #     configure :default, :string 
-  #     configure :false, :string 
-  #     configure :recommend, :boolean 
-  #     configure :order, :integer 
-  #     configure :isbn, :string 
-  #     configure :slug, :string 
+  #     configure :id, :integer
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :title, :string
+  #     configure :author, :string
+  #     configure :user_id, :integer         # Hidden
+  #     configure :olida, :string
+  #     configure :olidb, :string
+  #     configure :status, :integer
+  #     configure :rec, :string
+  #     configure :boolean, :string
+  #     configure :default, :string
+  #     configure :false, :string
+  #     configure :recommend, :boolean
+  #     configure :order, :integer
+  #     configure :isbn, :string
+  #     configure :slug, :string
 
   #   # Cross-section configuration:
 
@@ -220,20 +220,20 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :commentable, :polymorphic_association         # Hidden 
-  #     configure :user, :belongs_to_association 
+  #     configure :commentable, :polymorphic_association         # Hidden
+  #     configure :user, :belongs_to_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :title, :string 
-  #     configure :comment, :text 
-  #     configure :commentable_id, :integer         # Hidden 
-  #     configure :commentable_type, :string         # Hidden 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :role, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :title, :string
+  #     configure :comment, :text
+  #     configure :commentable_id, :integer         # Hidden
+  #     configure :commentable_type, :string         # Hidden
+  #     configure :user_id, :integer         # Hidden
+  #     configure :role, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -269,17 +269,17 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
-  #     configure :discussion, :belongs_to_association 
+  #     configure :user, :belongs_to_association
+  #     configure :discussion, :belongs_to_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :message, :text 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :discussion_id, :integer         # Hidden 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :message, :text
+  #     configure :user_id, :integer         # Hidden
+  #     configure :discussion_id, :integer         # Hidden
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -315,18 +315,18 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :book, :belongs_to_association 
-  #     configure :commentaries, :has_many_association 
+  #     configure :book, :belongs_to_association
+  #     configure :commentaries, :has_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :quote, :text 
-  #     configure :page, :integer 
-  #     configure :pages_total, :integer 
-  #     configure :book_id, :integer         # Hidden 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :quote, :text
+  #     configure :page, :integer
+  #     configure :pages_total, :integer
+  #     configure :book_id, :integer         # Hidden
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -362,20 +362,20 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :followable, :polymorphic_association 
-  #     configure :follower, :polymorphic_association 
-  #     configure :activities, :has_many_association         # Hidden 
+  #     configure :followable, :polymorphic_association
+  #     configure :follower, :polymorphic_association
+  #     configure :activities, :has_many_association         # Hidden
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :followable_id, :integer         # Hidden 
-  #     configure :followable_type, :string         # Hidden 
-  #     configure :follower_id, :integer         # Hidden 
-  #     configure :follower_type, :string         # Hidden 
-  #     configure :blocked, :boolean 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :followable_id, :integer         # Hidden
+  #     configure :followable_type, :string         # Hidden
+  #     configure :follower_id, :integer         # Hidden
+  #     configure :follower_type, :string         # Hidden
+  #     configure :blocked, :boolean
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -411,19 +411,19 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
-  #     configure :activities, :has_many_association         # Hidden 
+  #     configure :user, :belongs_to_association
+  #     configure :activities, :has_many_association         # Hidden
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :source, :string 
-  #     configure :title, :string 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :status, :integer 
-  #     configure :note, :string 
+  #     configure :id, :integer
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :source, :string
+  #     configure :title, :string
+  #     configure :user_id, :integer         # Hidden
+  #     configure :status, :integer
+  #     configure :note, :string
 
   #   # Cross-section configuration:
 
@@ -459,16 +459,16 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
+  #     configure :user, :belongs_to_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :body, :string 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :book_id, :integer 
+  #     configure :id, :integer
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :body, :string
+  #     configure :user_id, :integer         # Hidden
+  #     configure :book_id, :integer
 
   #   # Cross-section configuration:
 
@@ -504,37 +504,37 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :activities, :has_many_association         # Hidden 
-  #     configure :followings, :has_many_association 
-  #     configure :follows, :has_many_association 
-  #     configure :books, :has_many_association 
-  #     configure :links, :has_many_association 
-  #     configure :reviews, :has_many_association 
-  #     configure :commentaries, :has_many_association 
+  #     configure :activities, :has_many_association         # Hidden
+  #     configure :followings, :has_many_association
+  #     configure :follows, :has_many_association
+  #     configure :books, :has_many_association
+  #     configure :links, :has_many_association
+  #     configure :reviews, :has_many_association
+  #     configure :commentaries, :has_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :name, :string 
-  #     configure :avatar_file_name, :string         # Hidden 
-  #     configure :avatar_content_type, :string         # Hidden 
-  #     configure :avatar_file_size, :integer         # Hidden 
-  #     configure :avatar_updated_at, :datetime         # Hidden 
-  #     configure :avatar, :paperclip 
-  #     configure :slug, :string 
+  #     configure :id, :integer
+  #     configure :email, :string
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :string         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :string
+  #     configure :last_sign_in_ip, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :avatar_file_name, :string         # Hidden
+  #     configure :avatar_content_type, :string         # Hidden
+  #     configure :avatar_file_size, :integer         # Hidden
+  #     configure :avatar_updated_at, :datetime         # Hidden
+  #     configure :avatar, :paperclip
+  #     configure :slug, :string
 
   #   # Cross-section configuration:
 
