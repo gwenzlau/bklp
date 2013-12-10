@@ -70,8 +70,12 @@
 						<div class="row">
 							<% if @also_read.each do |also| %>
 							 <div class="col-md-3">
+<<<<<<< HEAD
 								 <% if also.isbn.blank? %>
 
+=======
+								<% if also.isbn.blank? %>
+>>>>>>> profile_page
 								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
 								<% else %>
 								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>

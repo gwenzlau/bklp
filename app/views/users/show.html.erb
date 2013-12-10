@@ -166,4 +166,73 @@
 	<% end %>
 	
 </div>
-		
+
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<div id="profile-content">
+					<div id="profile-card">
+						<% if @user.id == current_user.id %>
+						<a href="<%= edit_user_registration_path %>">
+							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
+						</a>
+						<% else %>
+						<div id="profile-card-img">
+							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+						</div>
+						<p id="user-name"><%= @user.name %></p>
+						<p id="currently-reading">is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+							<% if @user.id == current_user.id %>
+								<%# Do nothing since the current user is looking at his own profile %>
+							<% else %>
+								<% if current_user.following?(@user) %>
+									<button class="btn btn-default btn-sm"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
+								<% else %>
+									<button class="btn btn-default btn-sm"><%= link_to "Follow", follow_user_path(@user) %></button>
+								<% end %>
+							<% end %>
+						<% end %>
+					</div>
+					<div id="recommended-reads">
+						<p>Recommended reads</p>
+						<div class="row">
+							<% @rec.each do |rec| %> 
+							<div class="col-md-4">
+								<img src="http://placehold.it/180x240">
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div id="future-reads">
+						<p>Future reads</p>
+						<ul>
+							<% @future.each do |future| %>
+        					<li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+        					<!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
+          					<% end %>
+						</ul>
+					</div>
+					<div id="past-reads">
+						<p>Past reads</p>
+						<ul>
+							<% @past.each do |past| %>
+          					<li>
+          						<%= link_to past.title, book_path(:id => past.olidb) %>  <%= past.author %>
+          						<div class="users-reading pull-right">
+          							<img src="http://placehold.it/40x40" class="img-circle">
+          							<img src="http://placehold.it/40x40" class="img-circle">
+          							<img src="http://placehold.it/40x40" class="img-circle">
+          							+ 20	
+          						</div>
+          						<span id="past-read-author">by: Harper Lee</span>
+          					</li>
+          					<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script></script>
