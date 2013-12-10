@@ -8,28 +8,28 @@ class API::DiscussionsController < ApplicationController
   def index
     discussions = Discussion.includes(:commentaries).where(book_id: params[:book_id])
 
-    render json: to_json({ success: true, discussions: discussions.map(&:public_params) })
+    render json: to_json(discussions.map(&:public_params))
   end
 
   def show
     discussion = Discussion.find(params[:id])
 
-    render json: to_json({ success: true, discussion: discussion.public_params })
+    render json: to_json(discussion.public_params)
   end
 
   def create
-    discussion = Discussion.new(discussion_params)
+    discussion = current_user.discussions.new(discussion_params)
     discussion.book_id = params[:book_id]
 
     if discussion.save
-      render json: to_json({ success: true, discussion: discussion.public_params })
+      render json: to_json(discussion.public_params)
     else
-      render json: to_json({ success: false, errors: discussion.errors, discussion: discussion })
+      render json: to_json({ errors: discussion.errors, discussion: discussion })
     end
   end
 
 private
   def discussion_params
-    params.require(:discussion).permit(:quote, :page, :pages_total)
+    params.require(:discussion).permit(:quote, :page, :pages_total, :message)
   end
 end

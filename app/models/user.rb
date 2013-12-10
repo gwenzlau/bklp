@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   has_many :links, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+
 
 
   def public_params
