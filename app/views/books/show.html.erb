@@ -32,7 +32,11 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<%= raw(@thebook.description) %><br /><br />
-									<b><%= @total_recommend %> users have recommended this book.</b>
+									<% if @myrecommend.exists? %>
+										<b>You</b> and <%= pluralize(@total_recommend, "user") %> have recommended this book.
+									<% else %>
+										<b><%= pluralize(@total_recommend, "user") %> have recommended this book.</b>
+									<% end %>
 								</p>
 							</div>
 						</div>

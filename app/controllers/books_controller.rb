@@ -21,6 +21,7 @@ class BooksController < ApplicationController
     if user_signed_in?
       @newbook = Book.new
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
+      @myrecommend = Recommend.where(:user_id => current_user.id).where(:book_id => params[:id])
       @user = current_user
     end
     
