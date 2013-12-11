@@ -328,6 +328,9 @@ form.new_acomment input.comment-field {
 #book-actions {
 	display: inline;
 }
+#book-actions form {
+	display: inline-block;
+}
 #book-actions button {
 	color: #777;
 }
