@@ -1,17 +1,7 @@
 <div ng-controller="DiscussionsCtrl" id="book-discussions">
 
-    <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
-        <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">
-            <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
-        </li>
-        <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
-            <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
-        </li>
-        <li ng-cloak ng-show="!discussions.length && !tempImage" class="start-a-discussion"><span>Start Discussion</span></li>
-    </ul>
-
     <%# Only shown when a visible discussion is present %>
-    <div class="active-discussion" ng-show="visibleDiscussion">
+    <div class="active-discussion show-discussion" ng-show="visibleDiscussion">
         <span class="time-info">{{visibleDiscussion.created_at_ago}}</span>
         <span class="user-info">{{visibleDiscussion.user.name}}</span>
 
@@ -38,6 +28,16 @@
             <input type="submit" ng-disabled="comment_form.$invalid" value="Post reply">
         </form>
     </div>
+
+    <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
+        <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">
+            <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
+        </li>
+        <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
+            <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
+        </li>
+        <li ng-cloak ng-show="!discussions.length && !tempImage" class="start-a-discussion"><span>Start Discussion</span></li>
+    </ul>
 
     <%# Only shown when newDiscussionForm is truthy %>
     <form name="discussion_form" id="discussion-container" class="new-discussion show-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
