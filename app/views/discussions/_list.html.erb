@@ -42,7 +42,7 @@
     <%# Only shown when newDiscussionForm is truthy %>
     <form name="discussion_form" id="discussion-container" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
         <div id="discussion-form">
-            <textarea placeholder="&quot;So there is this quote...&quot;" name="quote" id="discussion-form-quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required></textarea>
+            <textarea placeholder="&quot;So there is this quote..." name="quote" id="discussion-form-quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required></textarea>
             <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>
 
             <span>Which is on page</span>
@@ -55,7 +55,7 @@
             <span class="form-error" ng-show="discussion_form.pages_total.$dirty && discussion_form.pages_total.$invalid && !discussion_form.pages_total.$focused">Total pages must be a valid number</span>
 
             <textarea name="message" id="discussion-form-comment" placeholder="And the reason I brought it up is..." ng-focus ng-model="discussion.message" required></textarea>
-            <span class="form-error" ng-show="discussion_form.message.$dirty && discussion_form.message.$invalid && !discussion_form.message.$focused">You must provide a reason</span>
+            <span class="form-error" ng-show="discussion_form.message.$dirty && discussion_form.message.$invalid && !discussion_form.message.$focused">You should provide a reason</span>
         </div><!-- /#discussion-form -->
 
         <div id="discussion-action">
