@@ -445,28 +445,6 @@ form.new_acomment input.comment-field {
 .active-discussion {
 	margin-bottom: 60px;
 }
-.active-discussion:after, .active-discussion:before {
-	top: 79.5%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-.active-discussion:after {
-	border-color: rgba(136, 183, 213, 0);
-	border-top-color: #F9F9F9;
-	border-width: 10px;
-	margin-left: -10px;
-}
-.active-discussion:before {
-	border-color: rgba(194, 225, 245, 0);
-	border-top-color: #ccc;
-	border-width: 11px;
-	margin-left: -11px;
-}
 .show-discussion:after, .show-discussion:before {
 	left: inherit;
 }
