@@ -51,8 +51,6 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
     $scope.showDiscussion = function(discussion, $event) {
         if ($event) {
             $event.stopPropagation();
-            $('.avatar img').css('border', 'none');
-            $($event.target).css('border', '4px solid #4095f1');
         }
 
         $scope.newDiscussionForm = null;
@@ -76,7 +74,6 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
             $scope.tempImage = {
                 percentage: rel_x
             };
-            $('.avatar img').css('border', 'none');
             $(".show-discussion").css({ left: rel_x + 15 + 'px' });
         }
 
