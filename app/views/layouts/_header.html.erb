@@ -23,9 +23,7 @@
                 <% if user_signed_in? %>
                 <li id="profile-name"><%= link_to current_user.name, current_user %></li>
                 <li id="profile-img"><%= link_to (image_tag current_user.avatar.url), current_user %></li>
-                <li id="signout"><%= link_to (image_tag ("https://s3.amazonaws.com/bklp/signout.png")), destroy_user_session_path, method: :delete %></li>
-                <li id="signout"><%= button_to 'Logout', destroy_user_session_path, method: :delete %></li>
-
+                <li id="signout"><%= link_to (image_tag ("https://s3.amazonaws.com/bklp/signout.png")), destroy_user_session_path, :method => :delete %></li>
                 <% else %>
                 <li><%= link_to "Login", new_user_session_path %></li>
                 <% end %>
