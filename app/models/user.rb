@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
   has_many :discussions, dependent: :destroy
+  has_many :recommends, dependent: :destroy
 
 
 
