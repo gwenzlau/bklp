@@ -9,10 +9,17 @@ end
 
 def create
     @review = Review.new(review_params)
+    resp ||= []
     if @review.save
-      redirect_to current_user
+      resp << {'status' => 'success'}
+      respond_to do |format|
+        format.json { render json: resp }
+      end
     else
-      redirect_to root_path
+      resp << {'status' => 'failed'}
+      respond_to do |format|
+        format.json { render json: resp }
+      end
     end
  end
 

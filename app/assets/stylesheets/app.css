@@ -753,7 +753,7 @@ form.new_acomment input.comment-field {
         padding: 50px 0;
 }
 .modal-actions:after, .modal-actions:before {
-        top: 18.9%;
+        top: 18.4%;
         left: 50%;
         border: solid transparent;
         content: " ";
@@ -777,16 +777,24 @@ form.new_acomment input.comment-field {
 .modal .modal-comment {
         padding: 30px 20px;
         border-bottom: 1px solid #DDD;
+        height: 181px;
 }
 .modal .modal-comment textarea {
         border-radius: 0;
         font-family: Georgia;
         font-size: 12px;
         font-style: italic;
-        height: 100px;
+        height: 80px;
+        margin-bottom: 10px;
+}
+.modal #modal-comment-success {
+	margin-top: 50px;
+	text-align: center;
+	color: #4095f1;
+	display: none;
 }
 .modal-comment:after, .modal-comment:before {
-        top: 42.4%;
+        top: 44%;
         left: 50%;
         border: solid transparent;
         content: " ";
@@ -830,4 +838,8 @@ form.new_acomment input.comment-field {
 }
 .modal .modal-recommendations #book-covers {
         margin-top: 20px;
+}
+.modal .modal-recommendations #book-covers img {
+	width: 130px;
+	height: 180px;
 }

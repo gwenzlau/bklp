@@ -130,6 +130,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
+            	<input type="hidden" value="<%= @user.id %>" id="user_id">
+            	<input type="hidden" value="<%= @thebook.id %>" id="book_id">
                 <div class="modal-actions">
                     <div class="btn-group btn-group-sm">
                         <button type="button" class="btn btn-default">Recommend</button>
@@ -137,25 +139,33 @@
                     </div>
                 </div>
                 <div class="modal-comment">
-                    <textarea placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+                    <div id="modal-comment-content">
+	                    <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+	                    <button id="post-review" class="btn btn-bookloop btn-sm pull-right">Post review</button>
+	                    <div class="clearfix"></div>
+                    </div>
+                    <div id="modal-comment-success">
+                    	<p>Your review for <%= @thebook.title %> has been posted!</p>
+                    </div>
                 </div>
                 <div class="modal-recommendations">
                     <p class="lead">Looking for something to read next?</p>
                     <p>(Others read these books after reading <%= @thebook.title %>)</p>
                     <div class="row" id="book-covers">
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
+                    	<% if @also_read.each do |also| %>
+                        <div class="col-md-4">
+                            <% if also.isbn.blank? %>
+							<%= link_to (image_tag ("http://placehold.it/130x180")), book_path(:id => also.olidb) %>
+							<% else %>
+							<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
+							<% end %>
+                        </div>
+                        <% end.empty? %>
+                        <% end %>
                     </div>
                 </div>
                 <div class="modal-btncontainer">
-                    <button class="btn btn-bookloop">No thanks, I have a previous engagement.</button>
+                	<%= link_to "No thanks, I have a previous engagement.", user_path(current_user), :class => "btn btn-bookloop" %>
                 </div>
             </div>
         </div>
