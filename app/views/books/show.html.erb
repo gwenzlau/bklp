@@ -124,3 +124,40 @@
 		</div>
 	</div>
 </div>
+
+<!-- finished modal -->
+<div class="modal fade" id="finished-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-actions">
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-default">Recommend</button>
+                        <button type="button" class="btn btn-default">No, Thanks</button>
+                    </div>
+                </div>
+                <div class="modal-comment">
+                    <textarea placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+                </div>
+                <div class="modal-recommendations">
+                    <p class="lead">Looking for something to read next?</p>
+                    <p>(Others read these books after reading <%= @thebook.title %>)</p>
+                    <div class="row" id="book-covers">
+                            <div class="col-md-4">
+                                    <img src="http://placehold.it/130x180">
+                            </div>
+                            <div class="col-md-4">
+                                    <img src="http://placehold.it/130x180">
+                            </div>
+                            <div class="col-md-4">
+                                    <img src="http://placehold.it/130x180">
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-btncontainer">
+                    <button class="btn btn-bookloop">No thanks, I have a previous engagement.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
