@@ -684,7 +684,6 @@ ul#recent-activity li ul li a {
 	font-weight: 300;
 	color: #CCC;
 	text-align: center;
-	width: 600px;
 	margin: 50px auto 0 auto;
 }
 #profile-content #recommended-reads p, #profile-content #future-reads p, #profile-content #past-reads p {
@@ -713,7 +712,7 @@ ul#recent-activity li ul li a {
 	margin: 0 auto;
 	position: relative;
 }
-#past-read-author {
+.past-read-author {
 	text-transform: none;
 	font-size: 12px;
 	font-family: Georgia;
