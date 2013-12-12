@@ -653,10 +653,6 @@ ul#recent-activity li ul li a {
 
 /* profile page
 ------------------------*/
-#profile-content {
-	width: 860px;
-	margin: 0 auto;
-}
 #profile-content #profile-card {
 	text-align: center;
 }

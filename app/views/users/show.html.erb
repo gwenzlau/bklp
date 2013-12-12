@@ -5,6 +5,15 @@
 				<div id="profile-content">
 					<div id="profile-card">
 						<% if @user.id == current_user.id %>
+								<%# Do nothing since the current user is looking at his own profile %>
+							<% else %>
+								<% if current_user.following?(@user) %>
+									<button class="btn btn-default btn-sm pull-right"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
+								<% else %>
+									<button class="btn btn-default btn-sm pull-right"><%= link_to "Follow", follow_user_path(@user) %></button>
+								<% end %>
+							<% end %>
+						<% if @user.id == current_user.id %>
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
 						</a>
@@ -16,15 +25,6 @@
 						</div>
 						<p id="user-name"><%= @user.name %></p>
 						<p id="currently-reading">is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
-							<% if @user.id == current_user.id %>
-								<%# Do nothing since the current user is looking at his own profile %>
-							<% else %>
-								<% if current_user.following?(@user) %>
-									<button class="btn btn-default btn-sm"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
-								<% else %>
-									<button class="btn btn-default btn-sm"><%= link_to "Follow", follow_user_path(@user) %></button>
-								<% end %>
-							<% end %>
 						<% end %>
 					</div>
 					<div id="recommended-reads">
