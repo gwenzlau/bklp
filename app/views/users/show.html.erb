@@ -70,7 +70,7 @@
 	</div>
 </div>
 <script>
-	$('.sortable').sortable({forcePlaceholderSize: true}).bind('sortupdate', function(e, ui) {
+	/*$('.sortable').sortable({forcePlaceholderSize: true}).bind('sortupdate', function(e, ui) {
 		var d = [];
 		$('.sortable li').each( function() {
 			var book_id = $(this).attr('book-id');
@@ -82,5 +82,15 @@
 			$.post('/books/reorder', data, function(resp) {
 				alert(resp);
 			});
+	});*/
+	// tooltip to change the book status
+	$('#currently-reading a').popover({
+		html: true,
+		placement: 'bottom',
+		trigger: 'click',
+		content: '<button class="btn btn-block btn-sm btn-default">Reading it</button><button class="btn btn-sm btn-block btn-default">Already read it</button><button class="btn btn-sm btn-block btn-default">Going to read it</button> <a href="#">Go to book page</a>'
+	});
+	$('#currently-reading a').click( function(e){
+		e.preventDefault();
 	});
 </script>

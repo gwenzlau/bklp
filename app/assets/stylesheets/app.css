@@ -316,6 +316,16 @@ ul#recent-activity li ul li a {
 #currently-reading, #book-reviews {
 	margin-top: 40px;
 }
+#currently-reading button {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#currently-reading .popover a {
+	font-size: 12px;
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
 #currently-reading ul {
 	list-style: none;
 	padding-left: 0;
