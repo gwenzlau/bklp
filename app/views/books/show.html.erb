@@ -32,16 +32,20 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<%= raw(@thebook.description) %><br /><br />
-									<% if @myrecommend.exists? %>
-										<b>You</b> and <%= pluralize(@total_recommend, "user") %> have recommended this book.
-									<% else %>
-										<b><%= pluralize(@total_recommend, "user") %> have recommended this book.</b>
-									<% end %>
+									
 								</p>
 							</div>
 						</div>
 					</div>
 					<div id="currently-reading">
+						<label> 
+							<% if @myrecommend.exists? %>
+										<b>You</b> and <%= pluralize(@total_recommend, "user") %> have recommended this book.
+									<% else %>
+										<b><%= pluralize(@total_recommend, "recommendation") %> </b>
+									<% end %>
+									</label>
+									<br>
 						<label>People currently reading this book</label>
 						<ul>
 							<% @users_reading.each do |reading| %>
@@ -50,7 +54,7 @@
 								<%= link_to  User.find_by_id(reading.user_id).name, user_path(reading.user_id) %>
 							</li>
 							<% end %>
-						</ul>
+							</ul>
 					</div>
 					<div id="book-reviews">
 						<div class="row">
@@ -148,15 +152,22 @@
                     <p class="lead">Looking for something to read next?</p>
                     <p>(Others read these books after reading <%= @thebook.title %>)</p>
                     <div class="row" id="book-covers">
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
-                            <div class="col-md-4">
-                                    <img src="http://placehold.it/130x180">
-                            </div>
+                           <% if @also_read.each do |also| %>
+							 <div class="col-md-3">
+
+								<% if also.isbn.blank? %>
+
+								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
+								<% else %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
+								<% end %>
+								<%= link_to also.title, book_path(:id => also.olidb) %>
+							 </div>
+							<% end.empty? %>
+							<div class="col-md-6">
+							<span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
+							</div>
+							<% end %>
                     </div>
                 </div>
                 <div class="modal-btncontainer">
