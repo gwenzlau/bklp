@@ -84,6 +84,7 @@
 			});
 	});*/
 	// tooltip to change the book status
+	<% if @user.id == current_user.id %>
 	$('#currently-reading a').popover({
 		html: true,
 		placement: 'bottom',
@@ -93,4 +94,5 @@
 	$('#currently-reading a').click( function(e){
 		e.preventDefault();
 	});
+	<% end %>
 </script>
