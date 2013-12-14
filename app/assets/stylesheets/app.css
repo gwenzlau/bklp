@@ -1,5 +1,16 @@
 /* Site-wide Styles
 ------------------------*/
+
+a {
+color: #4095f1;
+text-decoration: none;
+}
+
+strong {
+font-weight: bold;
+color: rgb(54, 53, 53);
+}
+
 .clearfix {
 	clear: both;
 }
