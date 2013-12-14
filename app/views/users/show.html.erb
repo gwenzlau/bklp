@@ -17,7 +17,7 @@
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
 						</a>
-						<p id="currently-reading"><%= @user.name %> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+						<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
 						<% else %>
 						<div id="profile-card-img">
 							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
@@ -27,7 +27,7 @@
 						<% end %>
 					</div>
 					<div id="recommended-reads">
-						<p>Recommended Reading List</p>
+						<p>Recommended Reading</p>
 						<div class="row">
 							<% @rec.each do |rec| %> 
 							<div class="col-md-3">
@@ -88,7 +88,12 @@
 		html: true,
 		placement: 'bottom',
 		trigger: 'click',
-		content: '<button class="btn btn-block btn-sm btn-default">Reading it</button><button class="btn btn-sm btn-block btn-default">Already read it</button><button class="btn btn-sm btn-block btn-default">Going to read it</button> <a href="#">Go to book page</a>'
+		content: '<button class="btn btn-block btn-sm btn-default">Abandon it</button><button class="btn btn-sm btn-block btn-default">Already read it</button><button class="btn btn-sm btn-block btn-default">Going to read it</button> <a href="#">Go to book page</a>'
+
+		// BOOKSTATUS buttons
+		// <%= button_to "Abandon it", {:controller => :books, :action => 'destroy'}, :method => :delete, :type => "button" %>		
+			// if you get an error with [] take out the :id seciont - it may not be necessary since we are already only addressing books with this status...
+		// 		<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :type => "button" %>
 	});
 	$('#currently-reading a').click( function(e){
 		e.preventDefault();
