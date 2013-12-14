@@ -17,8 +17,7 @@
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
 						</a>
-						<p id="user-name"><%= @user.name %></p>
-						<p id="currently-reading">is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+						<p id="currently-reading"><%= @user.name %> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
 						<% else %>
 						<div id="profile-card-img">
 							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
