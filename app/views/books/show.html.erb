@@ -169,23 +169,12 @@
 								<% else %>
 								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
 								<% end %>
-								<%= link_to also.title, book_path(:id => also.olidb) %>
 							 </div>
 							<% end.empty? %>
 							<div class="col-md-6">
 							<span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
 							</div>
 							<% end %>
-                    	<% if @also_read.each do |also| %>
-                        <div class="col-md-4">
-                            <% if also.isbn.blank? %>
-							<%= link_to (image_tag ("http://placehold.it/130x180")), book_path(:id => also.olidb) %>
-							<% else %>
-							<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
-							<% end %>
-                        </div>
-                        <% end.empty? %>
-                        <% end %>
                     </div>
                 </div>
                 <div class="modal-btncontainer">
