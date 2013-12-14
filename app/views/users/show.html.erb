@@ -83,11 +83,12 @@
 	});*/
 	// tooltip to change the book status
 	<% if @user.id == current_user.id %>
+	var tooltipBtn = '<%= button_to "Abandon it", {:controller => :books, :action => "destroy"}, :method => :delete, :type => "button", :class => "btn btn-block btn-sm btn-default" %> <%= button_to "Finished!", {:controller => :books, :action => 'update'}, :method => :put, :type => "button", :class => "btn btn-block btn-sm btn-default" %>'
 	$('#currently-reading a').popover({
 		html: true,
 		placement: 'bottom',
 		trigger: 'click',
-		content: '<button class="btn btn-block btn-sm btn-default">Finished!</button><button class="btn btn-sm btn-block btn-default">Abandon it</button><a href="#">Visit Book Page</a>'
+		content: tooltipBtn
 
 		// BOOKSTATUS buttons
 		// <%= button_to "Abandon it", {:controller => :books, :action => 'destroy'}, :method => :delete, :type => "button" %>		

@@ -345,9 +345,10 @@ form.new_acomment input.comment-field {
 #currently-reading, #book-reviews {
 	margin-top: 40px;
 }
-#currently-reading button {
+#currently-reading input.btn {
 	padding-left: 20px;
 	padding-right: 20px;
+	margin-bottom: 5px;
 }
 #currently-reading .popover a {
 	font-size: 12px;
@@ -738,7 +739,7 @@ form.new_acomment input.comment-field {
 }
 #profile-content #recommended-reads ul li a, #profile-content #future-reads ul li a, #profile-content #past-reads ul li a {
 	color: #2a2a2a;
-	font-size: 22px;
+	font-size: 18px;
 	text-transform: none;
 	font-weight: 500;
 }
