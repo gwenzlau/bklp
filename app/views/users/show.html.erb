@@ -93,7 +93,7 @@
 		// BOOKSTATUS buttons
 		// <%= button_to "Abandon it", {:controller => :books, :action => 'destroy'}, :method => :delete, :type => "button" %>		
 			// if you get an error with [] take out the :id seciont - it may not be necessary since we are already only addressing books with this status...
-		// 		<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @mybook[0].id}, :method => :put, :type => "button" %>
+		// 		<%= button_to "Finished!", {:controller => :books, :action => 'update'}, :method => :put, :type => "button" %>
 	});
 	$('#currently-reading a').click( function(e){
 		e.preventDefault();
