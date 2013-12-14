@@ -487,11 +487,23 @@ form.new_acomment input.comment-field {
 	font-weight: 500;
 	font-size: 12px;
 }
+#plus-sign {
+	display: none;
+	z-index: 9999999;
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	padding: 0px 4px !important;
+	border-radius: 3px;
+}
 #where {
 	color: #333;
 	font-weight: 300;
 }
-#timeline:hover #tooltip-span {
+#timeline {
+	margin-top: 70px;
+}
+#timeline:hover #tooltip-span, #timeline:hover #plus-sign {
 	display:block;
     position:fixed;
     overflow:hidden;
