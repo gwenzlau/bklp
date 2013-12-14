@@ -39,18 +39,6 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<div id="future-reads">
-								<p>Future reads</p>
-								<ul>
-									<% @future.each do |future| %>
-		        					<li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
-		        					<!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
-		        					<span id="past-read-author">by: Author %></span>
-		          					<% end %>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-6">
 							<div id="past-reads">
 								<p>Past reads</p>
 								<ul>
@@ -59,6 +47,18 @@
 		          						<%= link_to past.title, book_path(:id => past.olidb) %>  <%= past.author %>
 		          						<span class="past-read-author">by: <%= past.author %></span>
 		          					</li>
+		          					<% end %>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div id="future-reads">
+								<p>Future reads</p>
+								<ul>
+									<% @future.each do |future| %>
+		        					<li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+		        					<!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
+		        					<span id="past-read-author">by: Author %></span>
 		          					<% end %>
 								</ul>
 							</div>
