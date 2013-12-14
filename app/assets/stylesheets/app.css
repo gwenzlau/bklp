@@ -493,8 +493,8 @@ form.new_acomment input.comment-field {
 	background: #4095f1;
 	color: #FFF;
 	border: 1px solid #4095f1;
-	padding: 0px 4px !important;
-	border-radius: 3px;
+	border-radius: 50%;
+	padding-left: 6.2px;
 }
 #where {
 	color: #333;
@@ -504,9 +504,12 @@ form.new_acomment input.comment-field {
 	margin-top: 70px;
 }
 #timeline:hover #tooltip-span, #timeline:hover #plus-sign {
-	display:block;
+	display:inline;
     position:fixed;
-    overflow:hidden;
+}
+#timeline:hover #plus-sign {
+	height: 24px;
+	width: 23px;
 }
 #discussion-form #posted-by {
 	font-size: 12px;
