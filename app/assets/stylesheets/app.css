@@ -478,6 +478,24 @@ form.new_acomment input.comment-field {
 #discussion-form {
 	padding: 10px 20px;
 }
+#tooltip-span {
+	display: none;
+	border: 1px solid #4095f1;
+	color: #4095f1;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-weight: 500;
+	font-size: 12px;
+}
+#where {
+	color: #333;
+	font-weight: 300;
+}
+#timeline:hover #tooltip-span {
+	display:block;
+    position:fixed;
+    overflow:hidden;
+}
 #discussion-form #posted-by {
 	font-size: 12px;
 	margin-top: 10px;

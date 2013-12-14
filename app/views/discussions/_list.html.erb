@@ -1,15 +1,18 @@
 <div ng-controller="DiscussionsCtrl" id="book-discussions">
-
-    <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
-        <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">
-            <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
-        </li>
-        <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
-            <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
-        </li>
-        <li ng-cloak ng-show="!discussions.length && !tempImage" class="start-a-discussion"><span>Start Discussion</span></li>
-    </ul>
-
+    <div id="timeline">
+        <span id="tooltip-span">
+            Discuss <span id="where"></span>
+        </span>
+        <ul class="discussions-bar" ng-click="showDiscussionForm($event)">
+            <li ng-repeat="discussion in discussions" ng-class="{active:visibleDiscussion == discussion}" style="left: {{discussion.percentage}}%;">
+                <span class="avatar" ng-click="showDiscussion(discussion, $event)"><img ng-src="{{discussion.user.avatar_url}}" alt="{{discussion.user.name}}"></span>
+            </li>
+            <li ng-show="tempImage && !visibleDiscussion" class="active" style="left: {{tempImage.percentage}}px;">
+                <span class="avatar"><img src="{{user.avatar_url}}" alt="{{user.name}}"></span>
+            </li>
+            <li ng-cloak ng-show="!discussions.length && !tempImage" class="start-a-discussion"><span>Start Discussion</span></li>
+        </ul>
+    </div>
     <%# Only shown when a visible discussion is present %>
     <div class="active-discussion" ng-show="visibleDiscussion">
         <span class="time-info">{{visibleDiscussion.created_at_ago}}</span>
@@ -64,3 +67,28 @@
         </div><!-- /#discussion-action -->
     </form>
 </div>
+
+<script>
+    function calcPosition(pos) {
+        var timelineWidth = $('#timeline').width();
+        percentage = pos/timelineWidth;
+        console.log(percentage);    
+        if(percentage < 0.1) $('#tooltip-span #where').html('in the begining');
+        if(percentage < 0.3 && percentage > 0.1) $('#tooltip-span #where').html('about a quarter in');
+        if(percentage > 0.3 && percentage < 0.4) $('#tooltip-span #where').html('a little before halfway');
+        if(percentage > 0.4 && percentage < 0.6) $('#tooltip-span #where').html('about halfway');
+        if(percentage > 0.6 && percentage < 0.7) $('#tooltip-span #where').html('a little more than halfway');
+        if(percentage > 0.7 && percentage < 0.8) $('#tooltip-span #where').html('three-quarters through');
+        if(percentage > 0.8 && percentage < 0.9) $('#tooltip-span #where').html('towards the end');
+        if(percentage > 0.9 && percentage < 1) $('#tooltip-span #where').html('the very end');
+    }
+
+    var tooltipSpan = $('#tooltip-span');
+    $('#timeline').mousemove(function (e) {
+        var x = e.pageX,
+            y = e.pageY;
+        tooltipSpan.css('top', y + 20 + 'px');
+        tooltipSpan.css('left', x + 20 + 'px');
+        calcPosition(e.pageX - 435);
+    });
+</script>
