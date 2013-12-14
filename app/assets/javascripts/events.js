@@ -29,4 +29,18 @@ $(document).ready( function() {
 		$(this).addClass('active');
 	});
 
+	// post review
+	$('#post-review').click( function() {
+		var body = $('#review_body').val();
+		var book_id = $('#book_id').val(); 
+		var user_id = $('#user_id').val();
+		var d = {'review[body]': body, 'review[book_id]': book_id, 'review[user_id]': user_id}
+		$.post('/reviews', d, function(data) {
+			if(data[0].status == 'success') {
+				$('#modal-comment-content').hide();
+				$('#modal-comment-success').show();
+			}
+		});
+	});
+
 });
