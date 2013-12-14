@@ -28,7 +28,7 @@
 						<% end %>
 					</div>
 					<div id="recommended-reads">
-						<p>Recommended reads</p>
+						<p>Recommended Reading List</p>
 						<div class="row">
 							<% @rec.each do |rec| %> 
 							<div class="col-md-3">
@@ -56,9 +56,9 @@
 								<p>Future reads</p>
 								<ul>
 									<% @future.each do |future| %>
-		        					<li><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li>
+		        					<li><%= link_to future.title, book_path(:id => future.olidb) %> </li>
 		        					<!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
-		        					<span id="past-read-author">by: Author %></span>
+		        					<span id="past-read-author">by: <%= future.author %></span>
 		          					<% end %>
 								</ul>
 							</div>
