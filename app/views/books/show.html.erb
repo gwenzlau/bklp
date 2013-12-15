@@ -44,10 +44,24 @@
 										<b>You</b> and <%= pluralize(@total_recommend, "user") %> have recommended this book.
 									<% else %>
 										<b><%= pluralize(@total_recommend, "recommendation") %> </b>
+										
+										<%= form_for(@new_recommend) do |f| %>
+											<%= f.hidden_field :user_id, :value => current_user.id %>
+											<%= f.hidden_field :item_id, :value => params[:id] %>
+											<%= f.hidden_field :item_type, :value => "book" %>
+											<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
+										<% end %>
+										
 									<% end %>
 									</label>
 									<br>
 							<% else %>
+								<%= form_for(@new_recommend) do |f| %>
+									<%= f.hidden_field :user_id, :value => current_user.id %>
+									<%= f.hidden_field :item_id, :value => params[:id] %>
+									<%= f.hidden_field :item_type, :value => "book" %>
+									<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
+								<% end %>
 							<% end %>
 						<% if @users_reading.exists? %>
 						    <label>People currently reading this book</label>

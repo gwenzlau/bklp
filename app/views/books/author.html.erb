@@ -13,6 +13,17 @@
 </div>
 <p align="center"><%= @theauthor.born_at %> - <%= @theauthor.died_at %></p>
 
+<% if @myrecommend.exists? %>
+	<b>You and <%= pluralize(@total_recommends, "other") %> have recommended this author<br /><br /></b>
+<% else %>
+	<%= form_for(@new_recommend) do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :item_id, :value => params[:id] %>
+		<%= f.hidden_field :item_type, :value => "author" %>
+		<%= f.button "Recommend author", :class => "btn btn-default btn-sm" %>
+	<% end %><br />
+<% end %>
+
 <p><%= raw(@theauthor.about) %></p>
 <hr>
 <i>Fans of <%= @theauthor.name %>:</i>

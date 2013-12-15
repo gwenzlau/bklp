@@ -29,6 +29,7 @@ class BooksController < ApplicationController
     @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
     @review = Review.where(:book_id => params[:id])
 
+    @new_recommend = Recommend.new
     #Number of users who have recommended this book
     @total_recommend = Recommend.where(:item_id => params[:id]).count
     #this is to check if there have been any recommendations
@@ -45,6 +46,10 @@ class BooksController < ApplicationController
     @theauthor = client.author(params[:id])
     @authorbooks = client.search_books(@theauthor.name)
     @user = current_user
+    
+    @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
+    @total_recommends = Recommend.where(:item_id => params[:id]).where(:item_type => "author").count
+    @new_recommend = Recommend.new
   end
 
 
