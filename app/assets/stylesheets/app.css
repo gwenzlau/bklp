@@ -494,6 +494,7 @@ form.new_acomment input.comment-field {
 	font-weight: 500;
 	font-size: 12px;
 	background: #FFF;
+	z-index: 99999999;
 }
 #plus-sign {
 	display: none;
@@ -503,6 +504,7 @@ form.new_acomment input.comment-field {
 	border: 1px solid #4095f1;
 	border-radius: 50%;
 	padding-left: 6.2px;
+	z-index: 999999999999;
 }
 #where {
 	color: #333;
