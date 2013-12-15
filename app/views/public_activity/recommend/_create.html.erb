@@ -1,7 +1,7 @@
 recommended
 <% if activity.trackable %>
 	<% if Recommend.find_by_id(activity.trackable.id).item_type == "book" %>
-		the book
+		
 		<% recco = Recommend.find_by_id(activity.trackable.id) %>
 		<%= link_to Book.find_by_olidb(recco.item_id).title, book_path(recco.item_id) %>
 	<% else %>
