@@ -42,7 +42,9 @@ class UsersController < ApplicationController
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 
-    @rec = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
+    #Recommended books and authors
+    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
+    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "authors")
     
     
     @recommend = Book.where(:user_id => params[:id]).where(:recommend => "true")
