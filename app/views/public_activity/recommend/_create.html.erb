@@ -7,6 +7,8 @@ recommended
 	<% else %>
 		an
 		<% recco = Recommend.find_by_id(activity.trackable.id) %>
-		<%= link_to "author", author_book_path(recco.item_id) %>
+		<% client = Goodreads.new(Goodreads.configuration) %>
+		<% aut = client.author(7) %>
+		<%= link_to aut.name, author_book_path(recco.item_id) %>
 	<% end %>
 <% end %>

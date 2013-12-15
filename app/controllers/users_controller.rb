@@ -42,7 +42,9 @@ class UsersController < ApplicationController
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 
-    @rec = Book.where(:user_id => params[:id]).where(:rec => "true")
+    @rec = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
+    
+    
     @recommend = Book.where(:user_id => params[:id]).where(:recommend => "true")
 
     client = Goodreads.new(Goodreads.configuration)
