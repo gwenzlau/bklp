@@ -697,6 +697,9 @@ form.new_acomment input.comment-field {
 #profile-content #profile-card {
 	text-align: center;
 }
+#profile-content #profile-card img {
+	width: 144px;
+}
 #profile-content #profile-card #user-name {
 	font-size: 24px;
 	font-weight: bold;
