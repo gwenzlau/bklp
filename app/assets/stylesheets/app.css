@@ -486,6 +486,7 @@ form.new_acomment input.comment-field {
 	padding: 5px 10px;
 	font-weight: 500;
 	font-size: 12px;
+	background: #FFF;
 }
 #plus-sign {
 	display: none;
