@@ -438,7 +438,7 @@ form.new_acomment input.comment-field {
 #book-discussions {
 	position: relative;
 }
-#discussion-arrow:after, #discussion-arrow:before {
+.show-discussion:after, .show-discussion:before {
 	top: 69px;
 	border: solid transparent;
 	content: " ";
@@ -448,23 +448,23 @@ form.new_acomment input.comment-field {
 	pointer-events: none;
 	z-index: 9999;
 }
-.show-discussion {
+#discussion-arrow {
 	left: 0;
 }
 .active-discussion {
 	margin-bottom: 60px;
 }
-.show-discussion:after, .show-discussion:before {
+#discussion-arrow:after, #discussion-arrow:before {
 	left: inherit;
 }
-#discussion-arrow:after {
+.show-discussion:after {
 	border-color: rgba(136, 183, 213, 0);
 	border-bottom-color: #FFF;
 	border-width: 11px;
 	margin-left: -11px;
 	margin-top: 2px;
 }
-#discussion-arrow:before {
+.show-discussion:before {
 	border-color: rgba(194, 225, 245, 0);
 	border-bottom-color: #DDD;
 	border-width: 12px;

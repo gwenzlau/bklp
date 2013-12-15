@@ -53,14 +53,14 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
 
         if ($event) {
             $event.stopPropagation();
-            parent_offset = $($event.currentTarget).offset();
-            rel_x = $event.pageX - parent_offset.left;
+            parent_offset = $($event.currentTarget).parent().offset();
+            rel_x = parent_offset.left;
 
             $scope.tempImage = {
                 percentage: rel_x
             };
             $("#discussion-arrow").addClass('show-discussion');
-            $(".show-discussion").css({ left: rel_x + 145 + 'px' });
+            $("#discussion-arrow").css({ left: rel_x - 415 + 'px' });
         }
 
         $scope.newDiscussionForm = null;
@@ -84,8 +84,8 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
             $scope.tempImage = {
                 percentage: rel_x
             };
-            $(".show-discussion").show();
-            $(".show-discussion").css({ left: rel_x  + 'px' });
+            $("#discussion-arrow").addClass('show-discussion');
+            $("#discussion-arrow").css({ left: rel_x  + 'px' });
         }
 
         $scope.visibleDiscussion = null;
