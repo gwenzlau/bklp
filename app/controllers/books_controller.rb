@@ -34,6 +34,8 @@ class BooksController < ApplicationController
     @total_recommend = Recommend.where(:item_id => params[:id]).count
     #this is to check if there have been any recommendations
     @recommends = Recommend.where(:item_id => params[:id])
+
+    @fans = Recommend.where(:item_id => params[:id]).where(:item_type => params[:id])
     
     #This will pick up 5 random books by users who have read the current book beeing viewd
     also = Book.select(:user_id).uniq.where(:olidb => params[:id])
@@ -50,6 +52,9 @@ class BooksController < ApplicationController
     @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
     @total_recommends = Recommend.where(:item_id => params[:id]).where(:item_type => "author").count
     @new_recommend = Recommend.new
+
+    @fans = Recommend.where(:item_id => params[:id]).where(:item_type => params[:id])
+
   end
 
 

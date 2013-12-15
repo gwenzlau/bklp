@@ -63,7 +63,6 @@
 									<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
 								<% end %>
 							<% end %>
-						<% if @users_reading.exists? %>
 						    <label>People currently reading this book</label>
 						      <ul>
 							    <% @users_reading.each do |reading| %>
@@ -71,10 +70,8 @@
 							    	<%= link_to (image_tag User.find_by_id(reading.user_id).avatar.url(:thumb)), user_path(reading.user_id) %>
 							    	<%= link_to  User.find_by_id(reading.user_id).name, user_path(reading.user_id) %>
 							      </li>
-								<% end %>
+								<% end %> 
 							</ul>
-						<% else %>
-						<% end %>
 					</div>
 					<div id="book-reviews">
 						<div class="row">
