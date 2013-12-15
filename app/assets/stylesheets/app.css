@@ -902,3 +902,26 @@ form.new_acomment input.comment-field {
 	margin-bottom: -15px;
 	display: block;
 }
+
+/* author
+------------------------*/
+#author-avatar {
+	width: 200px;
+	border-radius: 50%;
+	height: 200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#author-avatar img {
+	margin-left: 0px;
+}
+.new_recommend {
+	text-align: center;
+}
+#authored {
+	padding-left: 0;
+	list-style: none;
+}
+#authored li {
+	display: inline;
+}

@@ -7,7 +7,7 @@
 				<div class="col-md-9 col-md-offset-1" id="book-info">
 
 <div align="center">
-	<%= image_tag((@theauthor.image_url), :class => "auth-pro") %><br />
+	<div id="author-avatar"><%= image_tag((@theauthor.image_url), :class => "auth-pro") %></div><br />
 	
 <h2><%= @theauthor.name %></h2>
 </div>
@@ -31,17 +31,16 @@
 
 
 <hr>
-<div class="row">
-  <div class="span9">
-<h4>Works by <%= @theauthor.name %>:</h4>
-<% @authorbooks.results.work.each do |book| %>
-	<li class="span12"><%= link_to book.best_book.title, book_path("#{book.best_book.id}") %>
-		<br>
 
-	<%= (image_tag ("#{book.best_book.small_image_url}"), :class=>"book-cover-small")%>
-	</li>
+<h4>Works by <%= @theauthor.name %>:</h4>
+<div class="row">
+<br>
+<% @authorbooks.results.work.each do |book| %>
+	<div class="col-md-2">
+		<br>
+	<%= link_to (image_tag ("#{book.best_book.image_url}"), :class=>"book-cover-small", :title => "#{book.best_book.title}", data: { toggle: "tooltip"}), book_path("#{book.best_book.id}") %>
+	</div>
 <% end %>
-</div>
 </div>
 
 			</div>
@@ -49,3 +48,9 @@
 	</div>
   </div>
 </div>
+
+<script>
+	$('.book-cover-small').tooltip({
+		placement: 'bottom'
+	});
+</script>
