@@ -45,12 +45,6 @@ class UsersController < ApplicationController
     #Recommended books and authors
     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
     @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "authors")
-    
-    
-    @recommend = Book.where(:user_id => params[:id]).where(:recommend => "true")
-
-    client = Goodreads.new(Goodreads.configuration)
-    @reccover = client.search_books(@rec_id)
 
     @order = Book.where(:user_id => params[:id])
     
