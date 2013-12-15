@@ -1,1 +1,7 @@
 <h2>Top Recommended Authors</h2>
+
+<ul>
+<% @top_author.each do |author, count| %>
+	<li><%= link_to @client.author(author).name, author_book_path(:id => author) %> (<%= count %>)</li>
+<% end %>
+</ul>

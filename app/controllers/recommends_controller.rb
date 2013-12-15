@@ -29,7 +29,7 @@ class RecommendsController < ApplicationController
   end
   
   def top_author
-    client = Goodreads.new(Goodreads.configuration)
+    @client = Goodreads.new(Goodreads.configuration)
     @top_author = Recommend.where(:item_type => "author").count(:group => :item_id, :order => "count_all DESC")
   end
   
