@@ -28,9 +28,9 @@
 					<div id="recommended-reads">
 						<p>Recommended Reading</p>
 						<div class="row">
-							<% @rec.each do |recb| %> 
+							<% @recommended_books.each do |recbook| %> 
 							<div class="col-md-3">
-								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recb.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recb.item_id) %>
+								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recbook.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recbook.item_id) %>
 							</div>
 							<% end %>
 						</div>
