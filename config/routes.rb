@@ -16,6 +16,13 @@ Booksy::Application.routes.draw do
 
   resources :collections
   resources :acomments
+  
+  resources :recommends do
+    member do
+      get :top_book
+      get :top_author
+    end
+  end
 
   resources :books do
     member do
@@ -53,6 +60,8 @@ Booksy::Application.routes.draw do
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
    get 'finished', to: 'reviews#gonew'
+   get 'topbook', to: 'recommends#top_book'
+   get 'topauthor', to: 'recommends#top_author'
 
 
   get "pages/home"

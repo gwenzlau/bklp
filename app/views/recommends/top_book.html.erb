@@ -1,0 +1,7 @@
+<h2>Top Recommended Books</h2>
+
+<ul>
+<% @top_books.each do |book, count| %>
+	<li><%= book %> (<%= count %>)</li>
+<% end %>
+</ul>

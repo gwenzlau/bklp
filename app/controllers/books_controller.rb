@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     if user_signed_in?
       @newbook = Book.new
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
-      @myrecommend = Recommend.where(:user_id => current_user.id).where(:book_id => params[:id])
+      @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
       @user = current_user
     end
     
@@ -30,9 +30,9 @@ class BooksController < ApplicationController
     @review = Review.where(:book_id => params[:id])
 
     #Number of users who have recommended this book
-    @total_recommend = Recommend.where(:book_id => params[:id]).count
+    @total_recommend = Recommend.where(:item_id => params[:id]).count
     #this is to check if there have been any recommendations
-    @recommends = Recommend.where(:book_id => params[:id])
+    @recommends = Recommend.where(:item_id => params[:id])
     
     #This will pick up 5 random books by users who have read the current book beeing viewd
     also = Book.select(:user_id).uniq.where(:olidb => params[:id])
