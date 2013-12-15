@@ -1,4 +1,5 @@
 <div ng-controller="DiscussionsCtrl" id="book-discussions">
+<div id="discussion-arrow" class=""></div>
     <div id="timeline">
         <span id="tooltip-span">
             Add something <span id="where"></span>
@@ -46,7 +47,7 @@
     </div>
 
     <%# Only shown when newDiscussionForm is truthy %>
-    <form name="discussion_form" id="discussion-container" class="new-discussion show-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
+    <form name="discussion_form" id="discussion-container" class="new-discussion" ng-show="newDiscussionForm" ng-submit="newDiscussion($event, discussion)" novalidate>
         <div id="discussion-form">
             <textarea onkeyup="textAreaAdjust(this)" placeholder="&quot;So there is this quote...&quot;" name="quote" id="discussion-form-quote" ng-model="discussion.quote" class="input-large" ng-minlength="5" ng-focus required></textarea>
             <span class="form-error" ng-show="discussion_form.quote.$dirty && discussion_form.quote.$invalid && !discussion_form.quote.$focused">You must provide a quote</span>

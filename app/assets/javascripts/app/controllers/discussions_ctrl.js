@@ -49,8 +49,18 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
      *  Shows a full discussion and comments
      */
     $scope.showDiscussion = function(discussion, $event) {
+        var parent_offset, rel_x;
+
         if ($event) {
             $event.stopPropagation();
+            parent_offset = $($event.currentTarget).offset();
+            rel_x = $event.pageX - parent_offset.left;
+
+            $scope.tempImage = {
+                percentage: rel_x
+            };
+            $("#discussion-arrow").addClass('show-discussion');
+            $(".show-discussion").css({ left: rel_x + 145 + 'px' });
         }
 
         $scope.newDiscussionForm = null;
@@ -74,7 +84,8 @@ App.controller('DiscussionsCtrl', ['$scope', '$http', 'Discussion', function($sc
             $scope.tempImage = {
                 percentage: rel_x
             };
-            $(".show-discussion").css({ left: rel_x + 15 + 'px' });
+            $(".show-discussion").show();
+            $(".show-discussion").css({ left: rel_x  + 'px' });
         }
 
         $scope.visibleDiscussion = null;

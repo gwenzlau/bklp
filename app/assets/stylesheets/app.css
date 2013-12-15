@@ -432,8 +432,14 @@ form.new_acomment input.comment-field {
 	border-top-left-radius: 5px;
 	margin-top: 30px;
 }
-/*#discussion-container:after, #discussion-container:before {
-	bottom: 280px;
+#discussion-arrow {
+	height: 2px;
+}
+#book-discussions {
+	position: relative;
+}
+#discussion-arrow:after, #discussion-arrow:before {
+	top: 69px;
 	border: solid transparent;
 	content: " ";
 	height: 0;
@@ -441,7 +447,7 @@ form.new_acomment input.comment-field {
 	position: absolute;
 	pointer-events: none;
 	z-index: 9999;
-}*/
+}
 .show-discussion {
 	left: 0;
 }
@@ -451,18 +457,19 @@ form.new_acomment input.comment-field {
 .show-discussion:after, .show-discussion:before {
 	left: inherit;
 }
-/*#discussion-container:after {
+#discussion-arrow:after {
 	border-color: rgba(136, 183, 213, 0);
 	border-bottom-color: #FFF;
-	border-width: 10px;
-	margin-left: -10px;
+	border-width: 11px;
+	margin-left: -11px;
+	margin-top: 2px;
 }
-#discussion-container:before {
+#discussion-arrow:before {
 	border-color: rgba(194, 225, 245, 0);
 	border-bottom-color: #DDD;
 	border-width: 12px;
 	margin-left: -12px;
-}*/
+}
 #discussion-container #discussion-action {
 	background: #F9F9F9;
 	padding: 10px 20px;
@@ -502,7 +509,7 @@ form.new_acomment input.comment-field {
 	font-weight: 300;
 }
 #timeline {
-	margin-top: 70px;
+	margin-top: 40px;
 }
 #timeline:hover #tooltip-span, #timeline:hover #plus-sign {
 	display:inline;
