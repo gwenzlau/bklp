@@ -339,6 +339,9 @@ form.new_acomment input.comment-field {
 #book-actions {
 	display: inline;
 }
+#book-actions form {
+	display: inline-block;
+}
 #book-actions button {
 	color: #777;
 }
@@ -451,8 +454,14 @@ form.new_acomment input.comment-field {
 	border-top-left-radius: 5px;
 	margin-top: 30px;
 }
-#discussion-container:after, #discussion-container:before {
-	bottom: 54.7%;
+#discussion-arrow {
+	height: 2px;
+}
+#book-discussions {
+	position: relative;
+}
+.show-discussion:after, .show-discussion:before {
+	top: 69px;
 	border: solid transparent;
 	content: " ";
 	height: 0;
@@ -461,19 +470,23 @@ form.new_acomment input.comment-field {
 	pointer-events: none;
 	z-index: 9999;
 }
-.show-discussion {
+#discussion-arrow {
 	left: 0;
 }
-.show-discussion:after, .show-discussion:before {
+.active-discussion {
+	margin-bottom: 60px;
+}
+#discussion-arrow:after, #discussion-arrow:before {
 	left: inherit;
 }
-#discussion-container:after {
+.show-discussion:after {
 	border-color: rgba(136, 183, 213, 0);
 	border-bottom-color: #FFF;
-	border-width: 10px;
-	margin-left: -10px;
+	border-width: 11px;
+	margin-left: -11px;
+	margin-top: 2px;
 }
-#discussion-container:before {
+.show-discussion:before {
 	border-color: rgba(194, 225, 245, 0);
 	border-bottom-color: #DDD;
 	border-width: 12px;
@@ -493,6 +506,42 @@ form.new_acomment input.comment-field {
 }
 #discussion-form {
 	padding: 10px 20px;
+}
+#tooltip-span {
+	display: none;
+	border: 1px solid #4095f1;
+	color: #4095f1;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-weight: 500;
+	font-size: 12px;
+	background: #FFF;
+	z-index: 99999999;
+}
+#plus-sign {
+	display: none;
+	z-index: 9999999;
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	border-radius: 50%;
+	padding-left: 6.2px;
+	z-index: 999999999999;
+}
+#where {
+	color: #333;
+	font-weight: 300;
+}
+#timeline {
+	margin-top: 40px;
+}
+#timeline:hover #tooltip-span, #timeline:hover #plus-sign {
+	display:inline;
+    position:fixed;
+}
+#timeline:hover #plus-sign {
+	height: 24px;
+	width: 23px;
 }
 #discussion-form #posted-by {
 	font-size: 12px;
@@ -589,6 +638,9 @@ form.new_acomment input.comment-field {
 	border-right-color: #AAA;
 	border-width: 6px;
 	margin-top: -6px;
+}
+#book-discussions {
+	display: none;
 }
 
 /* modals

@@ -112,27 +112,7 @@
 							<% end %>
 						</div>
 					</div>
-						<!-- <div id="timeline-container">
-							<div id="timeline"></div>
-							<div id="past-discussions">
-								<img src="http://placehold.it/40x40" style="left: 20%">
-							</div>
-						</div>
-						<div id="discussion-container" class="show-discussion">
-							<div id="discussion-form">
-								<textarea id="discussion-form-quote" placeholder="&quot;So there is this quote...&quot;"></textarea>
-								<span>Which is on page</span>
-								<input type="text" id="page-number">
-								<span>out of</span>
-								<input type="text" id="total-pages">
-								<span>total pages.</span>
-								<textarea id="discussion-form-comment" placeholder="And the reason I brought this up is..."></textarea>
-							</div>
-							<div id="discussion-action">
-								<button class="btn btn-default btn-sm pull-right">Post</button>
-								<div class="clearfix"></div>
-							</div>
-						</div> -->
+						
 
 					<script>
 						App.opts.book_id = "<%= @thebook.id %>";
@@ -141,8 +121,13 @@
 							"avatar_url": "<%= current_user.avatar.url %>",
 							"id": <%= current_user.id %>
 						};
-					</script>
 
+						function textAreaAdjust(o) {
+						    o.style.height = "1px";
+						    o.style.height = (25+o.scrollHeight)+"px";
+						}
+					</script>
+					
 					<%= render 'discussions/list' %>
 
 				</div>
