@@ -39,7 +39,10 @@
       })
         .done(function() {
           obj.siblings('button').removeClass('btn-success');
-          obj.addClass('btn-success');
+          obj.addClass('btn-info');
+          var user_id = '<%= current_user.id %>';
+          var redirectUrl = '/users/'+user_id;
+          window.location.replace(redirectUrl);
         })
         .fail(function() {
           alert( "error" );
