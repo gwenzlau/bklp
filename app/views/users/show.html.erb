@@ -28,7 +28,6 @@
 					<div id="recommended-reads">
 						<p>Recommended Reading</p>
 						<div class="row">
-<<<<<<< HEAD
 							<% @recommended_books.each do |recommended_books| %> 
 							<div class="col-md-3">
 								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recommended_books.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recommended_books.item_id) %>
@@ -41,11 +40,6 @@
 								 <% client = Goodreads.new(Goodreads.configuration) %>
 								<%= link_to client.author(recommended_authors.item_id.to_i).name, author_book_path(recommended_authors.item_id) %>
 								<%= image_tag(client.author(recommended_authors.item_id).image_url, :class => "auth-pro") %>
-=======
-							<% @recommended_books.each do |recbook| %> 
-							<div class="col-md-3">
-								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recbook.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recbook.item_id) %>
->>>>>>> 0687a193d5284c04ba7ef6f80dbbee9248a532c4
 							</div>
 							<% end %>
 						</div>
