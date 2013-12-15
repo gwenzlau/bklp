@@ -41,7 +41,7 @@
 						<% if @recommends.exists? %>
 						<label> 
 							<% if @myrecommend.exists? %>
-										<b>You</b> and <%= pluralize(@total_recommend, "user") %> have recommended this book.
+										<b>You</b> and <%= pluralize(@total_recommend, "reader") %> have recommended this book.
 									<% else %>
 										<b><%= pluralize(@total_recommend, "recommendation") %> </b>
 										
