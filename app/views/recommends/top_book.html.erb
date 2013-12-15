@@ -2,6 +2,6 @@
 
 <ul>
 <% @top_books.each do |book, count| %>
-	<li><%= book %> (<%= count %>)</li>
+	<li><%= link_to @client.book(book).title, book_path(:id => book) %> (<%= count %>)</li>
 <% end %>
 </ul>
