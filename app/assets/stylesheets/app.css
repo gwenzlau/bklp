@@ -893,7 +893,7 @@ form.new_acomment input.comment-field {
 .tt-suggestion.tt-is-under-cursor {
     color: #fff;
     color: #fff;
-    background-color: #FFF;
+    background-color: #F5F5F5;
 }
 .tt-suggestion p {
     margin-bottom: 10px;
