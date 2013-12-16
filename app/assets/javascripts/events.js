@@ -43,4 +43,18 @@ $(document).ready( function() {
 		});
 	});
 
+	// recommend book
+	$('#recommend-book').click( function() {
+		var user_id = $('#recommend-user').val();
+		var item_id = $('#recommend-item').val();
+		var item_type = $('#recommend-type').val();
+		var d = {'recommend[user_id]': user_id, 'recommend[item_id]': item_id, 'recommend[item_type]': item_type}
+		$.post('/recommends', d, function(data){
+			if(data[0].status == 'success') {
+				$('#recommend-book').hide();
+				$('#recommend-success').fadeIn('fast');
+			}
+		});
+	});
+
 });

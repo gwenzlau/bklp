@@ -830,7 +830,7 @@ form.new_acomment input.comment-field {
         padding: 50px 0;
 }
 .modal-actions:after, .modal-actions:before {
-        top: 18.4%;
+        top: 18.9%;
         left: 50%;
         border: solid transparent;
         content: " ";
@@ -871,7 +871,7 @@ form.new_acomment input.comment-field {
 	display: none;
 }
 .modal-comment:after, .modal-comment:before {
-        top: 44%;
+        top: 45.3%;
         left: 50%;
         border: solid transparent;
         content: " ";
@@ -917,8 +917,11 @@ form.new_acomment input.comment-field {
         margin-top: 20px;
 }
 .modal .modal-recommendations #book-covers img {
-	width: 130px;
-	height: 180px;
+	width: 115px;
+	height: 177px;
+}
+#recommend-success {
+	display: none;
 }
 
 
