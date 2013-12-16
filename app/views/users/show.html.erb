@@ -30,9 +30,7 @@
 						<div class="row">
 							<% @recommended_books.each do |recbook| %> 
 							<div class="col-md-3">
-								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recb.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recb.item_id) %>
-
-
+								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recbook.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recbook.item_id) %>
 							</div>
 							<% end %>
 						</div>
@@ -57,8 +55,11 @@
 		          						<%= link_to past.title, book_path(:id => past.olidb) %> 
 		          						
 		          						<span class="past-read-author">by: 
-		          						<% client = Goodreads.new(Goodreads.configuration) %>
-		          						<%= client.author(past.olidb).name %> 
+		          						<% if @past.authors.author[0].blank? %>
+							<%= link_to @past.authors.author.name, author_book_path(@past.authors.author.id) %>
+						<% else %>
+							<%= @past.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %>
+							<%end %>
 		          							</span>
 		          					</li>
 		          					<% end %>
