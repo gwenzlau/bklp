@@ -149,6 +149,27 @@ class BooksController < ApplicationController
     end
   end
 
+    def recommend_list
+  @recommend = Book.find(params[:id])
+  @recommend.activity key: 'book.recommend_list'
+  if @recommend.update_attribute(:recommend, "true")
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
+  def rec_list
+  @rec = Book.find(params[:id])
+  @rec.activity key: 'book.rec_list'
+  if @rec.update_attribute(:rec, "true")
+      redirect_to current_user
+    else
+      redirect_to root_path
+    end
+  end
+
+
   def past_list
     @past = Book.new(book_params)
     @past.activity key: 'book.past_list'
