@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
     end
-    
+    @client = Goodreads.new(Goodreads.configuration)
 		@user = User.find(params[:id])
     
     # Users are reading now and have previously read:

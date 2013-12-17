@@ -55,14 +55,15 @@
 		          						<%= link_to past.title, book_path(:id => past.olidb) %> 
 		          						
 		          						<span class="past-read-author">by: 
-		          						<% if @past.authors.author[0].blank? %>
-							<%= link_to @past.authors.author.name, author_book_path(@past.authors.author.id) %>
-						<% else %>
-							<%= @past.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %>
-							<%end %>
-		          							</span>
+														<% bookauthor = @client.book(past.olidb) %>
+														<% if bookauthor.authors.author[0].blank? %>
+															<%= link_to bookauthor.authors.author.name, author_book_path(bookauthor.authors.author.id) %>
+														<% else %>
+															<%= bookauthor.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %>
+														<% end %>
+		          						</span>
 		          					</li>
-		          					<% end %>
+		          		<% end %>
 								</ul>
 							</div>
 						</div>
@@ -71,13 +72,19 @@
 								<p>Future reads</p>
 								<ul>
 									<% @future.each do |future| %>
-		        					<li><%= link_to future.title, book_path(:id => future.olidb) %> </li>
-		        					<!--<li book-id="<%= future.olidb %>" order="<%= future.order %>"><%= link_to future.title, book_path(:id => future.olidb) %>  <%= future.author %></li> !-->
-		        					<span id="past-read-author">by: 
-										<% client = Goodreads.new(Goodreads.configuration) %>
-		          						<%= client.author(future.olidb).name %> 
-		        					</span>
-		          					<% end %>
+		        					<li>
+												<%= link_to future.title, book_path(:id => future.olidb) %>
+		        					
+			        					<span id="past-read-author">by: 
+													<% futureauthor = @client.book(future.olidb) %>
+													<% if futureauthor.authors.author[0].blank? %>
+														<%= link_to futureauthor.authors.author.name, author_book_path(futureauthor.authors.author.id) %>
+													<% else %>
+														<%= futureauthor.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %>
+													<% end %>
+			        					</span>
+											</li>
+		          		<% end %>
 								</ul>
 							</div>
 						</div>
