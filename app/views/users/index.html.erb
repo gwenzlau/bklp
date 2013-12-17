@@ -11,7 +11,9 @@
 						<br> 
 						<%=  link_to user.name, user %>
 					</ul>
+
 				<% end %>
+				<%= will_paginate @users %>
 				</div>
 			</div>
 		</div>
