@@ -34,7 +34,7 @@
 							</div>
 							<% end %>
 						</div>
-						<p>Recommended Authors</p>
+						<hr>
 						<div class="row">
 							<% @recommended_authors.each do |recauth| %> 
 							<div class="col-md-3">
@@ -74,7 +74,7 @@
 		        					<li>
 												<%= link_to future.title, book_path(:id => future.olidb) %>
 		        					
-			        					<span id="past-read-author">by: 
+			        					<span class="past-read-author">by: 
 													<% futureauthor = @client.book(future.olidb) %>
 													<% if futureauthor.authors.author[0].blank? %>
 														<%= link_to futureauthor.authors.author.name, author_book_path(futureauthor.authors.author.id) %>
@@ -108,7 +108,7 @@
 			});
 	});*/
 	// tooltip to change the book status
-	<% if @user.id == current_user.id %>
+	/*<% if @user.id == current_user.id %>
 	var tooltipBtn = '<%= button_to "Abandon it", {:controller => :books, :action => "destroy"}, :method => :delete, :type => "button", :class => "btn btn-block btn-sm btn-default" %> <%= button_to "Finished!", {:controller => :books, :action => 'update'}, :method => :put, :type => "button", :class => "btn btn-block btn-sm btn-default" %>'
 	$('#currently-reading a').popover({
 		html: true,
@@ -116,14 +116,13 @@
 		trigger: 'click',
 		content: tooltipBtn
 
-		// BOOKSTATUS buttons
-		// <%= button_to "Abandon it", {:controller => :books, :action => 'destroy'}, :method => :delete, :type => "button" %>		
-			// if you get an error with [] take out the :id seciont - it may not be necessary since we are already only addressing books with this status...
-		// 		<%= button_to "Finished!", {:controller => :books, :action => 'update'}, :method => :put, :type => "button" %>
-		//
+		
+	}).mouseover( function() {
+		var _this = this;
+		$(this).popover('show');
+		$(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
 	});
-	$('#currently-reading a').click( function(e){
-		e.preventDefault();
-	});
-	<% end %>
+	<% end %>*/
 </script>
