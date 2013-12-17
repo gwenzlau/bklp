@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
     #Recommended books and authors
     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
-    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author") 
+    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
 
     @order = Book.where(:user_id => params[:id])
   
