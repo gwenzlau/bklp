@@ -2,7 +2,7 @@
 <div class="col-md-2" id="sidebar">
 	<label>Browse</label>
 	<ul class="nav nav-pills nav-stacked menu">
-			<li><a id="discover" href="#_">Discover</a></li>
+			<li><%= link_to "Discover", users_path, :id => "discover" %></li> 
 			<li><a href="" id="group">Groups</a></li>
 	</ul>
 	<hr>
@@ -16,6 +16,6 @@
 	<label>You</label>
 	<ul class="nav nav-pills nav-stacked menu">
 			<li><a href="" id="messages">Messages</a></li>
-			<li><%= link_to "Settings", edit_user_registration_path, :id => "settings" %></li> </li>
+			<li><%= link_to "Settings", edit_user_registration_path, :id => "settings" %></li> 
 	</ul>
 </div>

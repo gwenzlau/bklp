@@ -1,15 +1,19 @@
-<div class="head-links" align="center">
- 	<%= link_to "FEED", root_url %>
- <span class="title-feed">
- 	 <%= link_to "DISCOVER", users_path %> 
- 	 </span>
- 	</div>
- 	<div align="center">
-<h2 align="center">Bookthangs</h2>
-<% @users.each do |user| %>
-<ul class="unstyled">
-	<li class="unstyled"><%= image_tag user.avatar(:thumb), :class=>"img-circle-thumb" %>  <%=  link_to user.name, user %></li>
-	<hr>
-</ul>
-<% end %>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+ 				 <div align="center">
+				  <h4>Bookthangs</h4>
+					<% @users.each do |user| %>
+					<ul>
+						<%= image_tag user.avatar(:thumb), :class=>"img-circle" %> 
+						<br> 
+						<%=  link_to user.name, user %>
+					</ul>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
