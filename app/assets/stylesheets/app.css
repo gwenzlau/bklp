@@ -977,3 +977,40 @@ form.new_acomment input.comment-field {
 #authored li {
 	display: inline;
 }
+
+/* profile edit
+------------------------*/
+#profile-cancel {
+	width: 500px;
+	margin: 0 auto;
+}
+#profile-card-title {
+	color: #777;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#profile-card-edit {
+	text-align: center;
+}
+#profile-card-edit img {
+	width: 144px;
+	height: 144px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+.form-inputs, .simple_form {
+	width: 500px;
+	margin: 50px auto 0 auto;
+}
+.form-inputs input {
+	border-radius: 0;
+}
+.form-inputs .control-group {
+	margin-bottom: 15px;
+}
+.form-inputs #user_avatar {
+	margin-bottom: 15px;
+}
+input#user_current_password {
+	border-radius: 0;
+}
