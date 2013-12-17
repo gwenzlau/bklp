@@ -33,12 +33,16 @@
 								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find_by_olidb(recbook.item_id).isbn}.01.ZTZZZZZ.jpg")), book_path(recbook.item_id) %>
 							</div>
 							<% end %>
-						</div>
-						<hr>
+						</div>	
+					</div>
+					<div id="recommended-authors">
+						<p>Recommended Authors</p>
 						<div class="row">
 							<% @recommended_authors.each do |recauth| %> 
 							<div class="col-md-3">
-								<%= image_tag(@client.author(recauth.item_id).image_url, :class => "auth-pro") %>
+								<div class="author-avatar">
+									<%= image_tag(@client.author(recauth.item_id).image_url, :class => "auth-pro") %>
+								</div>
 								<%= link_to @client.author(recauth.item_id).name, author_book_path(recauth.item_id) %>
 							</div>
 							<% end %>

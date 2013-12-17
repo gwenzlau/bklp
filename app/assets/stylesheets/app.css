@@ -770,7 +770,7 @@ form.new_acomment input.comment-field {
 	color: #555;
 	text-decoration: none;
 }
-#profile-content #recommended-reads, #profile-content #future-reads, #profile-content #past-reads {
+#profile-content #recommended-reads, #profile-content #future-reads, #profile-content #past-reads, #profile-content #recommended-authors {
 	text-transform: uppercase;
 	font-size: 14px;
 	font-weight: 300;
@@ -778,7 +778,7 @@ form.new_acomment input.comment-field {
 	text-align: center;
 	margin: 50px auto 0 auto;
 }
-#profile-content #recommended-reads p, #profile-content #future-reads p, #profile-content #past-reads p {
+#profile-content #recommended-reads p, #profile-content #future-reads p, #profile-content #past-reads p, #profile-content #recommended-authors p {
 	margin-bottom: 30px;
 	border-top: 1px solid #F1F1F1;
 	border-bottom: 1px solid #F1F1F1;
@@ -814,6 +814,17 @@ form.new_acomment input.comment-field {
 #profile-content #past-reads ul li .past-read-author a {
 	font-size: 12px;
 	color: #4095f1;
+}
+.author-avatar {
+	width: 150px;
+	margin: 0 auto 10px auto;
+	overflow: hidden;
+	border-radius: 50%;
+	height: 150px;
+	text-align: center;
+}
+#recommended-authors .col-md-3 a {
+	text-transform: none;
 }
 
 
