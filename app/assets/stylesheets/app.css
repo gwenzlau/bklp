@@ -816,17 +816,20 @@ form.new_acomment input.comment-field {
 	color: #4095f1;
 }
 .author-avatar {
-	width: 150px;
-	margin: 0 auto 10px auto;
+	width: 80px;
+	margin: 0 auto 5px auto;
 	overflow: hidden;
 	border-radius: 50%;
-	height: 150px;
+	height: 80px;
 	text-align: center;
 }
-#recommended-authors .col-md-3 a {
+#recommended-authors .col-md-2 a {
 	text-transform: none;
+	font-size: 11px;
 }
-
+.auth-pro {
+	width: 100px;
+}
 
 /* modals
 ------------------------*/

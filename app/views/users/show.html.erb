@@ -39,7 +39,7 @@
 						<p>Recommended Authors</p>
 						<div class="row">
 							<% @recommended_authors.each do |recauth| %> 
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<div class="author-avatar">
 									<%= image_tag(@client.author(recauth.item_id).image_url, :class => "auth-pro") %>
 								</div>
