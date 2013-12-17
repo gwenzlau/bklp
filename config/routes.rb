@@ -59,7 +59,7 @@ Booksy::Application.routes.draw do
    get 'search/autocomplete', to: 'pages#autocomplete'
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
-   get 'finished', to: 'reviews#gonew'
+   get 'finished', to: 'books#finishedmodal'
    get 'topbook', to: 'recommends#top_book'
    get 'topauthor', to: 'recommends#top_author'
 

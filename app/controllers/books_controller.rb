@@ -192,6 +192,28 @@ class BooksController < ApplicationController
     end
   end
 
+   def finishedmodal
+    client = Goodreads.new(Goodreads.configuration)
+ @thebook = client.book(params[:id]) unless client.book(params[:id]).blank?
+  
+    # If user logged in, get user data and initialize new instance for the option to start reading the book.
+    if user_signed_in?
+      @newbook = Book.new
+      @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
+      @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
+      @user = current_user
+    end
+    
+    @review = Review.where(:book_id => params[:id])
+
+    @new_recommend = Recommend.new
+
+    #This will pick up 5 random books by users who have read the current book beeing viewd
+    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
+    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
+
+  end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
