@@ -34,13 +34,12 @@
 							</div>
 							<% end %>
 						</div>
+						<p>Recommended Authors</p>
 						<div class="row">
-							<% client = Goodreads.new(Goodreads.configuration) %>
 							<% @recommended_authors.each do |recauth| %> 
 							<div class="col-md-3">
-								<%= link_to client.author(recauth.item_id.to_i).name, author_book_path(recauth.item_id) %>
-								<%= image_tag(client.author(recauth.item_id).image_url, :class => "auth-pro") %>
-
+								<%= link_to @client.author(recauth.item_id).name, author_book_path(recauth.item_id) %>
+								<%= image_tag(@client.author(recauth.item_id).image_url, :class => "auth-pro") %>
 							</div>
 							<% end %>
 						</div>
