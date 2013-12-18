@@ -45,7 +45,7 @@
 <% @authorbooks.results.work.each do |book| %>
 	<div class="col-md-2">
 		<br>
-	<%= link_to (image_tag ("#{book.best_book.image_url}"), :class=>"book-cover-small", :title => "#{book.best_book.title}", data: { toggle: "tooltip"}), book_path("#{book.best_book.id}") %>
+	<%= link_to (image_tag ("#{book.best_book.image_url}"), :class=>"book-cover-small", :title => "#{book.best_book.title}", data: { toggle: "tooltip"}), book_path("#{book.best_book.id}-#{book.best_book.title.parameterize}") %>
 	</div>
 <% end %>
 </div>
