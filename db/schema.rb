@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20131218175242) do
     t.boolean  "recommend",  default: false
     t.integer  "order"
     t.string   "isbn"
-    t.string   "slug"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"
@@ -130,19 +129,6 @@ ActiveRecord::Schema.define(version: 20131218175242) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
-
-  create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "links", force: true do |t|
     t.datetime "created_at"
@@ -201,7 +187,6 @@ ActiveRecord::Schema.define(version: 20131218175242) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
