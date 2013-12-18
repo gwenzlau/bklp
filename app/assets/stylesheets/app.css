@@ -984,9 +984,11 @@ form.new_acomment input.comment-field {
 	height: 200px;
 	margin: 0 auto;
 	overflow: hidden;
+	border: 1px solid #ddd;
 }
 #author-avatar img {
 	margin-left: 0px;
+	width: 220px;
 }
 .new_recommend {
 	text-align: center;
