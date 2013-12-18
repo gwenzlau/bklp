@@ -31,9 +31,9 @@ class UsersController < ApplicationController
     # Users are reading now and have previously read:
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
     #@booka = @book.map(&:title) 
-    @past = Book.where(:user_id => params[:id]).where(:status => "1")
+    @past = Book.where(:user_id => params[:id]).where(:status => "1").limit(10).order("updated_at desc")
 
-    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2").limit(2).order("updated_at desc")
 
     @link = Link.where(:user_id => params[:id]).where(:status => "0")
 
