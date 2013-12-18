@@ -30,7 +30,8 @@ class PagesController < ApplicationController
     results = client.search_books(params[:q])
     books ||= []
     for book in results['results']['work']
-      books << { 'book' => book['best_book']['title'], 'shortbook' => book['best_book']['title'].parameterize, 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'] }
+      isbn = client.book(book['best_book']['id'])
+      books << { 'book' => book['best_book']['title'], 'shortbook' => book['best_book']['title'].parameterize, 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'], 'isbn' => isbn.isbn }
     end
     respond_to do |format|
       format.json  { render :json => books }

@@ -24,8 +24,8 @@
   <script>
     <% if user_signed_in? %>
 
-    function updateBookStatus(user_id, book_id, status, title, obj) {
-      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[status]': status, 'book[title]': title, 'json': true}
+    function updateBookStatus(user_id, book_id, isbn, status, title, obj) {
+      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[isbn]': isbn, 'book[status]': status, 'book[title]': title, 'json': true}
       var url = '';
       switch (status) {
         case '0':
@@ -57,8 +57,9 @@
       var title = $(this).attr('book-title');
       var status = $(this).attr('status');
       var book_id = $(this).attr('book');
+			var isbn = $(this).attr('isbn');
       var user_id = '<%= current_user.id %>';
-      updateBookStatus(user_id, book_id, status, title, $(this));
+      updateBookStatus(user_id, book_id, isbn, status, title, $(this));
     });
 
     $(document).ready( function() {
@@ -80,7 +81,7 @@
         remote: {
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
         },
-        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" status="2">Going to read</button></div>',
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}({{isbn}})</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
         engine: BookloopEngine
       });
     });
@@ -106,7 +107,7 @@
         remote: {
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
         },
-        template: '<span class="autocomplete"><a href="/books/{{book_id}}">{{book}}</a></span>',
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span>',
         engine: BookloopEngine
       });
 
