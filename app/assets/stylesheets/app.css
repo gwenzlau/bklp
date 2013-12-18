@@ -782,7 +782,8 @@ form.new_acomment input.comment-field {
 	margin-bottom: 30px;
 	border-top: 1px solid #F1F1F1;
 	border-bottom: 1px solid #F1F1F1;
-	padding: 15px;
+	padding: 10px;
+	font-size: 12px;
 }
 #profile-content #recommended-reads ul, #profile-content #future-reads ul, #profile-content #past-reads ul {
 	list-style: none;
@@ -811,9 +812,9 @@ form.new_acomment input.comment-field {
 	font-style: italic;
 	display: block;
 }
-#profile-content #past-reads ul li .past-read-author a {
+#profile-content #past-reads ul li .past-read-author a, #profile-content #future-reads ul li .past-read-author a  {
 	font-size: 12px;
-	color: #4095f1;
+	color: #777;
 }
 .author-avatar {
 	width: 80px;
