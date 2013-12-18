@@ -823,10 +823,12 @@ form.new_acomment input.comment-field {
 	border-radius: 50%;
 	height: 80px;
 	text-align: center;
+	border: 1px solid #ddd;
 }
 #recommended-authors .col-md-2 a {
 	text-transform: none;
 	font-size: 11px;
+	color: #777;
 }
 .auth-pro {
 	width: 100px;
