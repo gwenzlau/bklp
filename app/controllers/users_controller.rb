@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
 
     #Recommended books and authors
-    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book")
+    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
     @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
 
     @order = Book.where(:user_id => params[:id])
