@@ -7,7 +7,11 @@
 					<div id="profile-card">
 						<%= link_to (image_tag @user.avatar.url, :class=>"img-circle"), user_path %>
 						<div class="row">
-						<p id="currently-reading"><strong>Past Reads</strong></p>
+						<% if @user.id == current_user.id %>
+						<p id="currently-reading">Your Past Reads</p>
+						<% else %>
+						<p id="currently-reading"><strong><%= @user.name %>'s </strong> Past Reads</p>
+						<% end %>
 						<% @past.each do |past| %>
 						<div class="col-md-2">
 							<br>

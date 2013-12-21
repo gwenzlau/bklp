@@ -9,8 +9,8 @@
 	<label>Your Books</label>
 	<ul class="nav nav-pills nav-stacked menu">
 			<li><%= link_to "Current Reads", current_user, :id => "current" %></li>
-			<li><a href="" id="future">Future Reads</a></li>
-			<li><a href="" id="past">Past Reads</a></li>
+			<li><%= link_to "Future Reads", futurereads_user_path(@user), :id => "future" %></li>
+			<li><%= link_to "Past Reads", pastreads_user_path(@user), :id => "past" %></li>
 	</ul>
 	<hr>
 	<label>You</label>
