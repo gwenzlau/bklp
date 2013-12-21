@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     #@booka = @book.map(&:title) 
     @past = Book.where(:user_id => params[:id]).where(:status => "1").limit(10).order("updated_at desc")
 
-    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2").limit(2).order("updated_at desc")
+    @future = Book.where(:user_id => params[:id]).where(:status => "2").limit(10).order("updated_at desc")
 
     @link = Link.where(:user_id => params[:id]).where(:status => "0")
 
@@ -47,10 +47,22 @@ class UsersController < ApplicationController
     @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
 
     @order = Book.where(:user_id => params[:id])
-  
-	end
+  end
 
+  def pastreads
+    @user = User.find(params[:id])
+    @client = Goodreads.new(Goodreads.configuration)
+    @book = Book.where(:user_id => params[:id]).where(:status => "0")
+    @past = Book.where(:user_id => params[:id]).where(:status => "1")
+  end
 
+  def futurereads
+    @user = User.find(params[:id])
+    @client = Goodreads.new(Goodreads.configuration)
+    @book = Book.where(:user_id => params[:id]).where(:status => "0")
+    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+
+  end
 
   def follow
     @user = User.find(params[:id])

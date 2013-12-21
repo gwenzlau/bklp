@@ -30,8 +30,6 @@ Booksy::Application.routes.draw do
       post :future_list
       post :past_list
       get :author
-      post :rec_list
-      post :recommend_list
       post :order
     end
   end
@@ -42,6 +40,8 @@ Booksy::Application.routes.draw do
   resources :users, :only => [:show, :index]
   resources :users do
     member do
+      get :pastreads
+      get :futurereads
       get :follow
       get :unfollow
     end
@@ -50,7 +50,6 @@ Booksy::Application.routes.draw do
    get 'users/:id', to: 'users#show'
    get 'users', to: 'users#index'
    get 'search/', to: 'pages#search'
-   get 'finshed', to: 'books#finished'
    get 'future', to: 'books#future'
    get 'futurelink', to: 'links#future'
    get 'author', to: 'books#author'

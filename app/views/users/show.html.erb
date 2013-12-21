@@ -17,7 +17,11 @@
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
 						</a>
+						<% if @user.id == current_user.id %>
+						<p id="currently-reading"><strong>You</strong> are currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+						<% else %>
 						<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+						<% end %>
 						<% else %>
 						<div id="profile-card-img">
 							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
@@ -37,7 +41,7 @@
 						</div>	
 					</div>
 					<div id="recommended-authors">
-						<p>Recommended Authors</p>
+						<hr>
 						<div class="row">
 							<% @recommended_authors.each do |recauth| %> 
 							<div class="col-md-2">
@@ -67,7 +71,8 @@
 														<% end %>
 		          						</span>
 		          					</li>
-		          		<% end %>
+		          					<% end %>
+		          			<span class="past-read-author"><%= link_to "See All", pastreads_user_path(@user) %></span>
 								</ul>
 							</div>
 						</div>
@@ -89,6 +94,7 @@
 			        					</span>
 											</li>
 		          		<% end %>
+		          		<span class="past-read-author"><%= link_to "See All", futurereads_user_path(@user) %></span>
 								</ul>
 							</div>
 						</div>
