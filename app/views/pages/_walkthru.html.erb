@@ -1,4 +1,4 @@
-<div class="x" align="center">
+<!--<div class="x" align="center">
 <div class="containerrr" align="center" style="max-width: 940px;">
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
@@ -45,4 +45,114 @@
     <h1 align="center">Most People Don't read;</h1>
     <h1 align="center"><%= link_to "Find the ones who do.", new_user_registration_path, class: "button" %></h1>
        
+  </div>-->
+
+<div id="main">
+  <div class="container" id="index">
+    <div class="avatar">
+      <img src="https://s3.amazonaws.com/bklp/alice.jpg">
+    </div>
+    <p class=>Alice is currently reading: <strong class="writer">Brave New World</strong></p>
   </div>
+</div>
+<div id="alice">
+  <div id="arrow-down">
+    <a href="#_" id="arrow-img"></a>
+  </div>
+  <p>So are they</p>
+  <div class="avatar">
+    <img src="https://s3.amazonaws.com/bklp/boy.jpg">
+  </div>
+  <div class="avatar">
+    <img src="https://s3.amazonaws.com/bklp/girl.jpg">
+  </div>
+</div>
+<div id="now-discuss">
+  <p>Now they can discuss.</p>
+  <div id="home-timeline">
+    <div class="avatar">
+      <img src="https://s3.amazonaws.com/bklp/alice.jpg">
+    </div>
+  </div>
+  <div id="home-discussion">
+    <div id="quote">
+      "That is the beauty of all literature. You discover your longings are universal longings, that you're not lonely and isolated from anyone. You belong."
+    </div>
+    <div id="comment">
+      I love this quote!
+    </div>
+    <div id="user-comments">
+      <div class="row comment-1">
+        <div class="col-md-1">
+          <div class="avatar">
+            <img src="https://s3.amazonaws.com/bklp/girl.jpg">
+          </div>
+        </div>
+        <div class="col-md-11">
+          <p>Me too.</p>
+        </div>
+      </div>
+      <div class="row comment-2">
+        <div class="col-md-1">
+          <div class="avatar">
+            <img src="https://s3.amazonaws.com/bklp/boy.jpg">
+          </div>
+        </div>
+        <div class="col-md-11">
+          <p>Totally agree. The best part of the book.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sign-up">
+  <h1>Most people don't read</h1>
+  <p class="lead">Bookloop connects you to the ones who do.</p>
+  <a href="#_" id="create-account">Create an account</a>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(window).scroll(function(){
+        var posFromTop = $(window).scrollTop();
+
+        if(posFromTop > 170){
+          $('#arrow-img').fadeOut('slow');
+        }
+        if(posFromTop > 210) {
+          $('#alice p').fadeIn();
+          $('#alice .avatar').css('display', 'inline-block');
+          $('#alice .avatar').addClass('fadeInUp animated');
+        }
+        if(posFromTop > 910) {
+      $('.comment-1').fadeIn('slow');
+        }
+        if(posFromTop > 1030) {
+      $('.comment-2').fadeIn('slow');
+        }
+        if(posFromTop < 170){
+          $('#arrow-img').fadeIn('slow');
+          $('#alice .avatar, #alice p, #also-reading .avatar').fadeOut('slow');
+        }
+    });
+
+    var txt = $('.writer').text();
+  var timeOut;
+  var txtLen = txt.length;
+  var char = 0;
+  $('.writer').text('|');
+  (function typeIt() {   
+      var humanize = Math.round(Math.random() * (200 - 30)) + 30;
+      timeOut = setTimeout(function() {
+          char++;
+          var type = txt.substring(0, char);
+          $('.writer').text(type + '|');
+          typeIt();
+
+          if (char == txtLen) {
+              $('.writer').text($('.writer').text().slice(0, -1)); // remove the '|'
+              clearTimeout(timeOut);
+          }
+
+      }, humanize);
+  }());
+</script>
