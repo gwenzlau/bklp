@@ -1040,3 +1040,13 @@ form.new_acomment input.comment-field {
 input#user_current_password {
 	border-radius: 0;
 }
+
+/* reads
+------------------------*/
+#reads {
+	margin-top: 20px;
+}
+
+#reads img {
+	height: 150px;
+}

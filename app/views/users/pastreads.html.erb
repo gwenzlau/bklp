@@ -3,44 +3,27 @@
 		<div class="row">
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
-				<div id="profile-content">
-					<div id="profile-card">
-						<%= link_to (image_tag @user.avatar.url, :class=>"img-circle"), user_path %>
-						<div class="row">
-						<% if @user.id == current_user.id %>
-						<p id="currently-reading">Your Past Reads</p>
-						<% else %>
-						<p id="currently-reading"><strong><%= @user.name %>'s </strong> Past Reads</p>
-						<% end %>
-						<% @past.each do |past| %>
-						<div class="col-md-2">
-							<br>
-		          						
-		          						<%= link_to (image_tag (@client.book(past.olidb).image_url), :class => "book-cover-small", :title => "#{past.title}", data: { toggle: "tooltip"}), book_path(:id => past.olidb) %>
-		          						<span class="past-read-author">by: 
-												<% bookauthor = @client.book(past.olidb) %>
-												<% if bookauthor.authors.author[0].blank? %>
-													<%= link_to bookauthor.authors.author.name, author_book_path(bookauthor.authors.author.id) %>
-												<% else %>
-													<%= bookauthor.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %>
-												<% end %>
-		          						</span>
-		          						</div>
-		          					
-		          		<% end %>
-		          		
-		          	</div>
-		          	</div>
-					</div>
-
-
+				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<% if @user.id == current_user.id %>
+    				<label>Your Past Reads</label>
+    				<% else %>
+    				<label><%= @user.name %>'s Past Reads</label>
+    				<% end %>
+    				<div class="row" id="reads">
+    					<% @past.each do |past| %>
+    					<div class="col-md-2">
+    						<%= link_to (image_tag ("http://images.amazon.com/images/P/#{past.isbn}.01.LZZZZZZ.jpg"), :title => "#{past.title}", data: { toggle: "tooltip"}), book_path(:id => past.olidb) %>
+    					</div>
+    					<% end %>
+    				</div>
+    			</div>
 			</div>
 		</div>
 	</div>
 </div>
 
 <script>
-	$('.book-cover-small').tooltip({
+	$('#reads img').tooltip({
 		placement: 'bottom'
 	});
 </script>
