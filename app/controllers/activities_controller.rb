@@ -8,3 +8,4 @@ class ActivitiesController < ApplicationController
   		format.js
   end
 end
+end
