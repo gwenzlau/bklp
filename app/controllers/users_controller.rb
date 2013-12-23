@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 	def index
     @users = User.order("created_at desc").paginate(:page => params[:page], :per_page => 3)
-
+    @user = current_user
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
