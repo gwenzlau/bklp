@@ -1041,7 +1041,6 @@ input#user_current_password {
 	border-radius: 0;
 }
 
-<<<<<<< HEAD
 /* reads
 ------------------------*/
 #reads {
@@ -1050,7 +1049,7 @@ input#user_current_password {
 
 #reads img {
 	height: 150px;
-=======
+}
 
 /* home
 ------------------------*/
@@ -1270,5 +1269,4 @@ input#user_current_password {
 	margin-top: 100px;
 	background: #DDD;
 	position: relative;
->>>>>>> new_landing_page
 }
