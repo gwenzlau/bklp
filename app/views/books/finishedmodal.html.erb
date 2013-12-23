@@ -1,7 +1,113 @@
-
 <div id="main">
     <div class="container">
-            <h1> Modal </h1>
+        <div class="row">
+            <div class="row">
+                <%= render 'layouts/sidebar' %>
+                <!-- book info -->
+                <div class="col-md-9 col-md-offset-1" id="book-info">
+                    <h2><%= @thebook.title %></h2>
+                    <%# This will check if the user is reading the book and display options %>
+                    
+                    <!-- took out the bookstatus to get around error -->
+                    <p id="book-author">by:
+                        <% if @thebook.authors.author[0].blank? %>
+                            <%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
+                        <% else %>
+                            <%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
+                        <% end%>
+                    </p>
+                    <div id="book-nav">
+                        <ul>
+                            <li><a href="#_" class="active" for="book-desc">Description</a></li>
+                            <li><a href="#_" for ="book-discussions">Discussions</a></li>
+                            <li><a href="#_" for="book-reviews">Reviews</a></li>
+                            <li><a href="#_" for="book-suggestions">Suggestions</a></li>
+                        </ul>
+                    </div>
+                    <div id="book-desc">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
+                            </div>
+                            <div class="col-md-8 col-md-offset-2">
+                                <p>
+                                    <%= raw(@thebook.description) %><br /><br />
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="currently-reading">
+                            <label><b><%= pluralize(@total_recommend, "recommendation") %></b></label>
+                            <br>
+                            <label>People currently reading this book</label>
+                              <ul>
+                                <!-- took out the users currently reading to get around error -->
+                            </ul>
+                    </div>
+                    <div id="book-reviews">
+                        <div class="row">
+                            <% if @review.each do |review| %>
+                            <div class="col-md-6">
+                                <%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
+                                <div class="review-content">
+                                    <p>
+                                        <strong><%= User.find(review.user_id).name %> said:</strong><br>
+                                        <%= review.body %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% end.empty? %>
+                            <div class="col-md-6">
+                             <span style= "color: #C9C9C9;"><i> No reviews yet...</i></span>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div id="book-suggestions">
+                        <div class="row">
+                            <% if @also_read.each do |also| %>
+                             <div class="col-md-3">
+
+                                <% if also.isbn.blank? %>
+
+                                <%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
+                                <% else %>
+                                <%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
+                                <% end %>
+                                <%= link_to also.title, book_path(:id => also.olidb) %>
+                             </div>
+                            <% end.empty? %>
+                            <div class="col-md-6">
+                            <span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+
+                    <script>
+                        App.opts.book_id = "<%= @thebook.id %>";
+                        App.opts.user = {
+                            "name": "<%= current_user.name %>",
+                            "avatar_url": "<%= current_user.avatar.url %>",
+                            "id": <%= current_user.id %>
+                        };
+
+                        function textAreaAdjust(o) {
+                            o.style.height = "1px";
+                            o.style.height = (25+o.scrollHeight)+"px";
+                        }
+                    </script>
+                    
+                    <%= render 'discussions/list' %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- finished modal -->
 <div class="modal fade" id="finished-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
