@@ -117,11 +117,15 @@
   </script>
 </head>
 <body>
-<%= render 'layouts/header' %>
+    <%= render 'layouts/header' %>
+    <div class="container">
     <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-    <% end %>
-
+      <div class="alert alert-info">
+        <%= msg %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+      <%end%>
+    </div>
     <%= yield %>
     <%= render 'layouts/footer' %>
 </body>
