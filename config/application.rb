@@ -61,7 +61,7 @@ module Booksy
     config.assets.version = '1.0'
 
         # Required for Devise on Heroku
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
    # config.action_mailer.delivery_method = :postmark
   #  config.action_mailer.postmark_settings = { :api_key => "your-api-key" }
