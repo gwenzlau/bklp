@@ -127,7 +127,7 @@ form.new_book {
 
 /* home feed
 ------------------------*/
-#activity-feed label, #following label, #currently-reading label, #book-reviews label {
+#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label {
 	color: #C8C8C8;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -1158,6 +1158,20 @@ input#user_current_password {
 	border: 1px solid #AAA;
 	margin: 50px auto 0 auto;
 	text-align: center;
+}
+#discover-users .avatar {
+	width: 101px;
+	height: 101px;
+	border-radius: 50%;
+	border: 1px solid #AAA;
+	margin: 10px auto 0 auto;
+	text-align: center;
+}
+#discover-users .avatar img {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	margin-top: 5px;
 }
 #index .avatar img, #alice .avatar img {
 	width: 190px;

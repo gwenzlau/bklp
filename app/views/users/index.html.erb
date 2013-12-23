@@ -3,7 +3,19 @@
 		<div class="row">
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
- 				 <div align="center">
+				<div class="col-md-8 col-md-offset-1" id="discover-users">
+					<label>Discover other readers</label>
+					<div class="row">
+						<% @users.each do |user| %>
+						<div class="col-md-2">
+							<div class="avatar">
+								<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle", :title => "#{user.name}", data: { toggle: "tooltip"}), user %>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+ 				 <!--<div align="center">
 				  <h4>Discover other readers</h4>
 					<% @users.each do |user| %>
 					<ul>
@@ -14,8 +26,13 @@
 
 				<% end %>
 				<%= will_paginate @users %>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	$('#discover-users img').tooltip({
+		placement: 'bottom'
+	});
+</script>
