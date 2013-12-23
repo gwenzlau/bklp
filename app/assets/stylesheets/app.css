@@ -71,6 +71,18 @@ color: rgb(54, 53, 53);
 form.new_book {
 	display: inline;
 }
+#signup h2, #signin h2 {
+	text-align: center;
+}
+#signin {
+	width: 500px;
+}
+#signin form {
+	margin-bottom: 20px;
+}
+#signin a {
+	margin-right: 20px;
+}
 
 /* Sidebar
 ------------------------*/
