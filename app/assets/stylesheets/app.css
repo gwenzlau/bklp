@@ -1132,7 +1132,7 @@ input#user_current_password {
 	position: absolute;
 	-webkit-animation: bounce 2s infinite;
 }	
-.avatar {
+#index .avatar, #alice .avatar {
 	width: 201px;
 	height: 201px;
 	border-radius: 50%;
@@ -1148,7 +1148,7 @@ input#user_current_password {
 	margin: 50px auto 0 auto;
 	text-align: center;
 }
-.avatar img {
+#index .avatar img, #alice .avatar img {
 	width: 190px;
 	height: 190px;
 	border-radius: 50%;
