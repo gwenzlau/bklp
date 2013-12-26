@@ -19,7 +19,7 @@ Booksy::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
-  config.assets.precompile += ['style.css', 'app.css', 'animate.css', 'bootstrap.min.css', 'discussions.css.scss', 'typehead.css']
+  #config.assets.precompile += ['style.css', 'app.css', 'animate.css', 'bootstrap.min.css', 'discussions.css.scss', 'typehead.css']
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -47,7 +47,8 @@ Booksy::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+   #config.action_controller.asset_host = "http://assets.example.com"
+   config.action_controller.asset_host = "d19t704ji8lp0d.cloudfront.net"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
