@@ -58,7 +58,7 @@
 								<div class="review-content">
 									<p>
 										<strong><%= User.find(review.user_id).name %> said:</strong><br>
-										<%= review.body %>
+										<%=  review.body.truncate(200) %>
 									</p>
 								</div>
 							</div>
