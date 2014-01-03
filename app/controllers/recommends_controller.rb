@@ -5,6 +5,20 @@ class RecommendsController < ApplicationController
   
   def create
     @recommend = Recommend.new(rec_params)
+    
+    if @recommend.save
+      if params[:recommend][:item_type] == "book"
+        redirect_to book_path(:id => params[:recommend][:item_id])
+      else
+        redirect_to author_book_path(:id => params[:recommend][:item_id])
+      end
+    else
+      
+    end
+   end
+
+  def modrec
+    @recommend = Recommend.new(rec_params)
     resp ||= []
     if @recommend.save
       if params[:recommend][:item_type] == "book"
