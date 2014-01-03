@@ -1,0 +1,11 @@
+commented:
+<% if activity.trackable %>
+	<%= Acomment.find_by_id(activity.trackable.id).comment %>
+		 <span class="feed-sub" align="center">
+	<small><br>
+	    <a href="#" id="al-<%= activity.id %>">Comment</a>
+	  </small>
+	</span>
+<% else %>
+	and then changed their mind.
+<% end %>
