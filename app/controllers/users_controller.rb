@@ -61,6 +61,14 @@ class UsersController < ApplicationController
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
     @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+  end
+
+    def recommendations
+    @user = User.find(params[:id])
+    @client = Goodreads.new(Goodreads.configuration)
+    @book = Book.where(:user_id => params[:id]).where(:status => "0")
+     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
+    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
 
   end
 

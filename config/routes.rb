@@ -42,6 +42,7 @@ Booksy::Application.routes.draw do
     member do
       get :pastreads
       get :futurereads
+      get :recommendations
       get :follow
       get :unfollow
     end
