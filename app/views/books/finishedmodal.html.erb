@@ -114,10 +114,10 @@
         <div class="modal-content">
             <div class="modal-body">
                 <input type="hidden" value="<%= @user.id %>" id="user_id">
-                <input type="hidden" value="<%= @thebook.id %>" id="book_id">
+                <input type="hidden" value="<%= @thebook.id %>-<%= @slug %>" id="book_id">
                 <div class="modal-actions">
                     <input type="hidden" value="<%= current_user.id %>" id="recommend-user">
-                    <input type="hidden" value="<%= @thebook.id %>" id="recommend-item">
+                    <input type="hidden" value="<%= @thebook.id %>-<%= @slug %>" id="recommend-item">
                     <input type="hidden" value="book" id="recommend-type">
                     <button type="button" class="btn btn-bookloop btn-sm" id="recommend-book">Recommend</button>
                     <button type="button" class="btn btn-default btn-sm" disabled="disabled" id="recommend-success">Thanks for recommending this book!</button>
