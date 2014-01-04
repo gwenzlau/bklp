@@ -4,31 +4,28 @@
 	  <% if user_signed_in? %>
 		<%# This will check if the user is reading the book and display options %>
 		<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-		  <div class="btn-group btn-group-sm pull-right" id="book-actions">
+		  <div class="pull-right" id="book-actions">
 			<% if @mybook[0].status == 1 %>
 				<% if @recommends.exists? %>
 						<label> 
 							<% if @myrecommend.exists? %>
 								<button type="button" class="btn btn-default btn-sm" disabled>You've already finished and recommended this book.</button>
-									<% else %>
-										<%= form_for(@new_recommend) do |f| %>
-											<%= f.hidden_field :user_id, :value => current_user.id %>
-											<%= f.hidden_field :item_id, :value => params[:id] %>
-											<%= f.hidden_field :item_type, :value => "book" %>
-											<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
-										<% end %>
-										
-									<% end %>
-									</label>
-									<br>
-				<% else %>
-				<button type="button" class="btn btn-default btn-sm" disabled>You've already finished this book.</button>
-				<%= form_for(@new_recommend) do |f| %>
+							<% else %>
+								<%= form_for(@new_recommend) do |f| %>
 									<%= f.hidden_field :user_id, :value => current_user.id %>
 									<%= f.hidden_field :item_id, :value => params[:id] %>
 									<%= f.hidden_field :item_type, :value => "book" %>
-									<%= f.button "Would you like to recommend it?", :class => "btn btn-default btn-sm" %>
-								<% end %>
+									<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
+								<% end %>			
+							<% end %>
+						</label>
+						<br>
+				<% else %>
+				<button type="button" class="btn btn-default btn-sm" disabled>You've already finished this book.</button>
+				<input type="hidden" value="<%= current_user.id %>" id="recommend-user">
+                <input type="hidden" value="<%= @thebook.id %>" id="recommend-item">
+                <input type="hidden" value="book" id="recommend-type">
+				<button type="button" class="btn btn-sm btn-bookloop" id="book-show-rec">Recommend it</button>
 				<% end %>
 
 			<% end %>
