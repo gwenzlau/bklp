@@ -193,7 +193,8 @@ class BooksController < ApplicationController
 
    def finishedmodal
     client = Goodreads.new(Goodreads.configuration)
- @thebook = client.book(params[:id]) unless client.book(params[:id]).blank?
+    @thebook = client.book(params[:id]) unless client.book(params[:id]).blank?
+    @slug = @thebook.title.parameterize
   
     # If user logged in, get user data and initialize new instance for the option to start reading the book.
     if user_signed_in?
