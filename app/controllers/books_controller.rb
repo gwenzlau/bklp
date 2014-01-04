@@ -16,6 +16,7 @@ class BooksController < ApplicationController
     
     # Get the metadata from Goodreads
     @thebook = client.book(params[:id]) unless client.book(params[:id]).blank?
+    @slug = @thebook.title.parameterize
   
     # If user logged in, get user data and initialize new instance for the option to start reading the book.
     if user_signed_in?

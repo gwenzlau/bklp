@@ -23,7 +23,7 @@
 				<% else %>
 				<button type="button" class="btn btn-default btn-sm" disabled>You've already finished this book.</button>
 				<input type="hidden" value="<%= current_user.id %>" id="recommend-user">
-                <input type="hidden" value="<%= @thebook.id %>" id="recommend-item">
+                <input type="hidden" value="<%= @thebook.id %>-<%= @slug %>" id="recommend-item">
                 <input type="hidden" value="book" id="recommend-type">
 				<button type="button" class="btn btn-sm btn-bookloop" id="book-show-rec">Recommend</button>
 				<% end %>

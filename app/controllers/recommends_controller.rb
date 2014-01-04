@@ -4,7 +4,7 @@ class RecommendsController < ApplicationController
   end
   
   def create
-  @recommend = Recommend.new(rec_params)
+    @recommend = Recommend.new(rec_params)
     resp ||= []
     if @recommend.save
       if params[:recommend][:item_type] == "book"
