@@ -49,7 +49,7 @@ Booksy::Application.routes.draw do
   end
 
    get 'users/:id', to: 'users#show'
-   get 'users/sign_out', to: 'sessions#destroy'
+   get 'users/sign_out', to: 'devise/sessions#destroy'
    get 'users', to: 'users#index'
    get 'search/', to: 'pages#search'
    get 'future', to: 'books#future'
