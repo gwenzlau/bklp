@@ -1,10 +1,8 @@
-
 jQuery ->
-if $('.pagination').length # Thats for the Endless Scrolling
+  if $('.pagination').length
     $(window).scroll ->
-        url = $('.pagination .next_page a').attr('href')
-        if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-            # What to do at the bottom of the page
-            $('.pagination').text("Booklooping...")
-            $.getScript(url)
-        $(window).scroll()
+      url = $('.pagination .next_page').attr('href')
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        $('.pagination').text("Loading more activities...")
+        $.getScript(url)
+    $(window).scroll()
