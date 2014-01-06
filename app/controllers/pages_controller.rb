@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     # Show the feed of the users you are following. Limits the list to latest 10 feeds
     if signed_in?
       @acomment = Acomment.new
-      @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").paginate(:page => params[:page], :per_page => 6)
+      @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").paginate(:page => params[:page], :per_page => 10)
       @user = current_user
     end
     
