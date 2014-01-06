@@ -653,6 +653,12 @@ form.new_acomment input.comment-field {
 #book-discussions {
 	display: none;
 }
+.book-show-review {
+	width: 100%;
+	margin-bottom: 30px;
+	height: 90px !important;
+	border-radius: 0;
+}
 
 /* modals
 ------------------------*/

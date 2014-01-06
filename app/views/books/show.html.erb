@@ -52,6 +52,17 @@
 					</div>
 					<div id="book-reviews">
 						<div class="row">
+							<% if @myreview %>
+								<span style= "color: #C9C9C9;"><i>You have already reviewed this book.</i></span>
+							<% else %>
+							<div class="col-md-12">
+								<div id="add-review">
+									<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
+									<button class="btn btn-sm btn-bookloop pull-right" id="post-review">Review this book</button>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<% end %>
 							<% if @review.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
@@ -64,7 +75,7 @@
 							</div>
 							<% end.empty? %>
 							<div class="col-md-6">
-							 <span style= "color: #C9C9C9;"><i> No reviews yet...</i></span>
+								<span style= "color: #C9C9C9;"><i> No reviews yet...</i></span>
 							</div>
 							<% end %>
 						</div>

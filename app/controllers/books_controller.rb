@@ -24,6 +24,7 @@ class BooksController < ApplicationController
       @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
       @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
       @user = current_user
+      @myreview = Review.where(:user_id => current_user.id).where(:book_id => params[:id])
     end
     
     #Users currently reading this book
