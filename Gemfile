@@ -20,7 +20,6 @@ gem 'aws-sdk'
 gem 'newrelic_rpm'
 gem 'rails_admin'
 #gem 'postmark-rails', '~> 0.5.2'
-gem 'rails_12factor', group: :production
 
 
 # Bundle edge Rails instead:
@@ -48,6 +47,7 @@ gem 'jquery-rails'
 # Add for Heroku
 group :production do
 	gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
