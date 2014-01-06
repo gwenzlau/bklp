@@ -22,7 +22,7 @@ Booksy::Application.configure do
   #config.assets.precompile += ['style.css', 'app.css', 'animate.css', 'bootstrap.min.css', 'discussions.css.scss', 'typehead.css']
 
   # Generate digests for assets URLs
-  config.assets.digest = true
+  config.assets.digest = false
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
