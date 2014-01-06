@@ -62,7 +62,7 @@ module Booksy
 
         # Required for Devise on Heroku
     config.assets.initialize_on_precompile = false
-
+    config.assets.precompile += %w( *.css *.js )
     #config.assets.precompile += %w( 'application.js', 'activities.js.coffee', 'bootstrap.min.js', 'typehead.js', 'event.js', 'app.css', 'activities.css.scss', 'application.css', 'discussions.css.scss', 'typehead.css', 'style.css.scss',)
 
    # config.action_mailer.delivery_method = :postmark
