@@ -16,6 +16,9 @@
 						<% if @user.id == current_user.id %>
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
+							<div id="edit-profile-overlay">
+								<div id="overlay-edit">Edit</div>
+							</div>
 						</a>
 						
 						<% if @book.any? %>

@@ -779,6 +779,38 @@ form.new_acomment input.comment-field {
 #profile-content #profile-card {
 	text-align: center;
 }
+#profile-content #profile-card a {
+	display: inline-block;
+	position: relative;
+	border-radius: 50%;
+}
+#profile-content #profile-card a #edit-profile-overlay {
+	background: rgba(0,0,0,0);
+	color: #FFF;
+	z-index: 99999; 
+	position: absolute; 
+	top: 0; 
+	width: 100%; 
+	height: 100%; 
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+#profile-content #profile-card a #overlay-edit {
+	width: 70px;
+	padding: 5px;
+	border: 1px solid #f9f9f9;
+	border-radius: 3px;
+	margin: 55px auto 0 auto;
+	color: #FFF;
+	opacity: 0;
+}
+#profile-content #profile-card a:hover #overlay-edit {
+	opacity: 1;
+}
+#profile-content #profile-card a:hover #edit-profile-overlay {
+	background: rgba(0,0,0,0.7);
+	color: #FFF;
+}
 #profile-content #profile-card img {
 	width: 144px;
 }
