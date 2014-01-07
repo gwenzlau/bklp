@@ -52,7 +52,7 @@
 					</div>
 					<div id="book-reviews">
 						<div class="row">
-							<% if @myreview %>
+							<% if @myreview.exists? %>
 								<span style= "color: #C9C9C9;"><i>You have already reviewed this book.</i></span>
 							<% else %>
 							<div class="col-md-12">
