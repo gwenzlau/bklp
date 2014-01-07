@@ -98,4 +98,14 @@
         plusSign.css('left', x + 10 + 'px');
         calcPosition(e.pageX - 435);
     });
+
+    $('body').on('mouseover', '.discussions-bar li img', function() {
+        tooltipSpan.hide();
+        plusSign.hide();
+    });
+    $('body').on('mouseout', '.discussions-bar li img', function() {
+        tooltipSpan.css('display', '');
+        plusSign.css('display', '');
+    });
+
 </script>
