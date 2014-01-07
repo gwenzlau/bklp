@@ -53,12 +53,11 @@
 					<div id="book-reviews">
 						<div class="row">
 							<% if @myreview.exists? %>
-								<span style= "color: #C9C9C9;"><i>You have already reviewed this book.</i></span>
 							<% else %>
 							<div class="col-md-12">
 								<div id="add-review">
 									<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
-									<button class="btn btn-sm btn-bookloop pull-right" id="post-review">Review this book</button>
+									<button class="btn btn-sm btn-bookloop pull-right" id="post-review-book-show">Review this book</button>
 								</div>
 							</div>
 							<div class="clearfix"></div>
