@@ -43,6 +43,18 @@ $(document).ready( function() {
 		});
 	});
 
+	$('#post-review-book-show').click( function() {
+		var body = $('#review_body').val();
+		var book_id = $('#book_id').val(); 
+		var user_id = $('#user_id').val();
+		var d = {'review[body]': body, 'review[book_id]': book_id, 'review[user_id]': user_id}
+		$.post('/reviews', d, function(data) {
+			if(data[0].status == 'success') {
+				location.reload();
+			}
+		});
+	});
+
 	// recommend book
 	$('#recommend-book').click( function() {
 		var user_id = $('#recommend-user').val();

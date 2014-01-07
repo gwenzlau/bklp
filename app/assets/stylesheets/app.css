@@ -653,6 +653,15 @@ form.new_acomment input.comment-field {
 #book-discussions {
 	display: none;
 }
+.book-show-review {
+	width: 100%;
+	margin-bottom: 30px;
+	height: 90px !important;
+	border-radius: 0;
+}
+#review-form p {
+	text-align: center;
+}
 
 /* modals
 ------------------------*/
@@ -748,6 +757,16 @@ form.new_acomment input.comment-field {
 }
 .modal .modal-recommendations #book-covers {
 	margin-top: 20px;
+}
+#review-modal {
+	margin-top: 100px;
+	outline: none;
+}
+#review-modal .modal-body {
+	padding: 20px;
+}
+#review-modal-action {
+	text-align: right;
 }
 
 
