@@ -3,10 +3,8 @@
 <head>
   <title>Bookloop</title>
   <%= stylesheet_link_tag  "bootstrap.min" %>
-  <%= stylesheet_link_tag  "app1" %>
   <%= stylesheet_link_tag  "app" %>
   <%= stylesheet_link_tag  "discussions" %>
-  <%= stylesheet_link_tag  "discussions1" %>
   <%= stylesheet_link_tag  "animate" %>
   <link rel="icon" 
       type="image/png" 
@@ -20,11 +18,9 @@
   <%= javascript_include_tag "bootstrap.min" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "events" %>
-  <%= javascript_include_tag "events1" %>
   <%= javascript_include_tag "activities" %>
   <%= javascript_include_tag "typeahead" %>
-  <%= javascript_include_tag "discussions_ctrl" %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "app/controllers/discussions_ctrl" %>
 
 
   <%= csrf_meta_tags %>
