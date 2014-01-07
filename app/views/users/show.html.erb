@@ -20,7 +20,12 @@
 								<div id="overlay-edit">Edit</div>
 							</div>
 						</a>
-						
+						<% else %>
+						<div id="profile-card-img">
+							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+						</div>
+						<% end %>
+
 						<% if @book.any? %>
 							<% if @user.id == current_user.id %>
 								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
@@ -33,13 +38,6 @@
 							<% else %>
 								<p id="currently-reading"><strong><%= @user.name %></strong> is not reading any books at the moment.</p>
 							<% end %>
-						<% end %>
-						
-						<% else %>
-						<div id="profile-card-img">
-							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
-						</div>
-						<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
 						<% end %>
 					</div>
 					<div id="recommended-reads">
