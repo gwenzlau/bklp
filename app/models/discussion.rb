@@ -1,5 +1,8 @@
 class Discussion < ActiveRecord::Base
   include ActionView::Helpers::DateHelper # For time_ago_in_words
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user}
+
 
   belongs_to :book
   belongs_to :user
