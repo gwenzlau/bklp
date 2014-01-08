@@ -1,6 +1,6 @@
-commented:
+commented on your recent activity, saying:<br>
 <% if activity.trackable %>
-	<%= Acomment.find_by_id(activity.trackable.id).comment %>
+	"<i><%= Acomment.find_by_id(activity.trackable.id).comment %></i>"
 		 <span class="feed-sub" align="center">
 	<small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
