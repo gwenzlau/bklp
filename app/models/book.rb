@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
   has_many :discussions
-  has_many :recommends, dependent: :destroy
+  has_many :recommends
 
   def to_param
     "#{id}-#{title.parameterize}"
