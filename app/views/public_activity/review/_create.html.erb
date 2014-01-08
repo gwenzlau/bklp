@@ -1,6 +1,6 @@
 reviewed
 <% if activity.trackable %>
-	<%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).olidb) %>
+	<%= link_to Book.find_by_id(activity.trackable).title, book_path(Book.find_by_id(activity.trackable).olidb) %>
 		 <span class="feed-sub" align="center">
 	<small><br>
 	   <!-- <a href="#" id="al-<%= activity.id %>">Comment</a>!-->
