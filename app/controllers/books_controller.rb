@@ -74,24 +74,12 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-    #@book = Book.new(params[:book])
     
     if @book.save
       redirect_to current_user
     else
       redirect_to root_path
     end
-    #@book = Book.new(params[:book])
-
-    #respond_to do |format|
-     # if @book.save
-      #  format.html { redirect_to @book, notice: 'Here is the book page.' }
-       # format.json { render json: @book, status: :created, location: @book }
-    #  else
-     #   format.html { render action: "onew" }
-      #  format.json { render json: @book.errors, status: :unprocessable_entity }
-    #  end
-  #  end
   end
   
   def book_readit
@@ -116,15 +104,6 @@ class BooksController < ApplicationController
     else
       redirect_to root_path
     end
-  end
-
-  def order
-    @book = Book.find(params[:id])
-    if @book.update_attribute(:order)
-      redirect_to current_user
-    else 
-    end
-
   end
 
   def future_list
