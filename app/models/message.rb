@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
 
 	validates :user, :conversation, :body, presence: true
 
-	def deleteable?
-		created_at >= 5.minutes.ago
+	def deleteable?(message_user)
+		created_at >= 5.minutes.ago && user == message_user
 	end
 end
