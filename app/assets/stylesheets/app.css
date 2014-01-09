@@ -1117,6 +1117,11 @@ input#user_current_password {
 	margin-bottom: 30px;
 }
 
+#read .col-md-2 a {
+	display: inline-block;
+	background: #F5F5F5;
+}
+
 #reads img {
 	height: 150px;
 }
