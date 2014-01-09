@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   has_many :recommends, dependent: :destroy
 
   has_many :messages
-  has_many :conversations, through: :messages
+  has_many :participants
+  has_many :conversations, through: :participants
 
   def public_params
     {
