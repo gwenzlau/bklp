@@ -1,4 +1,5 @@
 Booksy::Application.routes.draw do
+  get "messages/create"
   root 'pages#home'
 
   resources :conversations
