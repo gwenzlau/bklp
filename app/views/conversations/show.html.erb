@@ -4,7 +4,9 @@
 	<em>In this conversation: <%= @conversation.names_list %></em>
 </p>
 
+<hr />
+
 <% @messages.each do |m| %>
-	<h4><%= m.user.name %> said <%= time_ago_in_words m.created_at %> ago:</h4>
+	<h4><%= link_to m.user.name, m.user %> said <%= time_ago_in_words m.created_at %> ago:</h4>
 	<blockquote><%= m.body %></blockquote>
 <% end %>

@@ -2,7 +2,7 @@
 
 <% if @conversations.length > 0 %>
 	<% @conversations.each do |c| %>
-		<%= link_to "Conversation between #{c.names_list}", conversation_path(c) %>
+		Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
 	<% end %>
 <% else %>
 	<p>
