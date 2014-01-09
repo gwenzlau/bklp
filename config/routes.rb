@@ -2,7 +2,9 @@ Booksy::Application.routes.draw do
   get "messages/create"
   root 'pages#home'
 
-  resources :conversations
+  resources :conversations do
+    resources :messages, only: :create
+  end
 
   resources :reviews
 
