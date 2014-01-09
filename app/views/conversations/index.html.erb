@@ -1,0 +1,11 @@
+<h1>Conversations</h1>
+
+<% if @conversations.length > 0 %>
+	<% @conversations.each do |c| %>
+		<%= link_to "Conversation between #{c.names_list}", conversation_path(c) %>
+	<% end %>
+<% else %>
+	<p>
+		<em>Sorry you have no conversations to read.</em>
+	</p>
+<% end %>

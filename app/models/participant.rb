@@ -1,4 +1,6 @@
 class Participant < ActiveRecord::Base
+	default_scope { order ('created_at desc') }
+	
 	after_destroy :destroy_conversation
 
 	belongs_to :user

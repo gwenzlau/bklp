@@ -7,13 +7,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "https://s3.amazonaws.com/bklp/guest.png"
 
   #validates_attachment_presence :avatar
   #validates_attachment_size :avatar, :less_than => 5.megabytes
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
-
 
   acts_as_followable
   acts_as_follower
@@ -25,7 +23,8 @@ class User < ActiveRecord::Base
   has_many :discussions, dependent: :destroy
   has_many :recommends, dependent: :destroy
 
-
+  has_many :messages
+  has_many :conversations, through: :messages
 
   def public_params
     {
@@ -38,5 +37,4 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{name.parameterize}"
   end
-
 end
