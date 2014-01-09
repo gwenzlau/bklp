@@ -5,4 +5,8 @@ class Message < ActiveRecord::Base
 	belongs_to :user
 
 	validates :user, :conversation, :body, presence: true
+
+	def deleteable?
+		created_at >= 5.minutes.ago
+	end
 end

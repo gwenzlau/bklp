@@ -3,7 +3,7 @@ Booksy::Application.routes.draw do
   root 'pages#home'
 
   resources :conversations do
-    resources :messages, only: :create
+    resources :messages, only: [:create, :destroy]
   end
 
   resources :reviews

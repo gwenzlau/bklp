@@ -1,0 +1,8 @@
+<h4><%= link_to message.user.name, message.user %> said <%= time_ago_in_words message.created_at %> ago:</h4>
+	<blockquote><%= message.body %></blockquote>
+
+<% if message.deleteable? %>
+<p>
+	<em><%= link_to 'Destroy', conversation_message_path(message.conversation, message), :confirm => 'Are you sure?', :method => :delete %></em>
+</p>
+<% end %>

@@ -9,7 +9,4 @@
 <h4>New message</h4>
 <%= render 'messages/form' %>
 
-<% @messages.each do |m| %>
-	<h4><%= link_to m.user.name, m.user %> said <%= time_ago_in_words m.created_at %> ago:</h4>
-	<blockquote><%= m.body %></blockquote>
-<% end %>
+<%= render @messages %>

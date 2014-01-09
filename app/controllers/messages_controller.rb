@@ -13,6 +13,21 @@ class MessagesController < ApplicationController
   	end
   end
 
+  def destroy
+  	@message = Message.find(params[:id])
+  	@conversation = @message.conversation
+
+  	respond_to do |format|
+      if @message.destroy! && @message.user == current_user
+        format.html { redirect_to @conversation, flash: { success: "Message deleted."} }
+      else
+        format.html { redirect_to @conversation, flash: { error: "The message couldn't be deleted!"} }
+      end
+
+      format.js
+    end
+  end
+
   protected
 
   def message_params
