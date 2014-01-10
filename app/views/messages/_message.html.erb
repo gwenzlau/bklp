@@ -1,6 +1,6 @@
 <li>
 	<h4><%= link_to message.user.name, message.user %> said <%= time_ago_in_words message.created_at %> ago:</h4>
-		<blockquote><%= message.body %></blockquote>
+		<blockquote><%= simple_format message.body %></blockquote>
 
 	<% if message.deleteable?(current_user) %>
 	<p>

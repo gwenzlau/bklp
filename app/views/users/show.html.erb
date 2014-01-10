@@ -153,9 +153,7 @@
 							<%= m.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
 						<% end %>
 
-						<%#= f.simple_fields_for :participants do |p| %>
-							<%#= p.input :user_id, input_html: { value: @user.id }, as: :hidden %>
-						<%# end %>
+						<%= hidden_field_tag :recipient_id, @user.id %>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

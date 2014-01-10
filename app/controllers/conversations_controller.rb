@@ -19,6 +19,12 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)    
 
     if @conversation.save
+
+      @participant = Participant.new
+      @participant.user_id = params[:recipient_id]
+      @participant.conversation = @conversation
+      @participant.save
+
       redirect_to conversation_path @conversation
     else
       render action: :new

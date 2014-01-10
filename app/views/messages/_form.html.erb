@@ -1,4 +1,4 @@
 <%= simple_form_for Message.new, url: conversation_messages_path(@conversation.id), method: :post do |f| %>
-	<%= f.input :body %>
-	<%= f.button :submit %>
+	<%= f.input :body, input_html: {class: 'form-control'}, wrapper_html: {class: 'form-group'} %>
+	<%= f.button :submit, "Send Reply", input_html: {class: 'btn btn-primary'}, wrapper_html: {class: 'form-group'} %>
 <% end %>
