@@ -6,7 +6,9 @@
 
 <hr />
 
-<h4>New message</h4>
+<h4>Reply to <%= @messages.last.user.name %></h4>
 <%= render 'messages/form' %>
 
-<%= render @messages %>
+<ul>
+	<%= render @messages %>
+</ul>

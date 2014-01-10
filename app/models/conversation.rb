@@ -5,7 +5,7 @@ class Conversation < ActiveRecord::Base
 	has_many :users, through: :participants
 	has_many :messages, dependent: :destroy
 
-	accepts_nested_attributes_for :messages
+	accepts_nested_attributes_for :messages, :participants
 
 	def names_list
 		self.participants.map {|p| p.user.name}.to_sentence

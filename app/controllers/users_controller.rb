@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     if signed_in?
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
+
+      @conversation = Conversation.new
+      @conversation.messages.build
+      @conversation.participants.build
     end
     @client = Goodreads.new(Goodreads.configuration)
 		@user = User.find(params[:id])

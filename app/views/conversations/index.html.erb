@@ -1,9 +1,13 @@
 <h1>Conversations</h1>
 
 <% if @conversations.length > 0 %>
+	<ul>
 	<% @conversations.each do |c| %>
-		Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
+		<li>
+			Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
+		</li>
 	<% end %>
+	</ul>
 <% else %>
 	<p>
 		<em>Sorry you have no conversations to read.</em>

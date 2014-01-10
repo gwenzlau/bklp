@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
 	belongs_to :conversation, counter_cache: true, touch: true
 	belongs_to :user
 
-	validates :user, :conversation, :body, presence: true
+	validates :body, presence: true
 
 	def deleteable?(message_user)
 		created_at >= 5.minutes.ago && user == message_user
@@ -15,8 +15,8 @@ class Message < ActiveRecord::Base
 	protected
 
 	def check_is_participating
-		if !participant = Participant.find_by(user_id: self.user_id, conversation_id: self.conversation.id)
-			Participant.create!(user_id: message.user.id, conversation_id: self.conversation.id)
+		unless Participant.find_by(user_id: self.user.id, conversation_id: self.conversation.id)
+			Participant.create!(user_id: self.user.id, conversation_id: self.conversation.id)
 		end
 	end
 end

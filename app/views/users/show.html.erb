@@ -4,15 +4,17 @@
 			<div class="row">
 				<div id="profile-content">
 					<div id="profile-card">
-						<% if @user.id == current_user.id %>
-								<%# Do nothing since the current user is looking at his own profile %>
+						<% if @user.id != current_user.id %>
+							<button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#newMessageModal">
+								Send Message
+							</button>
+							<% if current_user.following?(@user) %>
+								<button class="btn btn-default btn-sm pull-right"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
 							<% else %>
-								<% if current_user.following?(@user) %>
-									<button class="btn btn-default btn-sm pull-right"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
-								<% else %>
-									<button class="btn btn-default btn-sm pull-right"><%= link_to "Follow", follow_user_path(@user) %></button>
-								<% end %>
+								<button class="btn btn-default btn-sm pull-right"><%= link_to "Follow", follow_user_path(@user) %></button>
 							<% end %>
+						<% end %>
+
 						<% if @user.id == current_user.id %>
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
@@ -134,3 +136,33 @@
 	});
 	<% end %>*/
 </script>
+
+<% if signed_in? %>
+	<div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	  	<%= simple_form_for @conversation, url: conversations_path do |f| %>
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Start a conversation with <%= @user.name %></h4>
+	      </div>
+	      <div class="modal-body" style="padding: 20px;">
+	      		<%= f.simple_fields_for :messages do |m| %>
+							<%= m.input :body, input_html: {class: 'form-control', rows: 10}, wrapper_html: {class: 'form-group'} %>
+
+							<%= m.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
+						<% end %>
+
+						<%#= f.simple_fields_for :participants do |p| %>
+							<%#= p.input :user_id, input_html: { value: @user.id }, as: :hidden %>
+						<%# end %>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        <%= f.button :submit, "Send", class: 'btn btn-primary' %>
+	      </div>
+	    </div><!-- /.modal-content -->
+	    <% end %>
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<% end %>
