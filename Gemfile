@@ -32,17 +32,14 @@ gem "actionmailer", "~> 4.0.1"
 # Gems used only for assets and not required
 # in production environments by default.
 
- # gem 'sass-rails'
-  gem 'coffee-rails'
+# gem 'sass-rails'
+gem 'coffee-rails'
 
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.3.0'
-
-
-gem 'jquery-rails'
+gem 'uglifier', '>= 1.3.0'
 
 # Add for Heroku
 group :production do
