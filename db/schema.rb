@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218175242) do
+ActiveRecord::Schema.define(version: 20140111105945) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 20131218175242) do
     t.string   "note"
   end
 
+  add_index "links", ["user_id"], name: "index_links_on_user_id"
+
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
     t.string   "username"
@@ -161,6 +163,9 @@ ActiveRecord::Schema.define(version: 20131218175242) do
     t.string   "item_type"
   end
 
+  add_index "recommends", ["item_id"], name: "index_recommends_on_item_id"
+  add_index "recommends", ["user_id"], name: "index_recommends_on_user_id"
+
   create_table "reviews", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -168,6 +173,9 @@ ActiveRecord::Schema.define(version: 20131218175242) do
     t.integer  "user_id"
     t.integer  "book_id"
   end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
