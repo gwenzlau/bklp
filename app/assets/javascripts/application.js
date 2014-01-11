@@ -26,5 +26,5 @@
 
 window.App = angular.module('Bookloop', ['ngResource']);
 
-// Dumb object for placing rails data inside
-App.opts = {};
+// Plain object for placing rails data inside
+window.App.opts = {};

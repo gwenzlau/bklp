@@ -20,6 +20,7 @@ color: rgb(54, 53, 53);
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
 .navbar {
 	background: #FFF;
 	border-bottom: 2px solid #F5F5F5;
@@ -787,11 +788,11 @@ form.new_acomment input.comment-field {
 #profile-content #profile-card a #edit-profile-overlay {
 	background: rgba(0,0,0,0);
 	color: #FFF;
-	z-index: 99999; 
-	position: absolute; 
-	top: 0; 
-	width: 100%; 
-	height: 100%; 
+	z-index: 99999;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 	transition: all 0.3s ease;
 }
@@ -1203,7 +1204,7 @@ input#user_current_password {
 	left: 10px;
 	position: absolute;
 	-webkit-animation: bounce 2s infinite;
-}	
+}
 #index .avatar, #alice .avatar {
 	width: 201px;
 	height: 201px;
