@@ -34,8 +34,6 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.2.1)
-      sass (~> 3.2)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -202,7 +200,6 @@ DEPENDENCIES
   acts_as_commentable
   acts_as_follower
   aws-sdk
-  bootstrap-sass (~> 3.0.2.0)
   coffee-rails
   devise
   dotenv-rails
