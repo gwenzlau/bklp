@@ -7,27 +7,19 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 3.0'
-
-gem 'openlibrary'
 gem 'goodreads'
-
 gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'acts_as_commentable'
-
 gem 'aws-sdk'
 gem 'newrelic_rpm'
-#gem 'rails_admin'
-#gem 'postmark-rails', '~> 0.5.2'
-
 gem "actionmailer", "~> 4.0.1"
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.3.0'
+gem 'multi_json'
+gem 'unicorn'
+gem 'foreman'
 
-# Add for Heroku
 group :production do
 	gem 'pg'
   gem 'rails_12factor'
@@ -38,6 +30,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers', '~> 2.4'
@@ -47,13 +40,3 @@ group :test do
   gem 'factory_girl_rails'
   gem "faker", "~> 1.2.0"
 end
-
-gem 'dotenv-rails', :groups => [:development, :test]
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-gem 'multi_json'
-
-# Use unicorn as the app server
-gem 'unicorn'
-gem 'foreman'
