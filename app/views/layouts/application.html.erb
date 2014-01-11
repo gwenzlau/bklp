@@ -2,25 +2,16 @@
 <html ng-app="Bookloop">
 <head>
   <title>Bookloop</title>
-  <%= stylesheet_link_tag  "bootstrap.min" %>
-  <%= stylesheet_link_tag  "app" %>
-  <%= stylesheet_link_tag  "discussions" %>
-  <%= stylesheet_link_tag  "animate" %>
-  <link rel="icon" 
-      type="image/png" 
+  <%= stylesheet_link_tag  "application" %>
+  <link rel="icon"
+      type="image/png"
       href="https://s3.amazonaws.com/bklp/favicon_ba.ico">
-  
+
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   <![endif]-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <%= javascript_include_tag "bootstrap.min" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "events" %>
-  <%= javascript_include_tag "activities" %>
-  <%= javascript_include_tag "typeahead" %>
-  <%= javascript_include_tag "app/controllers/discussions_ctrl" %>
 
 
   <%= csrf_meta_tags %>
