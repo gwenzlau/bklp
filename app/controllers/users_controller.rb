@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  before_action :set_user, only: [:show]
+  
   def create
     # Create the user from params
     @user = User.new(params[:user])
@@ -21,32 +24,16 @@ class UsersController < ApplicationController
    end
 
 	def show
+    @book_current = User.find(params[:id]).books.where(:status => "0")
+    @book_past= User.find(params[:id]).books.where(:status => "1").limit(10).order("updated_at DESC")
+    @book_future= User.find(params[:id]).books.where(:status => "2").limit(10).order("updated_at DESC")
+    
+    @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book")
+    @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author")
+    
     if signed_in?
-      @acomment = Acomment.new
-      @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: params[:id], owner_type: "User").limit(10)
+      @new_comment = Acomment.new
     end
-    @client = Goodreads.new(Goodreads.configuration)
-		@user = User.find(params[:id])
-
-    # Users are reading now and have previously read:
-    @book = Book.where(:user_id => params[:id]).where(:status => "0")
-    #@booka = @book.map(&:title)
-    @past = Book.where(:user_id => params[:id]).where(:status => "1").limit(10).order("updated_at desc")
-
-    @future = Book.where(:user_id => params[:id]).where(:status => "2").limit(10).order("updated_at desc")
-
-    @link = Link.where(:user_id => params[:id]).where(:status => "0")
-
-
-    @link = Link.where(:user_id => params[:id])
-    @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
-    @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
-
-    #Recommended books and authors
-    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
-    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
-
-    @order = Book.where(:user_id => params[:id])
   end
 
   def pastreads
@@ -103,5 +90,10 @@ def unfollow
   end
 end
 
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
 end

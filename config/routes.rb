@@ -5,6 +5,7 @@ Booksy::Application.routes.draw do
 
  
   resources :reviews
+  resources :authors
 
   resources :links do
     member do
@@ -29,7 +30,6 @@ Booksy::Application.routes.draw do
       put :start_future_read
       post :future_list
       post :past_list
-      get :author
       post :order
     end
   end
@@ -54,7 +54,6 @@ Booksy::Application.routes.draw do
    get 'search/', to: 'pages#search'
    get 'future', to: 'books#future'
    get 'futurelink', to: 'links#future'
-   get 'author', to: 'books#author'
    get 'recommend', to: 'books#recommend'
    # api route for autocomplete
    get 'search/autocomplete', to: 'pages#autocomplete'

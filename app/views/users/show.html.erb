@@ -26,9 +26,9 @@
 						</div>
 						<% end %>
 
-						<% if @book.any? %>
+						<% if @book_current.any? %>
 							<% if @user.id == current_user.id %>
-								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
+								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book_current.collect{ |f| link_to(f.title, book_path(f.id))}.to_sentence.html_safe %></p>
 							<% else %>
 								<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
 							<% end %>
@@ -68,7 +68,7 @@
 							<div id="past-reads">
 								<p><%= link_to "Past Reads", pastreads_user_path(@user) %></p>
 								<ul>
-									<% @past.each do |past| %>
+									<% @book_past.each do |past| %>
 		          					<li>
 		          						<%= link_to past.title, book_path(:id => past.olidb) %> 
 		          						
@@ -89,7 +89,7 @@
 							<div id="future-reads">
 								<p><%= link_to "Future Reads", futurereads_user_path(@user) %></p>
 								<ul>
-									<% @future.each do |future| %>
+									<% @book_future.each do |future| %>
 		        					<li>
 												<%= link_to future.title, book_path(:id => future.olidb) %>
 		        					

@@ -1,33 +1,13 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:update, :start_future_read, :destroy]
-  before_action :set_api, only: [:show, :author, :finishedmodal]
+  before_action :set_book, only: [:show, :update, :start_future_read, :destroy]
+  before_action :set_api, only: [:goodreads_search]
   
 	def index
     @books = Book.all
   end
 
   def show  
-    # Get the metadata from Goodreads
-    @thebook = @client.book(params[:id]) unless @client.book(params[:id]).blank?
-    @slug = @thebook.title.parameterize
-  
-    if user_signed_in?
-      @newbook = current_user.books.build
-      @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
-      @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
-      @myreview = Review.where(:user_id => current_user.id).where(:book_id => params[:id])
-      @new_recommend = Recommend.new
-    end
     
-    #Users currently reading this book
-    @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
-    @review = Review.where(:book_id => params[:id])
-    @total_recommend = Recommend.where(:item_id => params[:id]).count
-    @recommends = Recommend.where(:item_id => params[:id])
-    
-    # Selecting random books for suggestions
-    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
-    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
   end
   
   def author
@@ -136,10 +116,17 @@ class BooksController < ApplicationController
     redirect_to root_path
   end
   
+  def goodreads_search
+  end
+  
   private
   
   def set_book
     @book = Book.find(params[:id])
+  end
+  
+  def set_author
+    @author = Author.find(params[:id])
   end
   
   def set_api
