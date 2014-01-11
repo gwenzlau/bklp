@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem "rails", "~> 4.0.1"
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
-gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'jquery-rails'
+gem 'coffee-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 3.0'
@@ -21,33 +21,20 @@ gem 'newrelic_rpm'
 #gem 'rails_admin'
 #gem 'postmark-rails', '~> 0.5.2'
 
-
-# Bundle edge Rails instead:
-
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem "actionmailer", "~> 4.0.1"
 
-
-# Gems used only for assets and not required
-# in production environments by default.
-
- # gem 'sass-rails'
-  gem 'coffee-rails'
-
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.3.0'
-
-
-gem 'jquery-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+gem 'uglifier', '>= 1.3.0'
 
 # Add for Heroku
 group :production do
 	gem 'pg'
   gem 'rails_12factor'
+end
+
+group :assets do
+  gem 'asset_sync'
 end
 
 group :development, :test do
@@ -70,9 +57,3 @@ gem 'multi_json'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'foreman'
-
-# Deploy with Capistrano
- #gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
