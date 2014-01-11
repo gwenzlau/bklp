@@ -45,6 +45,10 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :assets do
+  gem 'asset_sync'
+end
+
 group :development do
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
