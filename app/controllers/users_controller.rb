@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       format.json { render json: @users }
      end
    end
-   
+
 	def show
     if signed_in?
       @acomment = Acomment.new
@@ -27,17 +27,17 @@ class UsersController < ApplicationController
     end
     @client = Goodreads.new(Goodreads.configuration)
 		@user = User.find(params[:id])
-    
+
     # Users are reading now and have previously read:
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
-    #@booka = @book.map(&:title) 
+    #@booka = @book.map(&:title)
     @past = Book.where(:user_id => params[:id]).where(:status => "1").limit(10).order("updated_at desc")
 
     @future = Book.where(:user_id => params[:id]).where(:status => "2").limit(10).order("updated_at desc")
 
     @link = Link.where(:user_id => params[:id]).where(:status => "0")
 
-    
+
     @link = Link.where(:user_id => params[:id])
     @pastlink = Link.where(:user_id => params[:id]).where(:status => "1")
     @futurelink = Link.where(:user_id => params[:id]).where(:status => "2")
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
   end
 
-    def recommendations
+  def recommendations
     @user = User.find(params[:id])
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
