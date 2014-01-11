@@ -21,6 +21,8 @@
 //= require_tree ./app/directives/
 //= require_tree ./app/services/
 //= require_tree ./app/controllers/
+//= require events
+//= require activities
 
 window.App = angular.module('Bookloop', ['ngResource']);
 
