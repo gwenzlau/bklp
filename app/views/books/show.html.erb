@@ -32,7 +32,6 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<%= raw(@thebook.description) %><br /><br />
-									
 								</p>
 							</div>
 						</div>
@@ -53,19 +52,20 @@
 					<div id="book-reviews">
 						<div class="row">
 							<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-							<% if @mybook[0].status == 1 %>
-							<% if @myreview.exists? %>
+								<% if @mybook[0].status == 1 %>
+									<% if @myreview.exists? %>
+									<% else %>
+										<div class="col-md-12" id="review-form">
+											<p><button class="btn btn-sm btn-bookloop" data-toggle="modal" data-target="#review-modal">Review this book</button></p>
+											<hr>
+										</div>
+										<div class="clearfix"></div>
+									<% end %>
+								<% else %>
+								<% end %>
 							<% else %>
-							<div class="col-md-12" id="review-form">
-								<p><button class="btn btn-sm btn-bookloop" data-toggle="modal" data-target="#review-modal">Review this book</button></p>
-								<hr>
-							</div>
-							<div class="clearfix"></div>
 							<% end %>
-							<% else %>
-							<% end %>
-							<% else %>
-							<% end %>
+							
 							<% if @review.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
@@ -138,7 +138,7 @@
 		        <h4 class="modal-title">A review for <i><%= @thebook.title %></i></h4>
 	      	</div>
             <div class="modal-body">
-            	<input type="hidden" value="<%= @user.id %>" id="user_id">
+            	<input type="hidden" value="<%= current_user.id %>" id="user_id">
             	<input type="hidden" value="<%= @thebook.id %>" id="book_id">
                 <div id="add-review">
 					<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>

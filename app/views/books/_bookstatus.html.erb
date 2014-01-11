@@ -52,7 +52,6 @@
 				<%= f.hidden_field :olidb, :value => params[:id] %>
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "0" %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.button "Currently reading it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
@@ -63,7 +62,6 @@
 				<%= f.hidden_field :olidb, :value => params[:id] %>
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "1" %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.button "Already read it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
@@ -74,7 +72,6 @@
 				<%= f.hidden_field :olidb, :value => params[:id] %>
 				<%= f.hidden_field :olida, :value => "" %>
 				<%= f.hidden_field :status, :value => "2" %>
-				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.button "Going to read it", :class => "btn btn-default btn-sm"%>
 			<% end %>
 			</div>
