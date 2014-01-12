@@ -48,7 +48,20 @@
 					</div>
 					<div id="book-reviews">
 						<div class="row">
-							
+							<% if current_user.books.where(:id => params[:id]).exists? %>
+								<% if @status[0].status == 1 %>
+									<% if @myreview.exists? %>
+									<% else %>
+										<div class="col-md-12" id="review-form">
+											<p><button class="btn btn-sm btn-bookloop" data-toggle="modal" data-target="#review-modal">Review this book</button></p>
+											<hr>
+										</div>
+										<div class="clearfix"></div>
+									<% end %>
+								<% else %>
+								<% end %>
+							<% else %>
+							<% end %>
 							<% if @book.reviews.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>

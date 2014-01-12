@@ -1,13 +1,10 @@
 recommended
 <% if activity.trackable %>
-	<% if Recommend.find_by_id(activity.trackable.id).item_type == "book" %>
+	<% if Recommend.find_by_id(activity.trackable.id) %>
 		
 		<% recco = Recommend.find_by_id(activity.trackable.id) %>
-		<%= link_to Book.find_by_olidb(recco.item_id).title, book_path(recco.item_id) %>
+		<%= link_to Book.find(recco).title, book_path(recco) %> 
 	<% else %>
 		the author
-		<% recco = Recommend.find_by_id(activity.trackable.id) %>
-		<% client = Goodreads.new(Goodreads.configuration) %>
-		<%= link_to client.author(recco.item_id.to_i).name, author_book_path(recco.item_id) %>
 	<% end %>
-<% end %>
+<% end %> 
