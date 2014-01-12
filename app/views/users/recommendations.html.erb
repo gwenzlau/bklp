@@ -12,11 +12,11 @@
     				<div class="row" id="reads">
     					<% @recommended_books.each do |recbook| %> 
 							<div class="col-md-3">
-								<% if Book.find_by_olidb(recbook.item_id).isbn.blank? %>
+								<% if Book.find(recbook.book_id).isbn.blank? %>
 
-								<%= link_to (image_tag ("http://placehold.it/195x275"), :title => "#{Book.find_by_olidb(recbook.item_id).title}", data: { toggle: "tooltip"}), book_path(recbook.item_id) %>
+								<%= link_to (image_tag ("http://placehold.it/195x275"), :title => "#{Book.find(recbook).title}", data: { toggle: "tooltip"}), book_path(recbook.item_id) %>
 								<% else %>
-								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find_by_olidb(recbook.item_id).isbn}.01.LZZZZZZ.jpg"), :title => "#{Book.find_by_olidb(recbook.item_id).title}", data: { toggle: "tooltip"}), book_path(recbook.item_id) %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(recbook).isbn}.01.LZZZZZZ.jpg"), :title => "#{Book.find(recbook).title}", data: { toggle: "tooltip"}), book_path(recbook) %>
 								<% end %>
 							</div>
 							<% end %>
