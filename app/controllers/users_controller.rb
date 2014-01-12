@@ -25,8 +25,8 @@ class UsersController < ApplicationController
 
 	def show
     @book_current = User.find(params[:id]).archives.where(:status => "0")
-    @book_past= User.find(params[:id]).books.where(:status => "1").limit(10).order("updated_at DESC")
-    @book_future= User.find(params[:id]).books.where(:status => "2").limit(10).order("updated_at DESC")
+    @book_past= User.find(params[:id]).archives.where(:status => "1").limit(10).order("updated_at DESC")
+    @book_future= User.find(params[:id]).archives.where(:status => "2").limit(10).order("updated_at DESC")
     
     @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book")
     @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author")
@@ -37,21 +37,19 @@ class UsersController < ApplicationController
   end
 
   def readlist_past
-    @books = current_user.archives
+    @books = current_user.archives.where(status: "1")
   end
 
   def readlist_future
-    @books = current_user.archives
-    #@future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+    @books = current_user.archives.where(status: "2")
   end
 
   def recommendations
     @user = User.find(params[:id])
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
-     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
+    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
     @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
-
   end
 
   def follow

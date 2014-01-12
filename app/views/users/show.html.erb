@@ -70,10 +70,10 @@
 								<ul>
 									<% @book_past.each do |past| %>
 		          					<li>
-		          						<%= link_to past.title, book_path(:id => past.id) %> 
+		          						<%= link_to Book.find(past.book_id).title, book_path(:id => past.book_id) %> 
 		          						
 		          						<span class="past-read-author">by: 
-														<%= past.authors.collect{ |f| link_to f.name, author_path(f.id)}.to_sentence.html_safe %>
+														<%= Book.find(past.book_id).authors.collect{ |f| link_to f.name, author_path(f.id)}.to_sentence.html_safe %>
 		          						</span>
 		          					</li>
 		          					<% end %>
@@ -86,10 +86,10 @@
 								<ul>
 									<% @book_future.each do |future| %>
 		        					<li>
-												<%= link_to future.title, book_path(:id => future.id) %>
+												<%= link_to Book.find(future.book_id).title, book_path(:id => future.book_id) %>
 		        					
 			        					<span class="past-read-author">by: 
-													<%= future.authors.collect{ |f| link_to f.name, author_path(f.id)}.to_sentence.html_safe %>
+													<%= Book.find(future.book_id).authors.collect{ |f| link_to f.name, author_path(f.id)}.to_sentence.html_safe %>
 			        					</span>
 											</li>
 		          		<% end %>

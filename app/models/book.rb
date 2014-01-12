@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
   
   has_many :reviews
   has_many :discussions
-  has_many :recommends
+  has_many :recommends, dependent: :destroy
   
   has_many :works, dependent: :destroy
   has_many :authors, through: :works
