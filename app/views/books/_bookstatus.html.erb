@@ -20,7 +20,7 @@
 				<% end %>
 			<% end %>
 			
-			<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @book.id}, :method => :delete, :class => "btn btn-default btn-sm", :type => "button", :confirm => "Are you sure?" if @status[0].status == 0 %>
+			<%= button_to "Abandon it", archive_path(:id => @status[0].id), :method => :delete, :class => "btn btn-default btn-sm", :type => "button", :confirm => "Are you sure?" if @status[0].status == 0 %>
 			<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @book.id}, :method => :put, :class => "btn btn-default btn-sm", :type => "button" if @status[0].status == 0 %>
 			<%= button_to "Start reading...", archive_path(:id => @status[0].id), :method => :put, :class => "btn btn-default btn-sm", :type => 'button' if @status[0].status == 2 %>
 			
