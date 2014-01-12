@@ -66,7 +66,7 @@ class BooksController < ApplicationController
   end
   
   def past_list
-    @past = current_user.books.build(book_params)
+    @past = current_user.archives.build(book_params)
     @past.activity key: 'book.past_list'
     
     if @past.save

@@ -6,7 +6,13 @@ Booksy::Application.routes.draw do
  
   resources :reviews
   resources :authors
-  resources :archives
+  
+  resources :archives do
+    member do
+      post :future_list
+      post :past_list
+    end
+  end
 
   resources :links do
     member do
@@ -29,8 +35,6 @@ Booksy::Application.routes.draw do
   resources :books do
     member do
       put :start_future_read
-      post :future_list
-      post :past_list
       post :order
       post :add_goodreads
     end

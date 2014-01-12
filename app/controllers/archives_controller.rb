@@ -26,6 +26,28 @@ class ArchivesController < ApplicationController
     end
   end
   
+  def past_list
+    @past = current_user.archives.build(archive_params)
+    @past.activity key: 'book.past_list'
+    
+    if @past.save
+      redirect_to(current_user, :notice => "Just added a book to your past read list.")
+    else
+      redirect_to root_path
+    end
+  end
+  
+  def future_list
+    @future = current_user.archives.build(archive_params)
+    @future.activity key: 'book.future_list'
+    
+    if @future.save
+      redirect_to(current_user, :notice => "Just added a book to your future read list.")
+    else
+      redirect_to root_path
+    end
+  end
+  
   private
   
   def set_archive

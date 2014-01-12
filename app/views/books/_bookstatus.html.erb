@@ -33,14 +33,14 @@
 				<%= f.button "Currently reading it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
-			<%= form_for @list_read, :url => {:action => "past_list"} do |f| %>
-				<%= f.hidden_field :book_id, :value => @book.title %>
+			<%= form_for @list_read, :url => {:controller => :archives, :action => "past_list"} do |f| %>
+				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "1" %>
 				<%= f.button "Already read it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
-			<%= form_for @list_read, :url => {:action => "future_list"} do |f| %>
-				<%= f.hidden_field :book_id, :value => @book.title %>
+			<%= form_for @list_read, :url => {:controller => :archives, :action => "future_list"} do |f| %>
+				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.button "Going to read it", :class => "btn btn-default btn-sm"%>
 			<% end %>
