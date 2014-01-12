@@ -28,7 +28,7 @@
 
 						<% if @book_current.any? %>
 							<% if @user.id == current_user.id %>
-								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book_current.collect{ |f| link_to(f.title, book_path(f.id))}.to_sentence.html_safe %></p>
+								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book_current.collect{ |f| link_to(Book.find(f.book_id).title, book_path(f.book_id))}.to_sentence.html_safe %></p>
 							<% else %>
 								<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book.collect{ |f| link_to(f.title, book_path(:id => f.olidb))}.to_sentence.html_safe %></p>
 							<% end %>

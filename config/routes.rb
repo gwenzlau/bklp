@@ -6,6 +6,7 @@ Booksy::Application.routes.draw do
  
   resources :reviews
   resources :authors
+  resources :archives
 
   resources :links do
     member do

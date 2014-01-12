@@ -9,6 +9,7 @@ class BooksController < ApplicationController
   def show  
     @recommends = @book.recommends
     if signed_in?
+      @list_read = Archive.new
       @myrecommend = @book.recommends.where(:user_id => current_user.id)
     end
   end

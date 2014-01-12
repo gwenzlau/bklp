@@ -45,32 +45,20 @@
 
 		<% else %>
 		<div id="book-actions" class="pull-right">
-			<%= form_for(@newbook) do |f| %>
-				<%= f.hidden_field :title, :value => @thebook.title %>
-				<%= f.hidden_field :isbn, :value => @thebook.isbn %>
-				<%= f.hidden_field :author, :value => "" %>
-				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => "" %>
+			<%= form_for(@list_read) do |f| %>
+				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "0" %>
 				<%= f.button "Currently reading it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
-			<%= form_for @newbook, :url => {:action => "past_list"} do |f| %>
-				<%= f.hidden_field :title, :value => @thebook.title %>
-				<%= f.hidden_field :isbn, :value => @thebook.isbn %>
-				<%= f.hidden_field :author, :value => "" %>
-				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => "" %>
+			<%= form_for @list_read, :url => {:action => "past_list"} do |f| %>
+				<%= f.hidden_field :book_id, :value => @book.title %>
 				<%= f.hidden_field :status, :value => "1" %>
 				<%= f.button "Already read it", :class => "btn btn-default btn-sm" %>
 			<% end %>
 		
-			<%= form_for @newbook, :url => {:action => "future_list"} do |f| %>
-				<%= f.hidden_field :title, :value => @thebook.title %>
-				<%= f.hidden_field :isbn, :value => @thebook.isbn %>
-				<%= f.hidden_field :author, :value => "" %>
-				<%= f.hidden_field :olidb, :value => params[:id] %>
-				<%= f.hidden_field :olida, :value => "" %>
+			<%= form_for @list_read, :url => {:action => "future_list"} do |f| %>
+				<%= f.hidden_field :book_id, :value => @book.title %>
 				<%= f.hidden_field :status, :value => "2" %>
 				<%= f.button "Going to read it", :class => "btn btn-default btn-sm"%>
 			<% end %>

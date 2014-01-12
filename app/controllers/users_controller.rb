@@ -24,7 +24,7 @@ class UsersController < ApplicationController
    end
 
 	def show
-    @book_current = User.find(params[:id]).books.where(:status => "0")
+    @book_current = User.find(params[:id]).archives.where(:status => "0")
     @book_past= User.find(params[:id]).books.where(:status => "1").limit(10).order("updated_at DESC")
     @book_future= User.find(params[:id]).books.where(:status => "2").limit(10).order("updated_at DESC")
     

@@ -1,6 +1,6 @@
 <ul>
 	<% @result.each do |result| %>
-		<li><%= result.title %></li>
+		<li><%= link_to result.title, book_path(result.id) %></li>
 	<% end %>
 	
 	<% if @result.blank? %>
