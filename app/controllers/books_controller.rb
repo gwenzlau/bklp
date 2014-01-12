@@ -11,6 +11,7 @@ class BooksController < ApplicationController
     if signed_in?
       @list_read = Archive.new
       @myrecommend = @book.recommends.where(:user_id => current_user.id)
+      @status = current_user.archives.where(:book_id => params[:id])
     end
   end
 

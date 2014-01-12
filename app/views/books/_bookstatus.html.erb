@@ -5,7 +5,7 @@
 		<%# This will check if the user is reading the book and display options %>
 		<% if current_user.books.where(:id => params[:id]).exists? %>
 		  <div class="pull-right" id="book-actions">
-			<% if @book.status == 1 %>
+			<% if @status[0].status == 1 %>
 				<% if @recommends.exists? %>
 						<label> 
 							<% if @myrecommend.exists? %>
@@ -29,7 +29,7 @@
 
 			<% end %>
 			
-			<% if @book.status == 0 %>
+			<% if @status[0].status == 0 %>
 				<%= button_to "Abandon it", {:controller => :books, :action => 'destroy', :id => @book.id}, :method => :delete, :class => "btn btn-default btn-sm", :type => "button", :confirm => "Are you sure?" %>		
 			
 				<%= button_to "Finished!", {:controller => :books, :action => 'update', :id => @book.id}, :method => :put, :class => "btn btn-default btn-sm", :type => "button"%>
@@ -37,7 +37,7 @@
 			  <% end %>
 			</div>
 			<div class="btn-group btn-group-sm pull-right" id="book-actions">
-			<% if @book.status == 2 %>
+			<% if @status[0].status == 2 %>
 				<%# abandon future book link %>
 				<%= button_to "Start reading...", {:controller => :books, :action => 'start_future_read', :id => @mybook[0].id}, :method => :put, :class => "btn btn-default", :type => 'button' %>
 			<% end %>
