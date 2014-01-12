@@ -5,17 +5,14 @@
 				<%= render 'layouts/sidebar' %>
 				<!-- book info -->
 				<div class="col-md-9 col-md-offset-1" id="book-info">
-					<h2><%= @thebook.title %></h2>
+					<h2><%= @book.title %></h2>
 					<%# This will check if the user is reading the book and display options %>
 					<%= render 'books/bookstatus' %>
 
-					<p id="book-author">by:
-						<% if @thebook.authors.author[0].blank? %>
-							<%= link_to @thebook.authors.author.name, author_book_path(@thebook.authors.author.id) %>
-						<% else %>
-							<%= @thebook.authors.author.collect{ |f| link_to f.name, author_book_path(f.id)}.to_sentence.html_safe %></h3>
-						<% end%>
+					<p id="book-author">
+						by: <%= @book.authors.collect{ |f| link_to f.name, author_path(f.id)}.to_sentence.html_safe %></h3>
 					</p>
+					
 					<div id="book-nav">
 						<ul>
 							<li><a href="#_" class="active" for="book-desc">Description</a></li>
@@ -27,46 +24,32 @@
 					<div id="book-desc">
 						<div class="row">
 							<div class="col-md-2">
-								<%= (image_tag ("http://images.amazon.com/images/P/#{@thebook.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
+								<%= (image_tag ("http://images.amazon.com/images/P/#{@book.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
 							</div>
 							<div class="col-md-8 col-md-offset-2">
 								<p>
-									<%= raw(@thebook.description) %><br /><br />
+									<%= raw(@book.description) %><br /><br />
 								</p>
 							</div>
 						</div>
 					</div>
 					<div id="currently-reading">
-							<label><b><%= pluralize(@total_recommend, "recommendation") %></b></label>
-							<br>
+							<label><b><%= pluralize(@recommends.count, "recommendation") %></b></label>
+							<br />
 						    <label>People currently reading this book</label>
 						      <ul>
-							    <% @users_reading.each do |reading| %>
+							    <% @book.users.each do |reading| %>
 							      <li>
-							    	<%= link_to (image_tag User.find_by_id(reading.user_id).avatar.url(:thumb)), user_path(reading.user_id) %>
-							    	<%= link_to  User.find_by_id(reading.user_id).name, user_path(reading.user_id) %>
+							    	<%= link_to (image_tag User.find(reading.id).avatar.url(:thumb)), user_path(reading.id) %>
+							    	<%= link_to  User.find(reading.id).name, user_path(reading.id) %>
 							      </li>
 								<% end %> 
 							</ul>
 					</div>
 					<div id="book-reviews">
 						<div class="row">
-							<% if Book.where(:user_id => current_user.id).where(:olidb => params[:id]).exists? %>
-								<% if @mybook[0].status == 1 %>
-									<% if @myreview.exists? %>
-									<% else %>
-										<div class="col-md-12" id="review-form">
-											<p><button class="btn btn-sm btn-bookloop" data-toggle="modal" data-target="#review-modal">Review this book</button></p>
-											<hr>
-										</div>
-										<div class="clearfix"></div>
-									<% end %>
-								<% else %>
-								<% end %>
-							<% else %>
-							<% end %>
 							
-							<% if @review.each do |review| %>
+							<% if @book.reviews.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
 								<div class="review-content">
@@ -85,28 +68,13 @@
 					</div>
 					<div id="book-suggestions">
 						<div class="row">
-							<% if @also_read.each do |also| %>
-							 <div class="col-md-3">
-
-								<% if also.isbn.blank? %>
-
-								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
-								<% else %>
-								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
-								<% end %>
-								<%= link_to also.title, book_path(:id => also.olidb) %>
-							 </div>
-							<% end.empty? %>
-							<div class="col-md-6">
-							<span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
-							</div>
-							<% end %>
+							
 						</div>
 					</div>
 						
 
 					<script>
-						App.opts.book_id = "<%= @thebook.id %>";
+						App.opts.book_id = "<%= @book.id %>";
 						App.opts.user = {
 							"name": "<%= current_user.name %>",
 							"avatar_url": "<%= current_user.avatar.url %>",
@@ -135,11 +103,11 @@
         <div class="modal-content">
         	<div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">A review for <i><%= @thebook.title %></i></h4>
+		        <h4 class="modal-title">A review for <i><%= @book.title %></i></h4>
 	      	</div>
             <div class="modal-body">
             	<input type="hidden" value="<%= current_user.id %>" id="user_id">
-            	<input type="hidden" value="<%= @thebook.id %>" id="book_id">
+            	<input type="hidden" value="<%= @book.id %>" id="book_id">
                 <div id="add-review">
 					<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
 					<p id="review-modal-action"> 

@@ -1,7 +1,30 @@
-<h3 align="center">This is the book index</h3>
-<div align="center"
-<form class="form-search">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<h2>Search result</h2>
+    				<div class="row" id="reads">
+    					<% @result.each do |result| %>
+    					<div class="col-md-2">
+    						<%= link_to (image_tag ("http://images.amazon.com/images/P/#{result.isbn}.01.LZZZZZZ.jpg"), :title => "#{result.title}", data: { toggle: "tooltip"}), book_path(result.id) %>
+    					</div>
+    					<% end %>
+    				</div>
+						
+						<% if @result.blank? %>
+							We did not find anyhting in our database.<br /><br />
+							<%= link_to "Let us find and import it for you on Goodreads", brapi_path(:search => params[:search]) %>
+						<% end %>
+    			</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<script>
+	$('#reads img').tooltip({
+		placement: 'bottom'
+	});
+</script>

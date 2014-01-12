@@ -5,18 +5,11 @@ class RecommendsController < ApplicationController
   
   def create
     @recommend = Recommend.new(rec_params)
-    resp ||= []
+    
     if @recommend.save
-      if params[:recommend][:item_type] == "book"
-        resp << {'status' => 'success'}
-        respond_to do |format|
-          format.json { render json: resp }
-        end
-      else
-        redirect_to author_book_path(:id => params[:recommend][:item_id])
-      end
+      redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this book.")
     else
-      
+      redirect_to root_path
     end
   end
 
@@ -56,6 +49,6 @@ class RecommendsController < ApplicationController
   private
   
   def rec_params
-    params.require(:recommend).permit(:user_id, :item_id, :item_type)
+    params.require(:recommend).permit(:user_id, :book_id, :item_type)
   end
 end

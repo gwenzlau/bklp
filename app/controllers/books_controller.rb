@@ -1,44 +1,19 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:update, :start_future_read, :destroy]
-  before_action :set_api, only: [:show, :author, :finishedmodal]
+  before_action :set_book, only: [:show, :update, :start_future_read, :destroy]
+  before_action :set_api, only: [:goodread_search, :add_goodreads]
   
 	def index
-    @books = Book.all
+    @result = Book.search(params[:search])
   end
 
   def show  
-    # Get the metadata from Goodreads
-    @thebook = @client.book(params[:id]) unless @client.book(params[:id]).blank?
-    @slug = @thebook.title.parameterize
-  
-    if user_signed_in?
-      @newbook = current_user.books.build
-      @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
-      @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
-      @myreview = Review.where(:user_id => current_user.id).where(:book_id => params[:id])
-      @new_recommend = Recommend.new
+    @recommends = @book.recommends
+    if signed_in?
+      @list_read = Archive.new
+      @recommend = Recommend.new
+      @myrecommend = @book.recommends.where(:user_id => current_user.id)
+      @status = current_user.archives.where(:book_id => params[:id])
     end
-    
-    #Users currently reading this book
-    @users_reading = Book.where(:olidb => params[:id]).where(:status => "0")
-    @review = Review.where(:book_id => params[:id])
-    @total_recommend = Recommend.where(:item_id => params[:id]).count
-    @recommends = Recommend.where(:item_id => params[:id])
-    
-    # Selecting random books for suggestions
-    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
-    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
-  end
-  
-  def author
-    @theauthor = @client.author(params[:id])
-    @authorbooks = @client.search_books(@theauthor.name)
-    
-    @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
-    @total_recommends = Recommend.where(:item_id => params[:id]).where(:item_type => "author").count
-    @new_recommend = Recommend.new
-
-    @users_fan = Recommend.where(:item_id => params[:id]).where(:item_type => "author").limit(9).order("RANDOM()")
   end
 
   def new
@@ -63,38 +38,11 @@ class BooksController < ApplicationController
   end
 
   def update
-    if @book.update_attribute(:status, "1")
-      redirect_to finished_path(:id => @book.olidb)
-    else
-      redirect_to root_path
-    end
-  end
-
-  def future_list
-    @future = current_user.books.build(book_params)
-    @future.activity key: 'book.future_list'
-    
-    if @future.save
-      redirect_to current_user
-    else
-      redirect_to root_path
-    end
   end
   
   def start_future_read
     @book.activity key: 'book.future_read'
     if @book.update_attribute(:status, "0")
-      redirect_to current_user
-    else
-      redirect_to root_path
-    end
-  end
-  
-  def past_list
-    @past = current_user.books.build(book_params)
-    @past.activity key: 'book.past_list'
-    
-    if @past.save
       redirect_to current_user
     else
       redirect_to root_path
@@ -132,8 +80,38 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    redirect_to root_path
+  end
+  
+  def goodread_search
+    @gr_result = @client.search_books(params[:search])
+  end
+  
+  def add_goodreads
+    @goodread = @client.book(params[:id])
+    @book = Book.create(:title => @goodread.title, :isbn => @goodread.isbn, :description => @goodread.description)
+    
+    if @book.save
+      @book_id = @book.id
+      @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
+      
+      if @goodread.authors.author[0].blank?
+        @author = Author.create(:name => @goodread.authors.author.name)
+        Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
+      else
+        @goodread.authors.author.each do |a|
+          @author = Author.create(:name => a.name)
+          Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
+        end
+      end
+      
+      if @connect.save
+        redirect_to(book_path(@book_id), :notice => "You just added this book to your collection")
+      else
+        redirect_to(root_path, :notice => "Failed to add a connection between you and the book")
+      end
+    else
+      redirect_to(root_path, :notice => "Could not add the book from the GR API")
+    end
   end
   
   private
@@ -142,11 +120,15 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
+  def set_author
+    @author = Author.find(params[:id])
+  end
+  
   def set_api
     @client = Goodreads.new(Goodreads.configuration)
   end
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order, :isbn, :slug)
+    params.require(:book).permit(:title, :status, :isbn, :description)
   end
 end

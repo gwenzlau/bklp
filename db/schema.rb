@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111105945) do
+ActiveRecord::Schema.define(version: 20140112130958) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -57,25 +57,29 @@ ActiveRecord::Schema.define(version: 20140111105945) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
+  create_table "archives", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status"
+  end
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "books", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.string   "author"
-    t.integer  "user_id"
-    t.string   "olida"
-    t.string   "olidb"
     t.integer  "status"
-    t.string   "rec"
-    t.string   "boolean"
-    t.string   "default"
-    t.string   "false"
-    t.boolean  "recommend",  default: false
-    t.integer  "order"
     t.string   "isbn"
+    t.text     "description"
+    t.integer  "book_id"
   end
-
-  add_index "books", ["user_id"], name: "index_books_on_user_id"
 
   create_table "commentaries", force: true do |t|
     t.text     "message"
@@ -157,13 +161,12 @@ ActiveRecord::Schema.define(version: 20140111105945) do
 
   create_table "recommends", force: true do |t|
     t.integer  "user_id"
-    t.string   "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "item_type"
+    t.integer  "book_id"
   end
 
-  add_index "recommends", ["item_id"], name: "index_recommends_on_item_id"
   add_index "recommends", ["user_id"], name: "index_recommends_on_user_id"
 
   create_table "reviews", force: true do |t|
@@ -199,5 +202,12 @@ ActiveRecord::Schema.define(version: 20140111105945) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "works", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
