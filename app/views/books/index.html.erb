@@ -1,7 +1,10 @@
-<h3 align="center">This is the book index</h3>
-<div align="center"
-<form class="form-search">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form>
-</div>
+<ul>
+	<% @result.each do |result| %>
+		<li><%= result.title %></li>
+	<% end %>
+	
+	<% if @result.blank? %>
+		We did not find anyhting in our database.<br /><br />
+		<%= link_to "Let us find and import it for you on Goodreads", brapi_path(:search => params[:search]) %>
+	<% end %>
+</ul>

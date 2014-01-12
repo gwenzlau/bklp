@@ -1,13 +1,13 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :update, :start_future_read, :destroy]
-  before_action :set_api, only: [:goodreads_search]
+  before_action :set_api, only: [:goodread_search, :add_goodreads]
   
 	def index
+    @result = Book.search(params[:search])
   end
 
   def show  
     @recommends = @book.recommends
-    
     if signed_in?
       @myrecommend = @book.recommends.where(:user_id => current_user.id)
     end
@@ -108,7 +108,21 @@ class BooksController < ApplicationController
     redirect_to root_path
   end
   
-  def goodreads_search
+  def goodread_search
+    @gr_result = @client.search_books(params[:search])
+  end
+  
+  def add_goodreads
+    @book = Book.new(book_params)
+    
+    @goodread = @client.book(params[:id])
+    @book.title = @goodread.title
+    
+    if @book.save
+      redirect_to :root_path
+    else
+      redirect_to :root_path
+    end
   end
   
   private
@@ -126,6 +140,6 @@ class BooksController < ApplicationController
   end
   
   def book_params
-    params.require(:book).permit(:title, :author, :olida, :olidb, :user_id, :status, :rec, :recommend, :order, :isbn, :slug)
+    params.require(:book).permit(:title, :status, :isbn, :description)
   end
 end

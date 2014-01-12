@@ -17,9 +17,8 @@ class PagesController < ApplicationController
   def action
   end
   
-  def search
-    client = Goodreads.new(Goodreads.configuration)   
-    @results = client.search_books(params[:q])
+  def search  
+    @results = Book.find(:all, :conditions => ['title LIKE ?', params[:search]])
   end
 
   def autocomplete
