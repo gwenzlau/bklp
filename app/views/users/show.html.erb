@@ -66,7 +66,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div id="past-reads">
-								<p><%= link_to "Past Reads", pastreads_user_path(@user) %></p>
+								<p><%= link_to "Past Reads", readlist_past_user_path(@user) %></p>
 								<ul>
 									<% @book_past.each do |past| %>
 		          					<li>
@@ -82,7 +82,7 @@
 						</div>
 						<div class="col-md-6">
 							<div id="future-reads">
-								<p><%= link_to "Future Reads", futurereads_user_path(@user) %></p>
+								<p><%= link_to "Future Reads", readlist_future_user_path(@user) %></p>
 								<ul>
 									<% @book_future.each do |future| %>
 		        					<li>

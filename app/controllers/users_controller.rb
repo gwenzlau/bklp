@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :readlist_future, :readlist_past]
   
   def create
     # Create the user from params
@@ -36,18 +36,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def pastreads
-    @user = User.find(params[:id])
-    @client = Goodreads.new(Goodreads.configuration)
-    @book = Book.where(:user_id => params[:id]).where(:status => "0")
-    @past = Book.where(:user_id => params[:id]).where(:status => "1")
+  def readlist_past
+    @books = current_user.archives
   end
 
-  def futurereads
-    @user = User.find(params[:id])
-    @client = Goodreads.new(Goodreads.configuration)
-    @book = Book.where(:user_id => params[:id]).where(:status => "0")
-    @future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
+  def readlist_future
+    @books = current_user.archives
+    #@future = Book.order(params[:order]).where(:user_id => params[:id]).where(:status => "2")
   end
 
   def recommendations

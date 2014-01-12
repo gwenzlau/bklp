@@ -4,15 +4,11 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
-					<% if @user.id == current_user.id %>
     				<label>Your Past Reads</label>
-    				<% else %>
-    				<label><%= @user.name %>'s Past Reads</label>
-    				<% end %>
     				<div class="row" id="reads">
-    					<% @past.each do |past| %>
+    					<% @books.each do |book| %>
     					<div class="col-md-2">
-    						<%= link_to (image_tag ("http://images.amazon.com/images/P/#{past.isbn}.01.LZZZZZZ.jpg"), :title => "#{past.title}", data: { toggle: "tooltip"}), book_path(:id => past.olidb) %>
+    						<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(book.book_id).isbn}.01.LZZZZZZ.jpg"), :title => "#{Book.find(book.book_id).title}", data: { toggle: "tooltip"}), book_path(:id => Book.find(book.book_id).id) %>
     					</div>
     					<% end %>
     				</div>

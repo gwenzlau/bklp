@@ -41,8 +41,8 @@ Booksy::Application.routes.draw do
   resources :users, :only => [:show, :index]
   resources :users do
     member do
-      get :pastreads
-      get :futurereads
+      get :readlist_past
+      get :readlist_future
       get :recommendations
       get :follow
       get :unfollow

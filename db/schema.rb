@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112005950) do
+ActiveRecord::Schema.define(version: 20140112130958) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140112005950) do
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
   end
 
   create_table "authors", force: true do |t|
