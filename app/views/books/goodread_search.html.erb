@@ -1,5 +1,5 @@
 <ul>
 	<% @gr_result.results.work.each do |gr| %>
-		<li><%= gr.best_book.title %> [<%= link_to "Start reading", add_goodreads_book_path(:id => gr.best_book.id, :status => "0") %>, <%= link_to "Add to past reads", "#" %>, <%= link_to "Read in near future", "#" %>]</li>
+		<li><%= gr.best_book.title %> [<%= link_to "Start reading", add_goodreads_book_path(:id => gr.best_book.id, :status => "0"), method: :post %>, <%= link_to "Add to past reads", add_goodreads_book_path(:id => gr.best_book.id, :status => "1"), method: :post %>, <%= link_to "Read in near future", add_goodreads_book_path(:id => gr.best_book.id, :status => "2"), method: :post %>]</li>
 	<% end %>
 </ul>

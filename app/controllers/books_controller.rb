@@ -114,15 +114,19 @@ class BooksController < ApplicationController
   end
   
   def add_goodreads
-    @book = Book.new(book_params)
-    
     @goodread = @client.book(params[:id])
-    @book.title = @goodread.title
+    @book = Book.create(:title => @goodread.title, :isbn => @goodread.isbn, :description => @goodread.description)
     
     if @book.save
-      redirect_to :root_path
+      @book_id = @book.id
+      @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
+      if @connect.save
+        redirect_to(book_path(@book_id), :notice => "You just added this book to your collection")
+      else
+        redirect_to(root_path, :notice => "Failed to add a connection between you and the book")
+      end
     else
-      redirect_to :root_path
+      redirect_to(root_path, :notice => "Could not add the book from the GR API")
     end
   end
   
