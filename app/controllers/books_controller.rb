@@ -93,6 +93,17 @@ class BooksController < ApplicationController
     if @book.save
       @book_id = @book.id
       @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
+      
+      if @goodread.authors.author[0].blank?
+        @author = Author.create(:name => @goodread.authors.author.name)
+        Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
+      else
+        @goodread.authors.author.each do |a|
+          @author = Author.create(:name => a.name)
+          Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
+        end
+      end
+      
       if @connect.save
         redirect_to(book_path(@book_id), :notice => "You just added this book to your collection")
       else
