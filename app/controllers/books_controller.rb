@@ -38,38 +38,11 @@ class BooksController < ApplicationController
   end
 
   def update
-    if @book.update_attribute(:status, "1")
-      redirect_to finished_path(:id => @book.olidb)
-    else
-      redirect_to root_path
-    end
-  end
-
-  def future_list
-    @future = current_user.books.build(book_params)
-    @future.activity key: 'book.future_list'
-    
-    if @future.save
-      redirect_to current_user
-    else
-      redirect_to root_path
-    end
   end
   
   def start_future_read
     @book.activity key: 'book.future_read'
     if @book.update_attribute(:status, "0")
-      redirect_to current_user
-    else
-      redirect_to root_path
-    end
-  end
-  
-  def past_list
-    @past = current_user.archives.build(book_params)
-    @past.activity key: 'book.past_list'
-    
-    if @past.save
       redirect_to current_user
     else
       redirect_to root_path
@@ -107,8 +80,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    redirect_to root_path
   end
   
   def goodread_search
