@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111224622) do
+ActiveRecord::Schema.define(version: 20140112005950) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140111224622) do
     t.integer  "status"
     t.string   "isbn"
     t.text     "description"
+    t.integer  "book_id"
   end
 
   create_table "commentaries", force: true do |t|
@@ -159,13 +160,12 @@ ActiveRecord::Schema.define(version: 20140111224622) do
 
   create_table "recommends", force: true do |t|
     t.integer  "user_id"
-    t.integer  "item_id",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "item_type"
+    t.integer  "book_id"
   end
 
-  add_index "recommends", ["item_id"], name: "index_recommends_on_item_id"
   add_index "recommends", ["user_id"], name: "index_recommends_on_user_id"
 
   create_table "reviews", force: true do |t|

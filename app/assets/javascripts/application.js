@@ -14,6 +14,7 @@
 //= require angular
 //= require angular-resource
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require bootstrap.min
 //= require typeahead
 //= require underscore

@@ -3,22 +3,14 @@ class BooksController < ApplicationController
   before_action :set_api, only: [:goodreads_search]
   
 	def index
-    @books = Book.all
   end
 
   def show  
+    @recommends = @book.recommends
     
-  end
-  
-  def author
-    @theauthor = @client.author(params[:id])
-    @authorbooks = @client.search_books(@theauthor.name)
-    
-    @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
-    @total_recommends = Recommend.where(:item_id => params[:id]).where(:item_type => "author").count
-    @new_recommend = Recommend.new
-
-    @users_fan = Recommend.where(:item_id => params[:id]).where(:item_type => "author").limit(9).order("RANDOM()")
+    if signed_in?
+      @myrecommend = @book.recommends.where(:user_id => current_user.id)
+    end
   end
 
   def new

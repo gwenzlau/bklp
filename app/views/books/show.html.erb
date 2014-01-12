@@ -34,8 +34,8 @@
 						</div>
 					</div>
 					<div id="currently-reading">
-							<label><b><%= pluralize(@total_recommend, "recommendation") %></b></label>
-							<br>
+							<label><b><%= pluralize(@recommends.count, "recommendation") %></b></label>
+							<br />
 						    <label>People currently reading this book</label>
 						      <ul>
 							    <% @book.users.each do |reading| %>
