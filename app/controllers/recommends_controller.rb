@@ -7,7 +7,7 @@ class RecommendsController < ApplicationController
     @recommend = Recommend.new(rec_params)
     
     if @recommend.save
-      redirect_to book_path(params[:recommend][:book_id])
+      redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this book.")
     else
       redirect_to root_path
     end
