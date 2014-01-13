@@ -4,6 +4,13 @@
 	<em>In this conversation: <%= @conversation.names_list %></em>
 </p>
 
+<% if @conversation.owner?(current_user) %>
+<p>
+	<em><%= link_to 'Destroy', conversation_path(@conversation), :confirm => 'Are you sure?', :method => :delete %></em>
+</p>
+
+<% end %>
+
 <hr />
 
 <h4>Reply to <%= @messages.last.user.name %></h4>

@@ -12,6 +12,6 @@ class Participant < ActiveRecord::Base
 	private
 
 	def destroy_conversation
-		self.conversation.destroy unless self.discussion.participants.any?
+		self.conversation.destroy unless self.conversation.participants.any?
 	end
 end

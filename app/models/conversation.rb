@@ -10,4 +10,9 @@ class Conversation < ActiveRecord::Base
 	def names_list
 		self.participants.map {|p| p.user.name}.to_sentence
 	end
+
+	def owner?(user)
+		self.messages.first.user == user
+	end
+
 end
