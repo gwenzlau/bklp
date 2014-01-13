@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112130958) do
+
+ActiveRecord::Schema.define(version: 20140107220345) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -107,6 +108,12 @@ ActiveRecord::Schema.define(version: 20140112130958) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "conversations", force: true do |t|
+    t.integer  "messages_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "discussions", force: true do |t|
     t.text     "quote"
     t.integer  "page"
@@ -144,7 +151,23 @@ ActiveRecord::Schema.define(version: 20140112130958) do
     t.string   "note"
   end
 
+
   add_index "links", ["user_id"], name: "index_links_on_user_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
