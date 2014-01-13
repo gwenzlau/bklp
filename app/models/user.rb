@@ -31,9 +31,5 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
-  end
-
-  def group_owner?(group)
-    group.user == self
-  end
+  end  
 end

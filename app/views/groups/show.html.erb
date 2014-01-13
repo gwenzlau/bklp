@@ -3,8 +3,8 @@
 		<div class="row">
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
-				<div class="col-md-8 col-md-offset-1" id="activity-feed">
-					<% if current_user.group_owner?(@group) %>
+				<div class="col-md-9 col-md-offset-1" id="group-info">
+					<% if @group.owned_by?(current_user) %>
 						<%= link_to 'Delete Group', group_path(@group), class: 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete %>
 					<% end %>
 
@@ -16,7 +16,45 @@
   					<p><em><%= @group.description %></em>
   				<% end %>
   				
-  				<hr />
+  				<div id="book-nav">
+						<ul>
+							<li><a href="#group-discussion" class="active">Discussion</a></li>
+							<li><a href="#group-books">Books</a></li>
+							<li><a href="#group-members">Members</a></li>
+							<li><a href="#group-requests">Requests</a></li>
+						</ul>
+					</div>
+
+					<div id="group-discussion">
+						<% if @group.discussions.length > 0 %>
+							<% @group.discussions.each do |discussion| %>
+								<h5><%= discussion.user.name %> said <%= time_ago_in_words discussion.created_at %>:</h5>
+								<%= discussion.body %>
+							<% end %>
+						<% else %>
+							<p>
+								<em>Nobody is talking about the books in this group right now. Why don't you start?</em>
+							</p>
+						<% end %>
+					</div>
+
+					<div id="group-books">
+						<% if @group.books.length > 0 %>
+							<div class="row" id="reads">
+	    					<% @group.books.each do |book| %>
+		    					<div class="col-md-2">
+		    						<%= link_to book do %>
+		    							<%= image_tag ("http://images.amazon.com/images/P/#{Book.find(book.id).isbn}.01.LZZZZZZ.jpg") %>
+		    						<% end %>
+		    					</div>
+	    					<% end %>
+	    				</div>
+						<% else %>
+							<p>
+								<em>There are no books in this group. Got one to add?</em>
+							</p>
+						<% end %>
+					</div>
 
     		</div>
 			</div>
