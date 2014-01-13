@@ -22,9 +22,6 @@ class PagesController < ApplicationController
   end
 
   def autocomplete
-    # autocomplete for search field
-    # TODO (ismail):
-    # * need to get this working faster
     client = Goodreads.new(Goodreads.configuration)
     results = client.search_books(params[:q])
     books ||= []

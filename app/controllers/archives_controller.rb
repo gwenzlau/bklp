@@ -41,7 +41,7 @@ class ArchivesController < ApplicationController
     @past.activity key: 'book.past_list'
     
     if @past.save
-      redirect_to(current_user, :notice => "Just added a book to your past read list.")
+      redirect_to(current_user, :notice => "Just added a book to your past reads list.")
     else
       redirect_to root_path
     end
@@ -52,7 +52,7 @@ class ArchivesController < ApplicationController
     @future.activity key: 'book.future_list'
     
     if @future.save
-      redirect_to(current_user, :notice => "Just added a book to your future read list.")
+      redirect_to(current_user, :notice => "Just added a book to your future reads list.")
     else
       redirect_to root_path
     end
