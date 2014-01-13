@@ -21,9 +21,9 @@ class ArchivesController < ApplicationController
     else
       @archive.activity key: 'book.create'
       if @archive.update_attribute(:status, "1")
-        redirect_to(book_path(@archive.book_id), :notice => "You just finished reading this book.")
+        redirect_to(book_path(finishedmodal), :notice => "You just finished reading this book.")
       else
-        redirect_to(root_path, :notice => "An error occured while trying to change status of a book you just finished.")
+        redirect_to(book_path(@archive.book_id), :notice => "An error occured while trying to change status of a book you just finished.")
       end
     end
   end
@@ -58,6 +58,10 @@ class ArchivesController < ApplicationController
     end
   end
   
+  def finishedmodal
+     @finishedmodal = current_user.where(params[:id])
+  end
+
   private
   
   def set_archive

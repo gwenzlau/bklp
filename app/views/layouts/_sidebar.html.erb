@@ -15,7 +15,7 @@
 	<hr>
 	<label>You</label>
 	<ul class="nav nav-pills nav-stacked menu">
-			<li><a href="" id="messages">Messages</a></li>
+			<li><%= link_to 'Messages', conversations_path, id: 'messages' %></li>
 			<li><%= link_to "Settings", edit_user_registration_path, :id => "settings" %></li> 
 	</ul>
 </div>

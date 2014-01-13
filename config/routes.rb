@@ -1,9 +1,11 @@
 Booksy::Application.routes.draw do
-
- 
+  get "messages/create"
   root 'pages#home'
 
- 
+  resources :conversations do
+    resources :messages, only: [:create, :destroy]
+  end
+
   resources :reviews
   resources :authors
   
