@@ -4,12 +4,19 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<% if current_user.group_owner?(@group) %>
+						<%= link_to 'Delete Group', group_path(@group), class: 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete %>
+					<% end %>
+
 					<h2><%= @group.title %></h2>
-  				<p><em>This group was created by <%= link_to @group.owner.name, @group.owner %>.</em></p>
+  				
+  				<p><em>This group was created by <%= link_to @group.user.name, @group.user %>.</em></p>
 
   				<% if @group.description.present? %>
   					<p><em><%= @group.description %></em>
   				<% end %>
+  				
+  				<hr />
 
     		</div>
 			</div>

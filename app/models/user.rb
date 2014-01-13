@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :discussions, dependent: :destroy
   has_many :recommends, dependent: :destroy
 
-  has_many :groups, foreign_key: :group_owner_id
+  has_many :groups # Created by them
 
   def public_params
     {
@@ -31,5 +31,9 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+
+  def group_owner?(group)
+    group.user == self
   end
 end
