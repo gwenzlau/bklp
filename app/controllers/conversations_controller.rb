@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @conversation = Conversation.new(conversation_params)    
+    @conversation = current_user.conversations.build(conversation_params)    
 
     if @conversation.save
 
@@ -32,6 +32,16 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
+    @conversation = Conversation.find params[:id]
+    
+    if @conversation.owner?(current_user)
+      @conversation.destroy
+
+      # Redirect, destroy wouldn't really fail
+      redirect_to conversations_path, :notice => "Conversation & messages deleted successfully."
+    else
+      redirect_to root_path, :notice => "You don't have permission to delete this conversation."
+    end
   end
 
   protected
@@ -43,12 +53,7 @@ class ConversationsController < ApplicationController
           :id,
           :body,
           :user_id
-        ],
-        # participants_attributes: [
-        #   :id,
-        #   :conversation_id,
-        #   :user_id
-        # ]
+        ]
       )
   end
 end

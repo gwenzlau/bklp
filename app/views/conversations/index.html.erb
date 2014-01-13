@@ -5,6 +5,7 @@
 	<% @conversations.each do |c| %>
 		<li>
 			Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
+			<%= link_to ' - Destroy', conversation_path(c), :confirm => 'Are you sure?', :method => :delete if c.owner?(current_user)%>
 		</li>
 	<% end %>
 	</ul>
