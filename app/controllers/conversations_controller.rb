@@ -38,7 +38,7 @@ class ConversationsController < ApplicationController
       @conversation.destroy
 
       # Redirect, destroy wouldn't really fail
-      redirect_to conversations_path
+      redirect_to conversations_path, :notice => "Conversation & messages deleted successfully."
     else
       redirect_to root_path, :notice => "You don't have permission to delete this conversation."
     end
