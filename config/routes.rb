@@ -1,9 +1,7 @@
 Booksy::Application.routes.draw do
-
- 
   root 'pages#home'
 
- 
+  resources :groups
   resources :reviews
   resources :authors
   

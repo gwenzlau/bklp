@@ -3,7 +3,9 @@
 	<label>Browse</label>
 	<ul class="nav nav-pills nav-stacked menu">
 			<li><%= link_to "Discover", users_path, :id => "discover" %></li> 
-			<li><a href="" id="group">Groups</a></li>
+			<li>
+				<%= link_to 'Groups', groups_path, id: 'group' %>
+			</li>
 	</ul>
 	<hr>
 	<label>Your Books</label>

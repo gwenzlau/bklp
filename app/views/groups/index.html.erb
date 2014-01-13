@@ -1,0 +1,25 @@
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<h2>Groups</h2>
+    					<% if @groups.length > 0 %>
+    						<ul>
+    						<% @groups.each do |group| %>
+    							<li>
+    								<%= link_to group.title, group %>
+    							</li>
+    						<% end %>
+    						</ul>
+    					<% else %>
+    						<p>
+    							<em>There are no public groups. How about <%= link_to 'creating one?', new_group_path %></em>
+    						</p>
+    					<% end %>
+    			</div>
+			</div>
+		</div>
+	</div>
+</div>

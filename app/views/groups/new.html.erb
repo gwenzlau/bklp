@@ -1,0 +1,20 @@
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<h2>New Group</h2>
+  					<%= simple_form_for @group do |f| %>
+              <%= f.input :title %>
+              <%= f.input :description %>
+
+              <%= f.input :private %>
+
+              <%= f.button :submit %>
+            <% end %>
+    			</div>
+			</div>
+		</div>
+	</div>
+</div>
