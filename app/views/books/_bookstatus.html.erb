@@ -7,10 +7,10 @@
 		  <div class="pull-right" id="book-actions">
 			
 			<% if @status[0].status == 1 %>
-				<button type="button" class="btn btn-default btn-sm" disabled>You've read this book</button>
-				<% if @myrecommend.exists? %>
-					<button type="button" class="btn btn-default btn-sm" disabled>Recommended.</button>
+			<% if @myrecommend.exists? %>
+				<button type="button" class="btn btn-default btn-sm" disabled>You've read and recommended this book</button>
 				<% else %>
+				<button type="button" class="btn btn-default btn-sm" disabled>You've read this book</button>
 					<%= form_for(@recommend) do |f| %>
 						<%= f.hidden_field :book_id, :value => @book.id %>
 						<%= f.hidden_field :user_id, :value => current_user.id %>
