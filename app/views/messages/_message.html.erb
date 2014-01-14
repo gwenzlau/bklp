@@ -1,7 +1,15 @@
 <li>
-	<h4><%= link_to message.user.name, message.user %> said <%= time_ago_in_words message.created_at %> ago:</h4>
-		<blockquote><%= simple_format message.body %></blockquote>
-
+	<div class="row">
+		<div class="col-md-1">
+			<div class="avatar">
+				<%= link_to (image_tag current_user.avatar.url, :class => 'img-circle'), current_user %>
+			</div>
+		</div>
+		<div class="col-md-11">
+			<p class="sender-name"><%= link_to message.user.name, message.user %> <span class="message-time"><%= time_ago_in_words message.created_at %></span></p>
+			<%= simple_format message.body %>
+		</div>
+	</div>
 	<% if message.deleteable?(current_user) %>
 	<p>
 		<em><%= link_to 'Destroy', conversation_message_path(message.conversation, message), :confirm => 'Are you sure?', :method => :delete %></em>

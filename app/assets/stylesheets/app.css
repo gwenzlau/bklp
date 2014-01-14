@@ -128,7 +128,7 @@ form.new_book {
 
 /* home feed
 ------------------------*/
-#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label {
+#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label, #conversations label {
 	color: #C8C8C8;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -779,6 +779,9 @@ form.new_acomment input.comment-field {
 }
 #profile-content #profile-card {
 	text-align: center;
+}
+#profile-content #profile-card button {
+	margin-left: 10px;
 }
 #profile-content #profile-card a {
 	display: inline-block;
@@ -1523,3 +1526,52 @@ input#user_current_password {
     }
 }
 
+/* conversations
+------------------------*/
+.controls textarea {
+	border-radius: 0;
+}
+#conversation h3 {
+	margin-top: 0;
+	display: inline;
+}
+#remove-conversation {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-top: 0;
+	float: right;
+}
+#messages-list {
+	list-style: none;
+	padding-left: 0;
+	height: 300px;
+}
+.message-time {
+	font-size: 12px;
+	color: #999;
+}
+#messages-list .avatar img {
+	width: 60px;
+}
+#messages-list p {
+	margin-bottom: 0;
+}
+.new_message {
+	width: 100%;
+}
+.new_message textarea {
+	border-radius: 0;
+	height: 80px;
+}
+#textarea-placeholder {
+	background: #F5F5F5;
+}
+.message_body {
+	padding: 5px;
+}
+.sender-name {
+	margin-top: 10px;
+}
+.message_body .control-label {
+	display: none;
+}

@@ -1,16 +1,28 @@
-<h1>Conversations</h1>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-9 col-md-offset-1" id="conversations">
+					<label>Conversations</label>
+					<% if @conversations.length > 0 %>
+						<ul>
+						<% @conversations.each do |c| %>
+							<li>
+								Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
+								<%= link_to ' - Destroy', conversation_path(c), :confirm => 'Are you sure?', :method => :delete if c.owner?(current_user)%>
+							</li>
+						<% end %>
+						</ul>
+					<% else %>
+						<p>
+							<em>Sorry you have no conversations to read.</em>
+						</p>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<% if @conversations.length > 0 %>
-	<ul>
-	<% @conversations.each do |c| %>
-		<li>
-			Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
-			<%= link_to ' - Destroy', conversation_path(c), :confirm => 'Are you sure?', :method => :delete if c.owner?(current_user)%>
-		</li>
-	<% end %>
-	</ul>
-<% else %>
-	<p>
-		<em>Sorry you have no conversations to read.</em>
-	</p>
-<% end %>
+
