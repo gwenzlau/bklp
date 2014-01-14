@@ -4,7 +4,8 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-9 col-md-offset-1" id="activity-feed">
-					<h2>Groups</h2>
+					<%= link_to 'Create Group', new_group_path, class: 'btn btn-primary pull-right' %>
+          <h2>Groups</h2>
   					<% if @groups.length > 0 %>
   						<ul>
   						<% @groups.each do |group| %>
@@ -15,7 +16,7 @@
   						</ul>
   					<% else %>
   						<p>
-  							<em>There are no public groups. How about <%= link_to 'creating one?', new_group_path %></em>
+  							<em>There are no public groups.</em>
   						</p>
   					<% end %>
     			</div>
