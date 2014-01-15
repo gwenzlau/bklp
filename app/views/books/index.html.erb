@@ -11,7 +11,8 @@
     						<%= link_to (image_tag ("http://images.amazon.com/images/P/#{result.isbn}.01.LZZZZZZ.jpg"), :title => "#{result.title}", data: { toggle: "tooltip"}), book_path(result.id) %>
     					</div>
     					<% end %>
-    				</div>
+    				</div><br />
+						<%= link_to "Find more books after: #{params[:search]}", brapi_path(:search => params[:search]) %>
 						
 						<% if @result.blank? %>
 							We did not find anyhting in our database.<br /><br />
