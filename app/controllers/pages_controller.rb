@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").paginate(:page => params[:page], :per_page => 10)
       @user = current_user
+      @book_current = current_user.archives.where(:status => "0")
     end
     
     respond_to do |format|
