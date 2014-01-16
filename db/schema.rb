@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140107220345) do
+ActiveRecord::Schema.define(version: 20140116181302) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140107220345) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "books", force: true do |t|
@@ -150,7 +150,6 @@ ActiveRecord::Schema.define(version: 20140107220345) do
     t.integer  "status"
     t.string   "note"
   end
-
 
   add_index "links", ["user_id"], name: "index_links_on_user_id"
 

@@ -98,11 +98,13 @@ class BooksController < ApplicationController
       @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
       
       if @goodread.authors.author[0].blank?
-        @author = Author.create(:name => @goodread.authors.author.name)
+        @author_gr = @client.author(@goodread.authors.author.id)
+        @author = Author.create(:name => @goodread.authors.author.name, :description => @author_gr.about)
         Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
       else
         @goodread.authors.author.each do |a|
-          @author = Author.create(:name => a.name)
+          @author_gr = @client.author(a.id)
+          @author = Author.create(:name => a.name, :description => @author_gr.about)
           Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
         end
       end
