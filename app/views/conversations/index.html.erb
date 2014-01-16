@@ -6,11 +6,21 @@
 				<div class="col-md-9 col-md-offset-1" id="conversations">
 					<label>Conversations</label>
 					<% if @conversations.length > 0 %>
-						<ul>
+						<ul id="conversation-list">
 						<% @conversations.each do |c| %>
 							<li>
-								Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %>
-								<%= link_to ' - Destroy', conversation_path(c), :confirm => 'Are you sure?', :method => :delete if c.owner?(current_user)%>
+								<div class="row">
+									<div class="col-md-1">
+										
+									</div>
+									<div class="col-md-11">
+										<h5><%= link_to c.messages.last.user.name, conversation_path(c) %></h5>
+										<p>	
+											<%= c.messages.last.body %>
+											<%= link_to '', conversation_path(c), :confirm => 'Are you sure?', :class => 'conversation-remove', :method => :delete if c.owner?(current_user)%>
+										</p>
+									</div>
+								</div>
 							</li>
 						<% end %>
 						</ul>
@@ -24,5 +34,7 @@
 		</div>
 	</div>
 </div>
+
+
 
 

@@ -89,7 +89,7 @@
         remote: {
           url: '/search/autocomplete?utf8=✓&q=%QUERY',
         },
-        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><!--<div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button>--></div>',
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
         engine: BookloopEngine
       });
     });
