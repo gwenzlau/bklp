@@ -4,8 +4,7 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-9 col-md-offset-1" id="conversation">
-					<h3><%= @messages.last.user.name %></h3>
-
+					
 					<% if @conversation.owner?(current_user) %>
 					<p id="remove-conversation">
 						<%= link_to 'Destroy', conversation_path(@conversation), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-default btn-sm pull-right' %>
