@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
   has_many :works, dependent: :destroy
   has_many :authors, through: :works
   
-  validates :name, :uniqueness => true
+  validates :title, :uniqueness => true
 
   def self.search(search)
     if search
