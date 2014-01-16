@@ -2,12 +2,12 @@
 	<div class="row">
 		<div class="col-md-1">
 			<div class="avatar">
-				<%= link_to (image_tag current_user.avatar.url, :class => 'img-circle'), current_user %>
+				<%= link_to (image_tag message.user.avatar.url, :class => 'img-circle'), user_path %>
 			</div>
 		</div>
 		<div class="col-md-11">
-			<p class="sender-name"><%= link_to message.user.name, message.user %> <span class="message-time"><%= time_ago_in_words message.created_at %></span></p>
-			<%= simple_format message.body %>
+			<p class="sender-name"><span class="message-time"><%= time_ago_in_words message.created_at %> <%= link_to message.user.name, message.user %> said:</span></p>
+			<i><%= simple_format message.body %></i>
 		</div>
 	</div>
 	<% if message.deleteable?(current_user) %>
