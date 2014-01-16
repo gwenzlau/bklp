@@ -14,12 +14,8 @@
 										
 									</div>
 									<div class="col-md-11">
-										<h5><%= image_tag c.messages.last.user.avatar %><%= link_to c.messages.last.user.name, conversation_path(c) %></h5>
-		
-										<p>	
-											<%= c.messages.last.body %>
-											<%= link_to '', conversation_path(c), :confirm => 'Are you sure?', :class => 'conversation-remove', :method => :delete if c.owner?(current_user)%>
-										</p>
+										<h5><%= image_tag c.messages.last.user.avatar, :class => 'img-circle' %><%= link_to c.messages.last.user.name, conversation_path(c) %></h5>
+		 
 									</div>
 								</div>
 							</li>
