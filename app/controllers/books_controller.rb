@@ -96,7 +96,7 @@ class BooksController < ApplicationController
     if @book.save
       @book_id = @book.id
       
-      if params[:status == ""]
+      if params[:status].blank?
         # Do nothing since the user is not adding to archive
       else
         @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
@@ -114,10 +114,14 @@ class BooksController < ApplicationController
         end
       end
       
-      if @connect.save
-        redirect_to(book_path(@book_id), :notice => "You just added this book to your collection")
+      if params[:status].blank?
+        redirect_to book_path(@book_id)
       else
-        redirect_to(root_path, :notice => "Failed to add a connection between you and the book")
+        if @connect.save
+          redirect_to(book_path(@book_id), :notice => "You just added this book to your collection")
+        else
+          redirect_to(root_path, :notice => "Failed to add a connection between you and the book")
+        end
       end
     else
       redirect_to(root_path, :notice => "Could not add the book from the GR API")
