@@ -8,14 +8,13 @@
 <div class="col-md-8 col-md-offset-1" id="activity-feed">
 	<label>People reading with me</label>
 	
-	<ul>
+	<ul id="recent-activity">
 		<% @book_current.each do |book| %>
 			<% Book.find(book.book_id, :order => "created_at DESC").users.each do |user| %>
 				<% if user.id == current_user.id %>
 				<!-- Do nothing since this is you -->
 				<% else %>
-					<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle-thumb"), user_path(user.id) %>
-					<%= link_to user.name, user_path(user.id) %> joined you in <%= link_to Book.find(book.book_id).title, book_path(book.book_id) %><%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(book.book_id).isbn}.01.SZZZZZZ.jpg"), :class => "book-cover"), book_path(book.book_id) %>
+					<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle"), user_path(user.id) %> joined  <%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(book.book_id).isbn}.01.SZZZZZZ.jpg"), :class => "book-cover"), book_path(book.book_id) %>
 				<% end %>
 			<% end %>
 		<% end %>
