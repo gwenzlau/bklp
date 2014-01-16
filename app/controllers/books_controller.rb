@@ -95,7 +95,12 @@ class BooksController < ApplicationController
     
     if @book.save
       @book_id = @book.id
-      @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
+      
+      if params[:status == ""]
+        # Do nothing since the user is not adding to archive
+      else
+        @connect = Archive.create(:user_id => current_user.id, :book_id => @book_id, :status => params[:status])
+      end
       
       if @goodread.authors.author[0].blank?
         @author_gr = @client.author(@goodread.authors.author.id)
