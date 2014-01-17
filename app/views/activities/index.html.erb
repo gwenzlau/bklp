@@ -1,8 +1,0 @@
-<h1>BookFeed</h1>
-<% @activities.each do |activity| %>
-<div class="activit">
-	
-	<%= link_to (activity.owner.name (image_tag activity.owner.avatar, activity.owner if activity.owner %>
-	<%= link_to (image_tag User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).avatar(:thumb)), user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id), :class=>"img-circle" %>
-	<%= render_activity activity %>
-<% end %>
