@@ -59,7 +59,11 @@ class ArchivesController < ApplicationController
   end
   
   def finishedmodal
-     @finishedmodal = current_user.where(params[:id])
+
+    if signed_in?
+      @status = current_user.archives.where(:book_id => params[:id])
+    end
+  
   end
 
   private
