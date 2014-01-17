@@ -3,7 +3,16 @@ class BooksController < ApplicationController
   before_action :set_api, only: [:goodread_search, :add_goodreads]
   
 	def index
-    @result = Book.search(params[:search])
+    if params.has_key?(:q)
+      books ||= []
+      @results = Book.search(params[:q])
+      for book in @results
+        books << { 'book' => book.title, 'book_id' => book.id, 'isbn' => book.isbn, 'shortbook' => book.title.parameterize }
+      end 
+      render json: books
+    else  
+      @result = Book.search(params[:search])
+    end
   end
 
   def show  
