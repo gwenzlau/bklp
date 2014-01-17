@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="col-md-11">
-			<p class="sender-name"><span class="message-time"><%= time_ago_in_words message.created_at %> <%= link_to message.user.name, message.user %> said:</span></p>
+			<p class="sender-name"><span class="message-time"><%= time_ago_in_words message.created_at %> ago <%= link_to message.user.name, message.user %> said:</span></p>
 			<i><%= simple_format message.body %></i>
 		</div>
 	</div>
