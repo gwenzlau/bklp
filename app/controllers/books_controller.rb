@@ -134,7 +134,15 @@ class BooksController < ApplicationController
         end
       end
     else
-      redirect_to(root_path, :notice => "Could not add the book from the GR API")
+      # If book exists in the DB
+      @book = Book.where(:title => @goodread.title)
+      
+      if params[:status].blank?
+        redirect_to book_path(@book.id)
+      else
+        @connect = Archive.create(:user_id => current_user.id, :book_id => @book.id, :status => params[:status])
+        redirect_to(book_path(@book.id), :notice => "You just added this book to your collection")
+      end
     end
   end
   
