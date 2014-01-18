@@ -4,7 +4,7 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
-					<h2>Search result</h2>
+					<h2>Search result (<%= @result.count %>)</h2>
     				<div class="row" id="reads">
     					<% @result.each do |result| %>
     					<div class="col-md-2">

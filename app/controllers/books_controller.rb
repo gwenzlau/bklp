@@ -138,10 +138,10 @@ class BooksController < ApplicationController
       @book = Book.where(:title => @goodread.title)
       
       if params[:status].blank?
-        redirect_to book_path(@book.id)
+        redirect_to book_path(@book[0].id)
       else
-        @connect = Archive.create(:user_id => current_user.id, :book_id => @book.id, :status => params[:status])
-        redirect_to(book_path(@book.id), :notice => "You just added this book to your collection")
+        @connect = Archive.create(:user_id => current_user.id, :book_id => @book[0].id, :status => params[:status])
+        redirect_to(book_path(@book[0].id), :notice => "You just added this book to your collection")
       end
     end
   end
