@@ -7,6 +7,10 @@ class Group < ActiveRecord::Base
 	has_many :group_discussions
 	has_many :discussions, through: :group_discussions, source: :group
 
+	has_many :group_users
+	has_many :members, through: :group_users
+
+
 	def to_param
     "#{id}-#{title.parameterize}"
   end

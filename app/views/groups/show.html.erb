@@ -21,13 +21,13 @@
 							<li><a href="#group-discussion" class="active">Discussion</a></li>
 							<li><a href="#group-books">Books</a></li>
 							<li><a href="#group-members">Members</a></li>
-							<li><a href="#group-requests">Requests</a></li>
+							<%= content_tag(:li, link_to('Requests', '#group-requests')) if @requests.length > 0 %>
 						</ul>
 					</div>
 
 					<div id="group-discussion">
-						<% if @group.discussions.length > 0 %>
-							<% @group.discussions.each do |discussion| %>
+						<% if @discussions.length > 0 %>
+							<% @discussions.each do |discussion| %>
 								<h5><%= discussion.user.name %> said <%= time_ago_in_words discussion.created_at %>:</h5>
 								<%= discussion.body %>
 							<% end %>
@@ -39,9 +39,11 @@
 					</div>
 
 					<div id="group-books">
-						<% if @group.books.length > 0 %>
+						<h5>Add a book</h5>
+
+						<% if @books.length > 0 %>
 							<div class="row" id="reads">
-	    					<% @group.books.each do |book| %>
+	    					<% @books.each do |book| %>
 		    					<div class="col-md-2">
 		    						<%= link_to book do %>
 		    							<%= image_tag ("http://images.amazon.com/images/P/#{Book.find(book.id).isbn}.01.LZZZZZZ.jpg") %>
@@ -49,12 +51,22 @@
 		    					</div>
 	    					<% end %>
 	    				</div>
-						<% else %>
-							<p>
-								<em>There are no books in this group. Got one to add?</em>
-							</p>
 						<% end %>
 					</div>
+
+					<div id="group-members">
+							<% @members.each do |member| %>
+								<h5><%= member.user.name %></h5>
+							<% end %>
+					</div>
+
+					<% if @requests.length > 0 %>
+					<div id="group-requests">
+						<% @requests.each do |request| %>
+							<h5><%= request.user.name %> - <%= link_to 'Approve', '#' %>, <%= link_to 'Decline', '#' %></h5>
+						<% end %>
+					</div>
+					<% end %>
 
     		</div>
 			</div>

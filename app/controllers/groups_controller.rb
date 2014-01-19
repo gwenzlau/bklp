@@ -21,6 +21,10 @@ class GroupsController < ApplicationController
 
   def show
   	@group = Group.find params[:id]
+    @books = @group.books
+    @discussions = @group.discussions
+    @members = @group.group_users.where(approved: true)
+    @requests = @group.group_users.where(approved: nil)
   end
 
   def destroy

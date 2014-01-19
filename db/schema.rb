@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113103308) do
+ActiveRecord::Schema.define(version: 20140119093442) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140113103308) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "books", force: true do |t|
@@ -106,6 +107,12 @@ ActiveRecord::Schema.define(version: 20140113103308) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "conversations", force: true do |t|
+    t.integer  "messages_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "discussions", force: true do |t|
     t.text     "quote"
@@ -150,6 +157,14 @@ ActiveRecord::Schema.define(version: 20140113103308) do
     t.datetime "updated_at"
   end
 
+  create_table "group_users", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "approved"
+  end
+
   create_table "groups", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -157,13 +172,6 @@ ActiveRecord::Schema.define(version: 20140113103308) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "public"
-  end
-
-  create_table "groups_users", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "links", force: true do |t|
@@ -177,6 +185,21 @@ ActiveRecord::Schema.define(version: 20140113103308) do
   end
 
   add_index "links", ["user_id"], name: "index_links_on_user_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
