@@ -88,9 +88,26 @@
         cache: true,
         remote: {
           url: '/books?utf8=✓&q=%QUERY',
+          filter: function(data) {
+            if(data.length != 0) {
+              $('#brapi-search').fadeOut('fast');
+              return data;   
+            }
+            else {
+              $('#brapi-search').fadeIn('fast');
+            }
+          }
         },
         template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
-        engine: BookloopEngine
+        engine: BookloopEngine, 
+        footer: '<p id="autocomplete-footer"><a href="#" id="more-search">See more results</a></p></div>'
+      });
+      
+      $('body').on('click', '#more-search, #brapi-search', function(e) {
+        e.preventDefault();
+        var query = $('#search').val();
+        var url = '/brapi?search='+query;
+        window.location.replace(url);
       });
     });
 
