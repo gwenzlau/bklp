@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :set_user, only: [:show, :readlist_future, :readlist_past]
+  before_action :set_user, only: [:show, :readlist_future, :readlist_past, :recommendations, :follow, :unfollow]
   
   def create
     # Create the user from params
@@ -45,7 +45,6 @@ class UsersController < ApplicationController
   end
 
   def recommendations
-    @user = User.find(params[:id])
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
@@ -53,35 +52,40 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user = User.find(params[:id])
+    respond_to do |format|
+
     if current_user
-     if current_user == @user
-      flash[:error] = "You cannot follow yourself."
-      redirect_to current_user
-     else
-      current_user.follow(@user)
-      redirect_to current_user
-     # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
-      flash[:notice] = "You are now following #{@user.name}."
+
+      if current_user == @user
+        format.html { redirect_to current_user, alert: "You can't follow yourself." }
+      else
+        current_user.follow(@user)
+        # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+
+        format.html { redirect_to @user, notice: "You are now following #{@user.name}." }
+        format.js
       end
-  else
-    flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.name}.".html_safe
-    redirect_to root_path
-  end
-end
+    else
+      format.html { redirect_to root_path, alert: "You must <a href='/users/sign_in'>login</a> to follow #{@user.name}.".html_safe }
+    end
 
-def unfollow
-  @user = User.find(params[:id])
-
-  if current_user
-    current_user.stop_following(@user)
-    flash[:notice] = "You are no longer following #{@user.name}."
-    redirect_to root_path
-  else
-    flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe
-    redirect_to root_path
+    end
   end
-end
+
+  def unfollow
+    respond_to do |format|
+
+    if current_user
+      current_user.stop_following(@user)
+
+      format.html { redirect_to root_path, notice: "You are no longer following #{@user.name}." }
+      format.js
+    else
+      format.html { redirect_to root_path, alert: "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe }
+    end
+
+    end
+  end
 
   private
 
