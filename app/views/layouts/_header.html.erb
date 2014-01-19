@@ -13,6 +13,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<%= form_tag books_path, :class => "navbar-form navbar-left", :method => 'get' do %>
 						<%= text_field_tag :search, params[:search], :placeholder => "", :accesskey => "S" %>
+                        <button class="btn btn-default" id="brapi-search">press enter to search</button>
 					<% end %>
             
             <ul class="nav navbar-nav navbar-right">
