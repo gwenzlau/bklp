@@ -5,11 +5,15 @@
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-9 col-md-offset-1" id="group-info">
 
-					<h5>This group is private and you'll need to be approved before you can take part in discussions with other members.</h5>
+					<h2><%= @group.title %></h2>
+
+					<p>This group is private and you'll need to be approved before you can take part in discussions with other members.</p>
+
+					<hr />
 
 					<%= form_tag do_join_request_group_path, method: :post do %>
 						<%= hidden_field_tag :user_id, current_user.id %>
-						<%= submit_tag 'Request to join' %>
+						<%= submit_tag 'Request to join', class: 'btn btn-success' %>
 					<% end %>
 
     		</div>

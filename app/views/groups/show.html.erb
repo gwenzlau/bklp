@@ -6,9 +6,15 @@
 				<div class="col-md-9 col-md-offset-1" id="group-info">
 
 				<% if @join_status && @join_status.approved.nil? %>
+					<h2><%= @group.title %></h2>
+
+					<p>Once a group memeber approves your request you'll be able to instantly discuss books and chat to other members.</p>
+
+					<hr />
+
 					<%= form_tag cancel_join_request_group_path, method: :delete do %>
 						<%= hidden_field_tag :user_id, current_user.id %>
-						<%= submit_tag 'Cancel join request' %>
+						<%= submit_tag 'Cancel join request', class: 'btn btn-default' %>
 					<% end %>
 				<% else %>
 
@@ -19,7 +25,7 @@
 					<% if !@join_status && @group.public? %>
 						<%= form_tag do_join_request_group_path, method: :post do %>
 							<%= hidden_field_tag :user_id, current_user.id %>
-							<%= submit_tag 'Join public group' %>
+							<%= submit_tag 'Join public group', class: 'btn btn-success' %>
 						<% end %>
 					<% end %>
 
@@ -75,7 +81,7 @@
 								<% unless @group.owned_by?(member.user) %>
 									<%= form_tag remove_member_group_path, method: :delete do %>
 										<%= hidden_field_tag :user_id, member.user.id %>
-										<%= submit_tag 'Remove user from group' %>
+										<%= submit_tag 'X', class: 'btn btn-default' %>
 									<% end %>
 								<% end %>
 							<% end %>
@@ -87,12 +93,12 @@
 							<h5><%= request.user.name %></h5>
 							<%= form_tag accept_join_request_group_path, method: :post do %>
 								<%= hidden_field_tag :user_id, request.user.id %>
-								<%= submit_tag 'Approve' %>
+								<%= submit_tag 'Approve', class: 'btn btn-success' %>
 							<% end %>
 
 							<%= form_tag decline_join_request_group_path, method: :post do %>
 								<%= hidden_field_tag :user_id, request.user.id %>
-								<%= submit_tag 'Decline' %>
+								<%= submit_tag 'Decline', class: 'btn btn-danger' %>
 							<% end %>
 						<% end %>
 					</div>
