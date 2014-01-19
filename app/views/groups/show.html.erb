@@ -4,8 +4,23 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-9 col-md-offset-1" id="group-info">
+
+				<% if @join_status && @join_status.approved.nil? %>
+					<%= form_tag cancel_join_request_group_path, method: :delete do %>
+						<%= hidden_field_tag :user_id, current_user.id %>
+						<%= submit_tag 'Cancel join request' %>
+					<% end %>
+				<% else %>
+
 					<% if @group.owned_by?(current_user) %>
 						<%= link_to 'Delete Group', group_path(@group), class: 'btn btn-danger', :confirm => 'Are you sure?', :method => :delete %>
+					<% end %>
+
+					<% if !@join_status && @group.public? %>
+						<%= form_tag do_join_request_group_path, method: :post do %>
+							<%= hidden_field_tag :user_id, current_user.id %>
+							<%= submit_tag 'Join public group' %>
+						<% end %>
 					<% end %>
 
 					<h2><%= @group.title %></h2>
@@ -21,7 +36,7 @@
 							<li><a href="#group-discussion" class="active">Discussion</a></li>
 							<li><a href="#group-books">Books</a></li>
 							<li><a href="#group-members">Members</a></li>
-							<%= content_tag(:li, link_to('Requests', '#group-requests')) if @requests.length > 0 %>
+							<%= content_tag(:li, link_to('Requests', '#group-requests')) if @requests.any? %>
 						</ul>
 					</div>
 
@@ -57,16 +72,33 @@
 					<div id="group-members">
 							<% @members.each do |member| %>
 								<h5><%= member.user.name %></h5>
+								<% unless @group.owned_by?(member.user) %>
+									<%= form_tag remove_member_group_path, method: :delete do %>
+										<%= hidden_field_tag :user_id, member.user.id %>
+										<%= submit_tag 'Remove user from group' %>
+									<% end %>
+								<% end %>
 							<% end %>
 					</div>
 
 					<% if @requests.length > 0 %>
 					<div id="group-requests">
 						<% @requests.each do |request| %>
-							<h5><%= request.user.name %> - <%= link_to 'Approve', '#' %>, <%= link_to 'Decline', '#' %></h5>
+							<h5><%= request.user.name %></h5>
+							<%= form_tag accept_join_request_group_path, method: :post do %>
+								<%= hidden_field_tag :user_id, request.user.id %>
+								<%= submit_tag 'Approve' %>
+							<% end %>
+
+							<%= form_tag decline_join_request_group_path, method: :post do %>
+								<%= hidden_field_tag :user_id, request.user.id %>
+								<%= submit_tag 'Decline' %>
+							<% end %>
 						<% end %>
 					</div>
 					<% end %>
+
+				<% end %>
 
     		</div>
 			</div>

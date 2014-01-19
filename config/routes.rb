@@ -1,7 +1,18 @@
 Booksy::Application.routes.draw do
   root 'pages#home'
 
-  resources :groups
+  resources :groups do
+    member do
+      get :join_request
+      post :do_join_request
+      post :accept_join_request
+      post :decline_join_request
+      delete :cancel_join_request
+      post :add_member
+      delete :remove_member
+    end
+  end
+
   resources :reviews
   resources :authors
   
