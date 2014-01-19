@@ -21,8 +21,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @books = @group.books
-    @discussions = @group.discussions
+    @comment = GroupDiscussion.new
+    @books = @group.group_books
+    @discussions = @group.group_discussions
 
     @join_status = @group.member?(current_user)
 
@@ -103,7 +104,7 @@ class GroupsController < ApplicationController
       .permit(
         :title,
         :description,
-        :public
+        :public,
       )
   end
 

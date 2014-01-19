@@ -8,9 +8,12 @@ Booksy::Application.routes.draw do
       post :accept_join_request
       post :decline_join_request
       delete :cancel_join_request
+
       post :add_member
       delete :remove_member
     end
+
+    resources :gcomments, only: [:create, :destroy]
   end
 
   resources :reviews

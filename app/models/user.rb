@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :recommends, dependent: :destroy
 
   has_many :groups # Created by them
+  has_many :group_discussions
 
   def public_params
     {

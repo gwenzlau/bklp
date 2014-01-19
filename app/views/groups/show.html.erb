@@ -47,11 +47,22 @@
 					</div>
 
 					<div id="group-discussion">
+
+					<%= simple_form_for [@group, @comment], url: group_gcomments_path(@group) do |c| %>
+						<%= c.input :body, placeholder: 'Comment...', input_html: {class: 'form-control'}, wrapper_html: {class: 'form-group'} %>
+						<%= c.submit 'Add comment', class: 'btn btn-primary' %>
+					<% end %>
+
 						<% if @discussions.length > 0 %>
+							<ul>
 							<% @discussions.each do |discussion| %>
-								<h5><%= discussion.user.name %> said <%= time_ago_in_words discussion.created_at %>:</h5>
-								<%= discussion.body %>
+								<li>
+									<h5><%= discussion.user.name %> said <%= time_ago_in_words discussion.created_at %>:</h5>
+									<%= discussion.body %>
+									<%= link_to('Delete', group_gcomment_path(@group, discussion), method: :delete, confirm: 'Are you sure?', class: 'btn btn-default') if discussion.user == current_user %>
+								</li>
 							<% end %>
+							</ul>
 						<% else %>
 							<p>
 								<em>Nobody is talking about the books in this group right now. Why don't you start?</em>
