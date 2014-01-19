@@ -5,7 +5,7 @@
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
 					<h2><%= @author.name %></h2>
-						<p><%= @author.description %></p><br />
+						<p><%= raw(@author.description) %></p><br />
 						<label>Author works (<%= @works.count %>)</label>
     				<div class="row" id="reads">
 							
