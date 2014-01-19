@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   def show
     @comment = GroupDiscussion.new
     @books = @group.group_books
-    @discussions = @group.group_discussions
+    @discussions = @group.group_discussions.order(created_at: :desc)
 
     @join_status = @group.member?(current_user)
 
