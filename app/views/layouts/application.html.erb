@@ -33,17 +33,17 @@
     <% if user_signed_in? %>
 
     function updateBookStatus(user_id, book_id, isbn, status, title, obj) {
-      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[isbn]': isbn, 'book[status]': status, 'book[title]': title, 'json': true}
+      var d = {'archive[user_id]': user_id, 'archive[book_id]': book_id, 'archive[status]': status, 'json': true}
       var url = '';
       switch (status) {
         case '0':
-          url = '/books';
+          url = '/archives';
           break;
         case '1':
-          url = '/books/'+book_id+'/past_list';
+          url = '/archives/'+book_id+'/past_list';
           break;
         case '2':
-          url = '/books/'+book_id+'/future_list';
+          url = '/archives/'+book_id+'/future_list';
           break;
       }
       $.post(url, d, function(resp) {
