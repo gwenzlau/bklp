@@ -11,11 +11,10 @@
 							<li>
 								<div class="row">
 									<div class="col-md-1">
-										
+										<%= image_tag c.messages.last.user.avatar, :class => 'img-circle conversation-avatar' %>
 									</div>
 									<div class="col-md-11">
-										<h5><%= image_tag c.messages.last.user.avatar, :class => 'img-circle' %><%= link_to c.messages.last.user.name, conversation_path(c) %></h5>
-		 
+										<h5><%= link_to c.messages.last.user.name, conversation_path(c) %> <span><%= c.messages.last.body %></span></h5>
 									</div>
 								</div>
 							</li>

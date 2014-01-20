@@ -84,6 +84,24 @@ form.new_book {
 #signin a {
 	margin-right: 20px;
 }
+#autocomplete-footer {
+	text-align: center;
+	padding: 10px 0;
+	margin-top: 20px;
+}
+#brapi-search{
+	margin-top: 0px;
+	position: absolute;
+	top: 5px;
+	right: 20px;
+	font-size: 12px;
+	padding: 3px 10px;
+	display: none;
+}
+.navbar-form {
+	position: relative;
+}
+
 
 /* Sidebar
 ------------------------*/
@@ -128,7 +146,7 @@ form.new_book {
 
 /* home feed
 ------------------------*/
-#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label, #conversations label {
+#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label, #conversations label, #goodread-search label, #conversation label {
 	color: #C8C8C8;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -1581,7 +1599,7 @@ input#user_current_password {
 	margin-top: 20px;
 }
 #conversation-list li {
-	padding: 5px 0;
+	padding: 10px 0;
 	border-top: 1px solid #f5f5f5;
 	position: relative;
 }
@@ -1589,11 +1607,20 @@ input#user_current_password {
 	border-bottom: 1px solid #f5f5f5;
 }
 #conversation-list h5 {
-	margin-bottom: 5px;
+	margin-top: 12px;
+	margin-left: -5px;
+}
+#conversation-list h5 span {
+	color: #999;
+	padding-left: 10px;
 }
 #conversation-list p {
 	color: #888;
 	font-size: 14px;
+}
+#conversation-list .col-md-1 {
+	padding-right: 0;
+	text-align: center;
 }
 #conversation-list .conversation-remove {
 	position: absolute;
@@ -1608,4 +1635,24 @@ input#user_current_password {
 }
 #conversation-list .conversation-remove:hover {
 	opacity: 1;
+}
+.conversation-avatar {
+	width: 40px;
+}
+#messages-list {
+	margin-top: 20px;
+}
+
+
+/* search
+------------------------*/
+#goodread-search ul {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 20px;
+}
+#goodread-search ul li {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 15px;
 }

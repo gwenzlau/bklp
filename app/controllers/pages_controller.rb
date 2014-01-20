@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   def action
   end
   
-  def search  
+  def search 
     @results = Book.find(:all, :conditions => ['title LIKE ?', params[:search]])
   end
 
@@ -30,10 +30,7 @@ class PagesController < ApplicationController
       isbn = client.book(book['best_book']['id'])
       books << { 'book' => book['best_book']['title'], 'shortbook' => book['best_book']['title'].parameterize, 'img' => book['best_book']['small_image_url'], 'book_id' => book['best_book']['id'], 'isbn' => isbn.isbn }
     end
-    respond_to do |format|
-      format.json  { render :json => books }
-    end
+    render json: books
   end 
-
 
 end

@@ -63,8 +63,6 @@ Booksy::Application.routes.draw do
    get 'future', to: 'books#future'
    get 'futurelink', to: 'links#future'
    get 'recommend', to: 'books#recommend'
-   # api route for autocomplete
-   get 'search/autocomplete', to: 'pages#autocomplete'
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
    get 'finished', to: 'books#finishedmodal'
