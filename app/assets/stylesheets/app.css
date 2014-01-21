@@ -819,6 +819,11 @@ form.new_acomment input.comment-field {
 	width: 144px;
 	height: 144px;
 }
+#profile-content #profile-card button img {
+	height: 15px;
+	width: auto;
+	margin-top: -2px;
+}
 #profile-content #profile-card #user-name {
 	font-size: 24px;
 	font-weight: bold;
