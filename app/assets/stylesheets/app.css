@@ -1647,8 +1647,23 @@ input#user_current_password {
 }
 #messages-list {
 	margin-top: 20px;
+	overflow-x: hidden;
 }
-
+#messages-list i p{
+	display: inline;
+}
+#messages-list li {
+	margin-bottom: 30px;
+}
+.remove-msg {
+	margin-left: 10px;
+	font-size: 11px;
+	background: url(https://s3.amazonaws.com/bklp/trash.png) center center no-repeat;
+	padding: 8px;
+	background-size: 100%;
+	opacity: 0.8;
+}
+}
 
 /* search
 ------------------------*/
