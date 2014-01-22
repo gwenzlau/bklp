@@ -145,7 +145,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h3 class="modal-title" >Send a message to <%= @user.name %><%= image_tag(@user.avatar(:thumb), :class=>"img-circle") %></h4>
+	        <h3 class="modal-title" ><%= image_tag(@user.avatar(:thumb), :class=>"img-circle") %>Send a message to <%= @user.name %></h4>
 	      </div>
 	      <div class="modal-body" style="padding: 20px;">
 	      		<%= f.simple_fields_for :messages do |m| %>

@@ -101,7 +101,23 @@ form.new_book {
 .navbar-form {
 	position: relative;
 }
-
+#newMessageModal img {
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+#newMessageModal .modal-title {
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	margin-bottom: 30px;
+}
+#newMessageModal textarea {
+	height: 100px;
+}
 
 /* Sidebar
 ------------------------*/
