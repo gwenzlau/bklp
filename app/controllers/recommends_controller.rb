@@ -10,7 +10,7 @@ class RecommendsController < ApplicationController
       if params[:recommend][:item_type] == "book"
         redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this book.")
       else
-        redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this author.")
+        redirect_to(author_path(params[:recommend][:author_id]), :notice => "You just recommended this author.")
       end
     else
       redirect_to root_path
