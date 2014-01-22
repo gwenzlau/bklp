@@ -44,8 +44,7 @@
 						      <ul>
 							    <% @book.users.each do |reading| %>
 							      <li>
-							    	<%= link_to (image_tag User.find(reading.id).avatar.url(:thumb)), user_path(reading.id) %>
-							    	<%= link_to  User.find(reading.id).name, user_path(reading.id) %>
+							    	<%= link_to (image_tag ("#{User.find(reading.id).avatar.url(:thumb)}"), data: { toggle: "tooltip"}, :title => "#{User.find(reading.id).name}"), user_path(reading.id) %>
 							      </li>
 								<% end %> 
 							</ul>
@@ -104,6 +103,9 @@
 						
 
 					<script>
+					$('#currently-reading ul li img').tooltip({
+					placement: 'top'
+					});
 						App.opts.book_id = "<%= @book.id %>";
 						App.opts.user = {
 							"name": "<%= current_user.name %>",
