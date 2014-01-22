@@ -81,7 +81,16 @@
 					</div>
 					<div id="book-suggestions">
 						<div class="row">
-						
+							<% @suggestions.each do |suggest| %>
+							<div class="col-md-3">
+								<% if Book.find(suggest.book_id).blank? %>
+								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => suggest.book_id) %>
+								<% else %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(suggest.book_id).isbn}.01.LZZZZZZ.jpg")), book_path(:id => suggest.book_id) %>
+								<% end %>
+								<%= link_to Book.find(suggest.book_id).title, book_path(:id => suggest.book_id) %>
+							</div>
+							<% end.empty? %>
 						</div>
 					</div>
 						

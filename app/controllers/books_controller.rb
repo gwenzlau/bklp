@@ -18,6 +18,7 @@ class BooksController < ApplicationController
   def show  
     @recommends = @book.recommends
     @reviews = @book.reviews
+    
     if signed_in?
       @list_read = Archive.new
       @recommend = Recommend.new
@@ -26,6 +27,9 @@ class BooksController < ApplicationController
       @myreview = @book.reviews.where(:user_id => current_user.id)
       @status = current_user.archives.where(:book_id => params[:id])
     end
+    
+    also = Archive.select(:user_id).uniq.where(:book_id => params[:id])
+    @suggestions = Recommend.where(user_id: also).limit(4).order("RANDOM()")
   end
 
   def new
