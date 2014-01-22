@@ -39,10 +39,10 @@
 							<% else %>
 							<% end %>
 							<br />
-							<% if Archive.where(:book_id => params[:id]).any? %>
+							<% if Archive.where(:book_id => params[:id]).where(:status  => "1").any? %>
 						    <label>People currently reading this book</label>
 						      <ul>
-							    <% Archive.where(:book_id => params[:id]).each do |reading| %>
+							    <% Archive.where(:book_id => params[:id]).where(:status  => "1").each do |reading| %>
 							      <li>
 							    	<%= link_to (image_tag ("#{User.find(reading.user_id).avatar.url(:thumb)}"), data: { toggle: "tooltip"}, :title => "#{User.find(reading.user_id).name}"), user_path(reading.id) %>
 							      </li>

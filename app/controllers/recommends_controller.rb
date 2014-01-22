@@ -8,23 +8,12 @@ class RecommendsController < ApplicationController
     
     if @recommend.save
       if params[:recommend][:item_type] == "book"
-        resp << {'status' => 'success'}
-        respond_to do |format|
-          format.json { render json: resp }
-        end
-      #redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this book.")
-        else
-      redirect_to root_path
+        redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this book.")
+      else
+        redirect_to(book_path(params[:recommend][:book_id]), :notice => "You just recommended this author.")
       end
     else
-      if params[:recommend][:item_type] == "author"
-        resp << {'status' => 'success'}
-        respond_to do |format|
-          format.json { render json: resp }
-          end
-       else
       redirect_to root_path
-      end
     end
   end
 
