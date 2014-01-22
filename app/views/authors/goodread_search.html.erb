@@ -8,7 +8,7 @@
 					<ul>
 						<% @gr_result.results.work.each do |gr| %>
 							<li>
-								<%= link_to (image_tag ("#{gr.best_book.image_url}")), add_goodreads_book_path(:id => gr.best_book.id, :status => ""), method: :post %>
+								<%= link_to (image_tag ("#{gr.best_book.image_url}"), data: { toggle: "tooltip"}, :title => "#{gr.best_book.title}"), add_goodreads_book_path(:id => gr.best_book.id, :status => ""), method: :post %>
 							</li>
 						<% end %>
 					</ul>
@@ -17,3 +17,8 @@
 		</div>
 	</div>
 </div>
+<script>
+	$('#goodread-search ul li img').tooltip({
+		placement: 'bottom'
+	});
+</script>
