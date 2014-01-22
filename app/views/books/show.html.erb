@@ -72,7 +72,7 @@
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
 								<div class="review-content">
 									<p>
-										<strong><%= User.find(review.user_id).name %> said:</strong><br>
+										<strong><%= User.find(review.user_id).name %></strong> said:<br>
 										<%=  review.body %>
 									</p>
 								</div>
