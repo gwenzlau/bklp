@@ -65,7 +65,7 @@ Booksy::Application.routes.draw do
    get 'recommend', to: 'books#recommend'
    # reorder future list
    post 'books/reorder', to: 'books#reorder'
-   get 'finished', to: 'books#finishedmodal'
+   get 'finished', to: 'archives#finishedmodal'
    get 'topbook', to: 'recommends#top_book'
    get 'topauthor', to: 'recommends#top_author'
    get 'brapi', to: 'books#goodread_search'
