@@ -7,7 +7,7 @@
 		  <div class="pull-right" id="book-actions">
 			
 			<% if @status[0].status == 1 %>
-			<% if @myrecommend.exists? %>
+				<% if @myrecommend.exists? %>
 				<button type="button" class="btn btn-default btn-sm" disabled>You've read and recommended this book</button>
 				<% else %>
 				<button type="button" class="btn btn-default btn-sm" disabled>You've read this book</button>
