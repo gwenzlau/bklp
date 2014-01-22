@@ -34,8 +34,12 @@
 						</div>
 					</div>
 					<div id="currently-reading">
+						<% if @recommends.any? %>
 							<label><b><%= pluralize(@recommends.count, "recommendation") %></b></label>
+							<% else %>
+							<% end %>
 							<br />
+							<% if @book.users.any? %>
 						    <label>People currently reading this book</label>
 						      <ul>
 							    <% @book.users.each do |reading| %>
@@ -45,6 +49,8 @@
 							      </li>
 								<% end %> 
 							</ul>
+							<% else %>
+							<% end %>
 					</div>
 					<div id="book-reviews">
 						<div class="row">
