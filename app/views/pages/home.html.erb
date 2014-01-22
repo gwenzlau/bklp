@@ -7,23 +7,23 @@
 				<!-- activity feed -->
 <div class="col-md-8 col-md-offset-1" id="activity-feed">
 	
-	<ul id="recent-activity">
+	<ul class="recent-activity">
 		<% @book_current.each do |book| %>
 			<% Book.find(book.book_id, :order => "created_at DESC").users.each do |user| %>
 				<% if user.id == current_user.id %>
 				<!-- Do nothing since this is you -->
 				<% else %>
 				<label>People reading with me</label>
-					<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle"), user_path(user.id) %> joined  <%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(book.book_id).isbn}.01.SZZZZZZ.jpg"), :class => "book-cover"), book_path(book.book_id) %>
+				<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle reading-with"), user_path(user.id) %>
 				<% end %>
 			<% end %>
 		<% end %>
 	</ul>
 	
 		
-		<label>Recent Activity</label>
+		<label class="last">Recent Activity</label>
 
-    <ul id="recent-activity">
+    <ul class="recent-activity">
         <%= render @activities %>
     </ul>
     

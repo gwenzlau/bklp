@@ -167,71 +167,80 @@ form.new_book {
 	font-weight: 400;
 	text-transform: uppercase;
 	font-size: 12px;
+	display: block;
 }
-ul#recent-activity {
+label.last {
+	margin-top: 40px;
+}
+.reading-with {
+	height: 40px;
+	width: 40px;
+	margin-top: 10px;
+}
+ul.recent-activity {
 	list-style: none;
 	padding-left: 0;
 }
-ul#recent-activity li {
+ul.recent-activity li {
 	margin: 20px 0;
 	/*border-bottom: 1px solid #F5F5F5;
 	padding-bottom: 20px;*/
 }
-ul#recent-activity li img {
+ul.recent-activity li img {
 	border-radius: 40px;
 	height: 70px;
 	width: 70px;
 }
-ul#recent-activity li strong a {
+ul.recent-activity li strong a {
 	color: #4095f1;
 }
-ul#recent-activity li a {
+ul.recent-activity li a {
 	color: #4095f1;
 }
-ul#recent-activity li p {
+ul.recent-activity li p {
 	margin-left: 20px;
 	padding: 22px 0 0px 0;
 	color: #333;
 	margin-bottom: 0;
 }
-ul#recent-activity .feed-sub a {
+ul.recent-activity .feed-sub a {
 	color: #AAA;
 }
-ul#recent-activity li .activity-actions {
+ul.recent-activity li .activity-actions {
 	margin-left: 20px;
 }
-ul#recent-activity li .activity-comments {
+ul.recent-activity li .activity-comments {
 	padding-bottom: 10px;
 	padding-left: 0;
 	margin-top: 14px;
 }
-ul#recent-activity li .activity-comments .new_acomment {
+ul.recent-activity li .activity-comments .new_acomment {
 	background: #F5F5F5;
 	padding: 5px 10px;
 	margin-top: 20px;
 }
-ul#recent-activity li .activity-comments .new_acomment input.comment-field {
+ul.recent-activity li .activity-comments .new_acomment input.comment-field {
 	border-radius: 0;
 	display: inline;
 	height: 35px;
 }
-ul#recent-activity li .activity-comments li {
+ul.recent-activity li .activity-comments li {
 	display: block;
 	margin: 10px 0;
 }
-ul#recent-activity li .activity-comments img {
+ul.recent-activity li .activity-comments img {
 	height: 35px;
 	width: 35px;
 	margin-right: 10px;
 }
-ul#recent-activity li .activity-comments a {
+ul.recent-activity li .activity-comments a {
 	color: #4095f1;
 	font-weight: bold;
 }
-ul#recent-activity li .activity-comments span {
+ul.recent-activity li .activity-comments span {
 	display: block;
 }
-ul#recent-activity li .activity-comment {
+ul.recent-activity li .activity-comment {
 	border-left: 5px solid #EEE;
 	padding: 5px 0 5px 10px;
 	margin-left: 20px;
@@ -239,21 +248,21 @@ ul#recent-activity li .activity-comment {
 	display: block;
 	color: #888;
 }
-ul#recent-activity li p .activity-book {
+ul.recent-activity li p .activity-book {
 	color: #4095f1;
 }
-ul#recent-activity li ul {
+ul.recent-activity li ul {
 	list-style: none;
 	padding-left: 18px;
 	margin-top: 10px;
 }
-ul#recent-activity li ul li {
+ul.recent-activity li ul li {
 	display: inline;
 	font-size: 12px;
 	margin-right: 0px;
 	border: none;
 }
-ul#recent-activity li ul li a {
+ul.recent-activity li ul li a {
 	color: #4095f1;
 }
 form.new_acomment {
