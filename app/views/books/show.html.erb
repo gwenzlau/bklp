@@ -74,7 +74,7 @@
 							</div>
 							<% end.empty? %>
 							<div class="col-md-6">
-								<span style= "color: #C9C9C9;"><i> No reviews yet...</i></span>
+								<label> No reviews yet</label>
 							</div>
 							<% end %>
 						</div>
@@ -86,6 +86,8 @@
 								<% if Book.find(suggest.book_id).blank? %>
 								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => suggest.book_id) %>
 								<% else %>
+									<% if Book.find(suggest.book_id) == book.id? %>
+									<% end %>
 								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(suggest.book_id).isbn}.01.LZZZZZZ.jpg")), book_path(:id => suggest.book_id) %>
 								<% end %>
 								<%= link_to Book.find(suggest.book_id).title, book_path(:id => suggest.book_id) %>
