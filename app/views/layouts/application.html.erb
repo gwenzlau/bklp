@@ -33,17 +33,17 @@
     <% if user_signed_in? %>
 
     function updateBookStatus(user_id, book_id, isbn, status, title, obj) {
-      var d = {'book[user_id]': user_id, 'book[olidb]': book_id, 'book[isbn]': isbn, 'book[status]': status, 'book[title]': title, 'json': true}
+      var d = {'archive[user_id]': user_id, 'archive[book_id]': book_id, 'archive[status]': status, 'json': true}
       var url = '';
       switch (status) {
         case '0':
-          url = '/books';
+          url = '/archives';
           break;
         case '1':
-          url = '/books/'+book_id+'/past_list';
+          url = '/archives/'+book_id+'/past_list';
           break;
         case '2':
-          url = '/books/'+book_id+'/future_list';
+          url = '/archives/'+book_id+'/future_list';
           break;
       }
       $.post(url, d, function(resp) {
@@ -82,15 +82,32 @@
           }
       };
 
-      $('#q').typeahead({
+      $('#search').typeahead({
         name: 'books',
         valueKey: 'book',
         cache: true,
         remote: {
-          url: '/search/autocomplete?utf8=✓&q=%QUERY',
+          url: '/books?utf8=✓&q=%QUERY',
+          filter: function(data) {
+            if(data.length != 0) {
+              $('#brapi-search').fadeOut('fast');
+              return data;   
+            }
+            else {
+              $('#brapi-search').fadeIn('fast');
+            }
+          }
         },
         template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
-        engine: BookloopEngine
+        engine: BookloopEngine, 
+        footer: '<p id="autocomplete-footer"><a href="#" id="more-search">See more results</a></p></div>'
+      });
+      
+      $('body').on('click', '#more-search, #brapi-search', function(e) {
+        e.preventDefault();
+        var query = $('#search').val();
+        var url = '/brapi?search='+query;
+        window.location.replace(url);
       });
     });
 
@@ -108,14 +125,14 @@
           }
       };
 
-      $('#q').typeahead({
+      $('#search').typeahead({
         name: 'books',
         valueKey: 'book',
         cache: true,
         remote: {
-          url: '/search/autocomplete?utf8=✓&q=%QUERY',
+          url: '/books?utf8=✓&q=%QUERY',
         },
-        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
+        template: '<span class="autocomplete"><a href="/books/{{book_id}}-{{shortbook}}">{{book.title}}</a></span><br><div class="btn-group btn-default"><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="1" type="button" class="btn btn-default btn-xs">Already read it</button><button book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="0" type="button" class="btn btn-default btn-xs">Reading it</button><button type="button" class="btn btn-default btn-xs" book-title="{{book}}" book="{{book_id}}-{{shortbook}}" isbn="{{isbn}}" status="2">Going to read</button></div>',
          engine: BookloopEngine
       });
 

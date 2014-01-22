@@ -1,5 +1,19 @@
-<ul>
-	<% @gr_result.results.work.each do |gr| %>
-		<li><%= link_to gr.best_book.title, add_goodreads_book_path(:id => gr.best_book.id, :status => ""), method: :post %> [<%= link_to "Start reading", add_goodreads_book_path(:id => gr.best_book.id, :status => "0"), method: :post %>, <%= link_to "Add to past reads", add_goodreads_book_path(:id => gr.best_book.id, :status => "1"), method: :post %>, <%= link_to "Read in near future", add_goodreads_book_path(:id => gr.best_book.id, :status => "2"), method: :post %>]</li>
-	<% end %>
-</ul>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-9 col-md-offset-1" id="goodread-search">
+					<label>Search results</label>
+					<ul>
+						<% @gr_result.results.work.each do |gr| %>
+							<li>
+								<%= link_to (image_tag ("#{gr.best_book.image_url}")), add_goodreads_book_path(:id => gr.best_book.id, :status => ""), method: :post %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
