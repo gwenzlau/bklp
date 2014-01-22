@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  
   before_action :set_user, only: [:show, :readlist_future, :readlist_past]
+  before_action :set_api, only: [:goodread_search, :add_goodreads]
   
   def create
     # Create the user from params
@@ -91,6 +91,10 @@ end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_api
+    @client = Goodreads.new(Goodreads.configuration)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116181302) do
+ActiveRecord::Schema.define(version: 20140122172338) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -141,6 +141,39 @@ ActiveRecord::Schema.define(version: 20140116181302) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
+  create_table "group_books", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_discussions", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_users", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "approved"
+  end
+
+  create_table "groups", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "public"
+  end
+
   create_table "links", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -187,6 +220,7 @@ ActiveRecord::Schema.define(version: 20140116181302) do
     t.datetime "updated_at"
     t.string   "item_type"
     t.integer  "book_id"
+    t.integer  "author_id"
   end
 
   add_index "recommends", ["user_id"], name: "index_recommends_on_user_id"

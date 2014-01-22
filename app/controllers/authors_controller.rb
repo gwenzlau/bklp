@@ -6,7 +6,14 @@ class AuthorsController < ApplicationController
   end
   
   def show
+    @recommends = @author.recommends
     @works = @author.books
+    if signed_in?
+    @recommend = Recommend.new
+    @myrecommend = @author.recommends.where(:user_id => current_user.id)
+    @total_recommends = @author.recommends.where(:author_id => params[:id]).where(:item_type => "author").count
+     
+    end
   end
   
   def goodread_search

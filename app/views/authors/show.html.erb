@@ -5,9 +5,22 @@
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
 					<h2><%= @author.name %></h2>
+					<% if @myrecommend.exists? %>
+				<button type="button" class="btn btn-default btn-sm" disabled>Recommended</button>
+				<br>
+				<i><%= pluralize(@total_recommends, "recommendation") %></i>
+				<br>
+				<% else %>
+					<%= form_for(@recommend) do |f| %>
+						<%= f.hidden_field :author_id, :value => @author.id %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :item_type, :value => "author" %>
+						<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
+					<% end %>
+				<% end %>
+
 						<p><%= raw(@author.description) %></p><br />
 						<label>Author works (<%= @works.count %>)</label>
-
     				<div class="row" id="reads">
 							
     					<% @works.each do |work| %>
@@ -17,7 +30,7 @@
     					<% end %>
     				</div>
 						
-						<p><%= link_to "Find and view more books by author on Goodreads.", authapi_path(:search => @author.name) %></p>
+						<p><%= link_to "See More", authapi_path(:search => @author.name) %></p>
 						
 						<% if @works.blank? %>
 							Could not find any works by this Author.
