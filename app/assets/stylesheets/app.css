@@ -368,6 +368,7 @@ form.new_acomment input.comment-field {
 }
 #book-actions {
 	display: inline;
+	padding-top: 4px;
 }
 #book-actions form {
 	display: inline-block;
