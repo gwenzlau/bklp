@@ -118,7 +118,7 @@ class BooksController < ApplicationController
       if @goodread.authors.author[0].blank?
         if Author.where(:name => @goodread.authors.author.name).blank?
           @author_gr = @client.author(@goodread.authors.author.id)
-          @author = Author.create(:name => @goodread.authors.author.name, :description => @author_gr.about)
+          @author = Author.create(:name => @goodread.authors.author.name, :description => @author_gr.about, :image_url => @author_gr.image_url)
           Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
         else
           @local_author = Author.where(:name => @goodread.authors.author.name)
@@ -128,7 +128,7 @@ class BooksController < ApplicationController
         @goodread.authors.author.each do |a|
           if Author.where(:name => a.name).blank?
             @author_gr = @client.author(a.id)
-            @author = Author.create(:name => a.name, :description => @author_gr.about)
+            @author = Author.create(:name => a.name, :description => @author_gr.about, :image_url => @author_gr.image_url)
             Work.create(:author_id => @author.id, :book_id => @book_id) if @author.save
           else
             @local_author = Author.where(:name => a.name)
