@@ -4,6 +4,10 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+					<div align="center">
+					<span id="author-avatar">
+					<%= image_tag (@author.image_url), :class => "auth-pro" %> </span>
+				</div>
 					<h2><%= @author.name %></h2>
 					<% if @myrecommend.exists? %>
 				<button type="button" class="btn btn-default btn-sm" disabled>Recommended</button>
