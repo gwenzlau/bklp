@@ -133,7 +133,6 @@
         <div class="modal-content">
             <div class="modal-body">
                 <input type="hidden" value="<%= @user.id %>" id="user_id">
-                <input type="hidden" value="<%= @book.id %>-<%= @slug %>" id="book_id">
                 <div class="modal-actions">
                     <input type="hidden" value="<%= current_user.id %>" id="recommend-user">
                     <input type="hidden" value="<%= @book.id %>-<%= @slug %>" id="recommend-item">
@@ -168,8 +167,8 @@
 								<%= link_to Book.find(suggest.book_id).title, book_path(:id => suggest.book_id) %>
                              </div>
                             <% end.empty? %>
-                            <div class="col-md-6">
-                            <span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
+                            <div class="col-md-12">
+                            <p style= "color: #C9C9C9; margin-top: 70px;">Check out the Discover page for more suggestions.</p>
                             </div>
                             <% end %>
                     </div>
