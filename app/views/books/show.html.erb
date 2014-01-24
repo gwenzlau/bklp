@@ -142,6 +142,7 @@
                     <button type="button" class="btn btn-bookloop btn-sm" id="recommend-book">Recommend</button>
                     <button type="button" class="btn btn-default btn-sm" disabled="disabled" id="recommend-success">Thanks for recommending this book!</button>
                 </div>
+                
                 <div class="modal-comment">
                     <div id="modal-comment-content">
                         <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
@@ -155,15 +156,17 @@
                 <div class="modal-recommendations">
                     <p class="lead">Looking for something to read next?</p>
                     <div class="row" id="book-covers">
-                           <% if @also_read.each do |also| %>
+                           <% if @suggestions.each do |suggest| %>
                              <div class="col-md-3">
 
-                                <% if also.isbn.blank? %>
-
-                                <%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
-                                <% else %>
-                                <%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
-                                <% end %>
+                                <% if Book.find(suggest.book_id).blank? %>
+								<%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => suggest.book_id) %>
+								<% else %>
+									<% if Book.find(suggest.book_id) == @book.id? %>
+									<% end %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(suggest.book_id).isbn}.01.LZZZZZZ.jpg")), book_path(:id => suggest.book_id) %>
+								<% end %>
+								<%= link_to Book.find(suggest.book_id).title, book_path(:id => suggest.book_id) %>
                              </div>
                             <% end.empty? %>
                             <div class="col-md-6">
