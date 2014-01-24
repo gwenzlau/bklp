@@ -80,4 +80,14 @@ $(document).ready( function() {
 			}
 		});
 	});
+
+	//post finished
+	$('.finished-book').click( function(e) {
+		e.preventDefault();
+		var _method = 'put';
+		var authenticity_token = $('input[name="authenticity_token"]').val();
+		var book_id = $('#book_id').val(); 
+		//$.post('/archives/'+book_id+'?type=end', function() {})
+		$('#finished-modal').modal('show');
+	});
 });

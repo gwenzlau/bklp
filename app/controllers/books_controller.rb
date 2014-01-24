@@ -26,6 +26,7 @@ class BooksController < ApplicationController
       @myrecommend = @book.recommends.where(:user_id => current_user.id)
       @myreview = @book.reviews.where(:user_id => current_user.id)
       @status = current_user.archives.where(:book_id => params[:id])
+      @user = current_user
     end
     
     also = Archive.select(:user_id).uniq.where(:book_id => params[:id])

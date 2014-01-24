@@ -127,7 +127,57 @@
 	</div>
 </div>
 
-<!-- 
+<!-- finished modal -->
+<div class="modal fade" id="finished-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <input type="hidden" value="<%= @user.id %>" id="user_id">
+                <input type="hidden" value="<%= @book.id %>-<%= @slug %>" id="book_id">
+                <div class="modal-actions">
+                    <input type="hidden" value="<%= current_user.id %>" id="recommend-user">
+                    <input type="hidden" value="<%= @book.id %>-<%= @slug %>" id="recommend-item">
+                    <input type="hidden" value="book" id="recommend-type">
+                    <button type="button" class="btn btn-bookloop btn-sm" id="recommend-book">Recommend</button>
+                    <button type="button" class="btn btn-default btn-sm" disabled="disabled" id="recommend-success">Thanks for recommending this book!</button>
+                </div>
+                <div class="modal-comment">
+                    <div id="modal-comment-content">
+                        <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+                        <button id="post-review" class="btn btn-bookloop btn-sm pull-right">Post review</button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="modal-comment-success">
+                        <p>Your review for <%= @book.title %> has been posted!</p>
+                    </div>
+                </div>
+                <div class="modal-recommendations">
+                    <p class="lead">Looking for something to read next?</p>
+                    <div class="row" id="book-covers">
+                           <% if @also_read.each do |also| %>
+                             <div class="col-md-3">
+
+                                <% if also.isbn.blank? %>
+
+                                <%= link_to (image_tag ("http://placehold.it/195x275")), book_path(:id => also.olidb) %>
+                                <% else %>
+                                <%= link_to (image_tag ("http://images.amazon.com/images/P/#{also.isbn}.01.LZZZZZZ.jpg")), book_path(:id => also.olidb) %>
+                                <% end %>
+                             </div>
+                            <% end.empty? %>
+                            <div class="col-md-6">
+                            <span style= "color: #C9C9C9;"><i> Check out the Discover page for more suggestions.</i></span>
+                            </div>
+                            <% end %>
+                    </div>
+                </div>
+                <div class="modal-btncontainer">
+                    <%= link_to "No thanks, I have a previous engagement.", user_path(current_user), :class => "btn btn-bookloop" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- finished modal -->
 <div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-hidden="true">
