@@ -1,12 +1,11 @@
+finished reading  
 <% if activity.trackable %>
-<span class="pr-feed">
-	Update/archive : <%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).id) %>
-</span>
-		 <span class="feed-sub">
+	<%= link_to Book.find_by_id(Archive.find(activity.trackable.id).book_id).title, book_path("#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).id}-#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).title.parameterize}") %>
+		 <span class="feed-sub" align="center">
 	<small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
 	  </small>
 	</span>
-<% else%>
-	finished a book that has since been removed.
+<% else %>
+	a book which has since been abandoned.
 <% end %>

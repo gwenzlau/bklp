@@ -1,7 +1,7 @@
 is planning on reading
 <span class="fr-feed">
 <% if activity.trackable %>
-	<%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).id) %>
+	<%= link_to Book.find_by_id(Archive.find(activity.trackable.id).book_id).title, book_path("#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).id}-#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).title.parameterize}") %>
 </span>
 		 <span class="feed-sub">
 	<small><br>
