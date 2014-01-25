@@ -36,12 +36,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = current_user.books.build(book_params)
-    if @book.save
-      redirect_to current_user
-    else
-      redirect_to root_path
-    end
   end
   
   def book_readit

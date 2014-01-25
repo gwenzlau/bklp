@@ -1,6 +1,4 @@
 class Book < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked owner: ->(controller, model) { controller && controller.current_user}
 
   # User collection association
   has_many :archives, dependent: :destroy
