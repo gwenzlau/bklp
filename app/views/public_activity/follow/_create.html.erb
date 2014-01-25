@@ -1,8 +1,8 @@
 started following 
 <span class="follow-feed">
 <% if activity.trackable %>
-	 <%= link_to User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name, user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id) %>	
-	 <%=link_to (image_tag User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).avatar(:thumb), :class=>"img-circle-thumb"), user_path(User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id) %>
+	 <%= link_to User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name, user_path("#{User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id}-#{User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name.parameterize}") %>	
+	 <%= link_to (image_tag User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).avatar(:thumb), :class=>"img-circle-thumb"), user_path("#{User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).id}-#{User.find_by_id(Follow.find_by_id(activity.trackable.id).followable_id).name.parameterize}") %>
 	</span>
 	 <span class="feed-sub">
 	<small><br>

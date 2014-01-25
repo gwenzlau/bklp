@@ -1,6 +1,6 @@
-archive/create  
+started reading  
 <% if activity.trackable %>
-	<%= link_to Book.find_by_id(activity.trackable.id).title, book_path(Book.find_by_id(activity.trackable.id).id) %>
+	<%= link_to Book.find_by_id(Archive.find(activity.trackable.id).book_id).title, book_path("#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).id}-#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).title.parameterize}") %>
 		 <span class="feed-sub" align="center">
 	<small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
