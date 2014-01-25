@@ -2,8 +2,8 @@ recommended
 <% if activity.trackable %>
 	<% if Recommend.find_by_id(activity.trackable.id) %>
 		
-		<% recco = Recommend.find_by_id(activity.trackable.id) %>
-		<%= link_to Book.find(recco).title, book_path(recco) %> 
+		<% recco = Recommend.find(activity.trackable.id) %>
+		<%= link_to Book.find(recco.book_id).title, book_path("#{recco.book_id}-#{Book.find(recco.book_id).title.parameterize}") %> 
 	<% else %>
 		the author
 	<% end %>
