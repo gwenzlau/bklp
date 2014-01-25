@@ -58,9 +58,9 @@
 							<% @recommended_authors.each do |recauth| %> 
 							<div class="col-md-2">
 								<div class="author-avatar">
-									<%= link_to (image_tag(Author.find(recauth.author_id).image_url, :class => "auth-pro")), author_path(recauth.author_id)%>
+									<%= link_to (image_tag(Author.find(recauth.author_id).image_url, :class => "auth-pro")), author_path("#{recauth.author_id}-#{Author.find(recauth.author_id).name.parameterize}")%>
 								</div>
-								<%= link_to Author.find(recauth.author_id).name, author_path(recauth.author_id) %>
+								<%= link_to Author.find(recauth.author_id).name, author_path("#{recauth.author_id}-#{Author.find(recauth.author_id).name.parameterize}") %>
 							</div>
 							<% end %>
 						</div>
