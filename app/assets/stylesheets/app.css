@@ -172,6 +172,9 @@ form.new_book {
 label.last {
 	margin-top: 40px;
 }
+#goodread-search label {
+	margin-bottom: 30px;
+}
 .reading-with {
 	height: 40px;
 	width: 40px;
@@ -1693,7 +1696,7 @@ input#user_current_password {
 
 /* search
 ------------------------*/
-#goodread-search ul {
+#goodread-search-list {
 	list-style: none;
 	padding-left: 0;
 	margin-top: 20px;
@@ -1702,4 +1705,7 @@ input#user_current_password {
 	display: inline-block;
 	margin-right: 15px;
 	margin-bottom: 15px;
+}
+.col-md-9 ul {
+	padding-left: 0;
 }
