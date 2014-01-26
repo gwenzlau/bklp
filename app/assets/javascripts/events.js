@@ -87,11 +87,10 @@ $(document).ready( function() {
 		var _method = 'put';
 		var authenticity_token = $('input[name="authenticity_token"]').val();
 		var book_id = $('#book_id').val(); 
-		var d = {'_method': _method, 'authenticity_token': authenticity_token}
+		var user_id = $('#user_id').val();
+		var d = {'_method': _method, 'authenticity_token': authenticity_token, 'book_id': book_id, 'user_id': user_id, 'status': 1};
 		$.post('/archives/'+book_id+'?type=end', d, function(data) {
-			if(data == 'OK') {
-				$('#finished-modal').modal('show');
-			}
+			$('#finished-modal').modal('show');
 		});
 	});
 });
