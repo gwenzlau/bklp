@@ -81,17 +81,19 @@ $(document).ready( function() {
 		});
 	});
 
-	//post finished
-	$('.finished-book').click( function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		var _method = 'put';
-		var authenticity_token = $('input[name="authenticity_token"]').val();
-		var archive[book_id] = $('#book_id').val(); 
-		var user_id = $('#user_id').val();
-		var d = {'_method': _method, 'authenticity_token': authenticity_token, 'archive[book_id]': book_id, 'archive[user_id]': user_id, 'archive[status]': 1};
-		$.post('/archives/'+book_id+'?type=end', d, function(data) {
-			$('#finished-modal').modal('show');
-		});
-	});
+	//show modal
+	var vars = [], hash;
+	    var q = document.URL.split('?')[1];
+	    if(q != undefined){
+	        q = q.split('&');
+	        for(var i = 0; i < q.length; i++){
+	            hash = q[i].split('=');
+	            vars.push(hash[1]);
+	            vars[hash[0]] = hash[1];
+	        }
+	}
+	if (vars['finished'] == 'true' ) {
+		$('#finished-modal').modal('show');
+	}
+
 });

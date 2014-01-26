@@ -12,14 +12,14 @@ class ArchivesController < ApplicationController
   
   def update
     if params[:type] == "start"
-      @archive.activity key: 'archive.create'
+      @archive.activity key: 'book.update'
       if @archive.update_attribute(:status, "0")
         redirect_to(book_path(@archive.book_id), :notice => "You started reading this book from your future list")
       else
         redirect_to(root_path, :notice => "An error occured while trying to change status of a book from your future list.")
       end
     else
-      @archive.activity key: 'archive.update'
+      @archive.activity key: 'book.create'
       if @archive.update_attribute(:status, "1")
         redirect_to(book_path(@archive.book_id, :finished => 'true')) 
       else

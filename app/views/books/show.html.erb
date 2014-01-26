@@ -165,7 +165,6 @@
 									<% end %>
 								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(suggest.book_id).isbn}.01.LZZZZZZ.jpg")), book_path(:id => suggest.book_id) %>
 								<% end %>
-								<%= link_to Book.find(suggest.book_id).title, book_path(:id => suggest.book_id) %>
                              </div>
                             <% end.empty? %>
                             <div class="col-md-12">
