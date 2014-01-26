@@ -26,6 +26,7 @@ class BooksController < ApplicationController
       @myrecommend = @book.recommends.where(:user_id => current_user.id)
       @myreview = @book.reviews.where(:user_id => current_user.id)
       @status = current_user.archives.where(:book_id => params[:id])
+      @user = current_user
     end
     
     also = Archive.select(:user_id).uniq.where(:book_id => params[:id])
@@ -71,22 +72,21 @@ class BooksController < ApplicationController
   end
 
   def finishedmodal
-    @thebook = @client.book(params[:id]) unless @client.book(params[:id]).blank?
-    @slug = @thebook.title.parameterize
-  
-    if user_signed_in?
-      @newbook = Book.new
-      @mybook = Book.where(:user_id => current_user.id).where(:olidb => params[:id])
-      @myrecommend = Recommend.where(:user_id => current_user.id).where(:item_id => params[:id])
+    @recommends = @book.recommends
+    @reviews = @book.reviews
+    
+    if signed_in?
+      @list_read = Archive.new
+      @recommend = Recommend.new
+      @review = Review.new
+      @myrecommend = @book.recommends.where(:user_id => current_user.id)
+      @myreview = @book.reviews.where(:user_id => current_user.id)
+      @status = current_user.archives.where(:book_id => params[:id])
       @user = current_user
     end
     
-    @review = Review.where(:book_id => params[:id])
-    @new_recommend = Recommend.new
-
-    # Select random books for suggestions
-    also = Book.select(:user_id).uniq.where(:olidb => params[:id])
-    @also_read = Book.where(user_id: also).where(:status => "1").limit(4).order("RANDOM()")
+    also = Archive.select(:user_id).uniq.where(:book_id => params[:id])
+    @suggestions = Recommend.where(user_id: also).limit(4).order("RANDOM()")
   end
 
   def destroy
