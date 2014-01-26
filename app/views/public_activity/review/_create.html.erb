@@ -1,1 +1,11 @@
-reviewed a book.
+reviewed 
+<% if activity.trackable %>
+	<%= link_to Book.find_by_id(Review.find(activity.trackable.id).book_id).title, book_path("#{Book.find_by_id(Review.find(activity.trackable.id).book_id).id}-#{Book.find_by_id(Review.find(activity.trackable.id).book_id).title.parameterize}") %>
+		 <span class="feed-sub" align="center">
+	<small><br>
+	    <a href="#" id="al-<%= activity.id %>">Comment</a>
+	  </small>
+	</span>
+<% else %>
+	a book which has since been abandoned.
+<% end %>
