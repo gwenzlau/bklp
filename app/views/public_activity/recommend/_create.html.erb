@@ -3,8 +3,12 @@ recommended
 	<% if Recommend.find_by_id(activity.trackable.id) %>
 		
 		<% recco = Recommend.find(activity.trackable.id) %>
+		<% if Recommend.find_by_id(activity.trackable.id).item_type == "book" %>
 		<%= link_to Book.find(recco.book_id).title, book_path("#{recco.book_id}-#{Book.find(recco.book_id).title.parameterize}") %> 
+		<% else %>
+		<%= link_to Author.find(recco.author_id).name, author_path("#{recco.author_id}-#{Author.find(recco.author_id).name.parameterize}") %>
+		<% end %>
 	<% else %>
-		the author
+		something, which has since been deleted.
 	<% end %>
 <% end %> 
