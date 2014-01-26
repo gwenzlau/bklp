@@ -21,7 +21,7 @@ class ArchivesController < ApplicationController
     else
       @archive.activity key: 'archive.update'
       if @archive.update_attribute(:status, "1")
-        render :json => "OK"
+        redirect_to(book_path(@archive.book_id, :finished => 'true')) 
       else
         redirect_to(book_path(@archive.book_id), :notice => "An error occured while trying to change status of a book you just finished.")
       end
