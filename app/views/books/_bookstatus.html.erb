@@ -23,7 +23,7 @@
 			<%= button_to "Abandon it", archive_path(:id => @status[0].id), :method => :delete, :class => "btn btn-default btn-sm", :type => "button", :confirm => "Are you sure?" if @status[0].status == 0 %>
 			<%= button_to "Finished!", archive_path(:id => @status[0].id, :type => "end"), :method => :put, :class => "btn btn-default btn-sm", :type => "button" if @status[0].status == 0 %>
 			<%= button_to "Start reading...", archive_path(:id => @status[0].id, :type => "start"), :method => :put, :class => "btn btn-default btn-sm", :type => 'button' if @status[0].status == 2 %>
-			<%= link_to "Get A Copy", "http://www.amazon.com/dp/#{@book.isbn}/?tag=book0477-20", :target => "_blank", :class => "btn btn-default btn-sm" %>
+			<%= link_to "Get A Copy", "http://www.amazon.com/dp/#{@book.isbn}/?tag=book0477-20", :target => "_blank", :class => "btn btn-default btn-sm", :type => 'button' if @status[0].status == 2 %>
 			
 			</div>
 		<% else %>
