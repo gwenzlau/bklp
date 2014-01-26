@@ -30,7 +30,7 @@ class BooksController < ApplicationController
     end
     
     also = Archive.select(:user_id).uniq.where(:book_id => params[:id])
-    @suggestions = Recommend.where(user_id: also).limit(4).order("RANDOM()")
+    @suggestions = Recommend.where(:item_type => "book").where(user_id: also).limit(4).order("RANDOM()")
   end
 
   def new
