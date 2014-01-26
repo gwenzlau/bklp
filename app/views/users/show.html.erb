@@ -1,9 +1,11 @@
+
 <div id="main">
 	<div class="container">
 		<div class="row">
 			<div class="row">
 				<div id="profile-content">
 					<div id="profile-card">
+						
 						<% if @user.id != current_user.id %>
 							<% if current_user.following?(@user) %>
 								<button class="btn btn-default btn-sm pull-right"><%= link_to "Unfollow", unfollow_user_path(@user) %></button>
@@ -165,3 +167,4 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 <% end %>
+

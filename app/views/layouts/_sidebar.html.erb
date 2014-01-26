@@ -1,4 +1,5 @@
 <!-- sidebar -->
+<% if user_signed_in? %>
 <div class="col-md-2" id="sidebar">
 	<label>Browse</label>
 	<ul class="nav nav-pills nav-stacked menu">
@@ -19,3 +20,5 @@
 			<li><%= link_to "Settings", edit_user_registration_path, :id => "settings" %></li> 
 	</ul>
 </div>
+<% else %>
+<% end %>
