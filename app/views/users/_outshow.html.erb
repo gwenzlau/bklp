@@ -1,0 +1,79 @@
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<div id="profile-content">
+					<div id="profile-card">
+						<div id="profile-card-img">
+							<%= image_tag @user.avatar.url, :class=>"img-circle" %>
+						</div>
+
+						<% if @book_current.any? %>
+								<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book_current.collect{ |f| link_to(Book.find(f.book_id).title, book_path("#{f.book_id}-#{Book.find(f.book_id).title.parameterize}"))}.to_sentence.html_safe %></p>
+						<% else %>
+								<p id="currently-reading"><strong><%= @user.name %></strong> is not reading any books at the moment.</p>
+							
+						<% end %>
+					</div>
+					<div id="recommended-reads">
+						<p><%= link_to "Recommended Reading", recommendations_user_path(@user) %></p>
+						<div class="row">
+							<% @recommended_books.each do |recbook| %> 
+							<div class="col-md-3">
+								<%= link_to (image_tag("http://images.amazon.com/images/P/#{Book.find(recbook.book_id).isbn}.01.LZZZZZZ.jpg")), book_path("#{recbook.book_id}-#{Book.find(recbook.book_id).title.parameterize}") %>
+							</div>
+							<% end %>
+						</div>	
+					</div>
+					<div id="recommended-authors">
+						<hr>
+						<div class="row">
+							<% @recommended_authors.each do |recauth| %> 
+							<div class="col-md-2">
+								<div class="author-avatar">
+									<%= link_to (image_tag(Author.find(recauth.author_id).image_url, :class => "auth-pro")), author_path("#{recauth.author_id}-#{Author.find(recauth.author_id).name.parameterize}")%>
+								</div>
+								<%= link_to Author.find(recauth.author_id).name, author_path("#{recauth.author_id}-#{Author.find(recauth.author_id).name.parameterize}") %>
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div id="past-reads">
+								<p>Past Reads</p>
+								<ul>
+									<% @book_past.each do |past| %>
+		          					<li>
+		          						<%= link_to Book.find(past.book_id).title, book_path("#{past.book_id}-#{Book.find(past.book_id).title.parameterize}") %> 
+		          						
+		          						<span class="past-read-author">by: 
+														<%= Book.find(past.book_id).authors.collect{ |f| link_to f.name, author_path("#{f.id}-#{f.name.parameterize}")}.to_sentence.html_safe %>
+		          						</span>
+		          					</li>
+		          					<% end %>
+		          				</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div id="future-reads">
+								<p> Future Reads</p>
+								<ul>
+									<% @book_future.each do |future| %>
+		        					<li>
+												<%= link_to Book.find(future.book_id).title, book_path("#{future.book_id}-#{Book.find(future.book_id).title.parameterize}") %>
+		        					
+			        					<span class="past-read-author">by: 
+													<%= Book.find(future.book_id).authors.collect{ |f| link_to f.name, author_path("#{f.id}-#{f.name.parameterize}")}.to_sentence.html_safe %>
+			        					</span>
+											</li>
+		          		<% end %>
+		          				</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

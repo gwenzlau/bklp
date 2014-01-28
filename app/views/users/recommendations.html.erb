@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <div id="main">
 	<div class="container">
 		<div class="row">
@@ -26,6 +27,32 @@
 		</div>
 	</div>
 </div>
+<% else %>
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-8 col-md-offset-1" id="activity-feed">
+    				<label><%= @user.name %>'s Recommended Reading List</label>
+    				<div class="row" id="reads">
+    					<% @recommended_books.each do |recbook| %> 
+							<div class="col-md-3">
+								<% if Book.find(recbook.book_id).isbn.blank? %>
+
+								<%= link_to (image_tag ("http://placehold.it/195x275"), :title => "#{Book.find(recbook.book_id).title}", data: { toggle: "tooltip"}), book_path(recbook.book_id) %>
+								<% else %>
+								<%= link_to (image_tag ("http://images.amazon.com/images/P/#{Book.find(recbook.book_id).isbn}.01.LZZZZZZ.jpg"), :title => "#{Book.find(recbook.book_id).title}", data: { toggle: "tooltip"}), book_path(recbook) %>
+								<% end %>
+							</div>
+							<% end %>
+    				</div>
+    			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
 
 <script>
 	$('#reads img').tooltip({

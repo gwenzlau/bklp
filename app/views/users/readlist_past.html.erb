@@ -4,7 +4,7 @@
 			<div class="row">
 				<%= render 'layouts/sidebar' %>
 				<div class="col-md-8 col-md-offset-1" id="activity-feed">
-    				<label>Your Past Reads</label>
+    				<label><%= @user.name %>'s Past Reads</label>
     				<div class="row" id="reads">
     					<% @books.each do |book| %>
     					<div class="col-md-2">

@@ -21,4 +21,24 @@
 	</ul>
 </div>
 <% else %>
+<div class="col-md-2" id="sidebar">
+	<label>Browse</label>
+	<ul class="nav nav-pills nav-stacked menu">
+			<li><%= link_to "Discover", users_path, :id => "discover" %></li> 
+			<li><%= link_to "Groups", new_user_registration_path, :id => "group" %></li>
+	</ul>
+	<hr>
+	<label>Your Books</label>
+	<ul class="nav nav-pills nav-stacked menu">
+			<li><%= link_to "Current Reads", new_user_registration_path, :id => "current" %></li>
+			<li><%= link_to "Future Reads", new_user_registration_path, :id => "future" %></li>
+			<li><%= link_to "Past Reads", new_user_registration_path, :id => "past" %></li>
+	</ul>
+	<hr>
+	<label>You</label>
+	<ul class="nav nav-pills nav-stacked menu">
+			<li><%= link_to 'Messages', new_user_registration_path, id: 'messages' %></li>
+			<li><%= link_to "Settings", new_user_registration_path, :id => "settings" %></li> 
+	</ul>
+</div>
 <% end %>

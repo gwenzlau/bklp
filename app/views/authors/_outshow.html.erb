@@ -1,6 +1,3 @@
-<% unless user_signed_in? %>
-<%= render 'authors/outshow' %>
-<% else %>
 <div id="main">
 	<div class="container">
 		<div class="row">
@@ -12,20 +9,11 @@
 	
 				</div>
 					<h2><%= @author.name %></h2>
-					<% if @myrecommend.exists? %>
-				<button type="button" class="btn btn-default btn-sm" disabled>Recommended</button>
+					
 				<br>
 				<i><%= pluralize(@total_recommends, "recommendation") %></i>
 				<br>
-				<% else %>
-					<%= form_for(@recommend) do |f| %>
-						<%= f.hidden_field :author_id, :value => @author.id %>
-						<%= f.hidden_field :user_id, :value => current_user.id %>
-						<%= f.hidden_field :item_type, :value => "author" %>
-						<%= f.button "Recommend", :class => "btn btn-default btn-sm" %>
-					<% end %>
-				<% end %>
-
+				
 						<p><%= raw(@author.description) %></p><br />
 						<label>Author works (<%= @works.count %>)</label>
     				<div class="row" id="reads">
@@ -53,4 +41,3 @@
 		placement: 'bottom'
 	});
 </script>
-<% end %>

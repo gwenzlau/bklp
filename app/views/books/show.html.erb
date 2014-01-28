@@ -1,3 +1,6 @@
+<% unless user_signed_in? %>
+<%= render 'books/outshow' %>
+<% else %>
 <div id="main">
 	<div class="container">
 		<div class="row">
@@ -202,3 +205,4 @@
         </div>
     </div>
 </div>
+<% end %>
