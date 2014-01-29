@@ -3,7 +3,7 @@ class ChangeBookTypeForRecommend < ActiveRecord::Migration
      connection.execute(%q{
     alter table recommends
     alter column item_id
-    type integer using cast(number as integer)
+    type integer using cast(item_id as integer)
   })
   end
   def end
