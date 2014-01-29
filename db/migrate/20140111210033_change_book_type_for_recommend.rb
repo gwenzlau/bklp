@@ -1,5 +1,5 @@
 class ChangeBookTypeForRecommend < ActiveRecord::Migration
   def change
-    change_column :recommends, :item_id, :integer
+    change_column :recommends, :integer
   end
 end
