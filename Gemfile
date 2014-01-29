@@ -19,7 +19,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'multi_json'
 gem 'unicorn'
 gem 'foreman'
-gem 'postmark-rails', '~> 0.5.2'
 
 group :production do
 	gem 'pg'

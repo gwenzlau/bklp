@@ -65,9 +65,8 @@ module Booksy
     config.assets.precompile += %w( *.css *.js )
     #config.assets.precompile += %w( 'application.js', 'activities.js.coffee', 'bootstrap.min.js', 'typehead.js', 'event.js', 'app.css', 'activities.css.scss', 'application.css', 'discussions.css.scss', 'typehead.css', 'style.css.scss',)
 
-    config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { :api_key => "your-api-key" }
-
+    # config.action_mailer.delivery_method = :postmark
+    #  config.action_mailer.postmark_settings = { :api_key => "your-api-key" }
     config.middleware.insert_before(ActionDispatch::Static, Rack::Deflater)
   end
 end
