@@ -8,7 +8,8 @@
 			
 			<% if @status[0].status == 1 %>
 				<% if @myrecommend.exists? %>
-				<button type="button" class="btn btn-default btn-sm" disabled>You've read and recommended this book</button>
+				<button type="button" class="btn btn-default btn-sm" disabled>Finished and recommended!</button>
+				<button type="button" class="btn btn-default btn-sm">Send a Rec</button>
 				<% else %>
 				<button type="button" class="btn btn-default btn-sm" disabled>You've read this book</button>
 					<%= form_for(@recommend) do |f| %>
