@@ -8,7 +8,7 @@
 <div class="col-md-8 col-md-offset-1" id="activity-feed">
 	
 	<ul class="recent-activity">
-		<label>People reading with me</label>
+		<label>people in my loop</label>
 		<% @book_current.each do |book| %>
 			<% Book.find(book.book_id, :order => "created_at DESC").users.each do |user| %>
 
