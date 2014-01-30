@@ -33,4 +33,16 @@ class PagesController < ApplicationController
     render json: books
   end 
 
+  def discover
+    #discover discussion.quote
+    @disco = Discussion.limit(1).order("RANDOM()")
+    @users = User.limit(1).order("RANDOM()")
+    @book_current = current_user.archives.where(:status => "0")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+     end
+  end
+
+   
 end

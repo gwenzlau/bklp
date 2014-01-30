@@ -1,0 +1,35 @@
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<%= render 'layouts/sidebar' %>
+				<div class="col-md-8 col-md-offset-1" id="discover-users">
+					<label align="center">Discover <br> People  |  Books</label>
+					<div class="row">
+						<% @users.each do |user| %>
+						<div class="col-md-2">
+							<div class="avatar">
+								<%= link_to (image_tag user.avatar(:thumb), :class=>"img-circle", :title => "#{user.name}", data: { toggle: "tooltip"}), user %><%= link_to user.name, user %> is currently reading 
+							</div>
+						</div>
+						<% end %>
+
+					</div>
+
+				</div><div class="col-md-8 col-md-offset-1" id="discover-users">
+					<label align="center">Discover <br> Books</label>
+					<% @disco.each do |discussion| %>
+					<% discussion.quote %>
+					<% end %>
+		
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<script>
+	$('#discover-users img').tooltip({
+		placement: 'bottom'
+	});
+</script>
