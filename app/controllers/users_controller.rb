@@ -25,15 +25,15 @@ class UsersController < ApplicationController
 
 	def show
     @book_current = User.find(params[:id]).archives.where(:status => "0")
-    @book_past= User.find(params[:id]).archives.where(:status => "1").limit(10).order("updated_at DESC")
-    @book_future= User.find(params[:id]).archives.where(:status => "2").limit(10).order("updated_at DESC")
+    @book_past= User.find(params[:id]).archives.where(:status => "1").limit(10).order("updated_at DESC").order("RANDOM()")
+    @book_future= User.find(params[:id]).archives.where(:status => "2").limit(10).order("updated_at DESC").order("RANDOM()")
 
     @conversation = Conversation.new
     @conversation.messages.build
     @conversation.participants.build
     
-    @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book")
-    @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author")
+    @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book").limit(4)
+    @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author").limit(6)
     
     if signed_in?
       @new_comment = Acomment.new
