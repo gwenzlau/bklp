@@ -16,6 +16,7 @@
 									</div>
 									<div class="col-md-11">
 										<h5><span>Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %></span></h5>
+										<%= link_to '', conversation_path(c), :confirm => 'Are you sure?', :class => "remove-msg", :method => :delete if c.owner?(current_user)%>
 									</div>
 								</div>
 							</li>

@@ -8,9 +8,6 @@
 		<div class="col-md-11">
 			<p class="sender-name"><span class="message-time"><%= time_ago_in_words message.created_at %> ago <%= link_to message.user.name, message.user %> said:</span></p>
 			<i><%= simple_format message.body %></i>
-			<% if message.deleteable?(current_user) %>
-				<%= link_to '', conversation_message_path(message.conversation, message), :confirm => 'Are you sure?', :method => :delete, :class => "remove-msg" %>
-			<% end %>
 			
 		</div>
 	</div>
