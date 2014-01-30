@@ -8,7 +8,7 @@
 				<%= render 'layouts/sidebar' %>
 				<!-- book info -->
 				<div class="col-md-9 col-md-offset-1" id="book-info">
-					<h2><%= @book.title %></h2>
+					<h2><%= @book.title %></h2><%= link_to '', "http://www.amazon.com/dp/#{@book.isbn}/?tag=book0477-20", :target => "_blank", :class => "btn btn-default btn-sm", :class => "amazon-link", :type => 'button' %>
 					<%# This will check if the user is reading the book and display options %>
 					<%= render 'books/bookstatus' %>
 

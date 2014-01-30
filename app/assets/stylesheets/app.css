@@ -1693,17 +1693,15 @@ input#user_current_password {
 	opacity: 0.8;
 }
 .amazon-link {
-	margin-left: 10px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
+	margin: 7px;
 	font-size: 11px;
-	background: url(https://s3.amazonaws.com/bklp/tag.png) center center no-repeat;
+	background: url(https://s3.amazonaws.com/bklp/tag-flip.png) center center no-repeat;
 	background-size: 100%;
 	opacity: 0.8;
 	padding: 5px 10px;
-font-size: 15px;
-line-height: 1.5;
-
+	padding-bottom: 2px;
+	font-size: 15px;
+	line-height: 1.5;
 }
 
 
