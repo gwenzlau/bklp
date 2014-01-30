@@ -15,7 +15,7 @@
 										<%= image_tag c.messages.last.user.avatar, :class => 'img-circle conversation-avatar' %>
 									</div>
 									<div class="col-md-11">
-										<h5><%= link_to c.messages.last.user.name, conversation_path(c) %> <span><%= c.messages.last.body %></span></h5>
+										<h5><span>Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %></span></h5>
 									</div>
 								</div>
 							</li>
