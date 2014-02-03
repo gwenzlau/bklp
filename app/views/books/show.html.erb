@@ -56,20 +56,6 @@
 					</div>
 					<div id="book-reviews">
 						<div class="row">
-							<% if current_user.books.where(:id => params[:id]).exists? %>
-								<% if @status[0].status == 1 %>
-									<% if @myreview.exists? %>
-									<% else %>
-										<div class="col-md-12" id="review-form">
-											<p><button class="btn btn-sm btn-bookloop" data-toggle="modal" data-target="#review-modal">Review this book</button></p>
-											<hr>
-										</div>
-										<div class="clearfix"></div>
-									<% end %>
-								<% else %>
-								<% end %>
-							<% else %>
-							<% end %>
 							<% if @book.reviews.each do |review| %>
 							<div class="col-md-6">
 								<%= link_to (image_tag User.find_by_id(review.user_id).avatar.url(:thumb)), user_path(review.user_id) %>
@@ -184,7 +170,7 @@
     </div>
 </div>
 
-<!-- finished modal -->
+<!-- review modal -->
 <div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -196,9 +182,11 @@
             	<input type="hidden" value="<%= current_user.id %>" id="user_id">
             	<input type="hidden" value="<%= @book.id %>" id="book_id">
                 <div id="add-review">
-					<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
+					
+                        <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+                        
 					<p id="review-modal-action"> 
-						<button class="btn btn-sm btn-bookloop" id="post-review-book-show">Review this book</button>
+						<button class="btn btn-sm btn-bookloop" id="post-review">Review this book</button>
 					</p>
 				</div>
             </div>
