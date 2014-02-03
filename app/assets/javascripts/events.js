@@ -31,7 +31,7 @@ $(document).ready( function() {
 
 	// post review
 	$('#post-review').click( function() {
-		var body = $('#review_body').val();
+		var body = $('.review_body').val();
 		var book_id = $('#book_id').val(); 
 		var user_id = $('#user_id').val();
 		var d = {'review[body]': body, 'review[book_id]': book_id, 'review[user_id]': user_id}
@@ -44,7 +44,7 @@ $(document).ready( function() {
 	});
 
 	$('#post-review-book-show').click( function() {
-		var body = $('#review_body').val();
+		var body = $('.book-show-review').val();
 		var book_id = $('#book_id').val(); 
 		var user_id = $('#user_id').val();
 		var d = {'review[body]': body, 'review[book_id]': book_id, 'review[user_id]': user_id}

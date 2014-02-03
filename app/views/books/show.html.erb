@@ -147,7 +147,7 @@
                 
                 <div class="modal-comment">
                     <div id="modal-comment-content">
-                        <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
+                        <textarea placeholder="In a few words, what did you think of this book?" class="form-control review_body"></textarea>
                         <button id="post-review" class="btn btn-bookloop btn-sm pull-right">Post review</button>
                         <div class="clearfix"></div>
                     </div>
@@ -196,7 +196,7 @@
             	<input type="hidden" value="<%= current_user.id %>" id="user_id">
             	<input type="hidden" value="<%= @book.id %>" id="book_id">
                 <div id="add-review">
-					<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
+					<textarea class="book-show-review form-control" placeholder="Write your review here..."></textarea>
 					<p id="review-modal-action"> 
 						<button class="btn btn-sm btn-bookloop" id="post-review-book-show">Review this book</button>
 					</p>
