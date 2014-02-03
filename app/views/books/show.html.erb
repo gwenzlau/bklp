@@ -196,11 +196,9 @@
             	<input type="hidden" value="<%= current_user.id %>" id="user_id">
             	<input type="hidden" value="<%= @book.id %>" id="book_id">
                 <div id="add-review">
-					
-                        <textarea id="review_body" placeholder="In a few words, what did you think of this book?" class="form-control"></textarea>
-                        
+					<textarea id="review_body" class="book-show-review form-control" placeholder="Write your review here..."></textarea>
 					<p id="review-modal-action"> 
-						<button class="btn btn-sm btn-bookloop" id="post-review">Review this book</button>
+						<button class="btn btn-sm btn-bookloop" id="post-review-book-show">Review this book</button>
 					</p>
 				</div>
             </div>
