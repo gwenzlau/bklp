@@ -78,7 +78,7 @@
 									<p>
 										<strong>You</strong> said:<br>
 										<%=  review.body %>
-										<%= link_to 'Edit', edit_review_path(review) %>  | <%= link_to '-', review_path(review), :confirm => 'Are you sure?', :method => :delete, :class => "remove-review" %>
+										<%= link_to '-', review_path(review), :confirm => 'Are you sure?', :method => :delete, :class => "remove-review" %>
 									</p>
 
 									<% else %>
