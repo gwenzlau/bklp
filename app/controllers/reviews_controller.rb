@@ -39,7 +39,22 @@ def create
     @review = Review.new
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
   def destroy
+    @review = Review.find(params[:id])
+
+    respond_to do |format|
+      if @review.destroy! && @review.user == current_user
+        format.html { redirect_to book_path(@review.book_id), flash: { success: "Review deleted."} }
+      else
+        format.html { redirect_to book_path(@review.book_id), flash: { error: "Sorry, the review wasn't deleted!"} }
+      end
+
+      format.js
+    end
   end
   
   private

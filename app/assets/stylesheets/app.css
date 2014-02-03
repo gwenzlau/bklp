@@ -710,6 +710,14 @@ form.new_acomment input.comment-field {
 #review-form p {
 	text-align: center;
 }
+.remove-review  {
+	margin-left: 10px;
+	font-size: 11px;
+	background: url(https://s3.amazonaws.com/bklp/trash.png) center center no-repeat;
+	padding: 8px;
+	background-size: 100%;
+	opacity: 0.8;
+}
 
 /* modals
 ------------------------*/
@@ -817,6 +825,7 @@ form.new_acomment input.comment-field {
 #review-modal-action {
 	text-align: right;
 }
+
 
 
 /* profile page
