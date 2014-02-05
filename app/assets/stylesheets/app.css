@@ -5,6 +5,10 @@ color: #4095f1;
 text-decoration: none;
 }
 
+a.follow {
+	border-radius: 3px !important;
+}
+
 strong {
 font-weight: bold;
 color: rgb(54, 53, 53);
