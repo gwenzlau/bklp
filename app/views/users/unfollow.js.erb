@@ -1,0 +1,2 @@
+$('a.connect').replaceWith("<%= j link_to('Follow', follow_user_path(@user), class: 'btn btn-default btn-sm pull-right follow connect', remote: :true) %>");
+$('button.message-user').hide();
