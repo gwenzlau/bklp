@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :readlist_future, :readlist_past]
+  before_action :set_user, only: [:show, :readlist_future, :readlist_past, :recommendations, :follow, :unfollow]
   before_action :set_api, only: [:goodread_search, :add_goodreads]
-  
+
   def create
     # Create the user from params
     @user = User.new(params[:user])
@@ -31,10 +31,10 @@ class UsersController < ApplicationController
     @conversation = Conversation.new
     @conversation.messages.build
     @conversation.participants.build
-    
+
     @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book").limit(4)
     @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author").limit(6)
-    
+
     if signed_in?
       @new_comment = Acomment.new
     end
@@ -49,7 +49,6 @@ class UsersController < ApplicationController
   end
 
   def recommendations
-    @user = User.find(params[:id])
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
     @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
@@ -57,35 +56,33 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user = User.find(params[:id])
-    if current_user
-     if current_user == @user
-      flash[:error] = "You cannot follow yourself."
-      redirect_to current_user
-     else
-      current_user.follow(@user)
-      redirect_to current_user
-     # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
-      flash[:notice] = "You are now following #{@user.name}."
+    respond_to do |format|
+      if current_user
+        if current_user == @user
+          format.html { redirect_to current_user, alert: "You can't follow yourself." }
+        else
+          current_user.follow(@user)
+          format.html { redirect_to @user, notice: "You are now following #{@user.name}." }
+          format.js
+          # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+        end
+      else
+        format.html { redirect_to root_path, alert: "You must <a href='/users/sign_in'>login</a> to follow #{@user.name}.".html_safe }
       end
-  else
-    flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.name}.".html_safe
-    redirect_to root_path
+    end
   end
-end
 
-def unfollow
-  @user = User.find(params[:id])
-
-  if current_user
-    current_user.stop_following(@user)
-    flash[:notice] = "You are no longer following #{@user.name}."
-    redirect_to root_path
-  else
-    flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe
-    redirect_to root_path
+  def unfollow
+    respond_to do |format|
+      if current_user
+        current_user.stop_following(@user)
+        format.html { redirect_to root_path, notice: "You are no longer following #{@user.name}." }
+        format.js
+      else
+        format.html { redirect_to @user, alert: "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.name}.".html_safe }
+      end
+    end
   end
-end
 
   private
 

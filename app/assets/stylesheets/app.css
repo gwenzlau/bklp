@@ -5,7 +5,8 @@ color: #4095f1;
 text-decoration: none;
 }
 
-a.follow {
+a.follow,
+a.unfollow {
 	border-radius: 3px !important;
 }
 

@@ -1,0 +1,2 @@
+$('a.connect').replaceWith("<%= j link_to('Unfollow', unfollow_user_path(@user), class: 'btn btn-default btn-sm pull-right unfollow connect', remote: :true) %>");
+$('a.connect').after("<button class='btn btn-bookloop btn-sm pull-right message-user' data-toggle='modal' data-target='#newMessageModal'><img src='https://s3.amazonaws.com/bklp/message_icon_new.png'></button>");
