@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   has_many :conversations, through: :participants
 
   has_many :memberships, dependent: :destroy
-  has_many :groups, through: :memberships
+  has_many :member_of_groups, through: :memberships, source: :group
+  has_many :groups
 
   def to_param
     "#{id}-#{name.parameterize}"
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def join!(group)
-    memberships.create!(group: group)
+    memberships.create!(group: group, approved: (group.public? ? true : nil) || group.owner?(self))
   end
 
   def leave!(group)

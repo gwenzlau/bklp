@@ -1,0 +1,23 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <%= render 'layouts/sidebar' %>
+        <div class="col-md-9 col-md-offset-1" id="conversation">
+          <%= link_to 'Delete group', @group, method: :delete, confirm: 'Do you really wish to delete this group?', class: 'btn btn-danger pull-right' if @group.owner?(current_user) %>
+          <label><%= @group.title %> &mdash; Created by <%= @group.user.name %></label>
+          <p><%= simple_format @group.description %></p>
+
+          <hr />
+
+          <h3>Members</h3>
+          <ul>
+            <% @members.each do |m| %>
+              <li><%= link_to m.name, m %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,8 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :members, through: :memberships, source: :user
 
+  validates :title, presence: true
+
   def to_param
     "#{id}-#{title.parameterize}"
   end
@@ -17,6 +19,6 @@ class Group < ActiveRecord::Base
   private
 
   def create_membership
-    Membership.create!(user: self.user, group: self, approved: true)
+    self.user.join!(self)
   end
 end

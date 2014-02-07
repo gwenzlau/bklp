@@ -1,5 +1,4 @@
 Booksy::Application.routes.draw do
-  get "messages/create"
   root 'pages#home'
 
   resources :conversations do
@@ -7,17 +6,8 @@ Booksy::Application.routes.draw do
   end
 
   resources :groups do
-    member do
-      get :join_request
+    resources :grequests do
 
-      post :do_join_request
-      post :accept_join_request
-
-      delete :decline_join_request
-      delete :cancel_join_request
-
-      post :add_member
-      delete :delete_member
     end
   end
 

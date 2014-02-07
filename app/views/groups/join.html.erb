@@ -1,0 +1,19 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <%= render 'layouts/sidebar' %>
+        <div class="col-md-9 col-md-offset-1" id="conversation">
+          <label><%= @group.title %></label>
+
+          <% if @join_status && @join_status.approved.nil? %>
+            Cancel join request
+          <% else %>
+            Join form here
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
