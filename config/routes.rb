@@ -6,9 +6,24 @@ Booksy::Application.routes.draw do
     resources :messages, only: [:create, :destroy]
   end
 
+  resources :groups do
+    member do
+      get :join_request
+
+      post :do_join_request
+      post :accept_join_request
+
+      delete :decline_join_request
+      delete :cancel_join_request
+
+      post :add_member
+      delete :delete_member
+    end
+  end
+
   resources :reviews
   resources :authors
-  
+
   resources :archives do
     member do
       post :future_list
@@ -26,7 +41,7 @@ Booksy::Application.routes.draw do
 
   resources :collections
   resources :acomments
-  
+
   resources :recommends do
     member do
       get :top_book
