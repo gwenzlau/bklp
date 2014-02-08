@@ -8,9 +8,8 @@ Booksy::Application.routes.draw do
   resources :groups do
     resources :memberships, only: [:create, :destroy] do
       member do
-        delete :cancel
         post :decline
-
+        post :leave
         post :accept
       end
     end

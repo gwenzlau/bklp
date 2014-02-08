@@ -1,33 +1,62 @@
 class MembershipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_group, only: [:create, :accept]
 
   def create
-    @membership = current_user.join!(@group)
+    unless current_user.member?(@group)
+      @membership = current_user.join!(@group)
 
-    unless @membership.approved?
-      redirect_to groups_path, notice: "You'll be notified when you're accepted to the group."
+      unless @membership.approved?
+        redirect_to groups_path, notice: "You'll be notified when you're accepted to the group."
+      else
+        redirect_to @group
+      end
     else
-      redirect_to @group
+      redirect_to @group, alert: 'You are already a member of this group. Silly.'
     end
   end
 
   def accept
-    if @group.accept!(params[:user_id])
-      redirect_to @group, notice: 'User accepted & notified.'
+    if @group.owner?(current_user)
+      if @group.accept!(params[:user_id])
+        redirect_to @group, notice: 'User accepted & notified.'
+      else
+        redirect_to @group, alert: 'Something went wrong. Try again.'
+      end
     else
-      redirect_to @group, alert: 'Something went wrong. Try again.'
+      redirect_to @group, alert: "You don't have permission to do that."
     end
   end
 
   def decline
   end
 
-  def cancel
+  def leave
+     @membership = Membership.find params[:id]
+
+    if current_user.member?(@membership.group)
+      if @membership.user.leave!(@membership.group)
+        redirect_to groups_path, notice: "You've left the group successfully."
+      else
+        redirect_to @membership.group, alert: 'Something went wrong. Try again.'
+      end
+    else
+      redirect_to @membership.group, alert: "You don't have permission to do that."
+    end
   end
 
   def destroy
     @membership = Membership.find params[:id]
-    @membership.user.leave!(@membership.group)
+
+    if @membership.group.owner?(current_user)
+      if @membership.user.leave!(@membership.group)
+        redirect_to groups_path, notice: "This user has been removed from the group."
+      else
+        redirect_to @membership.group, alert: 'Something went wrong. Try again.'
+      end
+    else
+      redirect_to @membership.group, alert: "You don't have permission to do that."
+    end
   end
 
   private

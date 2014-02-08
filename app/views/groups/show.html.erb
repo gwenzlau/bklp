@@ -5,6 +5,14 @@
         <%= render 'layouts/sidebar' %>
         <div class="col-md-9 col-md-offset-1" id="conversation">
           <%= link_to 'Delete group', @group, method: :delete, confirm: 'Do you really wish to delete this group?', class: 'btn btn-danger pull-right' if @group.owner?(current_user) %>
+          <%= link_to 'Leave group', leave_group_membership_path(@group, @status), method: :post, confirm: 'Are you sure you wish to leave this group?', class: 'btn btn-default' if current_user.member?(@group) && !@group.owner?(current_user) %></li>
+
+          <% unless current_user.member?(@group) %>
+            <%= simple_form_for [@group, Membership.new] do |f| %>
+              <%= f.submit (@group.public? ? 'Join' : 'Request to join'), class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+
           <label><%= @group.title %> &mdash; Created by <%= @group.user.name %></label>
           <p><%= simple_format @group.description %></p>
 

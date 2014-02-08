@@ -7,10 +7,10 @@
           <label><%= @group.title %></label>
 
           <% if @status %>
-            Cancel
+            <%= link_to 'Cancel join request', leave_group_membership_path(@group, @status), method: :post, confirm: 'Are you sure you wish to cancel your membership request?', class: 'btn btn-danger' %></li>
           <% else %>
             <%= simple_form_for [@group, @membership] do |f| %>
-              <%= f.submit 'Request to join', class: 'btn btn-primary' %>
+              <%= f.submit (@group.public? ? 'Join' : 'Request to join'), class: 'btn btn-primary' %>
             <% end %>
           <% end %>
 
