@@ -16,6 +16,10 @@ class Group < ActiveRecord::Base
     self.user == user
   end
 
+  def accept!(user_id)
+    self.memberships.update(user_id, approved: true)
+  end
+
   private
 
   def create_membership

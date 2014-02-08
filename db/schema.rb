@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140207100150) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
     t.integer  "user_id"
@@ -37,9 +34,9 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -57,8 +54,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.string   "name"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "archives", force: true do |t|
     t.integer  "user_id"
@@ -93,8 +90,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "updated_at"
   end
 
-  add_index "commentaries", ["discussion_id"], name: "index_commentaries_on_discussion_id", using: :btree
-  add_index "commentaries", ["user_id"], name: "index_commentaries_on_user_id", using: :btree
+  add_index "commentaries", ["discussion_id"], name: "index_commentaries_on_discussion_id"
+  add_index "commentaries", ["user_id"], name: "index_commentaries_on_user_id"
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -107,9 +104,9 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "conversations", force: true do |t|
     t.integer  "messages_count"
@@ -128,8 +125,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.text     "message"
   end
 
-  add_index "discussions", ["book_id"], name: "index_discussions_on_book_id", using: :btree
-  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id", using: :btree
+  add_index "discussions", ["book_id"], name: "index_discussions_on_book_id"
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -141,8 +138,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
   create_table "groups", force: true do |t|
     t.string   "title"
@@ -163,7 +160,7 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.string   "note"
   end
 
-  add_index "links", ["user_id"], name: "index_links_on_user_id", using: :btree
+  add_index "links", ["user_id"], name: "index_links_on_user_id"
 
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
@@ -199,7 +196,7 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
 
   create_table "recommends", force: true do |t|
     t.integer  "user_id"
@@ -210,7 +207,7 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.integer  "author_id"
   end
 
-  add_index "recommends", ["user_id"], name: "index_recommends_on_user_id", using: :btree
+  add_index "recommends", ["user_id"], name: "index_recommends_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.datetime "created_at"
@@ -220,8 +217,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.integer  "book_id"
   end
 
-  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -243,8 +240,8 @@ ActiveRecord::Schema.define(version: 20140207100150) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "works", force: true do |t|
     t.integer  "book_id"

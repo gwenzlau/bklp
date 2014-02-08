@@ -6,8 +6,13 @@ Booksy::Application.routes.draw do
   end
 
   resources :groups do
-    resources :grequests do
+    resources :memberships, only: [:create, :destroy] do
+      member do
+        delete :cancel
+        post :decline
 
+        post :accept
+      end
     end
   end
 

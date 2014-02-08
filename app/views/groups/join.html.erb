@@ -9,7 +9,9 @@
           <% if @join_status && @join_status.approved.nil? %>
             Cancel join request
           <% else %>
-            Join form here
+            <%= simple_form_for [@group, @membership] do |f| %>
+              <%= f.submit 'Request to join', class: 'btn btn-primary' %>
+            <% end %>
           <% end %>
 
         </div>

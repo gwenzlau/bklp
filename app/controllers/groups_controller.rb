@@ -24,9 +24,10 @@ class GroupsController < ApplicationController
     @join_status = current_user.member?(@group)
 
     unless @group.public? || (@join_status && @join_status.approved?)
+      @membership = @group.memberships.build
       render 'groups/join'
     else
-      @members = @group.members
+      @memberships = @group.memberships
     end
   end
 
