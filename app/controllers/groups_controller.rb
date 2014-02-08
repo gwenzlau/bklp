@@ -21,9 +21,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @join_status = current_user.member?(@group)
+    @status = @group.memberships.find_by(user: current_user)
 
-    unless @group.public? || (@join_status && @join_status.approved?)
+    unless @group.public? || (@status && @status.approved?)
       @membership = @group.memberships.build
       render 'groups/join'
     else

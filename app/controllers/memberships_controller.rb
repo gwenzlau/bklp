@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_group
+  before_action :set_group, only: [:create, :accept]
 
   def create
     @membership = current_user.join!(@group)
@@ -27,7 +27,7 @@ class MembershipsController < ApplicationController
 
   def destroy
     @membership = Membership.find params[:id]
-    @membership.user.leave!(@group)
+    @membership.user.leave!(@membership.group)
   end
 
   private

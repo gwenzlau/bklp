@@ -6,8 +6,8 @@
         <div class="col-md-9 col-md-offset-1" id="conversation">
           <label><%= @group.title %></label>
 
-          <% if @join_status && @join_status.approved.nil? %>
-            Cancel join request
+          <% if @status %>
+            Cancel
           <% else %>
             <%= simple_form_for [@group, @membership] do |f| %>
               <%= f.submit 'Request to join', class: 'btn btn-primary' %>
