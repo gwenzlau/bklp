@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123161039) do
+ActiveRecord::Schema.define(version: 20140207100150) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140123161039) do
     t.integer  "status"
     t.string   "isbn"
     t.text     "description"
-    t.integer  "book_id"
   end
 
   create_table "commentaries", force: true do |t|
@@ -142,37 +141,13 @@ ActiveRecord::Schema.define(version: 20140123161039) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
-  create_table "group_books", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_discussions", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_users", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "approved"
-  end
-
   create_table "groups", force: true do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.text     "description"
+    t.boolean  "public"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public"
   end
 
   create_table "links", force: true do |t|
@@ -186,6 +161,14 @@ ActiveRecord::Schema.define(version: 20140123161039) do
   end
 
   add_index "links", ["user_id"], name: "index_links_on_user_id"
+
+  create_table "memberships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "approved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.integer  "user_id"
@@ -208,7 +191,7 @@ ActiveRecord::Schema.define(version: 20140123161039) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 5
+    t.integer  "year",       limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

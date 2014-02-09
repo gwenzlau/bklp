@@ -1,14 +1,23 @@
 Booksy::Application.routes.draw do
-  get "messages/create"
   root 'pages#home'
 
   resources :conversations do
     resources :messages, only: [:create, :destroy]
   end
 
+  resources :groups do
+    resources :memberships, only: [:create, :destroy] do
+      member do
+        post :accept
+        post :decline
+        post :leave
+      end
+    end
+  end
+
   resources :reviews
   resources :authors
-  
+
   resources :archives do
     member do
       post :future_list
@@ -26,7 +35,7 @@ Booksy::Application.routes.draw do
 
   resources :collections
   resources :acomments
-  
+
   resources :recommends do
     member do
       get :top_book

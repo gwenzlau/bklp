@@ -1,0 +1,27 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <%= render 'layouts/sidebar' %>
+        <div class="col-md-9 col-md-offset-1" id="conversations">
+          <%= link_to 'Create Group', new_group_path, class: 'btn btn-primary pull-right' %>
+          <label>Groups</label>
+          <% if @groups %>
+            <ul id="conversation-list">
+            <% @groups.each do |g| %>
+              <li>
+                <%= link_to g.title, g %> &mdash; Created by <%= g.user.name %>
+              </li>
+            <% end %>
+            </ul>
+          <% else %>
+            <p>
+              <hr>
+              <label><em>Sorry, you have no groups to join. How about you create your own?</em></label>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

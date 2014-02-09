@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # User collection association
   has_many :archives, dependent: :destroy
   has_many :books, through: :archives
-  
+
   has_many :links, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :commentaries, dependent: :destroy
@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
   has_many :participants
   has_many :conversations, through: :participants
 
+  has_many :memberships, dependent: :destroy
+  has_many :member_of_groups, through: :memberships, source: :group
+  has_many :groups
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   def public_params
     {
       id: id,
@@ -31,7 +39,16 @@ class User < ActiveRecord::Base
     }
   end
 
-  def to_param
-    "#{id}-#{name.parameterize}"
+  def member?(group)
+    memberships.find_by(group: group)
   end
+
+  def join!(group)
+    memberships.create!(group: group, approved: (group.public? ? true : nil) || group.owner?(self))
+  end
+
+  def leave!(group)
+    memberships.find_by(group: group).destroy
+  end
+
 end

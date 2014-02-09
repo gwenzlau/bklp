@@ -1,0 +1,48 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <%= render 'layouts/sidebar' %>
+        <div class="col-md-9 col-md-offset-1" id="conversation">
+          <%= link_to 'Delete group', @group, method: :delete, confirm: 'Do you really wish to delete this group?', class: 'btn btn-danger pull-right' if @group.owner?(current_user) %>
+          <%= link_to 'Leave group', leave_group_membership_path(@group, @status), method: :post, confirm: 'Are you sure you wish to leave this group?', class: 'btn btn-default' if current_user.member?(@group) && !@group.owner?(current_user) %></li>
+
+          <% unless current_user.member?(@group) %>
+            <%= simple_form_for [@group, Membership.new] do |f| %>
+              <%= f.submit (@group.public? ? 'Join' : 'Request to join'), class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+
+          <label><%= @group.title %> &mdash; Created by <%= @group.user.name %></label>
+          <p><%= simple_format @group.description %></p>
+
+          <% if @memberships %>
+          <hr />
+
+          <h3>Members</h3>
+          <ul>
+            <% @memberships.each do |m| %>
+              <li><%= link_to m.user.name, m.user %> <%= link_to 'Remove member', group_membership_path(@group, m), method: :delete, confirm: 'Are you sure you wish to remove this member?' if !@group.owner?(m.user) && @group.owner?(current_user) %></li>
+            <% end %>
+          </ul>
+
+          <% end %>
+
+          <% if @requests && @requests.length > 0 %>
+          <hr />
+
+          <h3>Join Requests</h3>
+
+          <ul>
+          <% @requests.each do |request| %>
+            <%= link_to request.user.name, request.user %> &mdash; <%= link_to 'Accept', accept_group_membership_path(@group, request), class: 'btn btn-success', method: :post %>
+          <% end %>
+          </ul>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

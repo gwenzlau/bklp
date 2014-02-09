@@ -1,0 +1,19 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <%= render 'layouts/sidebar' %>
+        <div class="col-md-9 col-md-offset-1" id="conversations">
+          <label>Groups</label>
+          <%= simple_form_for @group do |f| %>
+            <%= f.input :title %>
+            <%= f.input :description %>
+            <%= f.input :public, label: 'Is this a public group?' %>
+            <%= f.submit class: 'btn btn-primary' %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
