@@ -28,14 +28,14 @@
 
           <% end %>
 
-          <% if @requests %>
+          <% if @requests && @requests.length > 0 %>
           <hr />
 
           <h3>Join Requests</h3>
 
           <ul>
           <% @requests.each do |request| %>
-            <%= link_to request.user.name, request.user %> &mdash; <%#= link_to 'Accept', accept_group_membership_path([@group, request]), method: :post %>
+            <%= link_to request.user.name, request.user %> &mdash; <%= link_to 'Accept', accept_group_membership_path(@group, request), class: 'btn btn-success', method: :post %>
           <% end %>
           </ul>
 

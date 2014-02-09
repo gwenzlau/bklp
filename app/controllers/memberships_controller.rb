@@ -17,10 +17,11 @@ class MembershipsController < ApplicationController
   end
 
   def accept
-    @user = User.find(params[:user_id])
+    @membership = Membership.find(params[:id])
+    @user = @membership.user
 
-    if @group.owner?(current_user) && !@user.member?(@group)
-      if @group.accept!(@user)
+    if @group.owner?(current_user)# && !@user.member?(@group)
+      if @group.accept!(@membership)
         # Notifier.some_mailer_method(@user)
         redirect_to @group, notice: "#{@user.name} has been accepted & notified about joining the group."
       else
