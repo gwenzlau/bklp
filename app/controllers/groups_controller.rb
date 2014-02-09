@@ -27,7 +27,8 @@ class GroupsController < ApplicationController
       @membership = @group.memberships.build
       render 'groups/join'
     else
-      @memberships = @group.memberships
+      @memberships = @group.memberships.approved
+      @requests = @group.memberships.unapproved if @group.owner?(current_user)
     end
   end
 

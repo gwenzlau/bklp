@@ -17,9 +17,12 @@ class MembershipsController < ApplicationController
   end
 
   def accept
-    if @group.owner?(current_user)
-      if @group.accept!(params[:user_id])
-        redirect_to @group, notice: 'User accepted & notified.'
+    @user = User.find(params[:user_id])
+
+    if @group.owner?(current_user) && !@user.member?(@group)
+      if @group.accept!(@user)
+        # Notifier.some_mailer_method(@user)
+        redirect_to @group, notice: "#{@user.name} has been accepted & notified about joining the group."
       else
         redirect_to @group, alert: 'Something went wrong. Try again.'
       end
@@ -34,7 +37,7 @@ class MembershipsController < ApplicationController
   def leave
      @membership = Membership.find params[:id]
 
-    if current_user.member?(@membership.group)
+    if current_user.member?(@membership.group) && @membership.group.owner?(current_user)
       if @membership.user.leave!(@membership.group)
         redirect_to groups_path, notice: "You've left the group successfully."
       else

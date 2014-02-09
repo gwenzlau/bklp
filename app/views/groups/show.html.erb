@@ -16,6 +16,7 @@
           <label><%= @group.title %> &mdash; Created by <%= @group.user.name %></label>
           <p><%= simple_format @group.description %></p>
 
+          <% if @memberships %>
           <hr />
 
           <h3>Members</h3>
@@ -24,6 +25,22 @@
               <li><%= link_to m.user.name, m.user %> <%= link_to 'Remove member', group_membership_path(@group, m), method: :delete, confirm: 'Are you sure you wish to remove this member?' if !@group.owner?(m.user) && @group.owner?(current_user) %></li>
             <% end %>
           </ul>
+
+          <% end %>
+
+          <% if @requests %>
+          <hr />
+
+          <h3>Join Requests</h3>
+
+          <ul>
+          <% @requests.each do |request| %>
+            <%= link_to request.user.name, request.user %> &mdash; <%#= link_to 'Accept', accept_group_membership_path([@group, request]), method: :post %>
+          <% end %>
+          </ul>
+
+          <% end %>
+
         </div>
       </div>
     </div>
