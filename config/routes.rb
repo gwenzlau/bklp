@@ -44,7 +44,7 @@ Booksy::Application.routes.draw do
 
   resources :activities
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations"}
   resources :users, :only => [:show, :index]
   resources :users do
     member do
