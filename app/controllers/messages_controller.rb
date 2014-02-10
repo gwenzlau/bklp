@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
 
   	respond_to do |format|
       if @message.destroy! && @message.user == current_user
+        @conversation.destroy if @conversation.messages.count == 0
         format.html { redirect_to @conversation, flash: { success: "Message deleted."} }
       else
         format.html { redirect_to @conversation, flash: { error: "The message couldn't be deleted!"} }
