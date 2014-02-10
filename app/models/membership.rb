@@ -4,4 +4,12 @@ class Membership < ActiveRecord::Base
 
   scope :approved, -> { where(approved: true) }
   scope :unapproved, -> { where(approved: false) }
+
+  after_save :notify_user, unless: :approved?
+
+  private
+
+  def notify_user
+    # Notify group owner of a request
+  end
 end
