@@ -281,6 +281,63 @@ form.new_acomment input.comment-field {
 	width: 80%;
 	display: inline;
 }
+#guide-modal .modal-title {
+	text-align: center;
+	color: #4095f1;
+}
+#guide-modal .modal-body {
+	background: #F9F9F9;
+	padding: 50px 0 0 0;
+}
+#guide-modal .modal-footer {
+	text-align: center;
+	margin-top: 0;
+}
+#guide-modal p {
+	color: #777;
+	margin-bottom: 0;
+	text-align: center;
+}
+#guide-modal .avatar {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto 30px;
+	border: 5px solid #CCC;
+}
+#guide-modal .avatar #guide-1 {
+	margin-left: -60px;
+	width: 350px;
+}
+#guide-modal .avatar #guide-2 {
+	margin-left: 0px;
+	width: 350px;
+}
+#guide-modal .avatar #guide-3 {
+	margin-left: -0px;
+	width: 300px;
+}
+#guide-modal .mini-nav {
+	width: 50px;
+	list-style: none;
+	margin: 0 auto;
+	padding-left: 0;
+}
+#guide-modal .mini-nav li {
+	display: inline;
+	font-size: 40px;
+	color: #DDD;
+	cursor: pointer;
+}
+#guide-modal .mini-nav li.active {
+	color: #4095f1;
+}
+#guide-modal .step2, #guide-modal .step3 {
+	display: none;
+}
+
+
 
 /* discover window
 ------------------------*/

@@ -42,6 +42,50 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready( function(){
+		$('#guide-modal').modal('show');
+	});
+</script>
+<!-- guide modal -->
+<div class="modal fade" id="guide-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        	<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title">Welcome to Bookloop</h4>
+	      	</div>
+            <div class="modal-body">
+            	<div class="guide-slide step1">
+	            	<div class="avatar">
+	            		<img id="guide-1" src="/assets/guide1.png"> 
+	            	</div>
+	            	<p>Search and add books that your are reading, have read or planning to read.</p>
+            	</div>
+            	<div class="guide-slide step2">
+	            	<div class="avatar">
+	            		<img id="guide-2" src="/assets/guide2.png"> 
+	            	</div>
+	            	<p>Discover and follow other readers.</p>
+            	</div>
+            	<div class="guide-slide step3">
+	            	<div class="avatar">
+	            		<img id="guide-3" src="/assets/guide3.png"> 
+	            	</div>
+	            	<p>Start discussing your favourite parts with others.</p>
+            	</div>
+            	<ul class="mini-nav">
+            		<li class="active" slide="step1">&#8226;</li>
+            		<li slide="step2">&#8226;</li>
+            		<li slide="step3">&#8226;</li>
+            	</ul>
+            </div>
+            <div class="modal-footer">
+            	<button class="btn btn-bookloop" data-dismiss="modal">Get Started!</button>
+            </div>
+        </div>
+    </div>
+</div>
 <% else %>
 <%= render 'pages/walkthru' %>
 <% end %>

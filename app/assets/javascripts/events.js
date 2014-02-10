@@ -80,7 +80,7 @@ $(document).ready( function() {
 		});
 	});
 
-	//show modal
+	// show modal
 	var vars = [], hash;
 	    var q = document.URL.split('?')[1];
 	    if(q != undefined){
@@ -94,5 +94,16 @@ $(document).ready( function() {
 	if (vars['finished'] == 'true' ) {
 		$('#finished-modal').modal('show');
 	}
+
+	// guide modal mini nav
+	$('.mini-nav li').click( function() {
+		$('.mini-nav li').removeClass('active');
+		$(this).addClass('active');
+		$('.guide-slide').hide();
+		var selector = $(this).attr('slide');
+		$('.'+selector).fadeIn('fast');
+
+	});
+	
 
 });
