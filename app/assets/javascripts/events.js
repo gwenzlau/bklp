@@ -94,6 +94,9 @@ $(document).ready( function() {
 	if (vars['finished'] == 'true' ) {
 		$('#finished-modal').modal('show');
 	}
+	if (vars['welcome'] == 'true' ) {
+		$('#guide-modal').modal('show');
+	}
 
 	// guide modal mini nav
 	$('.mini-nav li').click( function() {
