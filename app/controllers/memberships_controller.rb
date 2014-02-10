@@ -17,6 +17,7 @@ class MembershipsController < ApplicationController
   end
 
   def accept
+    # [TODO-JAMIE] DRY / COMBINE ALL METHODS HERE IN ONE METHOD, SEND IN SYMBOL
     @membership = Membership.find(params[:id])
     @user = @membership.user
 
@@ -32,13 +33,11 @@ class MembershipsController < ApplicationController
     end
   end
 
-  def decline
-  end
-
   def leave
+    # [TODO-JAMIE] DRY / COMBINE ALL METHODS HERE IN ONE METHOD, SEND IN SYMBOL
      @membership = Membership.find params[:id]
 
-    if current_user.member?(@membership.group) && @membership.group.owner?(current_user)
+    if current_user.member?(@membership.group) || @membership.group.owner?(current_user)
       if @membership.user.leave!(@membership.group)
         redirect_to groups_path, notice: "You've left the group successfully."
       else
@@ -50,6 +49,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    # [TODO-JAMIE] DRY / COMBINE ALL METHODS HERE IN ONE METHOD, SEND IN SYMBOL
     @membership = Membership.find params[:id]
 
     if @membership.group.owner?(current_user)
