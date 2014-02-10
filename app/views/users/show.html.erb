@@ -7,7 +7,7 @@
 			<div class="row">
 				<div id="profile-content">
 					<div id="profile-card">
-						<% if @user != current_user %>
+						<% if @user.id != current_user.id %>
 							<% if current_user.following?(@user) %>
 								<%= link_to "Unfollow", unfollow_user_path(@user), :class => 'btn btn-default btn-sm pull-right unfollow connect', remote: true %>
 								<button class="btn btn-bookloop btn-sm pull-right message-user" data-toggle="modal" data-target="#newMessageModal">
@@ -18,7 +18,7 @@
 							<% end %>
 						<% end %>
 
-						<% if @user == current_user %>
+						<% if @user.id == current_user.id %>
 						<a href="<%= edit_user_registration_path %>">
 							<%= image_tag @user.avatar.url, :class=>"img-circle", :mouseover =>"assets/edit-pro.png" %>
 							<div id="edit-profile-overlay">
@@ -32,9 +32,13 @@
 						<% end %>
 
 						<% if @book_current.any? %>
-							<p id="currently-reading"><%= (@user == current_user) ? "<strong>You</strong> are".html_safe : "<strong>#{@user.name}</strong> is".html_safe %> currently reading <%= @book_current.collect{ |f| link_to(Book.find(f.book_id).title, book_path("#{f.book_id}-#{Book.find(f.book_id).title.parameterize}"))}.to_sentence.html_safe %></p>
+							<% if @user.id == current_user.id %>
+								<p id="currently-reading"><strong>You</strong> are currently reading <%= @book_current.collect{ |f| link_to(Book.find(f.book_id).title, book_path("#{f.book_id}-#{Book.find(f.book_id).title.parameterize}"))}.to_sentence.html_safe %></p>
+							<% else %>
+								<p id="currently-reading"><strong><%= @user.name %></strong> is currently reading <%= @book_current.collect{ |f| link_to(Book.find(f.book_id).title, book_path("#{f.book_id}-#{Book.find(f.book_id).title.parameterize}"))}.to_sentence.html_safe %></p>
+							<% end %>
 						<% else %>
-							<% if @user == current_user %>
+							<% if @user.id == current_user.id %>
 								<p id="currently-reading"><strong>You</strong> are not reading any books at the moment.</p>
 								<form accept-charset="UTF-8" action="/books" method="get" id="secondary-search">
 									<input type="text" name="search" class="form-control" placeholder="Find a book" id="find-book">
@@ -108,30 +112,36 @@
 	</div>
 </div>
 
-	<% if signed_in? %>
-		<div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		  	<%= simple_form_for @conversation, url: conversations_path do |f| %>
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h3 class="modal-title" ><%= image_tag(@user.avatar(:thumb), :class=>"img-circle") %>Send a message to <%= @user.name %></h4>
-		      </div>
-		      <div class="modal-body" style="padding: 20px;">
-		      		<%= f.simple_fields_for :messages do |m| %>
-								<%= m.input :body, input_html: {class: 'form-control', rows: 10}, wrapper_html: {class: 'form-group'}, label: false %>
-								<%= m.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
-							<% end %>
+<% if signed_in? %>
+	<div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	  	<%= simple_form_for @conversation, url: conversations_path do |f| %>
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h3 class="modal-title" ><%= image_tag(@user.avatar(:thumb), :class=>"img-circle") %>Send a message to <%= @user.name %></h4>
+	      </div>
+	      <div class="modal-body" style="padding: 20px;">
+	      		<%= f.simple_fields_for :messages do |m| %>
+							<%= m.input :body, input_html: {class: 'form-control', rows: 10}, wrapper_html: {class: 'form-group'}, label: false %>
 
-							<%= hidden_field_tag :recipient_id, @user.id %>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-		        <%= f.submit "Send", class: 'btn btn-bookloop' %>
-		      </div>
-		    </div><!-- /.modal-content -->
-		    <% end %>
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-	<% end %>
+							<%= m.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
+						<% end %>
+
+						<%= hidden_field_tag :recipient_id, @user.id %>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        <%= f.button :submit, "Send", class: 'btn btn-bookloop' %>
+	      </div>
+	    </div><!-- /.modal-content -->
+	    <% end %>
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 <% end %>
+
+
+<% end %>
+
+
+

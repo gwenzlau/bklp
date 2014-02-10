@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @conversation = current_user.conversations.build(conversation_params)
+    @conversation = current_user.conversations.build(conversation_params)    
 
     if @conversation.save
 
@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 
   def destroy
     @conversation = Conversation.find params[:id]
-
+    
     if @conversation.owner?(current_user)
       @conversation.destroy
 
