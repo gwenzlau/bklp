@@ -119,6 +119,12 @@ GEM
       mime-types
     pg (0.17.1)
     polyglot (0.3.3)
+    postmark (1.0.1)
+      json
+      rake
+    postmark-rails (0.5.2)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.0)
     public_activity (1.4.1)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -223,6 +229,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip (~> 3.0)
   pg
+  postmark-rails
   public_activity
   rails (~> 4.0.1)
   rails_12factor
