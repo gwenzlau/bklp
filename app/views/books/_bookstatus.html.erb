@@ -7,8 +7,8 @@
 		  <div class="pull-right" id="book-actions">
 			<% if @status[0].status == 1 %>
 				<% if @myrecommend.exists? %>
-				<button type="button" class="btn btn-default btn-sm" disabled>Finished and recommended!</button>
-				<button type="button" class="btn btn-default btn-sm">Send a Rec</button>
+				<button type="button" class="btn btn-bookloop btn-sm" disabled>Finished & recommended!</button>
+				<button type="button" class="btn btn-bookloop btn-sm">Send a Rec</button>
 				<% else %>
 				<button type="button" class="btn btn-default btn-sm" disabled>You've read this book</button>
 					<%= form_for(@recommend) do |f| %>
@@ -31,19 +31,19 @@
 			<%= form_for(@list_read) do |f| %>
 				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "0" %>
-				<%= f.button "Currently reading it", :class => "btn btn-default btn-sm" %>
+				<%= f.button "Currently reading it", :class => "btn btn-bookloop btn-sm" %>
 			<% end %>
 		
 			<%= form_for @list_read, :url => {:controller => :archives, :action => "past_list"} do |f| %>
 				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "1" %>
-				<%= f.button "Already read it", :class => "btn btn-default btn-sm" %>
+				<%= f.button "Already read it", :class => "btn btn-bookloop btn-sm" %>
 			<% end %>
 		
 			<%= form_for @list_read, :url => {:controller => :archives, :action => "future_list"} do |f| %>
 				<%= f.hidden_field :book_id, :value => @book.id %>
 				<%= f.hidden_field :status, :value => "2" %>
-				<%= f.button "Going to read it", :class => "btn btn-default btn-sm"%>
+				<%= f.button "Going to read it", :class => "btn btn-bookloop btn-sm"%>
 			<% end %>
 			</div>
 		<% end %>

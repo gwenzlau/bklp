@@ -26,10 +26,15 @@
 					</div>
 					<div id="book-desc">
 						<div class="row">
-							<div class="col-md-2">
-								<%= (image_tag ("http://images.amazon.com/images/P/#{@book.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
+							<div class="col-md-3">
+								<div class="book-placeholder">
+									<div class="book-action-overlay">
+										<%= render 'books/bookstatus' %>
+									</div>
+									<%= (image_tag ("http://images.amazon.com/images/P/#{@book.isbn}.01.LZZZZZZ.jpg"), :class => "book-cover")%>
+								</div>
 							</div>
-							<div class="col-md-8 col-md-offset-2">
+							<div class="col-md-9">
 								<p>
 									<%= raw(@book.description) %><br /><br />
 								</p>
