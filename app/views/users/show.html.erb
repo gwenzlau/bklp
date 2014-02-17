@@ -41,8 +41,8 @@
 							<% if @user.id == current_user.id %>
 								<p id="currently-reading"><strong>You</strong> are not reading any books at the moment.</p>
 								<form accept-charset="UTF-8" action="/books" method="get" id="secondary-search">
-									<input type="text" name="search" class="form-control" placeholder="Find a book" id="find-book">
-									<button id="secondary-search-btn" class="btn btn-bookloop">Search</button>
+									<input type="text" name="search" class="form-control" placeholder="What are your reading?" id="find-book">
+									<button id="secondary-search-btn" class="btn btn-bookloop">Add</button>
 								</form>
 							<% else %>
 								<p id="currently-reading"><strong><%= @user.name %></strong> is not reading any books at the moment.</p>
