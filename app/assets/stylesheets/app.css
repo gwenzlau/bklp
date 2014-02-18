@@ -103,6 +103,10 @@ form.new_book {
 	padding: 3px 10px;
 	display: none;
 }
+p.book-title {
+	font-size: 12px;
+	margin-top: 5px;
+}
 .navbar-form {
 	position: relative;
 }
@@ -1841,9 +1845,12 @@ input#user_current_password {
 }
 #goodread-search ul li {
 	display: inline-block;
-	margin-right: 15px;
+	margin-right: 10px;
 	margin-bottom: 15px;
+	width: 15%;
+	text-align: center;
 }
+
 .col-md-9 ul {
 	padding-left: 0;
 }
