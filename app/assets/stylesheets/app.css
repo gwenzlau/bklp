@@ -1847,3 +1847,17 @@ input#user_current_password {
 .col-md-9 ul {
 	padding-left: 0;
 }
+
+.body {
+	color: #5F5F5F;
+	font-size: 12px;
+	font-weight: 400;
+}
+.grayhead {
+	font-size: 18px; 
+	font-family: Georgia; 
+	font-style: italic; 
+	color: #999; 
+	margin-top: 15px; 
+	margin-bottom: 10px;
+}

@@ -71,6 +71,7 @@ Booksy::Application.routes.draw do
    get 'brapi', to: 'books#goodread_search'
    get 'authapi', to: 'authors#goodread_search'
    get 'discover', to: 'pages#discover'
+   get 'about', to: 'pages#about'
 
 
   get "pages/home"
