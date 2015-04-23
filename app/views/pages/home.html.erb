@@ -15,7 +15,7 @@
 				<% if user.id == current_user.id %>
 				<!-- Do nothing since this is you -->
 				<% else %>
-				<%= link_to (image_tag ("#{user.avatar(:thumb)}"), :class=>"img-circle reading-with", data: { toggle: "tooltip"}, :title => "#{user.name} in #{book.book.title}"), user_path("#{user.id}-#{user.name.parameterize}") %>
+				<%= link_to (image_tag ("#{user.avatar(:thumb)}"), :class=>"img-circle reading-with", data: { toggle: "tooltip"}, :title => "#{user.name} is also reading #{book.book.title}"), user_path("#{user.id}-#{user.name.parameterize}") %>
 				<% end %>
 			<% end %>
 		<% end %>
