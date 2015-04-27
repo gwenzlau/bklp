@@ -12,7 +12,7 @@
     				<% end %>
     				<div class="row" id="reads">
     					<% @recommended_books.each do |recbook| %> 
-							<div class="col-md-3">
+							<div class="col-md-3" id="bookrec">
 								<% if Book.find(recbook.book_id).isbn.blank? %>
 
 								<%= link_to (image_tag ("http://placehold.it/195x275"), :title => "#{Book.find(recbook.book_id).title}", data: { toggle: "tooltip"}), book_path(recbook.book_id) %>

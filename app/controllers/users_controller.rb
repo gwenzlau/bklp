@@ -32,8 +32,8 @@ class UsersController < ApplicationController
     @conversation.messages.build
     @conversation.participants.build
 
-    @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book").limit(4)
-    @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author").limit(6)
+    @recommended_books = User.find(params[:id]).recommends.where(:item_type => "book").limit(4).order("RANDOM()")
+    @recommended_authors = User.find(params[:id]).recommends.where(:item_type => "author").limit(6).order("RANDOM()")
 
     if signed_in?
       @new_comment = Acomment.new
@@ -51,8 +51,8 @@ class UsersController < ApplicationController
   def recommendations
     @client = Goodreads.new(Goodreads.configuration)
     @book = Book.where(:user_id => params[:id]).where(:status => "0")
-    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").limit(4).order("RANDOM()")
-    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").limit(6).order("RANDOM()")
+    @recommended_books = Recommend.where(:user_id => params[:id]).where(:item_type => "book").order("updated_at DESC")
+    @recommended_authors = Recommend.where(:user_id => params[:id]).where(:item_type => "author").order("updated_at DESC")
   end
 
   def follow
