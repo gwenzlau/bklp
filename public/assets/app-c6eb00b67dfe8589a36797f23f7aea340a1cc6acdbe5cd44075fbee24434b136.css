@@ -1,0 +1,1864 @@
+/* Site-wide Styles
+------------------------*/
+
+a {
+color: #4095f1;
+text-decoration: none;
+}
+
+a.follow,
+a.unfollow {
+	border-radius: 3px !important;
+}
+
+strong {
+font-weight: bold;
+color: rgb(54, 53, 53);
+}
+
+.clearfix {
+	clear: both;
+}
+.btn-bookloop {
+	background: #4095f1;
+	color: #FFF !important;
+	border: 1px solid #4095f1;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.navbar {
+	background: #FFF;
+	border-bottom: 2px solid #F5F5F5;
+}
+.navbar form input {
+	background: #f5f5f5 url(https://s3.amazonaws.com/bklp/magnifier.png) 3px 4px no-repeat;
+	border: 0;
+	box-shadow: none;
+	padding-left: 30px;
+	border-radius: 3px;
+	height: 35px;
+	-webkit-transition: all .2s;
+}
+.navbar form input:focus {
+	box-shadow: none;
+	width: 400px !important;
+	background-color: #F5F5F5 !important;
+	outline: none;
+}
+.navbar .container {
+	padding: 8px 0;
+}
+.navbar > .container .navbar-brand {
+	padding: 7px 20px 7px 7px;
+	border-right: 1px solid #F5F5F5;
+	margin-right: 7px;
+}
+.navbar > .container #profile-img a {
+	padding: 5px 20px 5px 7px;
+	border-right: 1px solid #F5F5F5;
+}
+.navbar > .container #profile-img img {
+	border-radius: 30px;
+	height: 40px;
+}
+.navbar > .container #profile-name a {
+	padding: 15px 10px;
+	color: #999;
+}
+.navbar > .container #signout {
+	margin-top: -3px;
+}
+#main {
+	margin-top: 50px;
+}
+.show {
+	display: block;
+}
+form.new_book {
+	display: inline;
+}
+#signup h2, #signin h2 {
+	text-align: center;
+}
+#signin {
+	width: 500px;
+}
+#signin form {
+	margin-bottom: 20px;
+}
+#signin a {
+	margin-right: 20px;
+}
+#autocomplete-footer {
+	text-align: center;
+	padding: 10px 0;
+	margin-top: 20px;
+}
+#brapi-search{
+	margin-top: 0px;
+	position: absolute;
+	top: 5px;
+	right: 20px;
+	font-size: 12px;
+	padding: 3px 10px;
+	display: none;
+}
+.navbar-form {
+	position: relative;
+}
+#newMessageModal img {
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+#newMessageModal .modal-title {
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	margin-bottom: 30px;
+}
+#newMessageModal textarea {
+	height: 100px;
+}
+
+/* Sidebar
+------------------------*/
+#sidebar label {
+	color: #C8C8C8;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+#sidebar .menu li a {
+	font-size: 13px;
+	font-weight: 500;
+	color: #777;
+	padding-left: 30px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+#sidebar .nav-pills > li.active > a {
+	background-color: #F5F5F5;
+}
+#sidebar .menu li a#discover {
+	background-image:url(https://s3.amazonaws.com/bklp/discover.png);
+}
+#sidebar .menu li a#group {
+	background-image:url(https://s3.amazonaws.com/bklp/groups.png);
+}
+#sidebar .menu li a#messages {
+	background-image: url(https://s3.amazonaws.com/bklp/messages.png);
+}
+#sidebar .menu li a#current {
+	background-image: url(https://s3.amazonaws.com/bklp/current.png);
+}
+#sidebar .menu li a#future {
+	background-image: url(https://s3.amazonaws.com/bklp/future.png);
+}
+#sidebar .menu li a#past {
+	background-image: url(https://s3.amazonaws.com/bklp/past.png);
+}
+#sidebar .menu li a#settings {
+	background-image: url(https://s3.amazonaws.com/bklp/settings.png);
+}
+
+/* home feed
+------------------------*/
+#activity-feed label, #following label, #currently-reading label, #book-reviews label, #discover-users label, #conversations label, #goodread-search label, #conversation label {
+	color: #C8C8C8;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 12px;
+	display: block;
+}
+label.last {
+	margin-top: 40px;
+}
+#goodread-search label {
+	margin-bottom: 30px;
+}
+.reading-with {
+	height: 40px;
+	width: 40px;
+	margin-top: 10px;
+}
+ul.recent-activity {
+	list-style: none;
+	padding-left: 0;
+}
+ul.recent-activity li {
+	margin: 20px 0;
+	/*border-bottom: 1px solid #F5F5F5;
+	padding-bottom: 20px;*/
+}
+ul.recent-activity li img {
+	border-radius: 40px;
+	height: 70px;
+	width: 70px;
+}
+ul.recent-activity li strong a {
+	color: #4095f1;
+}
+ul.recent-activity li a {
+	color: #4095f1;
+}
+ul.recent-activity li p {
+	margin-left: 20px;
+	padding: 22px 0 0px 0;
+	color: #333;
+	margin-bottom: 0;
+}
+ul.recent-activity .feed-sub a {
+	color: #AAA;
+}
+ul.recent-activity li .activity-actions {
+	margin-left: 20px;
+}
+ul.recent-activity li .activity-comments {
+	padding-bottom: 10px;
+	padding-left: 0;
+	margin-top: 14px;
+}
+ul.recent-activity li .activity-comments .new_acomment {
+	background: #F5F5F5;
+	padding: 5px 10px;
+	margin-top: 20px;
+}
+ul.recent-activity li .activity-comments .new_acomment input.comment-field {
+	border-radius: 0;
+	display: inline;
+	height: 35px;
+}
+ul.recent-activity li .activity-comments li {
+	display: block;
+	margin: 10px 0;
+}
+ul.recent-activity li .activity-comments img {
+	height: 35px;
+	width: 35px;
+	margin-right: 10px;
+}
+ul.recent-activity li .activity-comments a {
+	color: #4095f1;
+	font-weight: bold;
+}
+ul.recent-activity li .activity-comments span {
+	display: block;
+}
+ul.recent-activity li .activity-comment {
+	border-left: 5px solid #EEE;
+	padding: 5px 0 5px 10px;
+	margin-left: 20px;
+	margin-top: 10px;
+	display: block;
+	color: #888;
+}
+ul.recent-activity li p .activity-book {
+	color: #4095f1;
+}
+ul.recent-activity li ul {
+	list-style: none;
+	padding-left: 18px;
+	margin-top: 10px;
+}
+ul.recent-activity li ul li {
+	display: inline;
+	font-size: 12px;
+	margin-right: 0px;
+	border: none;
+}
+ul.recent-activity li ul li a {
+	color: #4095f1;
+}
+form.new_acomment {
+	padding: 10px 20px;
+	background: #F5F5F5;
+}
+form.new_acomment input.comment-field {
+	width: 80%;
+	display: inline;
+}
+#guide-modal .modal-title {
+	text-align: center;
+	color: #4095f1;
+}
+#guide-modal .modal-body {
+	background: #F9F9F9;
+	padding: 50px 0 0 0;
+}
+#guide-modal .modal-footer {
+	text-align: center;
+	margin-top: 0;
+}
+#guide-modal p {
+	color: #777;
+	margin-bottom: 0;
+	text-align: center;
+}
+#guide-modal .avatar {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto 30px;
+	border: 5px solid #CCC;
+}
+#guide-modal .avatar #guide-1 {
+	margin-left: -60px;
+	width: 350px;
+}
+#guide-modal .avatar #guide-2 {
+	margin-left: 0px;
+	width: 350px;
+}
+#guide-modal .avatar #guide-3 {
+	margin-left: -0px;
+	width: 300px;
+}
+#guide-modal .mini-nav {
+	width: 50px;
+	list-style: none;
+	margin: 0 auto;
+	padding-left: 0;
+}
+#guide-modal .mini-nav li {
+	display: inline;
+	font-size: 40px;
+	color: #DDD;
+	cursor: pointer;
+}
+#guide-modal .mini-nav li.active {
+	color: #4095f1;
+}
+#guide-modal .step2, #guide-modal .step3 {
+	display: none;
+}
+
+
+
+/* discover window
+------------------------*/
+#discover-window {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	top: 0;
+	display: none;
+	z-index: 99999999;
+}
+#discover-quote {
+	width: 60%;
+	margin: 120px auto 0 auto;
+}
+#discover-quote p {
+	font-size: 40px;
+	color: #FFF;
+	font-weight: 500;
+}
+#discover-quote #divider {
+	margin: 40px auto 0 auto;
+	width: 80px;
+	height: 2px;
+	border-top: 1px solid #999;
+}
+#discover-quote p.book-title {
+	color: #999;
+	font-size: 14px;
+	text-align: right;
+	font-family: Georgia;
+	font-style: italic;
+	font-weight: normal;
+	margin-top: 40px;
+}
+#discover-comment {
+	width: 60%;
+	margin: 80px auto 50px auto;
+}
+#discover-comment img {
+	border-radius: 40px;
+}
+#discover-comment span {
+	color: #999;
+	font-family: Georgia;
+	font-size: 14px;
+}
+#discover-comment span strong {
+	color: #CCC;
+	font-family: "Helvetica Neue";
+	margin-left: 15px;
+	margin-right: 10px;
+	font-weight: 500;
+}
+#discover-action {
+	text-align: center;
+	margin-top: 40px;
+}
+#discover-action #next-quote {
+	padding: 7px 10px;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #F5F5F5;
+	margin: 150px auto 0 auto;
+	border: 1px solid #F5F5F5;
+	width: 140px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+#discover-action #next-quote:hover {
+	color: #777;
+	border: 1px solid #777;
+}
+.close-discover {
+	position: absolute;
+	height: 20px;
+	width: 19px;
+	top: 20px;
+	right: 20px;
+	background: url(../images/close.png) no-repeat;
+	background-size: 90%;
+	cursor: pointer;
+}
+.close-discover:hover {
+	opacity: 0.5;
+}
+
+/* book
+------------------------*/
+#book-info h2 {
+	display: inline;
+}
+#book-info p {
+	color: #474742;
+}
+#book-info .book-cover {
+	width: 195px;
+}
+#book-author {
+	font-size: 12px;
+	color: #999 !important;
+	font-family: Georgia;
+	font-style: italic;
+	margin-top: 5px;
+}
+#book-author a {
+	color: #4095f1;
+}
+#book-info blockquote {
+	font-family: Georgia;
+	font-size: 28px;
+	font-style: italic;
+	margin-bottom: 20px;
+	border-left: 0;
+	padding: 0;
+	color: #474742;
+}
+#book-actions {
+	display: inline;
+	padding-top: 4px;
+}
+#book-actions form {
+	display: inline-block;
+}
+#book-actions button {
+	color: #777;
+}
+#currently-reading, #book-reviews {
+	margin-top: 40px;
+}
+#currently-reading input.btn {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 5px;
+}
+#currently-reading .popover a {
+	font-size: 12px;
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
+#currently-reading ul {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 15px;
+}
+#currently-reading ul li {
+	display: inline-table;
+	text-align: center;
+	width: auto;
+	margin-right: 20px;
+}
+#currently-reading ul li  a {
+	color: #4095f1;
+}
+#currently-reading ul li img {
+	border-radius: 60px;
+	display: block;
+	margin-bottom: 5px;
+	height: 70px;
+	width: 70px;
+}
+#book-reviews {
+	display: none;
+}
+#book-reviews img {
+	width: 70px;
+	height: 70px;
+}
+#book-reviews ul {
+	list-style: none;
+	padding-left: 0;
+}
+#book-reviews ul li {
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #F5F5F5;
+}
+#book-reviews ul li p {
+	margin-bottom: 0;
+}
+#book-reviews ul li a {
+	color: #4095f1;
+	font-weight: 500;
+}
+#book-nav {
+	margin: 20px 0 40px 0;
+}
+#book-nav ul {
+	list-style: none;
+	padding-left: 0;
+	border-bottom: 3px solid #DDD;
+	padding-bottom: 2px;
+}
+#book-nav ul li {
+	display: inline;
+	margin-right: 20px;
+}
+#book-nav ul li a {
+	text-decoration: none;
+	color: #C8C8C8;
+	font-size: 14px;
+}
+#book-nav ul li a.active, #book-nav ul li a:hover {
+	color: #4095f1;
+	border-bottom: 3px solid #4095f1;
+	padding-bottom: 4px;
+}
+#timeline-container {
+	height: 80px;
+	position: relative;
+	margin-top: -20px;
+}
+#timeline-container #timeline {
+	height: 10px;
+	background: #ddd;
+	top: 50%;
+	width: 100%;
+	position: absolute;
+	cursor: pointer;
+}
+#timeline-container img {
+	border-radius: 40px;
+	position: absolute;
+	top: 30%;
+	cursor: pointer;
+}
+#timeline-container .new-discussion {
+	width: 70px;
+	height: 70px;
+}
+#discussion-container {
+	border: 1px solid #DDD;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	margin-top: 30px;
+}
+#discussion-arrow {
+	height: 2px;
+}
+#book-discussions {
+	position: relative;
+}
+.show-discussion:after, .show-discussion:before {
+	top: 69px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: 9999;
+}
+#discussion-arrow {
+	left: 0;
+}
+.active-discussion {
+	margin-bottom: 60px;
+}
+#discussion-arrow:after, #discussion-arrow:before {
+	left: inherit;
+}
+.show-discussion:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #FFF;
+	border-width: 11px;
+	margin-left: -11px;
+	margin-top: 2px;
+}
+.show-discussion:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #DDD;
+	border-width: 12px;
+	margin-left: -12px;
+}
+#discussion-container #discussion-action {
+	background: #F9F9F9;
+	padding: 10px 20px;
+	border-top: 1px solid #ddd;
+}
+#discussion-container #discussion-action button {
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#discussion-form {
+	padding: 10px 20px;
+}
+#tooltip-span {
+	display: none;
+	border: 1px solid #4095f1;
+	color: #4095f1;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-weight: 500;
+	font-size: 12px;
+	background: #FFF;
+	z-index: 99999999;
+}
+#plus-sign {
+	display: none;
+	z-index: 9999999;
+	background: #4095f1;
+	color: #FFF;
+	border: 1px solid #4095f1;
+	border-radius: 50%;
+	padding-left: 6.2px;
+	z-index: 999999999999;
+}
+#where {
+	color: #333;
+	font-weight: 300;
+}
+#timeline {
+	margin-top: 40px;
+}
+#timeline:hover #tooltip-span, #timeline:hover #plus-sign {
+	display:inline;
+    position:fixed;
+}
+#timeline:hover #plus-sign {
+	height: 24px;
+	width: 23px;
+}
+#discussion-form #posted-by {
+	font-size: 12px;
+	margin-top: 10px;
+}
+#discussion-form textarea#discussion-form-quote {
+	font-family: "minion pro", Georgia;
+	font-style: italic;
+	font-size: 30px;
+	background: none;
+	box-shadow: none;
+	border: 0;
+	outline: none;
+	font-weight: 200;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 15px;
+	margin-top: 20px;
+}
+#discussion-form textarea#discussion-form-comment {
+	font-size: 22px;
+	background: none;
+	font-weight: 200;
+	box-shadow: none;
+	border: 0;
+	outline: none;
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+#discussion-form #page-number, #discussion-form #total-pages {
+	background: none;
+	outline: none;
+	box-shadow: none;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	width: 50px;
+	text-align: center;
+	color: #4095f1;
+}
+#discussion-form span {
+	color: #999;
+}
+#book-suggestions {
+	display: none;
+}
+#book-suggestions a {
+	color: #4095f1;
+	margin-top: 10px;
+	font-weight: 500;
+	display: block;
+}
+#book-suggestions img {
+	border-radius: 3px;
+	width: 195px;
+	height: 295px;
+}
+#book-reviews .row .col-md-6 {
+	margin-bottom: 40px;
+}
+#book-reviews img {
+	border-radius: 60px;
+}
+#book-reviews .review-content {
+	padding: 20px 20px;
+	border: 1px solid #C8C8C8;
+	border-radius: 3px;
+	width: 80%;
+	float: right;
+}
+#book-reviews .review-content p {
+	color: #777;
+}
+#book-reviews .review-content:after, #book-reviews .review-content:before {
+	right: 77.8%;
+	top: 24%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	z-index: 9999;
+}
+#book-reviews .review-content:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #FFF;
+	border-width: 5px;
+	margin-top: -5px;
+}
+#book-reviews .review-content:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-right-color: #AAA;
+	border-width: 6px;
+	margin-top: -6px;
+}
+#book-discussions {
+	display: none;
+}
+.book-show-review {
+	width: 100%;
+	margin-bottom: 30px;
+	height: 90px !important;
+	border-radius: 0;
+}
+#review-form p {
+	text-align: center;
+}
+.remove-review  {
+	margin-left: 10px;
+	font-size: 11px;
+	background: url(https://s3.amazonaws.com/bklp/trash.png) center center no-repeat;
+	padding: 8px;
+	background-size: 100%;
+	opacity: 0.8;
+}
+#book-desc .col-md-3 {
+	position: relative;
+}
+.book-action-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0);
+	transition: all 0.3s ease;
+	display: none;
+	padding: 45% 0 0 0;
+}
+.book-placeholder {
+	position: relative;
+	text-align: center
+}
+
+#book-desc .col-md-3:hover .book-action-overlay {
+	background-color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	display: inline-block;
+	transition: all 0.3s ease;
+}
+.book-action-overlay button {
+	margin-bottom: 10px;
+	width: 150px;
+}
+.book-action-overlay .btn-bookloop {
+	background: transparent;
+	border: 1px solid #F9F9F9;
+}
+
+/* modals
+------------------------*/
+.modal {
+	border-radius: 0;
+}
+.modal .modal-content {
+	border-radius: inherit;
+}
+.modal .modal-body {
+	padding: 0;
+}
+.modal .modal-actions {
+	text-align: center;
+	border-bottom: 1px solid #DDD;
+	padding: 50px 0;
+}
+.modal-actions:after, .modal-actions:before {
+	top: 18.9%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.modal-actions:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #FFF;
+	border-width: 8px;
+	margin-left: -8px;
+}
+.modal-actions:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #BBB;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.modal .modal-comment {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+}
+.modal .modal-comment textarea {
+	border-radius: 0;
+	font-family: Georgia;
+	font-size: 12px;
+	font-style: italic;
+	height: 100px;
+}
+.modal-comment:after, .modal-comment:before {
+	top: 42.4%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.modal-comment:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #FFF;
+	border-width: 8px;
+	margin-left: -8px;
+}
+.modal-comment:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #BBB;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.modal .modal-recommendations {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+	min-height: 280px;
+}
+.modal .modal-recommendations p {
+	font-size: 12px;
+}
+.modal .modal-recommendations p.lead {
+	font-size: 16px;
+	margin-bottom: 0;
+}
+.modal .modal-btncontainer {
+	padding: 30px 20px;
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+}
+.modal .modal-btncontainer button {
+	background: #4095f1;
+	color: #FFF;
+}
+.modal .modal-recommendations #book-covers {
+	margin-top: 20px;
+}
+#review-modal {
+	margin-top: 100px;
+	outline: none;
+}
+#review-modal .modal-body {
+	padding: 20px;
+}
+#review-modal-action {
+	text-align: right;
+}
+
+
+
+/* profile page
+------------------------*/
+#profile-content {
+	width: 860px;
+	margin: 0 auto;
+}
+#profile-content #profile-card {
+	text-align: center;
+}
+#profile-content #profile-card button {
+	margin-left: 10px;
+}
+#profile-content #profile-card a {
+	display: inline-block;
+	position: relative;
+	border-radius: 50%;
+}
+#profile-content #profile-card a #edit-profile-overlay {
+	background: rgba(0,0,0,0);
+	color: #FFF;
+	z-index: 99999;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+#profile-content #profile-card a #overlay-edit {
+	width: 70px;
+	padding: 5px;
+	border: 1px solid #f9f9f9;
+	border-radius: 3px;
+	margin: 55px auto 0 auto;
+	color: #FFF;
+	opacity: 0;
+}
+#profile-content #profile-card a:hover #overlay-edit {
+	opacity: 1;
+}
+#profile-content #profile-card a:hover #edit-profile-overlay {
+	background: rgba(0,0,0,0.7);
+	color: #FFF;
+}
+#profile-content #profile-card img {
+	width: 144px;
+	height: 144px;
+}
+#profile-content #profile-card button img {
+	height: 15px;
+	width: auto;
+	margin-top: -2px;
+}
+#profile-content #profile-card #user-name {
+	font-size: 24px;
+	font-weight: bold;
+	color: #2a2a2a;
+	margin-top: 20px;
+}
+#profile-content #profile-card #currently-reading {
+	font-size: 18px;
+	font-family: Georgia;
+	font-style: italic;
+	color: #999;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+#profile-content #profile-card button a {
+	color: #555;
+	text-decoration: none;
+}
+#profile-content #recommended-reads img {
+	width: 180px;
+}
+#profile-content #recommended-reads, #profile-content #future-reads, #profile-content #past-reads, #profile-content #recommended-authors {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 300;
+	color: #CCC;
+	text-align: center;
+	margin: 50px auto 0 auto;
+}
+#profile-content #recommended-reads p, #profile-content #future-reads p, #profile-content #past-reads p, #profile-content #recommended-authors p {
+	margin-bottom: 30px;
+	border-top: 1px solid #F1F1F1;
+	border-bottom: 1px solid #F1F1F1;
+	padding: 10px;
+	font-size: 12px;
+}
+#profile-content #recommended-reads ul, #profile-content #future-reads ul, #profile-content #past-reads ul {
+	list-style: none;
+	padding-left: 0;
+}
+#profile-content #recommended-reads ul li, #profile-content #future-reads ul li, #profile-content #past-reads ul li {
+	text-align: left;
+	padding-bottom: 10px;
+}
+#profile-content #recommended-reads ul li a, #profile-content #future-reads ul li a, #profile-content #past-reads ul li a {
+	color: #2a2a2a;
+	font-size: 18px;
+	text-transform: none;
+	font-weight: 500;
+}
+#profile-content #profile-card-img {
+	border-radius: 50%;
+	width: 150px;
+	margin: 0 auto;
+	position: relative;
+}
+.past-read-author {
+	text-transform: none;
+	font-size: 12px;
+	font-family: Georgia;
+	font-style: italic;
+	display: block;
+}
+#profile-content #past-reads ul li .past-read-author a, #profile-content #future-reads ul li .past-read-author a  {
+	font-size: 12px;
+	color: #777;
+}
+.author-avatar {
+	width: 80px;
+	margin: 0 auto 5px auto;
+	overflow: hidden;
+	border-radius: 50%;
+	height: 80px;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+#recommended-authors .col-md-2 a {
+	text-transform: none;
+	font-size: 11px;
+	color: #777;
+}
+.auth-pro {
+	width: 100px;
+}
+#find-book {
+	background: #f5f5f5 url(https://s3.amazonaws.com/bklp/magnifier.png) 3px 4px no-repeat;
+	border: 0;
+	box-shadow: none;
+	padding-left: 30px;
+	border-radius: 3px;
+	height: 35px;
+	width: 70%;
+	margin: 0 auto;
+	-webkit-transition: all .2s;
+}
+#secondary-search {
+	position: relative;
+	width: auto;
+	text-align: center;
+}
+#secondary-search input {
+	display: inline;
+}
+#secondary-search-btn {
+	display: inline;
+}
+
+
+/* modals
+------------------------*/
+.modal {
+        border-radius: 0;
+}
+.modal .modal-content {
+        border-radius: inherit;
+}
+.modal .modal-body {
+        padding: 0;
+}
+.modal .modal-actions {
+        text-align: center;
+        border-bottom: 1px solid #DDD;
+        padding: 50px 0;
+}
+.modal-actions:after, .modal-actions:before {
+        top: 18.9%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+}
+.modal-actions:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #FFF;
+        border-width: 8px;
+        margin-left: -8px;
+}
+.modal-actions:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: #BBB;
+        border-width: 9px;
+        margin-left: -9px;
+}
+.modal .modal-comment {
+        padding: 30px 20px;
+        border-bottom: 1px solid #DDD;
+        height: 181px;
+}
+.modal .modal-comment textarea {
+        border-radius: 0;
+        font-family: Georgia;
+        font-size: 12px;
+        font-style: italic;
+        height: 80px;
+        margin-bottom: 10px;
+}
+.modal #modal-comment-success {
+	margin-top: 50px;
+	text-align: center;
+	color: #4095f1;
+	display: none;
+}
+.modal-comment:after, .modal-comment:before {
+        top: 45.3%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+}
+.modal-comment:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #FFF;
+        border-width: 8px;
+        margin-left: -8px;
+}
+.modal-comment:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: #BBB;
+        border-width: 9px;
+        margin-left: -9px;
+}
+.modal .modal-recommendations {
+        padding: 30px 20px;
+        border-bottom: 1px solid #DDD;
+        text-align: center;
+}
+.modal .modal-recommendations p {
+        font-size: 12px;
+}
+.modal .modal-recommendations p.lead {
+        font-size: 16px;
+        margin-bottom: 0;
+}
+.modal .modal-btncontainer {
+        padding: 30px 20px;
+        border-bottom: 1px solid #DDD;
+        text-align: center;
+}
+.modal .modal-btncontainer button {
+        background: #4095f1;
+        color: #FFF;
+}
+.modal .modal-recommendations #book-covers {
+        margin-top: 20px;
+}
+.modal .modal-recommendations #book-covers img {
+	width: 115px;
+	height: 177px;
+}
+#recommend-success {
+	display: none;
+}
+
+
+/* autocomplete
+------------------------*/
+.tt-dropdown-menu {
+    width: 500px;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.tt-suggestion {
+    padding: 8px 20px;
+    border-bottom: 1px solid #F5F5F5;
+}
+.tt-suggestion.tt-is-under-cursor {
+    color: #fff;
+    color: #fff;
+    background-color: #F5F5F5;
+}
+.tt-suggestion p {
+    margin-bottom: 10px;
+}
+.autocomplete a {
+	margin-bottom: -15px;
+	display: block;
+}
+
+/* author
+------------------------*/
+#author-avatar {
+	width: 200px;
+	border-radius: 50%;
+	height: 200px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #ddd;
+}
+#author-avatar img {
+	margin-left: 0px;
+	width: 220px;
+}
+.new_recommend {
+	text-align: center;
+}
+#authored {
+	padding-left: 0;
+	list-style: none;
+}
+#authored li {
+	display: inline;
+}
+
+/* profile edit
+------------------------*/
+#profile-cancel {
+	width: 500px;
+	margin: 0 auto;
+}
+#profile-card-title {
+	color: #777;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#profile-card-edit {
+	text-align: center;
+}
+#profile-card-edit img {
+	width: 144px;
+	height: 144px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+.form-inputs, .simple_form {
+	width: 500px;
+	margin: 50px auto 0 auto;
+}
+.form-inputs input {
+	border-radius: 0;
+}
+.form-inputs .control-group {
+	margin-bottom: 15px;
+}
+.form-inputs #user_avatar {
+	margin-bottom: 15px;
+}
+input#user_current_password {
+	border-radius: 0;
+}
+
+/* reads
+------------------------*/
+#reads {
+	margin-top: 20px;
+}
+
+#reads .col-md-2 {
+	margin-bottom: 30px;
+}
+
+#read .col-md-2 a {
+	display: inline-block;
+	background: #F5F5F5;
+}
+
+#reads img {
+	height: 150px;
+}
+
+/* home
+------------------------*/
+#index {
+	margin-top: 0px;
+	height: 400px;
+	text-align: center;
+}
+#sign-up {
+	margin-top: 0px;
+	height: 250px;
+	text-align: center;
+}
+#sign-up h1 {
+	margin-top: 120px;
+}
+#sign-up h1, #sign-up .lead {
+	text-align: center;
+}
+#sign-up .lead {
+	font-size: 28px;
+	margin-bottom: 50px;
+}
+#sign-up #create-account {
+	padding: 15px 20px;
+	border: 1px solid #555;
+	font-size: 14px;
+	font-family: Georgia;
+	font-style: italic;
+	border-radius: 40px;
+	color: #555;
+	margin-top: 20px;
+}
+#alice .avatar {
+	display: none;
+}
+#alice {
+	height: 560px;
+	background-image: url(https://s3.amazonaws.com/bklp/bg.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+}
+#alice p {
+	color: #FFF;
+	font-size: 35px;
+	text-align: center;
+	font-family: "Helvetica Neue";
+	font-weight: 100;
+	margin-top: 40px;
+	display: none;
+}
+#index p {
+	color: #333;
+	font-size: 35px;
+	text-align: center;
+	font-family: "Helvetica Neue";
+	font-weight: 100;
+	margin-top: 20px;
+}
+#alice #arrow-down {
+	z-index: 14;
+	width: 80px;
+	height: 80px;
+	padding-top: 40px;
+	margin: 30px auto 0 auto;
+	text-align: center;
+	position: relative;
+}
+#arrow-img {
+	background: url(https://s3.amazonaws.com/bklp/scrollicon.png) center center no-repeat;
+	top: 85px;
+	padding: 28px;
+	left: 10px;
+	position: absolute;
+	-webkit-animation: bounce 2s infinite;
+}
+#index .avatar, #alice .avatar {
+	width: 201px;
+	height: 201px;
+	border-radius: 50%;
+	border: 1px solid #FFF;
+	margin: 50px 30px 0 30px;
+	text-align: center;
+}
+#index .avatar {
+	width: 201px;
+	height: 201px;
+	border-radius: 50%;
+	border: 1px solid #AAA;
+	margin: 50px auto 0 auto;
+	text-align: center;
+}
+#discover-users .avatar {
+	width: 101px;
+	height: 101px;
+	border-radius: 50%;
+	border: 1px solid #AAA;
+	margin: 10px auto 0 auto;
+	text-align: center;
+}
+#discover-users .avatar img {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	margin-top: 5px;
+}
+#index .avatar img, #alice .avatar img {
+	width: 190px;
+	height: 190px;
+	border-radius: 50%;
+	margin-top: 5px;
+}
+#now-discuss {
+	height: 850px;
+	background: #f5f5f5;
+	padding-top: 100px;
+}
+#now-discuss #home-timeline .avatar {
+	width: 101px;
+	height: 101px;
+	border-radius: 50%;
+	border: 1px solid #AAA;
+	margin: 0px auto 0 auto;
+	position: absolute;
+	text-align: center;
+	top: -50px;
+	left: 46.5%;
+	background: #fff;
+}
+#now-discuss #home-timeline .avatar img {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	margin-top: 5px;
+}
+#now-discuss p {
+	color: #333;
+	font-size: 35px;
+	text-align: center;
+	font-family: "Helvetica Neue";
+	font-weight: 100;
+}
+#home-discussion {
+	width: 800px;
+	margin: 0 auto;
+	background: #FFF;
+	position: relative;
+	border: 1px solid #DDD;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	margin-top: 65px;
+}
+#home-discussion #quote {
+	padding: 40px 20px;
+	font-family: Georgia;
+	font-size: 25px;
+	color: #444;
+	font-style: italic;
+}
+#home-discussion #comment {
+	background: #4095f1;
+	padding: 15px 20px;
+	color: #FFF;
+	font-weight: 200;
+	font-size: 16px;
+}
+#home-discussion #user-comments {
+	padding: 15px 20px;
+}
+#user-comments .avatar img {
+	height: 52px;
+	width: 52px;
+	border-radius: 50%;
+	margin-top: 3px;
+}
+#user-comments .avatar {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	margin: 10px auto 0 auto;
+	text-align: center;
+	display: inline-block;
+}
+#user-comments p {
+	text-align: left;
+	font-size: 14px;
+	font-weight: 500;
+	margin-left: 5px;
+	margin-top: 30px;
+}
+.writer {
+	color: #333;
+	font-weight: 500;
+}
+#timeline-home {
+	height: 10px;
+	background: #DDD;
+	margin-top: 70px;
+}
+.comment-1, .comment-2 {
+	display: none;
+}
+#home-discussion:after, #home-discussion:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+#home-discussion:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #FFF;
+	border-width: 10px;
+	margin-left: -10px;
+}
+#home-discussion:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #ccc;
+	border-width: 11px;
+	margin-left: -11px;
+}
+#home-timeline {
+	height: 8px;
+	margin-top: 100px;
+	background: #DDD;
+	position: relative;
+}
+
+
+/* discussions
+------------------------*/
+#book-discussions {
+    .discussions-bar {
+        width: 100%;
+        height: 10px;
+        background-color: #ddd;
+        position: relative;
+        list-style: none;
+        margin: 0 0 40px;
+        padding: 0;
+        cursor: pointer;
+
+        li.start-a-discussion {
+            top: -12px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            display: block;
+            span {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 6px 15px;
+                border-radius: 4px;
+                background: #378aef;
+                color: #fff;
+            }
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: -20px;
+            height: 40px;
+            width: 40px;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-left: -20px;
+
+            &.active {
+                width: 70px;
+                height: 70px;
+                top: -35px;
+                margin-left: -35px;
+                z-index: 10;
+                img {
+                    border-radius: 35px;
+                }
+                border: 4px solid #4095f1;
+            }
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 20px;
+            }
+        }
+    }
+
+    input.ng-dirty.ng-invalid,
+    textarea.ng-dirty.ng-invalid {
+        border: 1px solid red;
+    }
+
+    input.ng-valid,
+    textarea.ng-valid {
+        border: 1px solid green;
+    }
+}
+
+.active-discussion {
+    border: 1px solid #DDD;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-top: 30px;
+    .user-info {
+        display: block;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+    .time-info {
+        display: block;
+        padding-top: 10px;
+        float: right;
+        padding-right: 20px;
+    }
+    h3 {
+        font-family: "minion pro", Georgia;
+        font-style: italic;
+        font-size: 30px;
+        font-weight: 200;
+        margin-bottom: 15px;
+        margin-top: 20px;
+        padding: 10px 20px;
+    }
+    h4 {
+        background: #4095f1;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0;
+    }
+    ul {
+        padding: 20px;
+        list-style: none;
+        li {
+            padding: 10px 0;
+            border-bottom: solid 1px #f5f5f5;
+            min-height: 68px;
+            .posted-by {
+                float: left;
+                display: block;
+                width: 48px;
+                height: 48px;
+                img {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 24px;
+                }
+            }
+            .comment-body {
+                margin-left: 75px;
+                h5 {
+                    a { color: #4095f1; }
+                    margin: 5px 0;
+                }
+            }
+            &:last-child {
+                padding: 10px 0 0;
+                border: none;
+            }
+        }
+    }
+    .ui-comment-form {
+        background: #F9F9F9;
+        padding: 10px 20px;
+        border-top: 1px solid #ddd;
+        text-align: right;
+        textarea {
+            width: 100%;
+            min-height: 60px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #c4c4c4;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+            display: inline;
+            background: #4095f1;
+            color: #fff;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+}
+
+/* conversations
+------------------------*/
+.controls textarea {
+	border-radius: 0;
+}
+#conversation h3 {
+	margin-top: 0;
+	display: inline;
+}
+#remove-conversation {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-top: 0;
+	float: right;
+}
+#messages-list {
+	list-style: none;
+	padding-left: 0;
+	height: 300px;
+}
+.message-time {
+	font-size: 12px;
+	color: #999;
+}
+#messages-list .avatar img {
+	width: 60px;
+}
+#messages-list p {
+	margin-bottom: 0;
+}
+.new_message {
+	width: 100%;
+}
+.new_message textarea {
+	border-radius: 0;
+	height: 80px;
+}
+#textarea-placeholder {
+	background: #F5F5F5;
+}
+.message_body {
+	padding: 5px;
+}
+.sender-name {
+	margin-top: 10px;
+}
+.message_body .control-label {
+	display: none;
+}
+#conversation-list {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 20px;
+}
+#conversation-list li {
+	padding: 10px 0;
+	border-top: 1px solid #f5f5f5;
+	position: relative;
+}
+#conversation-list li:last-child {
+	border-bottom: 1px solid #f5f5f5;
+}
+#conversation-list h5 {
+	margin-top: 12px;
+	margin-left: -5px;
+}
+#conversation-list h5 span {
+	color: #999;
+	padding-left: 10px;
+}
+#conversation-list p {
+	color: #888;
+	font-size: 14px;
+}
+#conversation-list .col-md-1 {
+	padding-right: 0;
+	text-align: center;
+}
+#conversation-list .conversation-remove {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 20px;
+	right: 15px;
+	background: url(https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-20.png) center center no-repeat;
+	background-size: 50%;
+	opacity: 0.2;
+	cursor: pointer;
+}
+#conversation-list .conversation-remove:hover {
+	opacity: 1;
+}
+.conversation-avatar {
+	width: 40px;
+}
+#messages-list {
+	margin-top: 20px;
+	overflow-x: hidden;
+}
+#messages-list i p{
+	display: inline;
+}
+#messages-list li {
+	margin-bottom: 30px;
+}
+.remove-msg {
+	margin-left: 10px;
+	font-size: 11px;
+	background: url(https://s3.amazonaws.com/bklp/trash.png) center center no-repeat;
+	padding: 8px;
+	background-size: 100%;
+	opacity: 0.8;
+}
+.amazon-link {
+	margin: 7px;
+	font-size: 11px;
+	background: url(https://s3.amazonaws.com/bklp/tag-flip.png) center center no-repeat;
+	background-size: 100%;
+	opacity: 0.5;
+	padding: 5px 10px;
+	padding-bottom: 2px;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+
+/* search
+------------------------*/
+#goodread-search-list {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 20px;
+}
+#goodread-search ul li {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+.col-md-9 ul {
+	padding-left: 0;
+}
+
+.body {
+	color: #5F5F5F;
+	font-size: 12px;
+	font-weight: 400;
+}
+.grayhead {
+	font-size: 18px; 
+	font-family: Georgia; 
+	font-style: italic; 
+	color: #999; 
+	margin-top: 15px; 
+	margin-bottom: 10px;
+}

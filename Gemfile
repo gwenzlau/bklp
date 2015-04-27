@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'devise'
 gem 'simple_form'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.2'
 gem 'goodreads'
 gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"
@@ -22,7 +22,7 @@ gem 'foreman'
 gem 'postmark-rails'
 
 group :production do
-	gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
 
