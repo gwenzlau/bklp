@@ -28,8 +28,6 @@ class UsersController < ApplicationController
     @book_past= User.find(params[:id]).archives.where(:status => "1").limit(10).order("updated_at DESC").order("RANDOM()")
     @book_future= User.find(params[:id]).archives.where(:status => "2").limit(10).order("updated_at DESC").order("RANDOM()")
 
-    flash[:notice] = "You can now update your profile picture! <a href='#{edit_user_registration_path}'>Click here</a>".html_safe
-
     @conversation = Conversation.new
     @conversation.messages.build
     @conversation.participants.build
