@@ -75,10 +75,13 @@ color: rgb(54, 53, 53);
   border: none;
   height: 40px;
   margin-top: 5px;
+  outline: none;
 }
 
  #settingdrop button img {
-  	opacity:.7;
+  	opacity:.5;
+  	height: 35px;
+  	padding-left: 10px;
   }
 
 
@@ -116,6 +119,9 @@ color: rgb(54, 53, 53);
 .dropdown-menu .divider {
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+.open>.dropdown-menu {
+	position: absolute;
 }
 
 #main {
