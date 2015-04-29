@@ -2,9 +2,9 @@ commented on your recent activity, saying:<br>
 <% if activity.trackable %>
 	"<i><%= Acomment.find_by_id(activity.trackable.id).comment %></i>"
 		 <span class="feed-sub" align="center">
-	<small><br>
+	<!-- <small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
-	  </small>
+	  </small> -->
 	</span>
 <% else %>
 	and then changed their mind.

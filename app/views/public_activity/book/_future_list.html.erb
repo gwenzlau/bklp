@@ -4,9 +4,9 @@ is planning on reading
 	<%= link_to Book.find_by_id(Archive.find(activity.trackable.id).book_id).title, book_path("#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).id}-#{Book.find_by_id(Archive.find(activity.trackable.id).book_id).title.parameterize}") %>
 </span>
 		 <span class="feed-sub">
-	<small><br>
+	<!-- <small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
-	  </small>
+	  </small> -->
 	</span>
 <% else %>
 	a book which has since been abandoned.

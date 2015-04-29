@@ -2,9 +2,9 @@ started reading
 <% if activity.trackable %>
 	<%= link_to Book.find(activity.trackable.id).title, book_path(Book.find(activity.trackable).id) %>
 		 <span class="feed-sub" align="center">
-	<small><br>
+	<!-- <small><br>
 	    <a href="#" id="al-<%= activity.id %>">Comment</a>
-	  </small>
+	  </small> -->
 	</span>
 <% else %>
 	a book which has since been abandoned.
