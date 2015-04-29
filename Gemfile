@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+	ruby '2.2.2'
 
 gem "rails", "~> 4.0.1"
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2

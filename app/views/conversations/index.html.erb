@@ -12,7 +12,7 @@
 							<li>
 								<div class="row">
 									<div class="col-md-1">
-										<%= image_tag c.messages.last.user.avatar, :class => 'img-circle conversation-avatar' %>
+										<%= image_tag c.messages.last.user.avatar.url, :class => 'img-circle conversation-avatar' %>
 									</div>
 									<div class="col-md-11">
 										<h5><span>Conversation started <%= time_ago_in_words c.created_at %> ago, between <%= link_to c.names_list, conversation_path(c) %></span></h5>
