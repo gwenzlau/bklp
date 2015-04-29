@@ -74,12 +74,13 @@ color: rgb(54, 53, 53);
 	background-color: white;
   border: none;
   height: 40px;
-  margin-top: 5px;}
+  margin-top: 5px;
+}
 
  #settingdrop button img {
   	opacity:.7;
   }
-}
+
 
 .dropdown-menu {
   position: inherit;
@@ -124,6 +125,7 @@ color: rgb(54, 53, 53);
 .show {
 	display: block;
 }
+
 form.new_book {
 	display: inline;
 }
