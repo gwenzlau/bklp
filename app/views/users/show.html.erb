@@ -59,9 +59,10 @@
 							<% end %>
 						</div>
 					</div>
-					<div id="recommended-authors">
-						<hr>
-						<div class="row">
+					<% if @recommended_authors.any? %>
+						<div id="recommended-authors">
+						  <hr>
+						   <div class="row">
 							<% @recommended_authors.each do |recauth| %>
 							<div class="col-md-2">
 								<div class="author-avatar">
@@ -70,8 +71,10 @@
 								<%= link_to Author.find(recauth.author_id).name, author_path("#{recauth.author_id}-#{Author.find(recauth.author_id).name.parameterize}") %>
 							</div>
 							<% end %>
-						</div>
-					</div>
+						   </div>
+					    </div>
+					<% else %>
+					<% end %>
 					<div class="row">
 						<div class="col-md-6">
 							<div id="past-reads">
