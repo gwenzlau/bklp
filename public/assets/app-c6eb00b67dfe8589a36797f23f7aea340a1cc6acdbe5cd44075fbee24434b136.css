@@ -1,5 +1,6 @@
 /* Site-wide Styles
 ------------------------*/
+
 a {
 color: #4095f1;
 text-decoration: none;
@@ -1083,11 +1084,6 @@ form.new_acomment input.comment-field {
 	display: inline;
 }
 
-#profile-content #recommended-reads img {
-  width: 180px;
-  height: 271px;
-}
-
 
 /* modals
 ------------------------*/
@@ -1866,9 +1862,3 @@ input#user_current_password {
 	margin-top: 15px; 
 	margin-bottom: 10px;
 }
-
-#reads 
-	#bookrec {
-		padding: 15px
-	}
-

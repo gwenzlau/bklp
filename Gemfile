@@ -6,13 +6,13 @@ gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'devise'
 gem 'simple_form'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.2'
 gem 'goodreads'
 gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'acts_as_commentable'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2'
 gem 'newrelic_rpm'
 gem "actionmailer", "~> 4.0.1"
 gem 'uglifier', '>= 1.3.0'
@@ -22,12 +22,12 @@ gem 'foreman'
 gem 'postmark-rails'
 
 group :production do
-	gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
 
 group :assets do
-  gem 'asset_sync'
+  gem 'asset_sync', '~> 1.1.0'
 end
 
 group :development, :test do

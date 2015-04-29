@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140123161039) do
     t.integer  "status"
     t.string   "isbn"
     t.text     "description"
-    t.integer  "book_id"
   end
 
   create_table "commentaries", force: true do |t|
@@ -141,39 +140,6 @@ ActiveRecord::Schema.define(version: 20140123161039) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
-
-  create_table "group_books", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_discussions", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_users", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "approved"
-  end
-
-  create_table "groups", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "public"
-  end
 
   create_table "links", force: true do |t|
     t.datetime "created_at"
