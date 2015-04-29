@@ -1875,3 +1875,6 @@ input#user_current_password {
 		padding: 15px
 	}
 
+.help-inline {
+		color: rgb(230, 62, 62);
+	}

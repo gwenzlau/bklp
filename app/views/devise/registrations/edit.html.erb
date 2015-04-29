@@ -1,9 +1,9 @@
 <div id="main" class="profile-edit">
   <div class="container">
     <div class="row">
-      <h3 id="profile-card-title">Edit</h3>
+      <h3 id="profile-card-title">Settings</h3>
         <div id="profile-card-edit">
-          <%= link_to (image_tag current_user.avatar.url), current_user %><br>
+          <%=(image_tag current_user.avatar.url) %><br>
           <%= link_to "Back", :back %>
         </div>
 
@@ -11,10 +11,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <label>Edit Profile Picture</labe>
+    <%= f.file_field :avatar %>
     <%= f.input :email, :required => true, :autofocus => true, :placeholder => "Email" %>
 		<%= f.input :name, :required => true, :placeholder => "Name" %>
-    <label>Profile Picture</labe>
-		<%= f.file_field :avatar %>
+    
 	
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
