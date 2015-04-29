@@ -164,6 +164,9 @@ form.new_book {
 #sidebar .menu li a#settings {
 	background-image: url(https://s3.amazonaws.com/bklp/settings.png);
 }
+#sidebar .menu li a#about {
+	background-image: url(https://s3.amazonaws.com/bklp/about.png);
+}
 
 /* home feed
 ------------------------*/
