@@ -310,8 +310,8 @@ DEPENDENCIES
   actionmailer (~> 4.0.1)
   acts_as_commentable
   acts_as_follower
-  asset_sync
-  aws-sdk
+  asset_sync (~> 1.1.0)
+  aws-sdk (~> 2)
   coffee-rails
   devise
   dotenv-rails
