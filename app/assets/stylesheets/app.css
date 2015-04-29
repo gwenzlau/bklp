@@ -69,6 +69,55 @@ color: rgb(54, 53, 53);
 .navbar > .container #signout {
 	margin-top: -3px;
 }
+
+#settingdrop button{
+	background-color: white;
+  border: none;
+  height: 40px;
+  margin-top: 5px;}
+
+ #settingdrop button img {
+  	opacity:.7;
+  }
+}
+
+.dropdown-menu {
+  position: inherit;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  background-clip: padding-box;
+}
+
+.dropdown-menu li {
+	display:flex;
+}
+.dropdown-menu li a {
+	width: 100%;
+	color: #999;
+	font-size : ;
+}
+.dropdown-menu li a:hover {
+	color: #8C8989;
+}
+.dropdown-menu .divider {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 #main {
 	margin-top: 50px;
 }
@@ -106,6 +155,15 @@ form.new_book {
 }
 .navbar-form {
 	position: relative;
+}
+.navbar-toggle {
+	border: none;
+}
+.navbar-collapse .navbar-right {
+	float:right;
+}
+.navbar-collapse .navbardropdown {
+	display: grid;
 }
 #newMessageModal img {
 	width: 110px;
@@ -797,6 +855,9 @@ form.new_acomment input.comment-field {
 	transition: all 0.3s ease;
 	display: none;
 	padding: 45% 0 0 0;
+}
+.book-action-overlay .pull-right {
+	float: none!important;
 }
 .book-placeholder {
 	position: relative;
