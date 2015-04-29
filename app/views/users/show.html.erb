@@ -10,9 +10,9 @@
 						<% if @user.id != current_user.id %>
 							<% if current_user.following?(@user) %>
 								<%= link_to "Unfollow", unfollow_user_path(@user), :class => 'btn btn-default btn-sm pull-right unfollow connect', remote: true %>
-								<button class="btn btn-bookloop btn-sm pull-right message-user" data-toggle="modal" data-target="#newMessageModal">
+								<!-- <button class="btn btn-bookloop btn-sm pull-right message-user" data-toggle="modal" data-target="#newMessageModal">
 									<img src="https://s3.amazonaws.com/bklp/message_icon_new.png">
-								</button>
+								</button> -->
 							<% else %>
 								<%= link_to "Follow", follow_user_path(@user), :class => 'btn btn-default btn-sm pull-right follow connect', remote: true %>
 							<% end %>

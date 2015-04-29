@@ -8,6 +8,7 @@ text-decoration: none;
 a.follow,
 a.unfollow {
 	border-radius: 3px !important;
+	color: gray;
 }
 
 strong {
