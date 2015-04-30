@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
     # Show the feed of the users you are following. Limits the list to latest 10 feeds
     if signed_in?
-      flash[:notice] = "You can now update your profile picture! <a href='#{edit_user_registration_path}'>Click here.</a>".html_safe
+      #flash[:notice] = "You can now update your profile picture! <a href='#{edit_user_registration_path}'>Click here.</a>".html_safe
 
       @acomment = Acomment.new
       @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.following_users, owner_type: "User").paginate(:page => params[:page], :per_page => 10)
