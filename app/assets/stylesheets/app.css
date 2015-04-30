@@ -61,6 +61,7 @@ color: rgb(54, 53, 53);
 .navbar > .container #profile-img img {
 	border-radius: 30px;
 	height: 40px;
+	width: 40px;
 }
 .navbar > .container #profile-name a {
 	padding: 15px 10px;
