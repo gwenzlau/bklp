@@ -68,5 +68,8 @@ module Booksy
     # config.action_mailer.delivery_method = :postmark
     #  config.action_mailer.postmark_settings = { :api_key => "your-api-key" }
     config.middleware.insert_before(ActionDispatch::Static, Rack::Deflater)
+
+    #paperclip fix
+    #Paperclip.options[:command_path] = "/usr/local/bin/identify"
   end
 end
