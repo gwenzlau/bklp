@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123161039) do
+ActiveRecord::Schema.define(version: 20150430164531) do
 
   create_table "acomments", force: true do |t|
     t.integer  "activity_id"
@@ -221,6 +221,8 @@ ActiveRecord::Schema.define(version: 20140123161039) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "location"
+    t.string   "url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

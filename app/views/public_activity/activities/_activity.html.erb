@@ -10,9 +10,9 @@
                     <% Acomment.all.where(:activity_id => activity.id).each do |acomment| %>
                     <li>
                         <div class="row">
-                            <div class="col-md-1">
+                           <!--  <div class="col-md-1">
                                 <%= image_tag User.find(acomment.user_id).avatar.url%>
-                            </div>
+                            </div> -->
                            <!--  <div class="col-md-9">
                                 <%= link_to User.find(acomment.user_id).name, user_path(acomment.user_id) %><span style="font-size: 12px;"> <%= acomment.comment %></span>
                             </div> -->

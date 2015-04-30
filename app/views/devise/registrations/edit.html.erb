@@ -11,29 +11,35 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <label>Edit Profile Picture</labe>
+    <label>Edit Profile Picture</label>
     <%= f.input :avatar, as: :file %>
-    <%= f.input :email, :required => true, :autofocus => true, :placeholder => "Email" %>
-		<%= f.input :name, :required => true, :placeholder => "Name" %>
-    
+    <label>Your Name</label>
+   	<%= f.input :name, :required => true, :placeholder => "Name" %>
+    <label>Your Location</label>
+    <%= f.input :location, :required => false, :placeholder => "Location" %>
+    <label>Your Website</label>
+    <%= f.input :url, :required => false, :placeholder => "Your Website" %>
+    <label>Your Email</label>
+     <%= f.input :email, :required => true, :autofocus => true, :placeholder => "Email" %>
 	
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
-    <%= f.input :password, :autocomplete => "off", :hint => "(leave it blank if you don't want to change it)", :required => false, :placeholder => "New Password" %>
+    <label>New Password</label>
+    <%= f.input :password, :autocomplete => "off", :required => false, :placeholder => "New Password" %>
+    <label>Confirm New Password</label>
     <%= f.input :password_confirmation, :required => false, :placeholder => "Confirm New Password" %>
 
-    
   </div>
-  <div class="well">
   <div class="form-actions">
+    <div class="well">
+      <label>To update your profile, enter your current password</label>
     <%= f.input :current_password, :hint => "", :required => true, :placeholder => "Enter your current password to confirm your changes" %>
+    </div>
     <div align="center">
     <%= f.button :submit, "Update" %>
-  </div>
-   </div>
+    </div>
  </div>
    <%# redirect_to current_user %>
 <% end %>

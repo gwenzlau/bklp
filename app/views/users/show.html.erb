@@ -48,6 +48,10 @@
 								<p id="currently-reading"><strong><%= @user.name %></strong> is not reading any books at the moment.</p>
 							<% end %>
 						<% end %>
+
+						<div class="sublinks">
+							<%= render 'users/sublinks' %>
+						</div>
 					</div>
 					<div id="recommended-reads">
 						<p><%= link_to "Recommended Reading", recommendations_user_path(@user) %></p>

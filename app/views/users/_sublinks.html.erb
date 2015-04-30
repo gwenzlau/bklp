@@ -1,0 +1,46 @@
+<% if @user.id == current_user.id %>
+  <ul>
+  	<% if @user.location.blank? %>
+  		<li class="locationwrapper">
+			<span class="location"></span>
+			<%= link_to 'Add your Location', edit_user_registration_path, :class=>"blank" %>
+		</li>
+	<% else %>
+		<li class="locationwrapper">
+			<span class="location"></span>
+			<%= @user.location %>
+		</li>
+	<% end %>
+    <% if @user.url.blank? %>
+	 <li class="websitewrapper">
+			<span class="web "></span>
+			<%= link_to 'Add your website', edit_user_registration_path, :class=>"website blank"  %>
+		</li>
+	<% else %>
+	 <li class="websitewrapper">
+		<span class="web"></span>
+		<%= link_to @user.url, @user.url, :class=>"website", :target => '_blank' %>
+	  </li>
+		
+	<% end %>
+  </ul>
+<% else %>
+
+	<ul>
+	  <% if @user.location %>
+			<li class="locationwrapper">
+			<span class="location"></span>
+			<%= @user.location %>
+			</li>
+	  <% else %>
+	  <% end %>
+	  <% if @user.url %>
+	  	<li class="websitewrapper">
+		<span class="web"></span>
+		<%= link_to @user.url, @user.url, :class=>"website", :target => '_blank' %>
+	  </li>
+	  <% else %>
+	  <% end %>
+	</ul>
+
+<% end %>
