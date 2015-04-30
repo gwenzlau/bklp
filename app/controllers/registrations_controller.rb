@@ -5,4 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
     '?welcome=true'
    # after_sign_in_path_for(resource)
   end
+
+  def after_update_path_for(resource)
+      user_path(resource)
+  end
 end
