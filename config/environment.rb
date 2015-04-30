@@ -3,7 +3,6 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 Booksy::Application.initialize!
-Paperclip.options[:command_path] = 'C:\ImageMagicks'
 
 ActionMailer::Base.smtp_settings = {
   :address        => 'smtp.sendgrid.net',
