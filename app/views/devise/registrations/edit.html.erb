@@ -12,7 +12,7 @@
 
   <div class="form-inputs">
     <label>Edit Profile Picture</labe>
-    <%= f.file_field :avatar %>
+    <%= f.input :avatar, as: :file %>
     <%= f.input :email, :required => true, :autofocus => true, :placeholder => "Email" %>
 		<%= f.input :name, :required => true, :placeholder => "Name" %>
     
