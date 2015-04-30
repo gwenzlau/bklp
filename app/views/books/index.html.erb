@@ -12,11 +12,10 @@
     					</div>
     					<% end %>
     				</div><br />
-						<%= link_to "Find more books after: #{params[:search]}", brapi_path(:search => params[:search]) %>
+						<%= link_to "Find more books: #{params[:search]}", brapi_path(:search => params[:search]) %>
 						
 						<% if @result.blank? %>
-							We did not find anyhting in our database.<br /><br />
-							<%= link_to "Let us find and import it for you on Goodreads", brapi_path(:search => params[:search]) %>
+							<%= link_to "Hold on, let's try that one more time...", brapi_path(:search => params[:search]) %>
 						<% end %>
     			</div>
 			</div>
