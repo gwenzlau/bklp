@@ -70,6 +70,6 @@ module Booksy
     config.middleware.insert_before(ActionDispatch::Static, Rack::Deflater)
 
     #paperclip fix
-    #Paperclip.options[:command_path] = "/usr/local/bin/identify"
+    Paperclip.options[:command_path] = "/usr/local/bin/identify"
   end
 end
