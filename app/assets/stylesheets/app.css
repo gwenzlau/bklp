@@ -83,6 +83,10 @@ color: rgb(54, 53, 53);
   	opacity:.5;
   	height: 30px;
   	padding-left: 10px;
+  	transition: all 0.2s ease 0s;
+  }
+ #settingdrop button img:hover {
+   	opacity:.6;
   }
 
 
@@ -1011,7 +1015,7 @@ form.new_acomment input.comment-field {
 #profile-content #profile-card a {
 	display: inline-block;
 	position: relative;
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 }
 #profile-content #profile-card a #edit-profile-overlay {
 	background: rgba(0,0,0,0);
@@ -1061,7 +1065,7 @@ form.new_acomment input.comment-field {
 	font-style: italic;
 	color: #999;
 	margin-top: 20px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 #profile-content #profile-card button a {
 	color: #555;
@@ -1105,6 +1109,59 @@ form.new_acomment input.comment-field {
 	margin: 0 auto;
 	position: relative;
 }
+.sublinks {
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  max-height: 40px;
+  display: inline-block;
+  margin: 12px 0;
+}
+.sublinks ul li {
+	list-style: none;
+}
+.sublinks li {
+	float:left;
+	padding: 0 6px;
+}
+.locationwrapper .location {
+	width: 11px;
+	height: 11px;
+	background-image: url('https://s3.amazonaws.com/bklp/location.png');
+	display: inline-block;
+}
+.websitewrapper {
+	vertical-align: super;
+}
+.websitewrapper .web {
+	width: 11px;
+	height: 11px;
+	background-image: url('https://s3.amazonaws.com/bklp/web.png');
+	display: inline-block;
+	vertical-align: inherit;
+}
+.sublinks .websitewrapper .website {
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+.websitewrapper .website {
+	border-radius: 0px;
+}
+.sublinks .website {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  color: #999;
+  font-weight: 500;
+  max-width: 200px;
+}
+.sublinks .blank {
+	border-bottom: 1px dotted #999;
+	color: #999;
+}
+
 .past-read-author {
 	text-transform: none;
 	font-size: 12px;
@@ -1367,6 +1424,9 @@ form.new_acomment input.comment-field {
 }
 input#user_current_password {
 	border-radius: 0;
+}
+.control-group label {
+	display: none;
 }
 
 /* reads

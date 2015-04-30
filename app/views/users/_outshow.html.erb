@@ -14,6 +14,24 @@
 								<p id="currently-reading"><strong><%= @user.name %></strong> is not reading any books at the moment.</p>
 							
 						<% end %>
+						<div class="sublinks">
+							<ul>
+							  <% if @user.location %>
+									<li class="locationwrapper">
+									<span class="location"></span>
+									<%= @user.location %>
+									</li>
+							  <% else %>
+							  <% end %>
+							  <% if @user.url %>
+								  	<li class="websitewrapper">
+									<span class="web"></span>
+									<%= link_to @user.url, @user.url, :class=>"website", :target => '_blank' %>
+							  		</li>
+							  <% else %>
+							  <% end %>
+							</ul>
+						</div>
 					</div>
 					<div id="recommended-reads">
 						<p><%= link_to "Recommended Reading", recommendations_user_path(@user) %></p>
