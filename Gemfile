@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-	ruby '2.2.2'
+
 
 gem "rails", "~> 4.0.1"
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
@@ -13,7 +13,7 @@ gem 'will_paginate', '~> 3.0'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'acts_as_commentable'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '< 2.0'
 gem 'newrelic_rpm'
 gem "actionmailer", "~> 4.0.1"
 gem 'uglifier', '>= 1.3.0'
